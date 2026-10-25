@@ -8,8 +8,16 @@ const s = data.sections;
 const resList = (resources as any)[info.slug] ?? [];
 const wordsCount = s.words.units.reduce((n: number, u: any) => n + u.words.length, 0);
 const phrCount = s.phrases.groups.reduce((n: number, g: any) => n + g.items.length, 0);
+const toc = [
+  { text: s.words.title, slug: 'words' },
+  { text: s.phrases.title, slug: 'phrases' },
+  { text: s.grammar.title, slug: 'grammar' },
+  { text: s.writing.title, slug: 'writing' },
+  { text: s.exam.title, slug: 'exam' },
+  ...(resList.length > 0 ? [{ text: '学习资源', slug: 'resources' }] : []),
+];
 ---
-<Base title={info.title} description={info.intro} program={info.slug}>
+<Base title={info.title} description={info.intro} program={info.slug} toc={toc}>
 <div class="container" style="padding:44px 0 80px;max-width:960px">
   <div class="eyebrow">{info.code} · ENGLISH COURSE</div>
   <h1 style="font-size:32px">{info.title}</h1>

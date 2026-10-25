@@ -9,8 +9,14 @@ const resList = (resources as any)[info.slug] ?? [];
 const pointCount = s.topics.list.reduce((n: number, m: any) => n + m.points.length, 0);
 const exCount = s.topics.list.reduce((n: number, m: any) => n + m.points.reduce((k: number, p: any) => k + p.examples.length, 0), 0);
 const fCount = s.formulas.groups.reduce((n: number, g: any) => n + g.items.length, 0);
+const toc = [
+  { text: s.topics.title, slug: 'topics' },
+  { text: s.formulas.title, slug: 'formulas' },
+  { text: s.exam.title, slug: 'exam' },
+  ...(resList.length > 0 ? [{ text: '学习资源', slug: 'resources' }] : []),
+];
 ---
-<Base title={info.title} description={info.intro} program={info.slug}>
+<Base title={info.title} description={info.intro} program={info.slug} toc={toc}>
 <div class="container" style="padding:44px 0 80px;max-width:960px">
   <div class="eyebrow">{info.code} · MATH FOR CODING</div>
   <h1 style="font-size:32px">{info.title}</h1>

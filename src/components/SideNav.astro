@@ -1,0 +1,91 @@
+---
+// 内容区左侧多层级导航：从二级菜单（当前板块）向下展开到 GESP 级别 → 课次 → 页内标题锚点。
+// 仅渲染当前所属板块的树；当前路径上的节点展开并高亮，页内目录（toc）挂在最深层的当前节点下。
+import { levels } from '../data/levels';
+import { getCollection } from 'astro:content';
+import { findGroup } from '../lib/nav';
+
+const { rel = '', level = 0, toc = [] } = Astro.props as { rel?: string; level?: number; toc?: { text: string; slug: string }[] };
+const base = import.meta.env.BASE_URL;
+const found = findGroup(rel);
+
+const lm = rel.match(/^\/gesp\/level\/(\d+)\//);
+const curLevel = lm ? Number(lm[1]) : level;
+const lessonMatch = rel.match(/^\/gesp\/level\/\d+\/lessons\/([^/]+)\/?$/);
+const activeLesson = lessonMatch ? lessonMatch[1] : '';
+const isLevelIndex = curLevel > 0 && rel === `/gesp/level/${curLevel}/`;
+const isRoadmap = curLevel > 0 && rel === `/gesp/level/${curLevel}/roadmap/`;
+const isAssessment = curLevel > 0 && rel === `/gesp/level/${curLevel}/assessment/`;
+
+const lessons =
+  found && found.slug === 'gesp' && curLevel > 0
+    ? (await getCollection('lessons'))
+        .filter((x) => x.data.level === curLevel)
+        .sort((a, b) => a.data.order - b.data.order)
+    : [];
+---
+{found && (
+  <nav class="sidenav-tree" aria-label="章节导航">
+    <h4>{found.group.nav}</h4>
+    <ul class="sn-l">
+      {found.group.children.map((c) => (
+        <li>
+          {c.slug === 'gesp' ? (
+            <>
+              <a class:list={{ active: rel === '/gesp/' }} href={c.href}>{c.nav}</a>
+              <ul class="sn-l">
+                {levels.map((l) => (
+                  <li>
+                    <a class:list={{ active: curLevel === l.level }} href={`${base}/gesp/level/${l.level}/`}>GESP {l.cn}</a>
+                    {curLevel === l.level && (
+                      <ul class="sn-l">
+                        <li>
+                          <a class:list={{ active: isLevelIndex }} href={`${base}/gesp/level/${l.level}/`}>级别首页</a>
+                          {isLevelIndex && toc.length > 0 && (
+                            <ul class="sn-l">{toc.map((t) => <li><a class="sn-toc" href={`#${t.slug}`}>{t.text}</a></li>)}</ul>
+                          )}
+                        </li>
+                        <li>
+                          <a class:list={{ active: isRoadmap }} href={`${base}/gesp/level/${l.level}/roadmap/`}>教学安排</a>
+                          {isRoadmap && toc.length > 0 && (
+                            <ul class="sn-l">{toc.map((t) => <li><a class="sn-toc" href={`#${t.slug}`}>{t.text}</a></li>)}</ul>
+                          )}
+                        </li>
+                        {lessons.map((x) => {
+                          const id = x.id.split('/')[1];
+                          const active = id === activeLesson;
+                          return (
+                            <li>
+                              <a class:list={{ active }} href={`${base}/gesp/level/${l.level}/lessons/${id}`}>{String(x.data.order).padStart(2, '0')} · {x.data.title}</a>
+                              {active && toc.length > 0 && (
+                                <ul class="sn-l">{toc.map((t) => <li><a class="sn-toc" href={`#${t.slug}`}>{t.text}</a></li>)}</ul>
+                              )}
+                            </li>
+                          );
+                        })}
+                        <li>
+                          <a class:list={{ active: isAssessment }} href={`${base}/gesp/level/${l.level}/assessment/`}>阶段测评</a>
+                          {isAssessment && toc.length > 0 && (
+                            <ul class="sn-l">{toc.map((t) => <li><a class="sn-toc" href={`#${t.slug}`}>{t.text}</a></li>)}</ul>
+                          )}
+                        </li>
+                      </ul>
+                    )}
+                  </li>
+                ))}
+                <li><a class:list={{ active: rel.startsWith('/exams') }} href={`${base}/exams/`}>真题模考</a></li>
+              </ul>
+            </>
+          ) : (
+            <>
+              <a class:list={{ active: c.slug === found.slug }} href={c.href}>{c.nav}</a>
+              {c.slug === found.slug && toc.length > 0 && (
+                <ul class="sn-l">{toc.map((t) => <li><a class="sn-toc" href={`#${t.slug}`}>{t.text}</a></li>)}</ul>
+              )}
+            </>
+          )}
+        </li>
+      ))}
+    </ul>
+  </nav>
+)}

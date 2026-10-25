@@ -10,8 +10,16 @@ const info = programs.find((p) => p.slug === Astro.params.slug)!;
 const key = `${info.slug}.json`;
 const content: any = (extra as any)[`../../data/program-content/${key}`]?.default ?? (extra as any)[Object.keys(extra).find((k) => k.endsWith(key)) ?? '']?.default ?? null;
 const list = (resources as any)[info.slug] ?? [];
+const toc = [
+  content?.roadmap?.length ? { text: '学习路线', slug: 'roadmap' } : null,
+  content?.modules?.length ? { text: '核心内容', slug: 'modules' } : null,
+  content?.projects?.length ? { text: '实践项目', slug: 'projects' } : null,
+  content?.pitfalls?.length ? { text: '常见误区', slug: 'pitfalls' } : null,
+  { text: '规划模块', slug: 'plans' },
+  list.length > 0 ? { text: '精选学习资源', slug: 'resources' } : null,
+].filter(Boolean) as { text: string; slug: string }[];
 ---
-<Base title={info.title} description={info.intro} program={info.slug}><div class="container article" style="max-width:880px;padding:44px 0 80px"><div class="eyebrow">{info.code} · COURSE GUIDE</div><h1>{info.title}</h1><span class="pill">建设中</span><p>{info.tagline}{info.intro}</p>
+<Base title={info.title} description={info.intro} program={info.slug} toc={toc}><div class="container article" style="max-width:880px;padding:44px 0 80px"><div class="eyebrow">{info.code} · COURSE GUIDE</div><h1>{info.title}</h1><span class="pill">建设中</span><p>{info.tagline}{info.intro}</p>
 
 {content && <>
 {content.roadmap && content.roadmap.length > 0 && <><h2 id="roadmap">学习路线</h2>
@@ -36,8 +44,8 @@ const list = (resources as any)[info.slug] ?? [];
 <ul style="line-height:2.1;font-size:14.5px;padding-left:22px;list-style:'⚠️ '">{content.pitfalls.map((p: string) => <li>{p}</li>)}</ul></>}
 </>}
 
-<h2>规划模块</h2><ul>{info.plans.map((m) => <li>{m}</li>)}</ul>
+<h2 id="plans">规划模块</h2><ul>{info.plans.map((m) => <li>{m}</li>)}</ul>
 
-{list.length > 0 && <><h2>精选学习资源</h2><p style="color:var(--muted);font-size:14px">本方向互联网上广受好评的免费/付费课程、经典图书与学习入口（外部链接，以各站点实际内容为准）。</p>{resourceKinds.map((k) => { const items = list.filter((r: any) => r.kind === k); return items.length > 0 && <><h3 class="res-kind">{k}</h3><ul class="res-list">{items.map((r: any) => <li><a href={r.url} target="_blank" rel="noopener">{r.name}</a><span class="res-provider">{r.provider}</span><span class="res-note">{r.note}</span></li>)}</ul></> })}</>}
+{list.length > 0 && <><h2 id="resources">精选学习资源</h2><p style="color:var(--muted);font-size:14px">本方向互联网上广受好评的免费/付费课程、经典图书与学习入口（外部链接，以各站点实际内容为准）。</p>{resourceKinds.map((k) => { const items = list.filter((r: any) => r.kind === k); return items.length > 0 && <><h3 class="res-kind">{k}</h3><ul class="res-list">{items.map((r: any) => <li><a href={r.url} target="_blank" rel="noopener">{r.name}</a><span class="res-provider">{r.provider}</span><span class="res-note">{r.note}</span></li>)}</ul></> })}</>}
 
 <p style="color:var(--muted);font-size:14px">适合人群：{info.audience}。本板块为学习路线与核心内容指南，配套课程正在筹备中；建议沿「学习路线」逐阶段推进，结合「实践项目」动手巩固。</p><p><a class="primary-btn" href={import.meta.env.BASE_URL}>← 返回课程中心</a></p></div></Base>
