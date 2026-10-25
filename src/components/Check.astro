@@ -1,0 +1,6 @@
+---
+const { question, options, answer, explanation = '' } = Astro.props;
+const id = `quiz-${Math.random().toString(36).slice(2)}`;
+---
+<div class="quiz" data-answer={answer}><p class="quiz-title">🧠 随堂选择 · {question}</p><div class="quiz-options">{options.map((x,i)=><label><input type="radio" name={id} value={i}/><span>{String.fromCharCode(65+i)}. {x}</span></label>)}</div><button type="button" class="check-btn">检查答案</button><p class="quiz-feedback" aria-live="polite"></p><p class="quiz-explanation" hidden>{explanation}</p></div>
+<script>document.querySelectorAll('.quiz').forEach(q=>{const b=q.querySelector('.check-btn');if(!b||b.dataset.ready)return;b.dataset.ready='1';b.addEventListener('click',()=>{const picked=q.querySelector('input:checked');const f=q.querySelector('.quiz-feedback');if(!picked){f.textContent='请先选择一个答案。';return;}const good=Number(picked.value)===Number(q.dataset.answer);f.textContent=good?'✓ 回答正确！':'再想一想：这题需要检查概念或边界。';f.className='quiz-feedback '+(good?'correct':'incorrect');q.querySelector('.quiz-explanation').hidden=false;});});</script>

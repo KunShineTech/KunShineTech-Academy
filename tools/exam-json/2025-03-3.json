@@ -1,0 +1,242 @@
+{
+ "session": "2025-03",
+ "level": 3,
+ "file": "GESP 2025年03月认证C++ 3级真题.pdf",
+ "legacy": false,
+ "choiceCount": 15,
+ "judgeCount": 10,
+ "progCount": 2,
+ "choiceAnswers": "DBAABACACDDDBDC",
+ "judgeAnswers": "",
+ "choice": [
+  {
+   "n": 1,
+   "stem": "Base64 编码将每3字节的输入数据编码为 4 字节的输出数据。如果输入数据长度不是 3 的倍数，会用= 号填\n充。在Base64编码中，如果输入字符串的长度为10字节，编码后的字符串长度是多少（ ）",
+   "options": [
+    "12 字节",
+    "13 字节",
+    "14 字节",
+    "16 字节"
+   ],
+   "answer": 3
+  },
+  {
+   "n": 2,
+   "stem": "UTF-8 编码规则如下：\n1 字节：0xxxxxxx\n2 字节：110xxxxx 10xxxxxx\n3 字节：1110xxxx 10xxxxxx 10xxxxxx\n4 字节：11110xxx 10xxxxxx 10xxxxxx 10xxxxxx\n以下哪个字节序列是合法的 UTF-8 编码（ ）",
+   "options": [
+    "0xC0 0x80",
+    "0xF0 0x90 0x80 0x80",
+    "0x80 0x80 0x80",
+    "0xFF 0xFE 0xFD"
+   ],
+   "answer": 1
+  },
+  {
+   "n": 3,
+   "stem": "在 8 位二进制原码表示中，八进制数 -5 的二进制形式是什么（ ）",
+   "options": [
+    "10000101",
+    "11111010",
+    "11111011",
+    "00000101"
+   ],
+   "answer": 0
+  },
+  {
+   "n": 4,
+   "stem": "十进制数 111.111 的二进制表示可以是下面的（  ）。",
+   "options": [
+    "1101111.0001110001",
+    "1101110.1001110001",
+    "1101111.1001110001",
+    "1101111.0011110001"
+   ],
+   "answer": 0
+  },
+  {
+   "n": 5,
+   "stem": "在C++中，补码的主要作用是（）",
+   "options": [
+    "提高浮点数的精度",
+    "简化整数的加减法运算",
+    "增加整数的表示范围",
+    "优化内存分配"
+   ],
+   "answer": 1
+  },
+  {
+   "n": 6,
+   "stem": "在C++中，一个8位有符号整数（使用补码表示）的范围是（）",
+   "options": [
+    "-128 到 127",
+    "-127 到 128",
+    "-256 到 255",
+    "0 到 255"
+   ],
+   "answer": 0
+  },
+  {
+   "n": 7,
+   "stem": "在C++中，以下代码的输出是什么()\nint a = -5;\n1\nunsigned int b = a;\n2\ncout << b;\n3",
+   "options": [
+    "-5",
+    "5",
+    "4294967291",
+    "编译错误"
+   ],
+   "answer": 2
+  },
+  {
+   "n": 8,
+   "stem": "下列程序的作用是（）\nint main() {\n1\nint decimal = 25;\n2\ncout << oct << decimal;\n3\nreturn 0;\n4\n}\n5",
+   "options": [
+    "将十进制数转换成八进制数",
+    "将八进制数转换成十进制数",
+    "将二进制数转换成八进制数",
+    "将八进制数转换成16进制数"
+   ],
+   "answer": 0
+  },
+  {
+   "n": 9,
+   "stem": "下面程序是将十进制转十六进制，横线处应该填入的是（）\n#include <iostream>\n1\nusing namespace std;\n2\n3\nint main() {\n4\nint decimal = 255;\n5\n——————————————————\n6\nreturn 0;\n7\n}\n8",
+   "options": [
+    "cout << oct << decimal;",
+    "cout << decimal << decimal;",
+    "cout << hex << decimal;",
+    "不能正确执行"
+   ],
+   "answer": 2
+  },
+  {
+   "n": 10,
+   "stem": "以下代码的说法正确的是什么( )\n#include <iostream>\n1\nusing namespace std;\n2\n3\nint main() {\n4\nint a = 0b1101;\n5\nint b = 0b1011;\n6\ncout << (a ^ b);\n7\nreturn 0;\n8\n}\n9\n10",
+   "options": [
+    "进行的是整体异或运算",
+    "进行的是按位同或运算",
+    "进行的是按位与运算",
+    "进行的是按位异或运算"
+   ],
+   "answer": 3
+  },
+  {
+   "n": 11,
+   "stem": "下面枚举法查找最大值索引程序中，横线处应该填写的是（）\n#include <iostream>\n1\nusing namespace std;\n2\n3\nint main() {\n4\nint arr[] = {3, 7, 2, 9, 5};\n5\nint maxIndex = 0;\n6\nfor (int i = 1; i < 5; i++) {\n7\n————————————————————————————————\n8\n{\n9\nmaxIndex = i;\n10\n}\n11\n}\n12\ncout << maxIndex;\n13\nreturn 0;\n14\n}\n15",
+   "options": [
+    "if (arr[maxIndex] > arr[i])",
+    "if (arr[i]-1 > arr[maxIndex])",
+    "if (arr[i]+1 > arr[maxIndex])",
+    "if (arr[i] > arr[maxIndex])"
+   ],
+   "answer": 3
+  },
+  {
+   "n": 12,
+   "stem": "以下代码的功能是将数组中的奇数和偶数分别放在数组的前半部分和后半部分,横线处应该填入的是（）\n#include <iostream>\n1\nusing namespace std;\n2\n3\nint main() {\n4\nint arr[] = {1, 2, 3, 4, 5};\n5\nint left = 0, right = 4;\n6\nwhile (left < right) {\n7\nwhile (arr[left] % 2 == 1 && left < right) left++;\n8\n————————————————————————————————————————————————————\n9\nif (left < right) {\n10\nswap(arr[left], arr[right]);\n11\n}\n12\n}\n13\nfor (int i = 0; i < 5; i++) {\n14\ncout << arr[i] << \" \";\n15\n}\n16\nreturn 0;\n17\n}\n18",
+   "options": [
+    "while (arr[left] % 2 == 0 && left < right) right--;",
+    "while (arr[right] % 2 == 0 && left < right) left--;",
+    "while (arr[right] % 2 != 0 && left < right) right--;",
+    "while (arr[right] % 2 == 0 && left < right) right--;"
+   ],
+   "answer": 3
+  },
+  {
+   "n": 13,
+   "stem": "下面程序最后能够得到HelloC++ 的是（）\n1\nint main() {\n2\nstring str = \"HelloWorld\";\n3\n___________________\n4\ncout << str;\n5\nreturn 0;\n6\n}\n7",
+   "options": [
+    "str.replace(0, 5, \"C++\"); 1",
+    "str.replace(5, 5, \"C++\"); 1",
+    "str.replace(1, 5, \"C++\"); 1",
+    "str.replace(4, 5, \"C++\"); 1"
+   ],
+   "answer": 1
+  },
+  {
+   "n": 14,
+   "stem": "想要得到字符串world ,下面程序横线处应该填入的是（）\n#include <iostream>\n1\n#include <string>\n2\nusing namespace std;\n3\n4\nint main() {\n5\nstring str = \"HelloC++\";\n6\n_________________\n7\n_________________\n8\nreturn 0;\n9\n}\n10",
+   "options": [
+    "str.insert(4, \"World\"); 1 cout << str.substr(4, 4); 2",
+    "cout << str.substr(5, 5); 1",
+    "str.insert(\"World\"); 1 cout << str.substr(5, 5); 2",
+    "str.insert(5, \"World\"); 1 cout << str.substr(5, 5); 2"
+   ],
+   "answer": 3
+  },
+  {
+   "n": 15,
+   "stem": "有 n 个正整数，假设一个正整数是美丽数字当且仅当该正整数是 9 的倍数但不是 8 的倍数。下面的程序是\n编写计算 n 个正整数中美丽数字的数量，横线处应该填入的是（）\nfor (int i = 1; i <= n; i++) {\n1\ncin >> a;\n2\n__________________________\n3\ncnt++;\n4\n}\n5",
+   "options": [
+    "if (a % 9 != 0 && a % 8 != 0)",
+    "if (a % 9 == 0 & a % 8 == 0)",
+    "if (a % 9 == 0 && a % 8 != 0)",
+    "if (a % 9 == 0 & a % 8 != 0)"
+   ],
+   "answer": 2
+  }
+ ],
+ "judge": [
+  {
+   "n": 1,
+   "stem": "判断一个三角形是否成立的条件只有:任意两边长度之和大于第三条边的长度",
+   "answer": null
+  },
+  {
+   "n": 2,
+   "stem": "这段程序进行的是判断一个从键盘输入的字符的ASCII 是否是奇数，若是，输出 YES，否则，输出 NO\nint main()\n1\n{\n2\nchar x;\n3\nscanf(\"%c\", &x);\n4\nint ASCII = (int)x;\n5\ncout << (x & 1 ? \"YES\" : \"NO\") << '\\n';\n6\nreturn 0;\n7\n}\n8",
+   "answer": null
+  },
+  {
+   "n": 3,
+   "stem": "闰年的定义：\n普通闰年：公历年份是 4 的倍数，且不是 100 的倍数的，为闰年（如 2004 年、2020 年等就是闰年）。\n世纪闰年：公历年份是整百数的，必须是 400 的倍数才是闰年（如 1900 年不是闰年，2000 年是闰年）。\n下面程序是判断是否是闰年的正确程序\ncin>>n;\n1\ncout<<((n%4==0&&n%100!=0)||(n%400==0))?1:0;\n2\nreturn 0;\n3",
+   "answer": null
+  },
+  {
+   "n": 4,
+   "stem": "C++语句cout<<(n%15==0? \"YES\":\"NO\"); 能够判断一个整数能否被3和5同时整除",
+   "answer": null
+  },
+  {
+   "n": 5,
+   "stem": "有n个同学，从中抽取任意个人数来参加学校组织的大合唱，共有2的n次幂个方法",
+   "answer": null
+  },
+  {
+   "n": 6,
+   "stem": "若将一个正整数化为二进制数，在此二进制数中，我们将数字 1 的个数是偶数的这类二进制数称为 A 类数，\n否则就称其为 B 类数。\n例如：\n(13) 10 =(1101) 2 ，其中 1 的个数为 3则称此数为 B 类数；\n(10) 10 =(1010) 2 ，其中 1 的个数为 2，称此数为 A 类数；\n判断（2025）10化为二进制后，1的个数为偶数个，因此2025为A类数。",
+   "answer": null
+  },
+  {
+   "n": 7,
+   "stem": "该段程序将 n 不停地除以 2，并输出此时的商和余数，直到 n=0 为止。\nlong long n;\n1\ncin >> n;\n2\nwhile(n != 0) {\n3\ncout << n/2 << ' ' << n%2 << '\\n';\n4\nn /= 2;\n5\n}\n6",
+   "answer": null
+  },
+  {
+   "n": 8,
+   "stem": "两个13进制的数A和B，在10进制下分别表示10和11。（A+B）13=（18）13，也就是说13进制数A加上13进\n制数B，和是13进制数18。",
+   "answer": null
+  },
+  {
+   "n": 9,
+   "stem": "k 进制，逢 k 进第二位，\n进百位，\n进千位；",
+   "answer": null
+  },
+  {
+   "n": 10,
+   "stem": "CCF(十九进制) = 21AC(十三进制)(不区分大小写)",
+   "answer": null
+  }
+ ],
+ "programming": [
+  {
+   "n": 1,
+   "name": "编程题 1",
+   "desc": "小 A 有一个整数 ，他想找到最小的正整数  使得下式成立：\n其中\n表示二进制按位与运算，\n表示二进制按位或运算。如果不存在满足条件的 ，则输出\n。"
+  },
+  {
+   "n": 2,
+   "name": "编程题 2",
+   "desc": "在文本处理中，统计单词出现的频率是一个常见的任务。现在，给定  个单词，你需要找出其中出现次数最多的单\n词。在本题中，忽略单词中字母的大小写（即 Apple 、apple 、APPLE 、aPPle 等均视为同一个单词）。\n请你编写一个程序，输入  个单词，输出其中出现次数最多的单词。"
+  }
+ ]
+}

@@ -1,0 +1,234 @@
+{
+  "roadmap": [
+    {
+      "stage": "核心语法与面向对象",
+      "focus": "掌握 Java 强类型语法、类与对象、继承多态与接口，理解「一切皆对象」的设计哲学。",
+      "topics": ["基本类型与包装类", "类与对象", "继承与多态", "接口与抽象类", "equals 与 hashCode"]
+    },
+    {
+      "stage": "集合框架与异常 IO",
+      "focus": "熟练使用 List、Map 等集合框架，掌握异常处理与文件 IO，处理真实数据。",
+      "topics": ["ArrayList 与 HashMap", "泛型集合", "受检与运行时异常", "输入输出流", "try-with-resources"]
+    },
+    {
+      "stage": "JVM 与工程规范",
+      "focus": "理解 JVM 内存模型、垃圾回收与类加载，学会用 Maven 管理项目依赖，遵守编码规范。",
+      "topics": ["JVM 内存区域", "垃圾回收基础", "类加载机制", "Maven 依赖管理", "阿里巴巴编码规范"]
+    },
+    {
+      "stage": "Spring Boot 与数据库",
+      "focus": "进入 Spring 生态，用 Spring Boot 快速构建 Web 服务并访问数据库，理解依赖注入。",
+      "topics": ["Spring IoC 与 DI", "Spring Boot 起步", "RESTful 接口", "JDBC 与 MyBatis", "MySQL 基础"]
+    },
+    {
+      "stage": "并发、Stream 与进阶",
+      "focus": "掌握 Stream API、多线程并发与 JVM 诊断，处理高性能与排障场景。",
+      "topics": ["Stream API", "线程池与锁", "并发容器", "JVM 排查工具", "日志体系"]
+    },
+    {
+      "stage": "工程化与发布",
+      "focus": "完成端到端项目，掌握打包部署与协作流程，为就业级后端开发做准备。",
+      "topics": ["单元与集成测试", "打包 jar 与部署", "REST API 文档", "Git 协作流", "综合项目"]
+    }
+  ],
+  "modules": [
+    {
+      "name": "强类型与面向对象基础",
+      "summary": "Java 是纯面向对象语言：除基本类型外一切皆对象，程序由类组织，通过继承与接口实现复用与多态。为什么重要：Java 的面向对象比 C++ 更纯粹、约束更强，企业级代码规范也建立在此之上。怎么学：先写无继承的纯类，再逐步引入接口与抽象，最后理解 equals 与 hashCode 的契约。",
+      "points": [
+        "8 种基本类型与对应的包装类（Integer、Double、Boolean 等）",
+        "对象通过 new 在堆上创建，引用变量保存对象地址",
+        "方法重载（Overloading，编译期）与重写（Overriding，运行期）的区别",
+        "抽象类可以有实现，接口定义契约，类可实现多个接口",
+        "super 与 this 的用法与构造链调用顺序",
+        "equals 与 hashCode 必须成对重写，HashMap 依赖它们工作",
+        "static 成员属于类而非实例，静态方法与静态代码块的加载时机",
+        "final 修饰类、方法与变量的三种不可变语义"
+      ],
+      "tip": "写类前先写它的「使用者」代码，从调用端反推合理的设计。"
+    },
+    {
+      "name": "集合框架与泛型",
+      "summary": "Java 集合框架以 Collection 与 Map 为两大分支，List、Set、Queue、HashMap 各司其职；泛型让集合编译期类型安全。为什么重要：后端开发的日常就是对集合的增删改查与转换，选错实现类性能天差地别。怎么学：以 ArrayList 与 HashMap 为主，用泛型约束元素类型，再了解各实现类的内部结构。",
+      "points": [
+        "ArrayList 动态数组、LinkedList 双向链表，随机访问优先 ArrayList",
+        "HashMap 无序哈希、TreeMap 有序红黑树、LinkedHashMap 保插入序",
+        "HashSet 去重基于 HashMap 实现，LinkedHashSet 保序",
+        "泛型类与泛型方法：<T extends Comparable<T>> 上界约束",
+        "迭代器 Iterator 与增强 for，遍历时删除要用迭代器自身的 remove",
+        "Collections 工具类：sort、binarySearch、unmodifiableList",
+        "HashMap 的哈希冲突处理与扩容机制，负载因子默认值 0.75",
+        "Comparable 自然排序与 Comparator 定制排序的分工"
+      ],
+      "tip": "默认选 ArrayList 与 HashMap，遇到特殊需求（线程安全、有序、保序）再换实现。"
+    },
+    {
+      "name": "异常处理与 IO",
+      "summary": "Java 异常分受检（Checked）与非受检（Unchecked）两大类，IO 基于流（Stream）模型逐层包装。为什么重要：受检异常是 Java 特色，后端接口必须妥善处理；文件与网络读写是必备技能。怎么学：掌握 try-with-resources 与常用字节、字符流，理解装饰器模式的层层包装。",
+      "points": [
+        "Throwable 分 Error（严重错误）与 Exception（可处理异常）",
+        "受检异常必须捕获或声明抛出，IOException 是典型代表",
+        "try-with-resources 自动关闭资源，实现 AutoCloseable 接口即可接入",
+        "字节流 InputStream/OutputStream 与字符流 Reader/Writer 的分工",
+        "BufferedReader 包装 FileReader 提升读取效率，体现了装饰器模式",
+        "自定义异常继承 Exception（受检）或 RuntimeException（非受检）",
+        "try-with-resources 允许声明多个资源，用分号分隔",
+        "NIO 的 Channel 与 Buffer 是高性能 IO 的进阶方向"
+      ],
+      "tip": "资源关闭一律用 try-with-resources，别手写 close()，异常路径下很容易漏。"
+    },
+    {
+      "name": "JVM 初探",
+      "summary": "JVM 是 Java 跨平台的根基：源码编译为字节码，由虚拟机解释或即时编译执行，自动管理内存与垃圾回收。为什么重要：调优、排查内存溢出、理解多线程都绕不开 JVM。怎么学：先弄清堆、栈、方法区分别存什么，再了解 GC 的基本思想与排查工具。",
+      "points": [
+        "堆存放对象实例，虚拟机栈存放方法调用帧与局部变量",
+        "方法区（元空间）存放类信息、运行时常量池、静态变量",
+        "垃圾回收自动回收不再被引用的对象，无需手动 free",
+        "强引用、软引用、弱引用影响对象回收时机",
+        "OutOfMemoryError 与 StackOverflowError 的典型成因",
+        "javac 编译为 .class 字节码，JIT 热点代码编译为机器码",
+        "双亲委派模型：类加载器逐级向上委托再向下加载",
+        "jps、jstat、jmap、jstack 是最常用的基础排查命令"
+      ],
+      "tip": "不必一开始深究 GC 算法，但要会读懂堆内存溢出异常的堆栈信息。"
+    },
+    {
+      "name": "泛型与 Stream API",
+      "summary": "泛型提供编译期类型安全，Stream API 以声明式风格处理集合：filter、map、collect 一气呵成。为什么重要：现代 Java 代码大量采用 Stream 与 lambda，可读性与表达力远超手写循环。怎么学：把旧的 for 循环逐个改写为 Stream 链式调用，体会惰性求值。",
+      "points": [
+        "lambda 表达式 (x, y) -> x + y 依赖函数式接口",
+        "Stream 三步骤：创建、中间操作（filter/map）、终端操作（collect/forEach）",
+        "中间操作惰性执行，终端操作才触发整条流水线",
+        "Optional 避免 null 判断地狱，orElse/orElseThrow 提供默认值策略",
+        "类型擦除：泛型信息编译后擦除，运行时无法获取 T 的实际类型",
+        "通配符 <? extends T> 只读、<? super T> 只写（PECS 原则）",
+        "collect(Collectors.toList())、groupingBy 与 partitioningBy 汇总",
+        "parallelStream 并行流底层 ForkJoinPool，IO 任务慎用以免阻塞公共池"
+      ],
+      "tip": "Stream 链不要超过三四步，长了就拆成有名字的中间变量，可读性优先。"
+    },
+    {
+      "name": "并发基础",
+      "summary": "Java 用线程池与并发包表达并发，synchronized 与 Lock 保证同步，volatile 保证可见性。为什么重要：后端服务几乎总是多线程运行，并发 bug 最难排查也最值得敬畏。怎么学：从线程池提交任务开始，理解共享可变状态的危险与不可变设计的价值。",
+      "points": [
+        "实现 Runnable 或继承 Thread，工程上推荐线程池而非裸建线程",
+        "ExecutorService：submit 任务、shutdown 收尾，拒绝策略要显式指定",
+        "synchronized 锁方法或代码块，保证同一时刻只有一个线程执行",
+        "ReentrantLock 可中断、可超时、可公平，功能强于 synchronized",
+        "volatile 保证可见性但不保证原子性，计数场景仍需锁或原子类",
+        "AtomicInteger 等 CAS 原子类实现无锁并发",
+        "ConcurrentHashMap 等并发容器优于外部加锁",
+        "线程安全问题三要素：共享、可变、多线程访问，破坏其一即可"
+      ],
+      "tip": "优先使用并发容器与线程池，别自己 new Thread() 裸奔。"
+    },
+    {
+      "name": "Maven 与工程化",
+      "summary": "Maven 用坐标管理依赖与构建生命周期，pom.xml 是项目的心脏；配合 Git 与代码规范构成团队协作的底座。为什么重要：没有构建工具就无法管理真实项目的第三方依赖，没有规范协作成本会指数上升。怎么学：手写一个最小 pom.xml，理解坐标、生命周期与依赖范围。",
+      "points": [
+        "坐标三要素：groupId、artifactId、version",
+        "依赖传递与冲突调解的就近原则，可用 exclusion 排除传递依赖",
+        "生命周期：validate → compile → test → package → install → deploy",
+        "scope：compile/test/provided/runtime/system 的作用范围",
+        "仓库体系：本地仓库、中央仓库、私服（Nexus）",
+        "properties 统一管理版本号，避免版本散落各处",
+        "多模块项目按功能拆分子工程，parent 聚合管理",
+        "Gradle 以 Groovy/Kotlin DSL 提供更灵活的构建脚本，Android 生态主流"
+      ],
+      "tip": "遇到依赖冲突先 mvn dependency:tree 看一眼，比盲改版本快得多。"
+    },
+    {
+      "name": "Spring Boot 生态",
+      "summary": "Spring 以 IoC 容器与依赖注入为核心，Spring Boot 约定大于配置地快速装配；Spring MVC 提供 REST 接口，数据访问有 Spring Data JPA 与 MyBatis。为什么重要：Java 后端岗位的主流技术栈，简历上绕不开的名字。怎么学：从 start.spring.io 生成项目，按控制器、服务、数据访问三层逐层实现。",
+      "points": [
+        "IoC：对象由容器创建与装配，@Component/@Service/@Repository 标注",
+        "构造器注入是推荐做法，字段注入难以测试且易循环依赖",
+        "@RestController + @GetMapping/@PostMapping 暴露 REST 接口",
+        "统一返回体与全局异常处理 @RestControllerAdvice",
+        "Spring Data JPA 自动生成 CRUD，MyBatis 灵活控制 SQL",
+        "配置文件 application.yml 与多环境 profile",
+        "Bean 作用域：singleton 默认单例，prototype 每次新建",
+        "AOP 切面实现日志、事务、权限等横切关注点"
+      ],
+      "tip": "理解 IoC 思想比背注解重要：把自己 new 对象的思维反转过来，一切交给容器。"
+    },
+    {
+      "name": "字符串、日期时间与正则",
+      "summary": "String 的不可变性、StringBuilder 的高效拼接、java.time 的现代日期 API 与正则引擎，是 Java 日常编码的四件小事。为什么重要：它们出镜率最高，也最容易在细节上写出慢代码或错代码。怎么学：对比 String 拼接与 StringBuilder 循环拼接的性能，用 LocalDateTime 重写所有遗留 Date 代码。",
+      "points": [
+        "String 不可变：拼接操作每次都新建对象",
+        "StringBuilder 循环拼接远胜 +，StringBuffer 线程安全但少用",
+        "String.join、String.format 与 MessageFormat 的格式化场景",
+        "java.time 包：LocalDate、LocalDateTime、Instant、Duration、Period",
+        "DateTimeFormatter 线程安全，取代旧的 SimpleDateFormat",
+        "时区处理 ZoneId 与 ZonedDateTime，跨时区应用必备",
+        "Pattern 预编译复用，Matcher 的 find/matches/group 提取捕获组",
+        "String.split 传入正则，转义句点要写 \\\\.（在 Java 字符串里是 \\\\\\.）"
+      ],
+      "tip": "新项目只用 java.time，见到 Date 与 SimpleDateFormat 就重构掉。"
+    },
+    {
+      "name": "序列化与常用类库",
+      "summary": "Jackson 是 JSON 序列化的事实标准，Lombok 消除样板代码，BigDecimal 守护金钱计算，Guava 提供增强集合与工具。为什么重要：真实项目的每一层接口都在交换 JSON，精度与样板问题则是 Java 的老大难。怎么学：给一个 POJO 加上 Jackson 注解完成序列化与反序列化，用 BigDecimal 实现精确的订单金额计算。",
+      "points": [
+        "Jackson 的 ObjectMapper 完成对象与 JSON 互转",
+        "@JsonProperty、@JsonIgnore 控制字段名与序列化范围",
+        "Lombok 的 @Data、@Getter/@Setter 编译期生成样板方法",
+        "BigDecimal 处理金钱与高精度计算，禁止用 double 累加金额",
+        "BigDecimal 比较用 compareTo 而非 equals（scale 不同会不相等）",
+        "Guava 的 ImmutableList、Preconditions、Strings 工具",
+        "MapStruct 编译期生成对象拷贝代码，替代手写转换",
+        "Fastjson 历史漏洞多，新项目优先 Jackson"
+      ],
+      "tip": "金额计算三件套：BigDecimal、compareTo 比较、显式指定 scale 与舍入模式。"
+    },
+    {
+      "name": "JVM 诊断与性能初探",
+      "summary": "jstack 抓线程快照、jmap 导堆快照、GC 日志与 arthas 在线诊断，构成 Java 排障的四大件。为什么重要：线上问题不会发生在你的 IDE 里，掌握诊断工具才能独立解决真实故障。怎么学：故意制造内存泄漏与死锁，逐个用工具抓出现场证据。",
+      "points": [
+        "jstack 打印线程快照，找 BLOCKED 与死锁的持锁关系",
+        "jmap -histo 与 dump 导出堆快照，MAT 分析内存泄漏",
+        "jstat -gc 观察各区容量与 GC 次数，判断回收是否健康",
+        "GC 日志参数与 GCViewer 可视化分析停顿时间",
+        "Arthas 在线 attach 进程，watch/trace 方法入参与耗时",
+        "JFR（Java Flight Recorder）低开销持续记录运行时事件",
+        "heap 区 OOM 与 Metaspace 溢出分别对应对象泄漏与类加载泄漏",
+        "CPU 飙高排查套路：top 找进程 → top -H 找线程 → jstack 定位代码"
+      ],
+      "tip": "把「top → top -H → jstack」的排障三连练成条件反射，CPU 飙高再也不慌。"
+    },
+    {
+      "name": "测试、调试与协作规范",
+      "summary": "JUnit 5 是 Java 单元测试标准，Mockito 模拟依赖，SLF4J 与 Logback 是日志标配，配合 Git 分支流与阿里巴巴 Java 手册构成完整的质量与协作体系。为什么重要：企业开发中测试是交付的一部分，日志是线上排查的眼睛，规范是协作的语言。怎么学：给 Service 层写 JUnit 测试，用 Mockito 隔离数据库依赖，给项目配置分层日志。",
+      "points": [
+        "JUnit 5：@Test、@BeforeEach、@ParameterizedTest 参数化",
+        "断言 assertEquals/assertThrows 的常见用法与错误消息",
+        "Mockito 的 when/thenReturn、verify 与 @Mock 注入",
+        "SLF4J 门面 + Logback 实现，logger.info 分级输出",
+        "日志级别约定：debug 排障、info 关键事件、warn 可恢复异常、error 需介入",
+        "断点调试：条件断点、表达式求值、Stream 调试可视化",
+        "集成测试 @SpringBootTest 加载完整容器，注意与单测分层",
+        "Git Flow 或 trunk-based 分支策略与 Code Review 清单"
+      ],
+      "tip": "先写工具类的纯逻辑测试，再挑战带数据库的集成测试，循序渐进。"
+    }
+  ],
+  "projects": [
+    "学生管理系统（控制台版）：练习类设计、ArrayList/HashMap 存储与文件持久化",
+    "单词统计与文本分析：用 Stream API 处理文本，统计词频、过滤停用词并输出报告",
+    "图书借阅命令行应用：引入异常处理、泛型与多线程模拟并发借阅",
+    "RESTful 待办清单服务：Spring Boot 提供增删改查接口，接 MySQL 并用 JUnit 覆盖核心逻辑",
+    "JSON 订单结算库：Jackson 序列化 + BigDecimal 精确计算，附完整单元测试",
+    "简易博客后端：用户、文章、评论三张表，练习分层架构、统一异常处理与日志记录",
+    "线上故障演练：故意制造死锁与内存泄漏，用 jstack 与 MAT 写一份完整排查报告"
+  ],
+  "pitfalls": [
+    "用 == 比较字符串：比较的是引用而非内容，字符串比较应始终用 equals",
+    "ArrayList 遍历时直接 remove：会触发 ConcurrentModificationException，应使用迭代器或倒序遍历",
+    "忽视受检异常到处 throws 或空 catch：异常要么被妥善处理，要么有明确的设计理由继续抛出",
+    "认为有了垃圾回收就不会内存泄漏：静态集合长期持有对象、未关闭的流与连接都是泄漏源",
+    "滥用 String 做大量拼接：循环中 s += x 每次新建对象，应使用 StringBuilder",
+    "用 double 做金额计算：0.1 无法精确表示，累加产生误差，必须改用 BigDecimal",
+    "共享可变对象不加同步：HashMap 并发 put 可能形成环导致死循环，并发场景换 ConcurrentHashMap"
+  ]
+}

@@ -1,0 +1,219 @@
+{
+  "roadmap": [
+    {
+      "stage": "类型系统基础",
+      "focus": "掌握 TypeScript 的基本类型注解、数组元组、对象类型与函数签名，体会静态类型的价值。",
+      "topics": ["基本类型注解", "数组与元组", "对象类型", "函数类型", "any、unknown 与 never"]
+    },
+    {
+      "stage": "接口与泛型",
+      "focus": "用 interface 与 type 建模数据结构，用泛型编写类型安全的复用代码。",
+      "topics": ["interface", "type 与联合交叉类型", "泛型函数与泛型类", "泛型约束", "泛型推断"]
+    },
+    {
+      "stage": "类型收窄与推断",
+      "focus": "学会利用 typeof、in、instanceof 与判别联合做类型收窄，信任编译器的类型推断。",
+      "topics": ["类型守卫", "判别联合", "可选链与空值", "字面量类型", "类型推断"]
+    },
+    {
+      "stage": "工程化配置",
+      "focus": "掌握 tsconfig 的严格选项、编译流程与模块设置，为团队协作与大型项目打底。",
+      "topics": ["tsconfig 核心选项", "strict 家族", "编译目标与模块", "类型声明文件", "lint 与格式化"]
+    },
+    {
+      "stage": "高级类型与框架结合",
+      "focus": "掌握内置工具类型与模板字面量类型，把类型系统用于 React/Vue 组件开发。",
+      "topics": ["Partial/Pick/Record", "映射与条件类型", "React 中的类型", "事件与 DOM 类型", "泛型组件"]
+    },
+    {
+      "stage": "测试、协作与发布",
+      "focus": "用测试保障类型与逻辑正确，掌握 npm 发布与 CI 类型检查，完成工程闭环。",
+      "topics": ["vitest/jest 测试", "API 数据建模", "npm 包发布", "CI 跑 tsc", "综合项目"]
+    }
+  ],
+  "modules": [
+    {
+      "name": "类型注解与基本类型",
+      "summary": "TypeScript 在 JavaScript 之上加了一层类型：用冒号注解变量、参数与返回值，编译期拦截类型错误。为什么重要：大型项目的可维护性依赖编译器这个 24 小时在岗的代码审查员。怎么学：把已有 JS 练习逐个加上类型注解，观察编译器提示。",
+      "points": [
+        "string、number、boolean 是小写，String、Number 是对象包装类型，别混用",
+        "数组两种写法：number[] 与 Array<number> 等价",
+        "元组 [string, number] 固定长度与位置类型",
+        "函数类型：参数与返回值都可注解 (a: number, b: number) => number",
+        "void 表示无返回值，never 表示永不返回",
+        "联合类型 string | number 表示「二者其一」",
+        "字面量类型与 as const 把值收窄为精确字面量",
+        "enum 枚举与 const enum 的定义与使用场景"
+      ],
+      "tip": "开启 strict 模式学习：严格的编译器是最好的老师，宽松模式只会纵容坏习惯。"
+    },
+    {
+      "name": "interface 与 type",
+      "summary": "interface 与 type 都能描述对象形状，多数场景可互换；interface 擅长可扩展的公共契约，type 擅长联合与组合。为什么重要：定义数据结构是 TS 日常的最高频操作。怎么学：先统一用 interface 建模对象，遇到联合类型再换 type。",
+      "points": [
+        "interface 可重复声明自动合并，type 不可重复定义",
+        "可选属性 age?: number 与只读属性 readonly id: number",
+        "type 可定义联合类型与交叉类型：A & B 合并两个形状",
+        "接口继承 interface B extends A 复用形状定义",
+        "描述函数形状时两种写法都可，团队统一即可",
+        "对象字面量的多余属性检查 excess property checking 会报多余字段",
+        "索引签名 [key: string]: number 描述动态键对象",
+        "interface 描述类实例形状，type 更擅长复杂类型运算"
+      ],
+      "tip": "团队约定 interface 优先、type 补位，避免同一项目两套风格混用。"
+    },
+    {
+      "name": "泛型",
+      "summary": "泛型让函数、类与接口在保持类型安全的同时复用于多种类型，identity<T>(x: T): T 是它的 hello world。为什么重要：脱离泛型就无法使用 Array<T>、Promise<T> 等库类型，也无法写出可复用的组件。怎么学：先读库中泛型签名，再为已有函数加泛型参数。",
+      "points": [
+        "泛型参数常用单字母 T、K、V、E，习惯成自然",
+        "泛型约束 T extends { id: number } 限定参数能力",
+        "泛型函数自动推断类型参数，通常无需显式写出",
+        "泛型接口 interface Response<T> { data: T } 描述接口数据形状",
+        "泛型类 new Stack<number>() 实例化时确定类型",
+        "泛型默认值与条件类型是进阶内容，先建立基础再用",
+        "泛型可与 keyof 结合：T[K] 索引访问实现类型安全的取值函数",
+        "extends 在泛型约束中是「满足形状」而非继承"
+      ],
+      "tip": "写泛型前先写两个具体类型的版本，找出差异点再抽象成类型参数。"
+    },
+    {
+      "name": "类型收窄与类型守卫",
+      "summary": "联合类型进入分支后，typeof、in、instanceof 与自定义守卫能把宽类型收窄为精确类型。为什么重要：收窄是处理联合类型与可空值的日常动作，写不好就处处 as 强转。怎么学：用判别联合模式建模状态机，体会「合法状态不可表示」。",
+      "points": [
+        "typeof 区分基础类型，instanceof 区分类实例",
+        "in 操作符判断对象是否具有某属性，做对象联合收窄",
+        "判别联合：给每个变体加 kind/tag 字段，switch 收窄",
+        "自定义类型守卫 x is Fish：返回布尔并标注类型谓词",
+        "可空类型 string | null 使用前必须收窄，strictNullChecks 强制检查",
+        "as 断言绕过检查是最后手段，滥用会让类型系统形同虚设",
+        "可选链 ?. 与空值合并 ?? 在收窄前安全访问",
+        "断言函数 asserts 参数类型让编译器理解函数内的校验逻辑"
+      ],
+      "tip": "每当想写 as 时停一下：是不是缺一个类型守卫或判别联合设计？"
+    },
+    {
+      "name": "any、unknown 与 never",
+      "summary": "any 放弃类型检查、unknown 要求先验证再使用、never 表示不可能，三者常被误用。为什么重要：从 JS 迁移到 TS 时，any 是最大诱惑也是最大陷阱。怎么学：一律用 unknown 替代 any，写 narrowing 函数处理它，并用 never 做穷尽检查。",
+      "points": [
+        "any 会传染：赋值给 any 的变量再拿回来也失去检查",
+        "unknown 是类型安全的 any：使用前必须 typeof/instanceof 校验",
+        "never 用于穷尽性检查：switch 默认分支赋 never 可发现遗漏分支",
+        "Object、object、{} 三种顶层类型的微妙差别",
+        "类型断言 as 与双重断言 as unknown as T 的适用边界",
+        "@ts-ignore 与 @ts-expect-error 的克制使用",
+        "no-unsafe-any 等 lint 规则把 any 当技术债监控",
+        "泛型默认参数为 unknown 比 any 更安全"
+      ],
+      "tip": "项目里把 noImplicitAny 与 strict 打开，再统计 any 出现次数，把它当技术债逐条消灭。"
+    },
+    {
+      "name": "函数类型与回调",
+      "summary": "为回调、可选参数、剩余参数与重载标注类型是函数式代码的类型化基本功。为什么重要：异步回调与高阶函数是 JS 的核心模式，类型化后可读性与安全性双升。怎么学：给 setTimeout、数组方法、事件处理的回调逐个加类型，并给常用回调起类型别名。",
+      "points": [
+        "可选参数 name?: string 与默认参数 name: string = \"匿名\"",
+        "剩余参数 ...rest: number[]",
+        "函数类型别名 type Handler = (e: Event) => void",
+        "函数重载：多个声明签名 + 一个实现签名",
+        "void 返回类型与回调的兼容性规则（允许返回任意值）",
+        "this 参数类型化：函数第一个参数可声明 this: Foo",
+        "泛型回调的类型保留：map<U>(fn: (item: T) => U) 让返回值可推导",
+        "Parameters<T> 与 ReturnType<T> 提取函数类型成分"
+      ],
+      "tip": "回调签名抽成类型别名并起好名字，比内联一长串函数类型可读得多。"
+    },
+    {
+      "name": "tsconfig 与工程化",
+      "summary": "tsconfig.json 控制 TS 编译的一切：严格程度、输出目标、模块体系与类型检查范围；配合 ESLint 与 Prettier 构成团队协作的工程化闭环。为什么重要：配置合理与否决定了类型系统的真实约束力。怎么学：从官方推荐的 strict 配置起步，逐条理解改动的含义。",
+      "points": [
+        "strict 是 strictNullChecks、noImplicitAny 等总开关",
+        "target 决定输出 JS 版本，lib 声明可用的内置类型；module 决定模块体系",
+        "tsc --noEmit 只做类型检查不产出文件，CI 必须单独跑",
+        "Vite/esbuild 转译快但不检查类型，检查交给 IDE 与 CI",
+        "typescript-eslint 把类型信息接入 lint 规则，Prettier 统一格式",
+        "Git 提交前钩子（husky + lint-staged）拦截问题代码",
+        "paths 配置路径别名，配合 bundler 的 alias 使用",
+        "include/exclude 精确控制检查范围加速大型项目"
+      ],
+      "tip": "新项目直接复制官方 strict 模板配置；记住类型检查（tsc）与转译（esbuild）是两回事，两者都要跑。"
+    },
+    {
+      "name": "类型声明与第三方库",
+      "summary": "纯 JS 库没有类型，靠 @types 社区声明包或库自带的 .d.ts 获得类型；自己写的模块也要有声明文件。为什么重要：没有类型声明的依赖会让类型检查千疮百孔。怎么学：装 lodash 时对照体验 @types/lodash 的作用，再给自己的工具库写一份 .d.ts。",
+      "points": [
+        "DefinitelyTyped 社区维护 @types/* 声明包",
+        "库自带 types 字段时无需另装 @types",
+        ".d.ts 文件只含类型声明不含实现",
+        "declare module 为无类型的模块补声明",
+        "全局类型声明与局部模块声明的区别",
+        "skipLibCheck 加速大型项目的检查，是常用性能选项",
+        "声明合并与模块增强：给第三方类型追加自定义字段",
+        "自己发布包时生成 .d.ts 并配置 package.json 的 types 入口"
+      ],
+      "tip": "遇到第三方库类型报错，先去查它的 types 字段与 @types 包版本是否匹配。"
+    },
+    {
+      "name": "高级类型与工具类型",
+      "summary": "Partial、Pick、Record、ReturnType 等内置工具类型由映射类型与条件类型派生，satisfies 与模板字面量类型则把表达力推向深处。为什么重要：读懂并运用工具类型是「类型体操」与实用工程的平衡点。怎么学：先会用工具类型改造接口，再回头理解映射与条件的实现原理。",
+      "points": [
+        "Partial<T> 全部属性可选、Required<T> 全部必填",
+        "Pick<T, K> 选取子集、Omit<T, K> 排除字段",
+        "Record<K, V> 构造键值映射类型",
+        "ReturnType<T> 与 Parameters<T> 提取函数类型成分",
+        "映射类型 { [K in keyof T]: ... } 批量变换属性",
+        "条件类型 T extends U ? X : Y 按条件选择类型",
+        "模板字面量类型 `prefix-${string}` 约束字符串格式",
+        "satisfies 保留推断又校验形状（TS 4.9）"
+      ],
+      "tip": "工具类型用在 API 边界与配置对象上收益最大；别在业务逻辑内部炫技。"
+    },
+    {
+      "name": "与主流框架结合",
+      "summary": "React 的 useState<T>、组件 Props 接口、事件合成事件类型，Vue 的 defineProps<T>，都是类型系统的实战场。为什么重要：框架的类型化用法是面试与日常开发的主战场。怎么学：用 TS 重写一个已会的 React/Vue 小应用，把每个 props 与事件都标注清楚。",
+      "points": [
+        "React 组件 Props 用 interface 定义，children 显式声明",
+        "useState<User | null>(null) 让状态类型精确",
+        "事件类型：React.MouseEvent<HTMLButtonElement> 与表单事件",
+        "泛型组件：列表组件 <T> 渲染任意类型数组",
+        "Vue 3 defineProps<{ title: string }>() 编译期类型推导",
+        "自定义 hook 返回元组类型 const [value, setValue] = useState<T>",
+        "useRef<T> 的泛型标注与 null 初始值处理",
+        "Redux/Zustand 等状态库的状态与 dispatch 类型化"
+      ],
+      "tip": "先有一个纯 TS 基础小项目，再迁移到框架：把框架标签从学习负担变成类型练习场。"
+    },
+    {
+      "name": "测试、Node 协作与发布",
+      "summary": "vitest/jest 为类型化代码提供测试底座，TS 也让 Node 后端开发获得完整类型支持；发布 npm 包时生成声明文件是最后一步。为什么重要：类型保证编译期正确，测试保证运行期正确，发布让成果被世界使用。怎么学：给纯函数写参数化测试，用 tsx/ts-node 跑 Node 脚本，再把工具库打包发布。",
+      "points": [
+        "vitest 原生支持 TS 且兼容 jest API",
+        "参数化测试 test.each 一次覆盖多组输入输出",
+        "tsx/ts-node 直接运行 TS 文件，开发期无需手动编译",
+        "Node 18+ 的类型内置，@types/node 提供环境声明",
+        "API 响应用 interface 建模 + 泛型封装 fetch 请求层",
+        "打包库时用 tsc -d 或 tsup 生成 .d.ts 声明文件",
+        "package.json 配置 main/types/exports 多端入口",
+        "CI 流水线跑 lint、type-check 与 test 三道关"
+      ],
+      "tip": "发布前跑通 tsc --noEmit && vitest run && npm publish 三连，流程即文档。"
+    }
+  ],
+  "projects": [
+    "类型化待办清单：为每个函数与状态加类型，体验 strict 模式下的编译器护航",
+    "REST API 数据展示：用 interface 建模接口返回的 JSON，泛型封装 fetch 请求层",
+    "类型安全的事件发布订阅器：用泛型与函数类型实现 on/emit，练习类型推导",
+    "React 任务看板：组件 Props 接口 + 泛型列表组件 + 自定义 hook，完整框架类型实践",
+    "工具类型改造配置系统：用 Partial、Pick、Record 与 satisfies 重构一份复杂配置对象的类型",
+    "判别联合状态机：为异步请求建模 loading/success/error 三态，用 never 穷尽检查发现遗漏分支",
+    "TS + Node 命令行工具：tsconfig 严格配置 + 第三方库声明 + 发布 npm 包全链路"
+  ],
+  "pitfalls": [
+    "滥用 any 逃避报错：类型系统形同虚设，应用 unknown 收窄或正确建模替代",
+    "到处 as 强转掩盖设计缺陷：as 绕过编译器检查，运行错误照样发生，优先用类型守卫",
+    "关掉 strictNullChecks：空值检查是 TS 最大安全价值，关掉等于放弃保险",
+    "忽视泛型推断硬写类型参数：既冗余又容易写错，先看编译器推断结果",
+    "以为构建成功等于类型正确：esbuild/Vite 默认只做转译不做检查，CI 必须单独跑 tsc --noEmit",
+    "用 interface 描述函数重载时合并失败：声明合并只合并同名接口，重载函数应用 type 或函数声明",
+    "enum 的常量枚举与 tree-shaking 冲突：库代码优先用 as const 对象联合类型代替 const enum"
+  ]
+}

@@ -1,0 +1,111 @@
+---
+title: "最小生成树：Kruskal 与 Prim"
+level: 8
+order: 6
+duration: 120
+unit: "图论算法"
+difficulty: 进阶
+goals:
+  - "理解生成树与最小生成树的概念及性质"
+  - "掌握 Kruskal 算法（排序 + 并查集）的实现"
+  - "了解 Prim 算法思想，能比较两种算法的适用场景"
+---
+
+import Check from '../../../components/Check.astro';
+import Task from '../../../components/Task.astro';
+import Reveal from '../../../components/Reveal.astro';
+
+
+## 1. 从「村村通公路」说起
+有 n 个村庄、m 条候选公路，每条公路有造价。政府想让**所有村庄互相连通**，且**总造价最小**，该怎么选路？
+
+这就是经典的**最小生成树（MST, Minimum Spanning Tree）**问题：把村庄看成点、公路看成边，选出一批边使所有点连通、没有环，且边权之和最小。
+
+**生成树**有两个关键性质，考试常考：
+
+1. 选出的边恰好是 **n−1 条**（n 个点连通且无环，边数必为 n−1）。
+2. 生成树的边权之和叫「生成树的权」，其中最小的就是最小生成树。
+
+## 2. Kruskal：从小到大贪心选边
+Kruskal 的思路朴素得可爱：**把所有边按权值从小到大排序，依次考虑每条边；若它连接的两个点还不连通，就选它，否则跳过。**
+
+「连不连通」怎么判断？——**并查集**！选边的过程就是把两个集合合并的过程：若 find(u) ≠ find(v)，说明不连通，选这条边并合并集合；若相等，说明会形成环，舍弃。
+
+三条铁律（Kruskal 版）：
+
+1. **先排序，再贪心**：从小到大保证每一步都取当前最便宜的「安全边」。
+2. **判环靠并查集**：路径压缩 + 按秩合并后，每次查询近乎 O(1)。
+3. **选够 n−1 条边即停**：若所有边都试完了还不够 n−1 条，说明图**不连通**，无解。
+
+```cpp
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int f[5005];
+int find(int x) { return f[x] == x ? x : f[x] = find(f[x]); }  // 路径压缩
+
+struct Edge { int u, v, w; };
+bool cmp(Edge a, Edge b) { return a.w < b.w; }
+
+int main() {
+    int n, m;
+    cin >> n >> m;
+    vector<Edge> es(m);
+    for (auto &e : es) cin >> e.u >> e.v >> e.w;
+    sort(es.begin(), es.end(), cmp);
+    for (int i = 1; i <= n; i++) f[i] = i;
+
+    long long ans = 0;
+    int cnt = 0;                       // 已选边数
+    for (auto &e : es) {
+        int fu = find(e.u), fv = find(e.v);
+        if (fu != fv) {                // 不连通：选它，合并
+            f[fu] = fv;
+            ans += e.w;
+            cnt++;
+        }
+    }
+    if (cnt == n - 1) cout << ans << '\n';
+    else cout << "orz\n";              // 连不通，无解
+}
+```
+
+复杂度：**排序 O(m log m) + 并查集 O(m·α(n))**，其中 α 是近乎常数的反阿克曼函数，整体就是 O(m log m)。
+
+> 教学提醒：Kruskal 的正确性依赖一个贪心事实——权值最小的跨集合边一定在某棵最小生成树里（「切分定理」）。考试不要求证明，但要记住结论：Kruskal 选边顺序是全局从小到大，Prim 是局部从点出发，二者结果（总权值）一定相同。
+
+## 3. Prim：从点出发长树
+Prim 是另一种贪心：从任意一个点开始，维护「已在树中的点集」，每步从**连接树内点与树外点的边**中选权值最小的一条，把新点拉进树。重复 n−1 次。
+
+- 朴素实现：每轮扫描所有边找最小跨边，O(n²)。
+- 堆优化：用优先队列维护候选边，O(m log n)。
+
+**Kruskal 围着「边」转，Prim 围着「点」转。**
+
+## 4. 两种算法怎么选
+| 场景 | 推荐算法 | 理由 |
+| --- | --- | --- |
+| 边少点多的稀疏图（m ≈ n） | **Kruskal** | 排序 + 并查集代码短、常数小 |
+| 边多点密的稠密图（m ≈ n²） | **Prim（朴素）** | O(n²) 避开排序开销 |
+| 要求输出选边方案 | 两者皆可 | 记录被选中的边即可 |
+
+八级考试里 Kruskal 出现频率更高——代码短、好写、好调试，务必形成肌肉记忆。
+
+<Check question="n 个顶点的生成树一共有多少条边？" options={['n 条','n−1 条','n+1 条','不确定']} answer={1} explanation="n 个点连通且无环的图恰有 n−1 条边，这是生成树最基本的性质。" />
+<Check question="Kruskal 算法中判断加入一条边是否会成环，使用的数据结构是？" options={['栈','堆','并查集','哈希表']} answer={2} explanation="并查集的 find 操作能在近似 O(1) 内判断两点是否同属一个连通块，是 Kruskal 的标准搭档。" />
+<Check question="关于 Kruskal 与 Prim，下列说法正确的是？" options={['两者得到的最小生成树总权值一定相同','Kruskal 的时间复杂度是 O(n²)','Prim 必须用堆优化','两个算法都适用于负权图且一定失败']} answer={0} explanation="同一图的最小生成树总权值唯一（树形可能不同）。Kruskal 是 O(m log m)；Prim 有朴素 O(n²) 与堆优化 O(m log n) 两种；MST 允许负权边，两者都能正确处理。" />
+
+<Task title="村村通公路" input="第一行两个整数 n、m（2≤n≤500，1≤m≤10^4），表示村庄数与候选公路数。接下来 m 行，每行三个整数 u、v、w，表示一条连接 u 村与 v 村、造价为 w 的公路（1≤u,v≤n，1≤w≤10^6）" output="一个整数：连通所有村庄的最小总造价；若无法连通所有村庄，输出 orz" sampleIn="3 3
+1 2 4
+2 3 5
+1 3 6" sampleOut="9">最小生成树模板题。提示：边排序 + 并查集，选够 n−1 条边就停；样例中应选 1-2（4）和 2-3（5）。</Task>
+<Reveal label="查看参考程序与思路"><pre><code>{`#include <iostream>\n#include <vector>\n#include <algorithm>\nusing namespace std;\nint f[505];\nint find(int x){ return f[x]==x ? x : f[x]=find(f[x]); }\nstruct Edge{ int u, v, w; };\nbool cmp(Edge a, Edge b){ return a.w < b.w; }\nint main(){\n    int n, m;\n    cin>>n>>m;\n    vector<Edge> es(m);\n    for(int i=0;i<m;i++) cin>>es[i].u>>es[i].v>>es[i].w;\n    sort(es.begin(), es.end(), cmp);\n    for(int i=1;i<=n;i++) f[i]=i;\n    long long ans=0; int cnt=0;\n    for(int i=0;i<m;i++){\n        int fu=find(es[i].u), fv=find(es[i].v);\n        if(fu!=fv){\n            f[fu]=fv; ans+=es[i].w; cnt++;\n            if(cnt==n-1) break;   // 提前退出，小优化\n        }\n    }\n    if(cnt==n-1) cout<<ans<<'\\n';\n    else cout<<"orz"<<'\\n';\n}`}</code></pre>流程四步走：读边 → 按权值排序 → 并查集贪心选边 → 统计答案。样例中三条边排序后为 4、5、6：先选 1-2（4），再选 2-3（5），此时 cnt=2=n−1，总造价 9。注意 n≤500 但边数可达 10^4，ans 要开 long long；并查集务必路径压缩，否则大数据会退化。</Reveal>
+
+## 5. 课后巩固
+1. 概念：什么是生成树？为什么 n 个点的生成树恰好有 n−1 条边？
+2. 计算：画出 4 个点、5 条边的任意一张图，手工执行一遍 Kruskal，写出选边顺序。
+3. 编程：改造本课模板，输出最小生成树选中的每条边（按选择顺序输出 u、v、w）。
+4. 思考：若某条边的权值改为负数，Kruskal 还能正常工作吗？说明理由。
+5. 拓展：查阅「次小生成树」，说说它和最小生成树有什么关系，Kruskal 的结果能否直接利用。

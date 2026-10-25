@@ -1,0 +1,1082 @@
+[
+ {
+  "key": "2023-03-1",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "BAACBDDAADBCDBC",
+  "c-noans": 0,
+  "j-noans": 0,
+  "warn": 0
+ },
+ {
+  "key": "2023-03-2",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "DCADBACCBBADCDC",
+  "c-noans": 0,
+  "j-noans": 0,
+  "warn": 0
+ },
+ {
+  "key": "2023-06-1",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "ACCDADDCCBBACBD",
+  "c-noans": 0,
+  "j-noans": 0,
+  "warn": 0
+ },
+ {
+  "key": "2023-06-2",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "DDBCCDDABDAADBC",
+  "c-noans": 0,
+  "j-noans": 0,
+  "warn": 0
+ },
+ {
+  "key": "2023-06-3",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "DDADCABBCDCABDB",
+  "c-noans": 0,
+  "j-noans": 0,
+  "warn": 0
+ },
+ {
+  "key": "2023-06-4",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "DCCDADDBCCAABDA",
+  "c-noans": 0,
+  "j-noans": 0,
+  "warn": 0
+ },
+ {
+  "key": "2023-09-1",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "CDBCDBACACBBDDA",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2023-09-2",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "DBCBDCDADABBDAA",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2023-09-3",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "BBCBAABCCABDBDB",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2023-09-4",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "BACDDBABBCCAADC",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2023-09-5",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "ADDDDDDBBBBCCBD",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2023-09-6",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "ADDDDDDBBBBCCBD",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2023-12-1",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "ABBABCACDDBDBCB",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2023-12-2",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "CADDDADCDBCDCBB",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2023-12-3",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "CDCCCAADCCABACB",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2023-12-4",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "ABDCCCABAADACBB",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2023-12-5",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "CCDABACBDBDBBCB",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2023-12-6",
+  "choice": 16,
+  "judge": 10,
+  "prog": 2,
+  "cans": "DCCDBBBDBDAABCB",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 1
+ },
+ {
+  "key": "2023-12-7",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "BDBCDDBCBCDCBDB",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2023-12-8",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "CADBCDACACDBBAC",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2024-03-1",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "BDDABACDBBDBCCC",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2024-03-2",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "BBBCBCDBCADACCC",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2024-03-3",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "DCCBCCACCCDABCC",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2024-03-4",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "CCDDCCDACBCCBCC",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2024-03-5",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "BAABCCADBCABBAA",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2024-03-6",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "ADADBBCCDBAACCA",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2024-03-7",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "BCDCDBABACCBCAB",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2024-03-8",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "DCBACDDADBCACBC",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2024-06-1",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "ADBCBCBCCCCDCCB",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2024-06-2",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "CBAAACDBCCDDABD",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2024-06-3",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "CBCCCBCCCBACBDA",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2024-06-4",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "BBBDBDDAABADABD",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2024-06-5",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "CBBCCDADDACACDC",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2024-06-6",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "DBABBAACAAADCAC",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2024-06-7",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "BDADDAACDBCABBC",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2024-06-8",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "BADCCABBDDACCBD",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2024-09-1",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "ADDBCDDBCDADCDB",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2024-09-2",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "ACACCDAACBCAABA",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2024-09-3",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "BCADCBCCADDCDCB",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2024-09-4",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "ABABDABDABCAAAC",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2024-09-5",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "CDCCCACACBBACCC",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2024-09-6",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "BACABBBACCAABBC",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2024-09-7",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "BDCCACABDDACDBA",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2024-09-8",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "DBCDAACAACDBBAB",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2024-12-1",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "CCDBBDBCCCDCDBD",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 2
+ },
+ {
+  "key": "2024-12-2",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "CADBDBCCDAADBDC",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2024-12-3",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "BDAADBCAADDCDCA",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2024-12-4",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "ABBBDDDDACBBACA",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2024-12-5",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "CCADCDBAABCBADB",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2024-12-6",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "DCCBBBACABBDCBC",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2024-12-7",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "DAACCBBCDDBADBA",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2024-12-8",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "BADDCCCBDACBBAD",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2025-03-1",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "DDDCCBCDDDDCAAC",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2025-03-2",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "DCAADADACBCDBCC",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2025-03-3",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "DBAABACACDDDBDC",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2025-03-4",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "ABBDDCDDBBBBAAC",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2025-03-5",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "AABBDCADABCAADB",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2025-03-6",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "DBABBBBAAAAABCA",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2025-03-7",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "BABCBBBADDACBBD",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2025-03-8",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "BCBADDDBADCACBC",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2025-06-1",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "CADDCBDCABACDCB",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2025-06-2",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "CACADDCCBADDDDA",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2025-06-3",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "ABAAABABADBBDCC",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2025-06-4",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "ADDBCBCBCBBDCBB",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2025-06-5",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "CCDACDDBCCADADA",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2025-06-6",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "DABBBBDDACADABC",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2025-06-7",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "CCBDADABDBADCAB",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2025-06-8",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "ABDDCBCBAACDDCA",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2025-09-1",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "DCCCDADCCACDDAD",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2025-09-2",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "DCCDDADBDADCAAD",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2025-09-3",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "CCDBBBBDACDCDCD",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2025-09-4",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "BCDADCBBCAABBCD",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2025-09-5",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "BCABBDABBCDDBBA",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2025-09-6",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "DACBABAABBDAACD",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2025-09-7",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "BBABCCDAADDACCB",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2025-09-8",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "CACBCDBABCADADD",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2025-12-1",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "BAACBACADBCADCC",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2025-12-2",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "BBABBDADCBBBBBC",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2025-12-3",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "BCDBBDDAAACBBAD",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2025-12-4",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "CCBDBACABBBABDB",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2025-12-5",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "CBCDDBABCCAAAAB",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2025-12-6",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "CCCABBCABBACBBB",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2025-12-7",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "AADCBDBBBBCCBBC",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2025-12-8",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "BBACBCBBCCCBACB",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2026-03-1",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "BADDAABDDBBBDBA",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2026-03-2",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "BDDCBAACCABCBAA",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2026-03-3",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "CBCADBBDBABBCAD",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2026-03-4",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "BBBBABBBBBBCBBA",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2026-03-5",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "DCBACCBADABBCBB",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2026-03-6",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "ABCADBACDBBBCCA",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2026-03-7",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "DDBBDDBAABBCDDC",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2026-03-8",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "DBBCBCBBBCCBACA",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2026-06-1",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "CDDCBDCCAABABBB",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2026-06-2",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "CBDCBBAAADABDBA",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2026-06-3",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "ABCBACCABDDBCBB",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2026-06-4",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "BBCCBCBCCBCBCCA",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2026-06-5",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "BCABABCCCBBBACA",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2026-06-6",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "DBCAABAABBDBABA",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2026-06-7",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "BACDCCDAACDBBBD",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2026-06-8",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "BBCACDAADACBBCD",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2026-09-1",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "CDAABCDACDDBAAD",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2026-09-2",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "CBADACBDBDDCAAA",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2026-09-3",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "DDACBCDCAADCDBB",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2026-09-4",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "CBBCADCCCCBDBCA",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2026-09-5",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "ACBCDBADCBDADCC",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2026-09-6",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "BACBCBADCBBCBCA",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2026-09-7",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "CDCBABADCBADDBC",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ },
+ {
+  "key": "2026-09-8",
+  "choice": 15,
+  "judge": 10,
+  "prog": 2,
+  "cans": "BCBABBCDABAACDD",
+  "c-noans": 0,
+  "j-noans": 10,
+  "warn": 0
+ }
+]

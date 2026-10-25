@@ -1,0 +1,226 @@
+{
+  "roadmap": [
+    {
+      "stage": "认识网页骨架",
+      "focus": "理解 HTML 在浏览器中的角色，掌握文档基本结构与常用文本标签，分清块级与行内元素。",
+      "topics": ["HTML 与浏览器渲染管线的关系", "文档类型声明与标准模式", "html/head/body 的分工与 lang 属性", "标题、段落、列表、链接与图片", "块级元素与行内元素的区别", "字符实体与特殊符号"]
+    },
+    {
+      "stage": "语义化结构搭建",
+      "focus": "用语义化标签组织页面，让结构清晰、可读、利于 SEO 与可访问性。",
+      "topics": ["header/nav/main/article/section/aside/footer 的适用场景", "标题层级 h1~h6 的规范与文档大纲", "语义化与 div 滥用的区别", "figure/figcaption/time/mark 等细粒度语义标签", "用 DevTools 阅读真实网站的文档结构"]
+    },
+    {
+      "stage": "表格、表单与多媒体",
+      "focus": "掌握数据表格的正确用法、表单控件的进阶组合，以及音视频、嵌入内容等多媒体能力。",
+      "topics": ["table 与 caption/thead/tbody/th 的作用域属性", "表单控件分组：fieldset/legend/datalist", "input 的 20 余种 type 与原生校验属性", "audio/video 的多格式回退与字幕轨", "iframe、sandbox 与嵌入第三方内容", "picture/source 与响应式图片"]
+    },
+    {
+      "stage": "HTML5 新特性与可访问性",
+      "focus": "用上 HTML5 的新能力，并为所有用户（含残障用户）提供良好体验。",
+      "topics": ["localStorage/sessionStorage 与存储事件", "data-* 自定义属性的使用约定", "details/summary/dialog 等免脚本交互元素", "canvas 与 SVG 的选型", "ARIA 角色、属性与标签的优先级", "键盘可达性、焦点管理与跳转链接"]
+    },
+    {
+      "stage": "SEO、结构化数据与社交分享",
+      "focus": "写出对搜索引擎友好的页面：元信息、结构化数据与 Open Graph 让内容被正确理解与展示。",
+      "topics": ["title 与 meta description 的撰写原则", "canonical、robots meta 与爬虫指令", "JSON-LD 结构化数据与 Schema.org 词汇", "Open Graph 与 Twitter Card 标签", "语义化结构与 SEO 的关系", "站点地图与外链资源的 hreflang"]
+    },
+    {
+      "stage": "性能与综合实战",
+      "focus": "理解 HTML 层面的性能决策，完成一个结构规范、可访问、SEO 友好的完整页面并复盘。",
+      "topics": ["script 的 async/defer 与加载时机", "preload/prefetch 与资源优先级", "图片懒加载 loading 属性", "Lighthouse 审计指标", "内容优先的开发流程", "个人主页或产品页实战与互评"]
+    }
+  ],
+  "modules": [
+    {
+      "name": "常用标签与语义化",
+      "summary": "HTML 标签不是随便堆砌的积木，而是表达内容含义的语言。每个标签都在回答『这段内容是什么』——是导航、正文、侧边信息还是页脚。语义化标签让浏览器、搜索引擎和读屏软件都能正确理解页面结构，也让团队协作时代码更易读、更易维护。相反，满屏 div 虽然视觉还原没问题，却丢掉了全部结构信息。掌握语义化的最好方法是多阅读优秀网站的源码，观察它们如何组织文档。",
+      "points": [
+        "每个页面应有且仅有一个 h1，标题层级不要跳级",
+        "用 article 表示独立完整的内容单元，section 表示主题分区",
+        "nav 用于主要导航，aside 用于与主内容弱相关的附属内容",
+        "main 标示文档主体内容，一个页面只能有一个可见 main",
+        "figure/figcaption 把插图与说明绑定，time 标注时间与日期",
+        "语义化本身不改变外观，样式全部交给 CSS 负责",
+        "用 HTML5 Outline 检查工具验证文档大纲是否合理",
+        "看知名网站的源码是学习语义化标签的最佳途径"
+      ],
+      "tip": "写标签前先问自己：这段内容『是什么』，而不是『长什么样』。"
+    },
+    {
+      "name": "文档结构与元信息",
+      "summary": "一个规范的 HTML 文档从 DOCTYPE 声明开始，html 包裹 head 与 body 两大部分。head 中放置字符集、视口、标题与各类元信息，虽然不可见，却决定了浏览器如何解析、搜索引擎如何索引、移动端如何渲染。body 承载全部可见内容。结构正确是一切的前提，很多『灵异 bug』最终都追溯到 head 中的缺失或错误声明。养成用校验器检查文档的习惯，可以从源头避免这类问题。",
+      "points": [
+        "首行写 <!DOCTYPE html> 触发标准模式渲染，避免怪异模式",
+        "charset 声明用 UTF-8 且尽量放在 head 第一行，避免中文乱码",
+        "meta viewport 是移动端适配的必备声明，width=device-width 为基本配置",
+        "title 同时影响搜索结果展示与浏览器标签页，应每页唯一且描述准确",
+        "link 引入样式、script 引入脚本，注意 defer 对加载时机的控制",
+        "lang 属性声明页面语言，影响读屏发音与浏览器翻译行为",
+        "meta description 虽不直接决定排名，但显著影响搜索点击率",
+        "用 W3C Validator 校验文档可以发现嵌套错误与废弃用法"
+      ],
+      "tip": ""
+    },
+    {
+      "name": "表单与交互控件",
+      "summary": "表单是网页收集用户输入的主要方式，也是用户与产品交互的核心入口。掌握各类 input 类型、正确关联 label 与原生校验能力，可以在不用 JavaScript 的情况下完成大量交互。好的表单设计还要考虑分组、占位提示、禁用与只读状态等细节，这些都有对应的 HTML 表达。表单还是可访问性的重灾区，控件与标签的关联质量直接决定读屏用户能否顺利完成提交。",
+      "points": [
+        "input 的 type 决定键盘形态与校验规则（email、number、date、tel 等）",
+        "每个控件都要用 label 关联，点击标签即可聚焦控件",
+        "required、min/max、minlength/maxlength、pattern 提供原生校验",
+        "name 属性决定提交数据的键，value 是其值，disabled 控件不参与提交",
+        "button 的 type 区分 submit/reset/button，在 form 内默认是 submit",
+        "fieldset/legend 为一组控件提供语义分组，适合单选组与地址块",
+        "placeholder 只是提示，不能替代 label，也不要放校验规则",
+        "select 配合 optgroup 分组选项，datalist 为 input 提供自动补全候选",
+        "novalidate 可在提交时临时关闭原生校验，便于自定义校验接管"
+      ],
+      "tip": "优先使用原生 type 和校验属性，简单场景不必引入 JS 验证库。"
+    },
+    {
+      "name": "表格数据呈现与表单进阶",
+      "summary": "表格只适合展示真正的表格数据，而不是用来做页面布局。语义完整的 table 需要 caption 说明内容、thead/tbody 区分表头与数据区、th 配合 scope 指明方向，读屏软件才能正确朗读行列关系。表单进阶则关注复杂输入场景：多行文本、文件上传、进度与度量显示，以及如何用原生属性组合出接近自定义组件的体验。这两块都是『看起来简单、做对很难』的典型。",
+      "points": [
+        "用 table 展示二维数据，永远不要用它做布局",
+        "caption 是表格的标题，summary（HTML5 已废弃）改用 caption 或 aria-describedby",
+        "th 的 scope=col/row 帮助读屏软件理解表头归属",
+        "colgroup/col 可批量为整列设置样式而不重复类名",
+        "rowspan/colspan 合并单元格要保持行列逻辑完整，避免不规则表格",
+        "textarea 用 rows 与 CSS 控制尺寸，resize 样式可禁止用户拖改",
+        "type=file 的 accept 限定可选文件类型，multiple 支持多选",
+        "meter 显示已知范围内的度量，progress 显示任务完成进度",
+        "output 元素可展示计算结果，与表单的 oninput 配合免脚本联动"
+      ],
+      "tip": "拿掉所有 CSS 后表格仍应按逻辑顺序阅读，这是表格语义化的自检标准。"
+    },
+    {
+      "name": "多媒体与嵌入",
+      "summary": "现代 HTML 原生支持音视频播放与图形绘制，不再依赖 Flash 等插件。audio/video 通过 source 子标签实现多格式回退，controls 等属性控制播放行为，track 提供字幕轨。嵌入第三方内容时用 iframe 的 sandbox 收紧权限是安全底线。canvas 与 SVG 是两条互补路线：前者适合像素级绘图与游戏，后者适合图标与数据可视化，且天然可被 CSS 与 JS 操作。",
+      "points": [
+        "video/audio 用多个 source 子标签按序回退，浏览器选用首个可解码格式",
+        "controls 显示播放控件，autoplay 多数浏览器要求静音才能生效",
+        "poster 为视频设置封面，preload 控制预加载策略（metadata/none/auto）",
+        "track 加载 WebVTT 字幕，kind 区分 subtitles/captions/chapters",
+        "iframe 嵌入地图、视频等第三方内容，sandbox 属性限制其脚本与表单能力",
+        "loading=lazy 同样适用于 iframe，减少首屏负担",
+        "canvas 依赖 JavaScript 逐帧绘制，导出图片用 toDataURL/toBlob",
+        "SVG 内联可被 CSS 控制样式、被 JS 绑定事件，img 引入则不可",
+        "object/embed 是旧式嵌入方式，新项目优先 iframe 或原生媒体标签"
+      ],
+      "tip": ""
+    },
+    {
+      "name": "HTML5 新特性概览",
+      "summary": "HTML5 大幅扩展了浏览器能力：语义标签、本地存储、免脚本的交互元素、音视频原生支持等。localStorage 与 sessionStorage 让网页有了轻量持久化手段，data-* 属性让标签可以携带自定义数据。details/summary、dialog 等元素让常见的展开收起与弹窗不再需要 JavaScript。新特性要注意浏览器兼容性与渐进增强：先保证功能可用，再为支持的浏览器加体验。",
+      "points": [
+        "localStorage 持久存储、sessionStorage 会话级存储，两者同源限制域不同",
+        "存储事件（storage event）可监听同一源下其他页面的存储变化",
+        "data-* 自定义属性可在标签上携带数据，dataset 属性便于 JS 读取",
+        "details/summary 实现无需 JS 的折叠面板，open 属性控制初始展开",
+        "dialog 元素配合 showModal() 提供原生弹窗与焦点隔离",
+        "contenteditable 让任意元素可编辑，是许多富文本方案的底层",
+        "语义化新标签与可访问性、SEO 相辅相成，不是孤立的特性",
+        "新特性上线前查 Can I Use，必要时用渐进增强兜底",
+        "Web Components（template/slot）为组件化提供原生容器"
+      ],
+      "tip": ""
+    },
+    {
+      "name": "可访问性（A11y）基础",
+      "summary": "可访问性让视障、听障与行动障碍用户也能顺利使用你的页面，它不仅是道德要求，在许多地区也是法律合规要求。好消息是可访问性实践往往同时提升 SEO 与通用易用性：alt 文本、语义结构、键盘可达性对所有人都有价值。ARIA 可以在原生标签表达力不足时补充语义，但原则始终是『优先使用原生语义化标签』。掌握可访问性的捷径是亲自只用键盘操作自己的页面。",
+      "points": [
+        "图片必须有有意义的 alt 文本，纯装饰图用空 alt（alt=\"\"）",
+        "所有交互元素应可用键盘 Tab 到达并用 Enter/Space 操作",
+        "保持焦点顺序与视觉顺序一致，避免 tabindex 乱序",
+        "颜色对比度要达到 WCAG 标准（正文至少 4.5:1），不只靠颜色传达信息",
+        "用 ARIA 补充语义，但优先使用原生语义化标签（第一规则）",
+        "role 与 aria-* 属性要成对正确，错误的 ARIA 比没有更糟",
+        "为跳转导航提供『跳到主内容』链接，方便键盘用户跳过冗长导航",
+        "隐藏内容用 hidden 或 aria-hidden，但不要把可聚焦元素藏给读屏用户",
+        "prefers-reduced-motion 等用户偏好媒体查询同样属于可访问性实践"
+      ],
+      "tip": "试着只用键盘（不看鼠标）操作自己的页面，是最直接的自测方法。"
+    },
+    {
+      "name": "微数据与结构化数据",
+      "summary": "结构化数据是在 HTML 中显式标注实体信息（商品、文章、人物、事件）的机制，让搜索引擎不仅『读到』还能『理解』页面内容。主流格式是 JSON-LD：以 script 标签内嵌 JSON，与视觉呈现完全解耦，也最容易维护。Schema.org 提供了覆盖绝大多数场景的词汇表，标注后在搜索结果中可能获得富媒体摘要，显著提升点击率。它是技术 SEO 中最『性价比』的进阶手段。",
+      "points": [
+        "结构化数据三大格式：JSON-LD（推荐）、Microdata、RDFa",
+        "JSON-LD 写在 script type=application/ld+json 中，不污染视觉结构",
+        "Schema.org 定义类型层级：Thing → CreativeWork → Article → NewsArticle",
+        "常见类型：Article、Product（含评分与价格）、Event、FAQPage、BreadcrumbList",
+        "用 Google Rich Results Test 验证标注是否可被解析与展示",
+        "一个页面可标注多个实体，用 @graph 组织多个顶层节点",
+        "结构化数据应与页面可见内容一致，标注不存在的内容会被惩罚",
+        "面包屑（BreadcrumbList）标注能改善搜索结果中的 URL 展示",
+        "Open Graph 面向社交分享，结构化数据面向搜索引擎，两者互补"
+      ],
+      "tip": "先用 Rich Results Test 跑通一个 Article 标注，再扩展到其他类型。"
+    },
+    {
+      "name": "页面性能与资源加载",
+      "summary": "HTML 层面的性能决策发生在资源加载阶段：脚本放哪、图片何时加载、哪些资源要提前取。script 默认阻塞解析，defer 与 async 让下载与执行分离，是首屏优化的第一课。preload、prefetch、dns-prefetch 分别对应不同优先级的资源提示。现代浏览器还提供了 loading=lazy、fetchpriority 等声明式能力，多数懒加载需求不再需要 JavaScript。性能优化的正确姿势是先测量（Lighthouse）再优化。",
+      "points": [
+        "script 默认阻塞 HTML 解析，放在 body 末尾或用 defer 是最安全的做法",
+        "defer 按文档顺序执行、执行在解析完成后；async 下载完即执行、顺序不定",
+        "preload 提升本页关键资源优先级，prefetch 预取未来可能用到的资源",
+        "dns-prefetch/preconnect 提前解析第三方域名的 DNS 与建立连接",
+        "img/iframe 的 loading=lazy 实现原生懒加载，无需额外库",
+        "fetchpriority=high/low 微调图片与脚本的加载优先级",
+        "响应式图片用 srcset + sizes 让浏览器按屏幕选择合适尺寸，省流量",
+        "字体用 font-display: swap 避免文本不可见时间过长（FOIT）",
+        "用 Lighthouse 的 Performance 分数定位瓶颈，避免盲目优化"
+      ],
+      "tip": "记住优先级顺序：preload > 首屏图片 > async/defer 脚本 > prefetch > lazy 资源。"
+    },
+    {
+      "name": "SEO 进阶",
+      "summary": "基础 SEO 关注 title 与语义结构，进阶 SEO 则处理多页面、多语言与爬虫策略。canonical 解决重复内容问题，robots meta 控制单个页面的索引行为，hreflang 告诉搜索引擎多语言版本的对应关系。同时要为社交分享优化：Open Graph 与 Twitter Card 决定链接在聊天软件里的预览卡片质量。技术 SEO 只是入场券，内容质量与站点权威度仍是排名的根本。",
+      "points": [
+        "title 是搜索结果中最重要的展示元素，应唯一、前置关键词、控制在合理长度",
+        "canonical 指定规范 URL，合并分页、带参 URL 的权重，防止重复内容分流",
+        "robots meta 的 noindex/nofollow 精细控制单个页面是否进入索引",
+        "hreflang 标注多语言版本互相对应，如 zh-CN 与 en 页面互相声明",
+        "OG 标签（og:title/og:image/og:description）决定社交分享卡片效果",
+        "Twitter Card 的 summary_large_image 让链接展示大图",
+        "站点地图 sitemap.xml 帮助爬虫发现所有页面，robots.txt 控制抓取范围",
+        "内部链接的锚文本提供语义线索，避免大量使用『点击这里』",
+        "结构化数据与 SEO 基础（语义化、meta、性能）协同工作，缺一不可"
+      ],
+      "tip": ""
+    },
+    {
+      "name": "页面实战：从线框到上线",
+      "summary": "综合前面所有知识，从零搭建一个结构规范的完整页面：先规划内容大纲，再写语义化结构，然后逐项检查可访问性、SEO 与性能。实战中最重要的原则是『内容优先』：先让页面在没有 CSS 的情况下逻辑完整，再叠加样式与交互。完成后用 Lighthouse 跑分、用键盘走查、邀请他人只读代码复述结构，三种检验方式分别对应机器、残障用户与开发者的视角。",
+      "points": [
+        "动手前先用纸笔画出内容分区草图，标注语义标签的选择",
+        "按『内容优先』原则先写完整 HTML，再考虑样式与交互",
+        "用浏览器开发者工具检查嵌套、ARIA 与焦点顺序",
+        "用 Lighthouse 跑分并按机会清单逐项改进",
+        "只用键盘完整走一遍所有交互路径，记录卡点",
+        "请求同学只读代码复述页面结构，检验语义化程度",
+        "对照 Rich Results Test 与 OG 调试器验证分享与搜索展示",
+        "把页面部署到公网（GitHub Pages 等），在真机上测试移动端体验"
+      ],
+      "tip": ""
+    }
+  ],
+  "projects": [
+    "搭建一个个人主页：包含头部导航、自我介绍、项目列表、联系表单与页脚，全部使用语义化标签",
+    "制作一个报名表单：使用不少于 6 种 input 类型，配合 label、fieldset 分组与原生校验属性",
+    "做一张课程表或简历页面：练习 table 语义（caption/scope）与列表、标题层级的组合",
+    "为一个虚构产品设计落地页：包含语义结构、结构化数据标注、OG 分享卡片与音视频展示",
+    "用 details/summary、dialog、progress 等免脚本元素做一个零 JavaScript 的 FAQ 页面",
+    "重构练习：找一个全是 div 的页面，把它改写为语义化版本并对比可读性与 Lighthouse 得分"
+  ],
+  "pitfalls": [
+    "用 div/span 表达一切结构，忽视语义化标签对 SEO 与可访问性的价值",
+    "h1~h6 层级混乱：多个 h1、跳级使用，破坏文档大纲与读屏导航",
+    "忘记 label 关联或图片 alt 文本，损害表单与内容的可访问性",
+    "用 <br> 或大量 &nbsp; 做布局，把表现层的活强加给 HTML",
+    "忽略 charset 与 viewport 声明，导致乱码或移动端显示异常",
+    "滥用 iframe 且不设 sandbox，引入第三方内容的同时引入安全风险",
+    "script 全部同步加载阻塞首屏，却不知道 async/defer 的存在"
+  ]
+}

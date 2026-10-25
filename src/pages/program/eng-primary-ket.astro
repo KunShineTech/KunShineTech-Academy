@@ -1,0 +1,7 @@
+---
+import EnglishCourse from '../../components/EnglishCourse.astro';
+import { getProgram } from '../../data/programs';
+import ketData from '../../data/english/ket.json';
+const info = getProgram('eng-primary-ket')!;
+---
+<EnglishCourse info={info} data={ketData} />

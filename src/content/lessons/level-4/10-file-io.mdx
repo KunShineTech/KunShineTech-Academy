@@ -1,0 +1,72 @@
+---
+title: "文件读写与重定向"
+level: 4
+order: 10
+duration: 120
+unit: "文件操作"
+difficulty: 基础
+goals:
+  - "理解文件操作的意义，会用 freopen 重定向标准输入输出"
+  - "掌握文件的读操作、写操作与读写操作"
+  - "了解文本文件的分类"
+---
+
+import Check from '../../../components/Check.astro';
+import Task from '../../../components/Task.astro';
+import Reveal from '../../../components/Reveal.astro';
+
+
+## 1. 数据的大仓库：为什么用文件
+程序一关，变量全没。想让数据**活下来**、想一次准备几百组测试数据，就要请出**文件**——磁盘上长久保存数据的仓库。考试评测也常常要求：程序从 `xxx.in` 读数据、把答案写进 `xxx.out`。本章教你两个层面：**重定向**（最常用，一行搞定）和**文件流对象**（ifstream/ofstream）。
+
+## 2. 一键重定向：freopen
+`cin` 默认连着键盘，`cout` 默认连着屏幕。`freopen` 可以偷偷把它们的「线」改接到文件上——这就是**重定向**：
+
+```cpp
+freopen("data.in", "r", stdin);     // 让 cin 从 data.in 读（r = read）
+freopen("result.out", "w", stdout); // 让 cout 写进 result.out（w = write）
+```
+
+三要素：**文件名、模式（r 读 / w 写）、重定向谁（stdin / stdout）**。加上这两行后，后面所有 cin、cout 照常写，浑然不觉自己被「调包」了。
+
+> 教学提醒：w 模式会清空原文件内容再写入，像拿黑板擦把黑板擦干净——重要文件别乱用 w 模式调试。调试时先注释掉 freopen 用键盘输入，提交前再取消注释。
+
+## 3. 读操作与写操作
+- **读操作**：配好 `freopen("in.txt", "r", stdin)`，之后 `cin >> x` 读的就是文件里的数。文件读完后再读会失败（cin 进入失败状态），可用 `while (cin >> x)` 一直读到文件结尾，不知道个数的数据就这么处理。
+- **写操作**：配好 `freopen("out.txt", "w", stdout)`，之后 `cout` 的内容全进文件，屏幕上什么也看不到——别慌，打开 out.txt 看看。
+- **读写操作**：两个 freopen 同时配上，就是「从文件读、算出结果、写回文件」的完整流程，评测机的标准形态。
+
+```cpp
+#include <iostream>
+using namespace std;
+int main() {
+    freopen("data.in", "r", stdin);
+    freopen("result.out", "w", stdout);
+    int n, sum = 0, x;
+    cin >> n;
+    for (int i = 0; i < n; i++) { cin >> x; sum += x; }
+    cout << sum << '\n';          // 结果写进了 result.out
+}
+```
+
+文件流写法（了解）：`ifstream fin("data.in"); fin >> x;`、`ofstream fout("result.out"); fout << x;`，功能与重定向等价。
+
+## 4. 文本文件的分类
+我们日常用的记事本、代码文件、CSV 表格都是**文本文件**：以可读的字符存储，用记事本打开能看懂。与之相对的是**二进制文件**：把内存里的原始字节直接写盘（如图片、可执行程序），记事本打开是乱码。文本文件便于人查看和跨程序交换；二进制文件更紧凑、读写更快。本课所有读写都是文本文件。
+
+<Check question="freopen(“data.in”, “r”, stdin) 的作用是什么？" options={['把屏幕输出写入 data.in','让 cin 改从文件 data.in 读数据','删除 data.in 文件','让程序运行得更快']} answer={1} explanation="r 是读模式，stdin 表示标准输入；这行把 cin 的源头从键盘改接到文件 data.in。" />
+
+<Check question="关于文本文件，下列说法正确的是？" options={['文本文件只能用记事本打开','文本文件以可读字符存储，跨程序交换方便','文本文件与二进制文件完全一样','文本文件不能存储数字']} answer={1} explanation="文本文件由可读字符组成，人和程序都容易读写，是数据交换的通用格式；二进制文件存原始字节，更紧凑但不可直接阅读。" />
+
+<Check question="freopen 的第二个参数 “w” 表示？" options={['从文件读','向文件写（会清空原有内容）','追加到文件末尾','删除文件']} answer={1} explanation="w = write，打开时会清空原文件再写入；要保留原内容追加应使用 a 模式。" />
+
+<Task title="文件中的数字和" input="文件 data.in：第一行一个正整数 n（n≤100），第二行 n 个整数；程序把答案写入 result.out" output="这 n 个数的和" sampleIn="4
+10 20 30 40" sampleOut="100">先用键盘版写完调通，再加两行 freopen：读重定向到 data.in，写重定向到 result.out。运行后程序目录下应生成 result.out。</Task>
+<Reveal label="查看参考程序与思路"><pre><code>{`#include <iostream>\nusing namespace std;\nint main(){\n    freopen("data.in","r",stdin);\n    freopen("result.out","w",stdout);\n    int n, sum=0, x;\n    cin>>n;\n    for(int i=0;i<n;i++){ cin>>x; sum+=x; }\n    cout<<sum<<'\\n';\n}`}</code></pre>运行前先把 data.in 和程序放在同一目录，内容为两行：4 和 10 20 30 40。运行时屏幕没有任何输出（cout 被重定向走了），打开 result.out 能看到 100。评测时把文件名换成题目要求的即可。</Reveal>
+
+## 5. 课后巩固
+1. 概念题：什么是重定向？用「给 cin/cout 换水管」类比解释。
+2. 说出 freopen 的三个参数各是什么含义，r 与 w 有何区别？
+3. 编程：读 data.in 中不确定个数的整数（直到文件结尾），统计个数写入 result.out。
+4. 编程：把 1~100 的所有完全平方数写入文件 squares.txt（每行一个）。
+5. 思考：文本文件和二进制文件各有什么优缺点？各举一个生活或学习中的例子。

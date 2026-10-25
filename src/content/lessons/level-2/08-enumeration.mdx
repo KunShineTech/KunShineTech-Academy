@@ -1,0 +1,61 @@
+---
+title: "枚举与循环条件：寻找满足要求的数"
+level: 2
+order: 8
+duration: 120
+unit: "算法思维"
+difficulty: 基础
+goals:
+  - "使用循环枚举有限候选值"
+  - "理解整除、余数与逻辑与"
+  - "分析候选范围和边界条件"
+---
+
+import Check from '../../../components/Check.astro';
+import Task from '../../../components/Task.astro';
+import Reveal from '../../../components/Reveal.astro';
+
+
+## 1. 什么是枚举？
+**枚举**就是把可能答案按照明确顺序逐一检查。它不是“瞎猜”，而是先确定**候选集合**，再写**判断条件**。
+
+例如找1—100之间既能被3整除又能被5整除的数：
+- 候选集合：整数1到100。
+- 条件：`x%3==0 && x%5==0`。
+- 输出：满足条件的数。
+
+```cpp
+for(int x=1;x<=100;x++){
+    if(x%3==0 && x%5==0) cout<<x<<' ';
+}
+```
+
+## 2. 数学原理：公倍数
+同时被3和5整除的数是15的倍数。因为3和5互质，其最小公倍数是 `3×5=15`。可以用这个规律检查程序输出是否合理。
+
+> “最小公倍数”属于本课为理解枚举加入的数学补充；GESP二级的官方重点是循环和条件控制，不要求在本级掌握完整数论算法。
+
+## 3. 例题：统计符合条件的数
+输入 `n`，统计1到n之间能被2或3整除的整数个数。
+
+```cpp
+#include <iostream>
+using namespace std;
+int main(){
+    int n,ans=0;cin>>n;
+    for(int x=1;x<=n;x++){
+        if(x%2==0 || x%3==0) ans++;
+    }
+    cout<<ans<<'\n';
+}
+```
+
+**样例** `n=6`：符合条件的是2、3、4、6，答案4。注意 `||` 是“或”，而 `&&` 是“且”。
+
+<Check question="找出1到10中既被2整除又被3整除的数，条件应该用哪个运算符？" options={['||','&&','!','^']} answer={1} explanation="同时满足两个条件使用逻辑与&&。" />
+
+<Task title="统计特殊数字" input="正整数n（1≤n≤10000）" output="1到n中同时被4和6整除的整数个数" sampleIn="30" sampleOut="2">先用枚举法，再尝试观察12、24、36的规律。</Task>
+<Reveal label="参考程序"><pre><code>{`#include <iostream>\nusing namespace std;\nint main(){int n,ans=0;cin>>n;for(int i=1;i<=n;i++)if(i%4==0&&i%6==0)ans++;cout<<ans<<'\\n';}`}</code></pre>数学检查：同时是4和6倍数，即12的倍数，答案为 `n/12`（整数除法）。</Reveal>
+
+## 4. 课堂思考
+当 `n` 变成一百万时，枚举法和直接计算 `n/12` 哪个更快？这属于算法效率启蒙，暂不要求严格复杂度证明。

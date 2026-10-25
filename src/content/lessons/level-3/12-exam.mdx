@@ -1,0 +1,50 @@
+---
+title: "三级总复习与模拟测评"
+level: 3
+order: 12
+duration: 120
+unit: "综合测评"
+difficulty: 进阶
+goals:
+  - "系统回顾三级全部考点（数制、位运算、数组、字符串）"
+  - "完成两道模拟编程题并通过自测"
+  - "熟悉考试流程与注意事项"
+---
+
+import Check from '../../../components/Check.astro';
+import Task from '../../../components/Task.astro';
+import Reveal from '../../../components/Reveal.astro';
+
+
+## 1. 考点串讲：四张知识地图
+**数制与编码**：二进制是计算机的语言；十进制转二进制用短除法（取余倒读），二进制转十进制用位权展开；二进制与八进制每 3 位一组互转、与十六进制每 4 位一组互转。
+
+**位运算**：`&`、`|`、`^`、`~`、`<<`、`>>` 对二进制位直接操作。牢记：`x & 1` 判奇偶；`a ^ a` 得 0，`a ^ 0` 得 a；左移一位相当于乘 2。
+
+**一维数组**：下标从 0 开始，越界是未定义行为。核心套路：遍历（`i` 从 0 到 n-1）、擂台法求最值、条件计数、顺序查找、逆置（首尾交换）、插入（后移）与删除（前移）。
+
+**字符与字符串**：`'A'`=65、`'a'`=97，大小写差 32；字符数组以 `'\0'` 结尾；string 用 `size()/length()` 求长度，`find`（配合 `string::npos`）、`substr`、`replace`、`insert`、`erase` 是五件利器；比较按字典序。
+
+<Check question="下列关于数组的说法，正确的是？" options={['下标从 1 开始','越界访问会编译报错','下标从 0 开始，越界是未定义行为','数组大小可以是运行时输入的变量']} answer={2} explanation="C++ 数组下标从 0 开始；越界不会报错但行为未定义；大小必须是编译期常量。" />
+
+## 2. 模拟编程题一：十进制转二进制
+<Task title="十进制转二进制（测评题）" input="一个正整数 n（1≤n≤100000）" output="n 的二进制表示（不含前导零）" sampleIn="11" sampleOut="1011">反复取 n 除以 2 的余数，倒序拼接即为二进制。注意 n 至少为 1，无需处理 0 的情况。</Task>
+<Reveal label="查看参考程序与思路"><pre><code>{`#include <iostream>\n#include <string>\nusing namespace std;\nint main(){\n    int n; cin>>n;\n    string s;\n    while(n>0){\n        s = char('0'+n%2) + s;\n        n /= 2;\n    }\n    cout<<s<<'\\n';\n}`}</code></pre>短除法取余：n%2 是当前最低位，转成字符后拼到结果串最前面实现倒序，n 除以 2 继续。样例 11：余数依次为 1,1,0,1，倒序拼接得 1011。</Reveal>
+
+## 3. 模拟编程题二：回文串判断
+<Task title="回文串判断（测评题）" input="一行仅由小写字母组成的字符串 s（长度不超过 100）" output="若 s 是回文输出 YES，否则输出 NO" sampleIn="level" sampleOut="YES">用首尾双指针逐对比较字符，全部相等则是回文。长度 1 的字符串一定是回文。</Task>
+<Reveal label="查看参考程序与思路"><pre><code>{`#include <iostream>\n#include <string>\nusing namespace std;\nint main(){\n    string s; cin>>s;\n    bool ok=true;\n    for(int i=0,j=(int)s.size()-1;i<j;i++,j--){\n        if(s[i]!=s[j]){ ok=false; break; }\n    }\n    cout<<(ok?"YES":"NO")<<'\\n';\n}`}</code></pre>双指针从两端向中间收拢，发现不等立即退出。level 五轮比较全部通过，输出 YES；abca 第二轮 b 与 c 不等，输出 NO。</Reveal>
+
+## 4. 考试须知
+1. **时间管理**：120 分钟里先易后难，选择填空控制在 40 分钟内，留足时间给编程题。
+2. **先写框架再填肉**：main 函数、头文件、输入输出先搭好，再写核心逻辑。
+3. **自测样例**：提交前把题目样例亲手输入一遍核对输出，包括空格与换行。
+4. **边界自查**：数组是否开大（如 n≤100 就开 105）？下标有没有可能越界？string 的 find 有没有判断 npos？
+5. **心态**：遇到陌生题先找「枚举、模拟、统计」三大套路，三级题大多是这三类。
+
+## 5. 课后巩固
+1. 合上书，默写：十进制转二进制的完整流程和位权展开的公式。
+2. 默写位运算四则：`a & 1`、判偶、`a ^ a`、`1 << n` 各等于什么。
+3. 不看资料写出擂台法求最大值及下标的完整代码。
+4. 写出 string 五件套（find/substr/replace/insert/erase）各一个例子。
+5. 完成本课两道测评题，并各设计 2 组边界数据自测。

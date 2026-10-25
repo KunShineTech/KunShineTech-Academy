@@ -1,0 +1,242 @@
+{
+ "session": "2025-06",
+ "level": 8,
+ "file": "GESP 2025年06月认证C++ 8级真题.pdf",
+ "legacy": false,
+ "choiceCount": 15,
+ "judgeCount": 10,
+ "progCount": 2,
+ "choiceAnswers": "ABDDCBCBAACDDCA",
+ "judgeAnswers": "",
+ "choice": [
+  {
+   "n": 1,
+   "stem": "一间的机房要安排6名同学进行上机考试，座位共2行3列。考虑到在座位上很容易看到同一行的左右两侧的\n屏幕，安排中间一列的同学做A卷，左右两列的同学做B卷。请问共有多少种排座位的方案？（  ）。",
+   "options": [
+    "720",
+    "90",
+    "48",
+    "15"
+   ],
+   "answer": 0
+  },
+  {
+   "n": 2,
+   "stem": "又到了毕业季，学长学姐们都在开心地拍毕业照。现在有3位学长、3位学姐希望排成一排拍照，要求男生不\n相邻、女生不相邻。请问共有多少种拍照方案？（  ）。",
+   "options": [
+    "720",
+    "72",
+    "36",
+    "2"
+   ],
+   "answer": 1
+  },
+  {
+   "n": 3,
+   "stem": "下列关于C++类和对象的说法，错误的是（  ）。",
+   "options": [
+    "通过语句const int x = 5; 定义了一个对象x 。",
+    "通过语句std::string t = \"12345\"; 定义了一个对象t 。",
+    "通过语句void (*fp)() = NULL; 定义了一个对象fp 。",
+    "通过语句class MyClass; 定义了一个类MyClass 。"
+   ],
+   "answer": 3
+  },
+  {
+   "n": 4,
+   "stem": "关于生成树的说法，错误的是（  ）。",
+   "options": [
+    "一个无向连通图，一定有生成树。",
+    "个顶点的无向图，其生成树要么不存在，要么一定包含 条边。",
+    "个顶点、 条边的无向图，不可能有多颗生成树。",
+    "个顶点、 条边的无向图，它本身就是自己的生成树。"
+   ],
+   "answer": 3
+  },
+  {
+   "n": 5,
+   "stem": "一对夫妻生男生女的概率相同。这对夫妻希望儿女双全。请问这对夫妻生下两个孩子时，实现儿女双全的概\n率是多少？（  ）。",
+   "options": [
+    "",
+    "",
+    "",
+    ""
+   ],
+   "answer": 2
+  },
+  {
+   "n": 6,
+   "stem": "已定义变量double a, b; ，下列哪个表达式可以用来判断一元二次方程\n是否有实根？（\n）。",
+   "options": [
+    "4 * b - a * a < 0",
+    "4 * b <= a * a",
+    "a * a - 4 * b",
+    "b * 4 - a * a"
+   ],
+   "answer": 1
+  },
+  {
+   "n": 7,
+   "stem": "个结点的二叉树，执行广度优先搜索的平均时间复杂度是（  ）。",
+   "options": [
+    "",
+    "",
+    "",
+    ""
+   ],
+   "answer": 2
+  },
+  {
+   "n": 8,
+   "stem": "以下关于动态规划的说法中，错误的是（  ）。",
+   "options": [
+    "动态规划方法通常能够列出递推公式。",
+    "动态规划方法的时间复杂度通常为状态的个数。",
+    "动态规划方法有递推和递归两种实现形式。",
+    "对很多问题，递推实现和递归实现动态规划方法的时间复杂度相当。"
+   ],
+   "answer": 1
+  },
+  {
+   "n": 9,
+   "stem": "下面的sum_digit 函数试图求出从1 到n （包含1 和n ）的数中，包含数字d 的个数。该函数的时间复杂\n度为（  ）。\n#include <string>\n1\nint count_digit(int n, char d) {\n2\nint cnt = 0;\n3\nstd::string s = std::to_string(n);\n4\nfor (int i = 0; i < s.length(); i++)\n5\nif (s[i] == d)\n6\ncnt++;\n7\nreturn cnt;\n8\n}\n9\nint sum_digit(int n, char d) {\n10\nint sum = 0;\n11\nfor (int i = 1; i <= n; i++)\n12\nsum += count_digit(i, d);\n13\nreturn sum;\n14\n}\n15",
+   "options": [
+    "",
+    "",
+    "",
+    ""
+   ],
+   "answer": 0
+  },
+  {
+   "n": 10,
+   "stem": "下面程序的输出为（  ）。\n#include <iostream>\n1\nconst int N = 10;\n2\nint ch[N][N][N];\n3\nint main() {\n4\nfor (int x = 0; x < N; x++)\n5\nfor (int y = 0; y < N; y++)\n6\nfor (int z = 0; z < N; z++)\n7\nif (x == 0 && y == 0 && z == 0)\n8\nch[x][y][z] = 1;\n9\nelse {\n10\nif (x > 0)\n11\nch[x][y][z] += ch[x - 1][y][z];\n12\nif (y > 0)\n13\nch[x][y][z] += ch[x][y - 1][z];\n14\nif (z > 0)\n15\nch[x][y][z] += ch[x][y][z - 1];\n16\n}\n17\nstd::cout << ch[1][2][3] << std::endl;\n18\nreturn 0;\n19\n}\n20",
+   "options": [
+    "60",
+    "20",
+    "15",
+    "10"
+   ],
+   "answer": 0
+  },
+  {
+   "n": 11,
+   "stem": "下面count_triple 函数的时间复杂度为(  )。\nint gcd(int a, int b) {\n1\nif (a == 0)\n2\nreturn b;\n3\nreturn gcd(b % a, a);\n4\n}\n5\nint count_triple(int n) {\n6\nint cnt = 0;\n7\nfor (int v = 1; v * v * 4 <= n; v++)\n8\nfor (int u = v + 1; u * (u + v) * 2 <= n; u += 2)\n9\nif (gcd(u, v) == 1) {\n10\nint a = u * u - v * v;\n11\nint b = u * v * 2;\n12\nint c = u * u + v * v;\n13\ncnt += n / (a + b + c);\n14\n}\n15\nreturn cnt;\n16\n}\n17",
+   "options": [
+    "",
+    "",
+    "",
+    ""
+   ],
+   "answer": 2
+  },
+  {
+   "n": 12,
+   "stem": "下面quick_sort 函数试图实现快速排序算法，两处横线处分别应该填入的是（  ）。\nvoid swap(int & a, int & b) {\n1\nint temp = a; a = b; b = temp;\n2\n}\n3\nint partition(int a[], int l, int r) {\n4\nint pivot = a[l], i = l + 1, j = r;\n5\nwhile (i <= j) {\n6\nwhile (i <= j && a[j] >= pivot)\n7\nj--;\n8\nwhile (i <= j && a[i] <= pivot)\n9\ni++;\n10\nif (i < j)\n11\nswap(a[i], a[j]);\n12\n}\n13\n________;         // 在此处填入选项\n14\nreturn ________;  // 在此处填入选项\n15\n}\n16\nvoid quick_sort(int a[], int l, int r) {\n17\nif (l < r) {\n18\nint pivot = partition(a, l, r);\n19\nquick_sort(a, l, pivot - 1);\n20\nquick_sort(a, pivot + 1, r);\n21\n}\n22\n}\n23",
+   "options": [
+    "swap(a[l], a[i]) 1 i 2",
+    "swap(a[l], a[j]) 1 i 2",
+    "swap(a[l], a[i]) 1 j 2",
+    "swap(a[l], a[j]) 1 j 2"
+   ],
+   "answer": 3
+  },
+  {
+   "n": 13,
+   "stem": "下面LIS 函数试图求出最长上升子序列的长度，横线处应该填入的是（  ）。\nint max(int a, int b) {\n1\nreturn (a > b) ? a : b;\n2\n}\n3\nint LIS(vector<int> & nums) {\n4\nint n = nums.size();\n5\nif (n == 0)\n6\nreturn 0;\n7\nvector<int> dp(n, 1);\n8\nint maxLen = 1;\n9\nfor (int i = 1; i < n; i++) {\n10\nfor (int j = 0; j < i; j++)\n11\nif (nums[j] < nums[i])\n12\n________;  // 在此处填入选项\n13\nmaxLen = max(maxLen, dp[i]);\n14\n}\n15\nreturn maxLen;\n16\n}\n17",
+   "options": [
+    "dp[j] = max(dp[j] + 1, dp[i]) 1",
+    "dp[j] = max(dp[j], dp[i] + 1) 1",
+    "dp[i] = max(dp[i] + 1, dp[j]) 1",
+    "dp[i] = max(dp[i], dp[j] + 1) 1"
+   ],
+   "answer": 3
+  },
+  {
+   "n": 14,
+   "stem": "下面LIS 函数试图求出最长上升子序列的长度，其时间复杂度为（  ）。\n#define INT_MIN (-1000)\n1\nint LIS(vector<int> & nums) {\n2\nint n = nums.size();\n3\nvector<int> tail;\n4\ntail.push_back(INT_MIN);\n5\nfor (int i = 0; i < n; i++) {\n6\nint x = nums[i], l = 0, r = tail.size();\n7\nwhile (l < r) {\n8\nint mid = (l + r) / 2;\n9\nif (tail[mid] < x)\n10\nl = mid + 1;\n11\nelse\n12\nr = mid;\n13\n}\n14\nif (r == tail.size())\n15\ntail.push_back(x);\n16\nelse\n17\ntail[r] = x;\n18\n}\n19\nreturn tail.size() - 1;\n20\n}\n21",
+   "options": [
+    "",
+    "",
+    "",
+    ""
+   ],
+   "answer": 2
+  },
+  {
+   "n": 15,
+   "stem": "下面的程序使用邻接矩阵表达的带权无向图，则从顶点0到顶点3的最短距离为（  ）。\nint weight[4][4] = {\n1\n{ 0,  5,  8, 10},\n2\n{ 5,  0,  1,  7},\n3\n{ 8,  1,  0,  3},\n4\n{10,  7,  3,  0}};\n5",
+   "options": [
+    "9",
+    "10",
+    "11",
+    "12"
+   ],
+   "answer": 0
+  }
+ ],
+ "judge": [
+  {
+   "n": 1,
+   "stem": "C++语言中，表达式9 | 12 的结果类型为int 、值为13 。",
+   "answer": null
+  },
+  {
+   "n": 2,
+   "stem": "C++语言中，访问数据发生下标越界时，总是会产生运行时错误，从而使程序异常退出。",
+   "answer": null
+  },
+  {
+   "n": 3,
+   "stem": "对个元素的数组进行归并排序，最差情况的时间复杂度为\n。",
+   "answer": null
+  },
+  {
+   "n": 4,
+   "stem": "5个相同的红球和4个相同的蓝球排成一排，要求每个蓝球的两侧都必须至少有一个红球，则一共有15种排列\n方案。",
+   "answer": null
+  },
+  {
+   "n": 5,
+   "stem": "使用math.h 或cmath 头文件中的函数，表达式log(8) 的结果类型为double 、值约为3 。",
+   "answer": null
+  },
+  {
+   "n": 6,
+   "stem": "C++是一种面向对象编程语言，C则不是。继承是面向对象三大特性之一，因此，使用C语言无法实现继承。",
+   "answer": null
+  },
+  {
+   "n": 7,
+   "stem": "个顶点的无向完全图，有\n棵生成树。",
+   "answer": null
+  },
+  {
+   "n": 8,
+   "stem": "已知三个double 类型的变量a 、b 和theta 分别表示一个三角形的两条边长及二者的夹角（弧度），则三\n角形的周长可以通过表达式sqrt(a * a + b * b - 2 * a * b * cos(theta)) 求得。",
+   "answer": null
+  },
+  {
+   "n": 9,
+   "stem": "有个顶点、条边的图的深度优先搜索遍历时间复杂度为\n。",
+   "answer": null
+  },
+  {
+   "n": 10,
+   "stem": "从32名学生中选出4人分别担任班长、副班长、学习委员和组织委员，老师要求班级综合成绩排名最后的4\n名学生不得参选班长或学习委员（仍可以参选副班长和组织委员），则共有\n种不同的选法。",
+   "answer": null
+  }
+ ],
+ "programming": [
+  {
+   "n": 1,
+   "name": "树上旅行",
+   "desc": "给定一棵有  个结点的有根树，结点依次以\n编号，其中根结点的编号为 。\n小 A 计划在这棵有根树上进行  次旅行。在第  次旅行中，小 A 首先会选定结点\n作为起点，并移动若干次。移动\n分为以下两种：\n1. 移动至当前结点的父结点。特殊地，如果当前位于根结点，则不进行移动。\n2. 移动至当前结点的所有子结点中编号最小的结点。特殊地，如果当前位于叶子结点，则不进行移动。\n由于移动次数可能很大，对于第  次旅行，旅行中的移动将以\n个不为零的整数构成的序列\n表\n示。对于\n，若\n则代表进行\n次第一种移动；若\n则代表进行\n次第二种移动。根据给出的序\n列从左至右完成所有移动后，小 A 所在的结点即是旅行的终点。\n给定每次旅行的起点与移动序列，请你求出旅行终点的结点编号。"
+  },
+  {
+   "n": 2,
+   "name": "遍历计数",
+   "desc": "给定一棵有  个结点的树 ，结点依次以\n标号。树  的深度优先遍历序可由以下过程得到：\n1. 选定深度优先遍历的起点 （\n），当前所在结点即是起点。\n2. 若当前结点存在未被遍历的相邻结点  则遍历 ，也即令当前所在结点为  并重复这一步；否则回溯。\n3. 按照遍历结点的顺序依次写下结点编号，即可得到一组深度优先遍历序。\n第一步中起点的选择是任意的，并且第二步中遍历相邻结点的顺序是任意的，因此对于同一棵树  可能有多组不同\n的深度优先遍历序。请你求出树  有多少组不同的深度优先遍历序。由于答案可能很大，你只需要求出答案对\n取模之后的结果。"
+  }
+ ]
+}

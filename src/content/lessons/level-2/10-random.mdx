@@ -1,0 +1,59 @@
+---
+title: "随机数：rand与srand"
+level: 2
+order: 10
+duration: 120
+unit: "数学与程序"
+difficulty: 基础
+goals:
+  - "了解伪随机数与种子概念"
+  - "会使用rand、srand与取模"
+  - "知道取模映射可能存在分布偏差"
+---
+
+import Check from '../../../components/Check.astro';
+import Task from '../../../components/Task.astro';
+import Reveal from '../../../components/Reveal.astro';
+
+
+## 1. 计算机生成的“随机”是什么？
+`rand()`产生**伪随机数**：看起来不规则，但由算法和内部状态决定。`srand(seed)`设置种子；相同实现、相同种子通常会产生相同序列。考试重点是认识基本函数和使用方式。
+
+```cpp
+#include <iostream>
+#include <cstdlib>
+using namespace std;
+int main(){
+    srand(123);
+    for(int i=0;i<5;i++) cout<<rand()<<' ';
+}
+```
+
+## 2. 数学原理：映射到指定区间
+常见入门写法 `rand()%6+1` 将整数映射到1—6。`%6` 的结果为0—5，再加1得到1—6。
+
+**注意**：这并不保证每个结果严格等概率，因为 `RAND_MAX+1` 未必能被6整除；也不适用于密码学。现代工程常用 `<random>`，但该库不属于此处上传的二级考纲明确要求。
+
+## 3. 例题：模拟掷骰子
+```cpp
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
+int main(){
+    srand(static_cast<unsigned>(time(nullptr)));
+    int dice = rand()%6+1;
+    cout<<dice<<'\n';
+}
+```
+
+## 4. 算法练习：统计骰子结果
+如果掷骰子 `n` 次，如何统计点数6出现的次数？使用循环重复生成随机数，再用 `if(dice==6) count++` 统计。
+
+<Check question="rand()%10的可能结果范围是？" options={['1到10','0到9','0到10','10到19']} answer={1} explanation="对10取余的结果在0—9之间。" />
+
+<Task title="固定种子的随机练习" input="一个整数n（1≤n≤1000）" output="用srand(1)初始化后，输出n次rand()%2所得结果的总和" sampleIn="1" sampleOut="取决于实现">这是**环境相关的实验题**：C++标准不保证不同编译器的rand序列一致，因此不作为跨平台自动判题。观察同一环境、相同种子下结果是否重复。</Task>
+<Reveal label="实验参考程序"><pre><code>{`#include <iostream>\n#include <cstdlib>\nusing namespace std;\nint main(){int n;cin>>n;srand(1);int s=0;for(int i=0;i<n;i++)s+=rand()%2;cout<<s<<'\\n';}`}</code></pre>课堂上比较相同编译环境重复运行的结果，不要求跨平台一致。</Reveal>
+
+## 5. 课后拓展
+说明“随机”和“公平”不是完全相同的概念；列举随机模拟可以用于哪些生活问题。

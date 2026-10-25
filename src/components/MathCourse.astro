@@ -1,0 +1,77 @@
+---
+// 数学学习板块渲染器：知识模块（知识点+例题）/ 公式速查 / 备考指南 + 精选资源。
+// 用法：<MathCourse info={programInfo} data={jsonData} />
+import Base from '../layouts/Base.astro';
+import { resources } from '../data/resources';
+const { info, data } = Astro.props as any;
+const s = data.sections;
+const resList = (resources as any)[info.slug] ?? [];
+const pointCount = s.topics.list.reduce((n: number, m: any) => n + m.points.length, 0);
+const exCount = s.topics.list.reduce((n: number, m: any) => n + m.points.reduce((k: number, p: any) => k + p.examples.length, 0), 0);
+const fCount = s.formulas.groups.reduce((n: number, g: any) => n + g.items.length, 0);
+---
+<Base title={info.title} description={info.intro} program={info.slug}>
+<div class="container" style="padding:44px 0 80px;max-width:960px">
+  <div class="eyebrow">{info.code} · MATH FOR CODING</div>
+  <h1 style="font-size:32px">{info.title}</h1>
+  <p style="color:var(--muted);font-size:15px">{info.tagline}{info.intro}</p>
+  <div class="stats">
+    <div class="stat"><b>{s.topics.list.length}</b> 知识模块</div>
+    <div class="stat"><b>{pointCount}</b> 知识点</div>
+    <div class="stat"><b>{exCount}</b> 精讲例题</div>
+    <div class="stat"><b>{fCount}</b> 公式结论</div>
+    <div class="stat"><b>{s.exam.tips.length}</b> 备考建议</div>
+  </div>
+  <nav class="anchor-nav">
+    <a href="#topics">{s.topics.title}</a>
+    <a href="#formulas">{s.formulas.title}</a>
+    <a href="#exam">{s.exam.title}</a>
+    {resList.length > 0 && <a href="#resources">学习资源</a>}
+  </nav>
+  <div class="toc">
+    <div class="toc-row"><span class="toc-label">板块</span>{[['#topics', s.topics.title], ['#formulas', s.formulas.title], ['#exam', s.exam.title], ...(resList.length > 0 ? [['#resources', '学习资源']] : [])].map(([h, t]: any) => <a class="toc-chip" href={h}>{t}</a>)}</div>
+    <div class="toc-row"><span class="toc-label">模块</span>{s.topics.list.map((m: any, mi: number) => <a class="toc-chip" href={`#mod-${mi}`}>{String(mi + 1).padStart(2, '0')} {m.name}</a>)}</div>
+  </div>
+
+  <h2 class="section-title" id="topics">{s.topics.title}</h2>
+  {s.topics.list.map((m: any, mi: number) => <>
+    <h3 class="eng-h3" id={`mod-${mi}`}>{String(mi + 1).padStart(2, '0')}. {m.name} <span class="eng-tag">{m.points.length} 个知识点</span></h3>
+    <p style="color:var(--muted);font-size:13.5px;margin:4px 0 10px">🎯 {m.goal}</p>
+    {m.points.map((p: any) => <div class="gram-card">
+      <h4>{p.title}</h4>
+      <p style="font-size:14px;line-height:1.9">{p.explain}</p>
+      {p.examples.map((e: any) => <div class="sample-card" style="margin:10px 0">
+        <b style="font-size:13.5px">📐 例题</b>
+        <p class="txt" style="font-size:13.5px">{e.q}</p>
+        <b style="font-size:13.5px">✅ 解答</b>
+        <p class="txt" style="font-size:13.5px">{e.a}</p>
+      </div>)}
+      {p.tip && <div class="tip">⚠️ 易错提醒：{p.tip}</div>}
+    </div>)}
+  </>)}
+
+  <h2 class="section-title" id="formulas">{s.formulas.title}</h2>
+  {s.formulas.groups.map((g: any) => <>
+    <h3 class="eng-h3">{g.name}</h3>
+    <table class="eng-table">
+      <tbody>{g.items.map((it: any) => <tr><td style="width:55%"><b>{it.f}</b></td><td style="color:var(--muted)">{it.note}</td></tr>)}</tbody>
+    </table>
+  </>)}
+
+  <h2 class="section-title" id="exam">{s.exam.title}</h2>
+  <ol style="line-height:2.1;font-size:14.5px;padding-left:22px">
+    {s.exam.tips.map((t: string) => <li>{t}</li>)}
+  </ol>
+
+  {resList.length > 0 && <>
+    <h2 class="section-title" id="resources">精选学习资源</h2>
+    <p style="color:var(--muted);font-size:13.5px">配套本阶段的优质免费课程与工具（外部链接，以各站点实际内容为准）。</p>
+    <ul class="res-list">
+      {resList.map((r: any) => <li><a href={r.url} target="_blank" rel="noopener">{r.name}</a><span class="res-provider">{r.provider}</span><span class="res-note">{r.note}</span></li>)}
+    </ul>
+  </>}
+
+  <p style="color:var(--muted);font-size:12.5px;margin-top:24px">适合人群：{info.audience}。建议按模块顺序学习，每个知识点先读讲解再做例题，错题回到「易错提醒」对照；持续完善中。</p>
+  <p><a href="/">← 返回课程中心</a></p>
+</div>
+</Base>

@@ -1,0 +1,7 @@
+---
+import EnglishCourse from '../../components/EnglishCourse.astro';
+import { getProgram } from '../../data/programs';
+import petData from '../../data/english/pet.json';
+const info = getProgram('eng-junior-pet')!;
+---
+<EnglishCourse info={info} data={petData} />

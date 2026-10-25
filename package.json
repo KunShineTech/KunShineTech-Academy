@@ -1,0 +1,15 @@
+{
+  "name": "gesp2-astro-mdx-course",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev --host 0.0.0.0",
+    "build": "astro build",
+    "preview": "astro preview --host 0.0.0.0",
+    "check": "astro check"
+  },
+  "dependencies": {
+    "astro": "^5.15.0",
+    "@astrojs/mdx": "^4.3.0"
+  }
+}

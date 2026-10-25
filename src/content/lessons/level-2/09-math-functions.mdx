@@ -1,0 +1,65 @@
+---
+title: "数学函数：abs、sqrt、max、min"
+level: 2
+order: 9
+duration: 120
+unit: "数学与程序"
+difficulty: 基础
+goals:
+  - "理解绝对值、平方根、最大最小值的数学定义"
+  - "正确使用cmath与algorithm"
+  - "掌握平方根比较中的浮点误差与类型"
+---
+
+import Check from '../../../components/Check.astro';
+import Task from '../../../components/Task.astro';
+import Reveal from '../../../components/Reveal.astro';
+
+
+## 1. 四个常用函数
+| 函数 | 数学含义 | 常见头文件 | 例子 |
+|---|---|---|---|
+| `abs(x)` | 绝对值 | `<cstdlib>` / `<cmath>` | `abs(-7)=7` |
+| `sqrt(x)` | 非负数的平方根 | `<cmath>` | `sqrt(81)=9` |
+| `max(a,b)` | 较大值 | `<algorithm>` | `max(4,9)=9` |
+| `min(a,b)` | 较小值 | `<algorithm>` | `min(4,9)=4` |
+
+**数学原理：** 绝对值是数轴上一个数到原点的距离：`|x| = x (x≥0)`，否则 `|x|=-x`。平方根满足 `y≥0` 且 `y²=x`。
+
+## 2. 例题：两点间距离（数轴）
+输入两个整数 `a,b`，两点间距离为 `|a-b|`。
+
+```cpp
+#include <iostream>
+#include <cstdlib>
+using namespace std;
+int main(){
+    int a,b;cin>>a>>b;
+    cout<<abs(a-b)<<'\n';
+}
+```
+
+**思路**：先算差，再取绝对值。`a=3,b=10` 与 `a=10,b=3` 都应输出7。
+
+## 3. 例题：比较平方根
+```cpp
+#include <iostream>
+#include <cmath>
+#include <iomanip>
+using namespace std;
+int main(){
+    double x;cin>>x;
+    if(x<0){cout<<"INVALID\n";return 0;}
+    cout<<fixed<<setprecision(3)<<sqrt(x)<<'\n';
+}
+```
+
+平方根函数返回浮点结果，不能简单假定所有平方根都是整数。若需判断一个整数是否为完全平方数，属于后续算法扩展，应考虑精度与整数溢出。
+
+<Check question="abs(-12)+max(3,8)等于多少？" options={['4','8','20','-4']} answer={2} explanation="绝对值为12，最大值为8，和为20。" />
+
+<Task title="三个数的最大值与最小值" input="三个整数a b c" output="最大值和最小值，以空格分隔" sampleIn="-3 7 2" sampleOut="7 -3">使用嵌套 `max` 和 `min`，解释为何 `max(a,b,c)` 不是标准的三个参数调用。</Task>
+<Reveal label="参考程序"><pre><code>{`#include <iostream>\n#include <algorithm>\nusing namespace std;\nint main(){int a,b,c;cin>>a>>b>>c;cout<<max(max(a,b),c)<<' '<<min(min(a,b),c)<<'\\n';}`}</code></pre></Reveal>
+
+## 4. 课后巩固
+手工计算 `sqrt(49)`、`abs(-4)`、`max(-2,-9)`、`min(6,6)`，再运行程序验证。

@@ -1,0 +1,84 @@
+---
+title: "图的遍历：DFS 与 BFS"
+level: 7
+order: 6
+duration: 120
+unit: "图论基础"
+difficulty: 进阶
+goals:
+  - "掌握深度优先搜索 DFS 的原理与实现"
+  - "掌握广度优先搜索 BFS 的原理与实现"
+  - "能用遍历解决可达性、连通块与无权最短路问题"
+---
+
+import Check from '../../../components/Check.astro';
+import Task from '../../../components/Task.astro';
+import Reveal from '../../../components/Reveal.astro';
+
+
+## 1. 两种逛校园的方式
+新学期逛校园，有两种走法：
+
+- **DFS（深度优先搜索）**：认准一条路走到底，撞墙了才退回上一个路口换方向——像个独来独往的探险家。
+- **BFS（广度优先搜索）**：从校门出发，先把周围 100 米逛完，再逛 200 米，一圈一圈向外扩散——像广播找人，消息按「离起点由近到远」传开。
+
+两种方式都能**不重复、不遗漏**地走遍整张图，靠的都是同一个法宝：**访问标记**。visited[u] 记录「u 已经逛过了」，每个顶点只处理一次。
+
+## 2. DFS：递归实现
+```cpp
+vector<int> adj[100005];
+bool vis[100005];
+
+void dfs(int u) {
+    vis[u] = true;                  // 进门先打卡
+    for (int v : adj[u])            // 逐个看望邻居
+        if (!vis[v]) dfs(v);        // 没去过就深入
+}
+```
+
+从起点调用 dfs(起点)，整张连通区域就被走遍了。递归天然携带「路径栈」：函数一层层压栈，正是一路走到底、回头退栈的过程。
+
+## 3. BFS：队列实现
+```cpp
+void bfs(int s) {
+    queue<int> q;
+    q.push(s); vis[s] = true;
+    while (!q.empty()) {
+        int u = q.front(); q.pop(); // 处理当前层
+        for (int v : adj[u])
+            if (!vis[v]) {          // 新发现的邻居
+                vis[v] = true;
+                q.push(v);          // 排入下一层
+            }
+    }
+}
+```
+
+队列保证**先进先出**：先被发现的顶点先扩展，所以顶点被访问的顺序恰好是它们到起点的距离从近到远。这一点是金矿——**BFS 的分层数就是无权图的最短路**（每条边算一步）。
+
+## 4. 什么时候用哪个？
+- **判可达、数连通块、拓扑前的探路**：DFS、BFS 都行，DFS 代码更短。
+- **求最少步数/最少换乘/最短路径（边无权）**：必须用 BFS，因为它按层扩散，第一次到达就是最近。
+- **要走遍所有方案、回溯剪枝类问题**：DFS 更顺手（七级之后的级别会更常用）。
+
+> 教学提醒：BFS 入队时就打标记 vis[v]=true，而不是出队时才打！否则同一个顶点可能被重复入队好多次，队列膨胀、时间翻倍。这是 BFS 最常见的实现错误。
+
+<Check question="BFS 中为什么顶点入队时就要标记 vis？" options={['为了让输出更好看','防止同一顶点被重复入队','节省队列空间','题目规定必须这样']} answer={1} explanation="无向图中一个顶点可能有多个已入队的邻居，出队才标记会让它被重复入队，白白浪费时间和空间。" />
+
+<Check question="无权图中从 s 到 t 的最少边数，应该用？" options={['DFS 记录深度并取最小值','BFS 分层统计','邻接矩阵直接查','按顶点编号顺序找']} answer={1} explanation="BFS 按离起点的距离逐层扩展，第一次到达 t 时所在的层数就是最少边数。" />
+
+## 5. 实战：最少经过几条街
+<Task title="最短路径（无权图）" input="第一行 n、m、s、t（n≤1000，m≤10000），接下来 m 行无向边 u v" output="从 s 到 t 最少经过几条边；不可达输出 -1" sampleIn="5 5 1 5
+1 2
+2 3
+3 5
+1 4
+4 5" sampleOut="2">样例中 1→2→3→5 要 3 条边，而 1→4→5 只要 2 条。用 BFS 分层，记录每个顶点是第几层被访问到的。</Task>
+<Reveal label="查看参考程序与思路"><pre><code>{`#include <iostream>\n#include <vector>\n#include <queue>\nusing namespace std;\nvector<int> adj[1005];\nint dist[1005];\nint main(){\n    int n,m,s,t;\n    cin>>n>>m>>s>>t;\n    for(int i=0;i<m;i++){\n        int u,v;\n        cin>>u>>v;\n        adj[u].push_back(v);\n        adj[v].push_back(u);\n    }\n    for(int i=1;i<=n;i++) dist[i]=-1;\n    queue<int> q;\n    q.push(s);\n    dist[s]=0;\n    while(!q.empty()){\n        int u=q.front(); q.pop();\n        for(int v:adj[u])\n            if(dist[v]==-1){\n                dist[v]=dist[u]+1;\n                q.push(v);\n            }\n    }\n    cout<<dist[t]<<'\\n';\n}`}</code></pre>dist 数组一鱼两吃：-1 表示「还没访问过」（兼任 visited），非负值就是到起点的最少边数。BFS 保证顶点第一次被访问时距离最短，所以直接入队时更新 dist[v]=dist[u]+1，最后输出 dist[t]，不可达自然还是 -1。</Reveal>
+
+## 6. 课后巩固
+1. 概念题：用逛校园的类比，分别说明 DFS 和 BFS 的访问顺序有什么不同。
+2. 编程题：数一个无向图有几个连通块（从每个没访问过的顶点出发遍历一次，数出发几次）。
+3. 编程题：有向图中判断从 s 能否到达 t。
+4. 思考题：为什么无权图最短路用 BFS 而不用 DFS？DFS 能不能也求最短路？代价是什么？
+5. 思考题：如果每条边长度不同（带权图），BFS 还适用吗？（提示：回忆六级学过的其他算法）

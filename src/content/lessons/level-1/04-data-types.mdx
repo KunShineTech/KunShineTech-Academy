@@ -1,0 +1,81 @@
+---
+title: "基本数据类型"
+level: 1
+order: 4
+duration: 120
+unit: "变量与输入输出"
+difficulty: 基础
+goals:
+  - "区分整型、实数型、字符型、布尔型四类基本类型"
+  - "理解数据溢出的概念并会选择合适的类型"
+  - "会用 sizeof 查看类型占用的字节数"
+---
+
+import Check from '../../../components/Check.astro';
+import Task from '../../../components/Task.astro';
+import Reveal from '../../../components/Reveal.astro';
+
+
+## 1. 储物盒有不同型号
+上一课我们知道变量是储物盒。盒子其实有不同型号：装整数的、装小数的、装单个字符的、装真假的。选错型号，轻则浪费空间，重则装不下出错。
+
+| 类型 | 写法示例 | 占用空间（常见） | 适合装什么 |
+|---|---|---|---|
+| `int` 整型 | `int a = 42;` | 4 字节 | 一般整数，约 ±21 亿以内 |
+| `long long` 长整型 | `long long b = 10000000000LL;` | 8 字节 | 很大的整数 |
+| `float` 单精度 | `float c = 3.5f;` | 4 字节 | 小数（精度较低） |
+| `double` 双精度 | `double d = 3.14159;` | 8 字节 | 小数（常用） |
+| `char` 字符型 | `char e = 'A';` | 1 字节 | 单个字符，用单引号 |
+| `bool` 布尔型 | `bool f = true;` | 1 字节 | 真 `true` 或假 `false` |
+
+> 教学提醒：字符要用**单引号**，如 `'A'`；双引号是字符串的写法。`bool` 的值只有真和假两种。
+
+## 2. 溢出：小杯子装大桶水
+`int` 能装的整数有上限（约 21 亿）。如果硬塞一个一百亿的数进去，就像往小杯子里倒一大桶水——装不下的部分会**溢出**，结果变成一个错误的数，而且不会报错！
+
+```cpp
+int a = 1000000000;      // 十亿，int 装得下
+int b = a * 2;           // 二十亿，超出了 int 的范围，溢出！
+long long c = a * 2LL;   // 用 long long 参与计算就安全了
+```
+
+经验法则：不确定范围够不够大时，用 `long long` 更稳妥；涉及小数用 `double`。
+
+**sizeof 小工具**：`sizeof(类型)` 可以查看类型占用几个字节：
+
+```cpp
+cout << sizeof(int) << '\n';    // 常见输出 4
+cout << sizeof(char) << '\n';   // 常见输出 1
+```
+
+## 3. 类型之间的转换
+把 `double` 装进 `int` 盒子，小数部分会被直接**截断**（不是四舍五入）：
+
+```cpp
+double pi = 3.14159;
+int x = int(pi);    // x 的值为 3
+int y = int(-2.9);  // y 的值为 -2（向零截断）
+```
+
+```cpp
+char ch = 'A';
+cout << int(ch) << '\n';  // 输出 65，字符背后藏着数字编码
+```
+
+## 4. 例题解析
+**问题**：要保存「中国人口约 14 亿」这个整数，选 `int` 还是 `long long`？
+
+**思路**：14 亿在 `int` 上限 21 亿以内，`int` 可以；但如果还要做乘法（如人均计算），乘积可能瞬间超出，此时用 `long long` 更保险。
+
+<Check question="要存放一百亿（10000000000），应该选择哪种类型？" options={['int','char','bool','long long']} answer={3} explanation="int 上限约 21 亿，装不下一百亿；long long 范围大得多，可以存放。" />
+<Check question="执行 int x = 3.9; 后，x 的值是？" options={['3.9','3','4','编译错误']} answer={1} explanation="double 转 int 时直接截断小数部分，不是四舍五入。" />
+<Check question="bool 类型可以取的值是？" options={['0 到 255','true 和 false','任意整数','任意小数']} answer={1} explanation="bool 只有 true（真）和 false（假）两个值。" />
+
+<Task title="圆的面积" input="一个实数 r，表示圆的半径（`0 < r ≤ 1000`）" output="圆的面积（保留默认精度）" sampleIn="2" sampleOut="12.5664">根据公式「面积 = 3.14159 × 半径 × 半径」编程。想一想半径应该用什么类型装？</Task>
+<Reveal label="查看参考程序与思路"><pre><code>{`#include <iostream>\nusing namespace std;\nint main(){\n    double r;\n    cin >> r;\n    cout << 3.14159 * r * r << '\\n';\n    return 0;\n}`}</code></pre>思路：半径可能带小数，用 double；3.14159 乘 2 再乘 2 得 12.56636，默认保留 6 位有效数字输出 12.5664，与样例一致。</Reveal>
+
+## 5. 课后巩固
+1. 填写表格：给自己举出 int、double、char、bool 各一个生活例子。
+2. 解释「溢出」并说说为什么乘法比加法更容易溢出。
+3. 运行 `sizeof` 程序，记录你电脑上各种类型占用的字节数。
+4. 编程：读入一个字符，输出它对应的整数编码（提示：用 int() 强制转换）。

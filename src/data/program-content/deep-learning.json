@@ -1,0 +1,236 @@
+{
+  "roadmap": [
+    {
+      "stage": "PyTorch 基础",
+      "focus": "掌握张量运算、自动微分与 nn.Module 三件套，能独立搭建并训练一个全连接网络。",
+      "topics": ["张量与张量运算", "自动微分（autograd）", "nn.Module 与优化器", "数据加载（Dataset/DataLoader）", "训练循环的写法"]
+    },
+    {
+      "stage": "卷积神经网络（CNN）",
+      "focus": "理解卷积、池化的直觉与数学形式，用 CNN 完成图像分类任务。",
+      "topics": ["卷积层与感受野", "池化与步幅", "经典架构（LeNet/AlexNet/ResNet）", "数据增强", "图像分类项目"]
+    },
+    {
+      "stage": "序列模型（RNN/Attention）",
+      "focus": "理解序列数据的建模方式，从 RNN 的局限走向 Attention 与 Transformer 的思想源头。",
+      "topics": ["RNN 与梯度消失", "LSTM/GRU 门控机制", "Seq2Seq 与编码器-解码器", "Attention 机制", "位置编码的引入"]
+    },
+    {
+      "stage": "训练技巧与正则化",
+      "focus": "学会诊断训练中的问题，掌握让深层网络稳定收敛的全套技巧。",
+      "topics": ["权重初始化与归一化（BN/LN）", "学习率调度", "Dropout 与权重衰减", "梯度裁剪与数值稳定性", "混合精度训练"]
+    },
+    {
+      "stage": "迁移学习与项目实战",
+      "focus": "站在预训练模型的肩膀上做小数据任务，完成一个端到端深度学习项目。",
+      "topics": ["预训练与微调", "冻结与逐层解冻", "特征提取 vs 全量微调", "实验管理与复现", "端到端图像识别项目"]
+    },
+    {
+      "stage": "高效化与部署",
+      "focus": "理解 2024-2026 年工业界关心的核心问题：归一化与注意力变体的选型、优化器的稳定训练、模型压缩量化后端侧部署。",
+      "topics": ["归一化家族选型（BN/LN/RMSNorm）", "AdamW 与 warmup-stable-decay", "GQA/FlashAttention 高效注意力", "剪枝/蒸馏/量化", "ONNX 与 TensorRT 部署入门"]
+    }
+  ],
+  "modules": [
+    {
+      "name": "张量与自动微分",
+      "summary": "PyTorch 的核心是张量（Tensor）：它像 NumPy 数组，但能在 GPU 上运算并自动记录求导信息。autograd 机制会沿着计算图自动反向传播，这是「深度学习框架替你写求导公式」的魔法所在。理解计算图何时构建、何时释放，是排查显存泄漏与梯度错误的根基。张量的 dtype、device 与形状管理则是每天打交道的基本功。",
+      "points": [
+        "张量创建、索引、广播与 dtype/device 管理",
+        "requires_grad 与计算图的构建",
+        "backward() 与梯度累积、清零（zero_grad）",
+        "detach()、torch.no_grad() 与推理模式的区别",
+        "GPU 上张量与模型的 .to(device) 迁移",
+        "in-place 操作与 autograd 的冲突（RuntimeError 排查）",
+        "显存占用估算与 OOM 的基本排查路径"
+      ],
+      "tip": "先用纯 PyTorch 手写一遍线性回归的梯度下降，再回头用 nn 模块，理解会扎实很多。"
+    },
+    {
+      "name": "nn.Module 与训练循环",
+      "summary": "nn.Module 是所有网络层的基类：定义前向传播、自动管理参数。配合优化器（SGD/Adam）与损失函数，「前向 → 算损失 → 反向 → 更新」四步构成了所有深度学习训练循环的骨架。把训练/验证逻辑拆成独立函数并让指标可观测，是项目长大的第一步。此外还要理解参数命名、state_dict 与模型保存的对应关系。",
+      "points": [
+        "__init__ 中定义层、forward 中组织计算",
+        "nn.Linear/nn.Conv2d 等常用层与参数查看",
+        "优化器：SGD（带动量）与 Adam 的区别",
+        "nn.CrossEntropyLoss 等常用损失函数",
+        "model.train() 与 model.eval() 的模式切换",
+        "state_dict 与 load_state_dict 的保存加载语义",
+        "用 TensorBoard 记录 loss/指标曲线"
+      ],
+      "tip": "把训练循环封装成函数或类，项目一大就能避免到处复制粘贴的混乱。"
+    },
+    {
+      "name": "数据加载：Dataset 与 DataLoader",
+      "summary": "数据管线决定训练效率。Dataset 定义「如何取一条样本」，DataLoader 负责批处理、打乱、多进程加载。掌握 transforms 图像变换与自定义 Dataset，是跑通任何视觉任务的前提。2024-2026 年 WebDataset、FSDP 风格的分片读取在大规模训练场景逐渐普及，但单机场景 DataLoader 仍是绝对主力。",
+      "points": [
+        "torch.utils.data.Dataset 的 __getitem__/__len__ 协议",
+        "DataLoader 的 batch_size、shuffle、num_workers 参数",
+        "torchvision.transforms 常用图像变换与组合（Compose）",
+        "自定义 Dataset 处理 csv 标注或自定义目录结构",
+        "pin_memory 与 persistent_workers 的加速作用",
+        "数据增强应该在训练集还是验证集上做的红线",
+        "sampler 与 WeightedSampler 处理不平衡分类"
+      ],
+      "tip": "先用小数据集（几百张图）跑通管线并可视化一个 batch，再上大数据集。"
+    },
+    {
+      "name": "卷积神经网络（CNN）",
+      "summary": "卷积用共享权重的滑动窗口提取局部特征，配合池化逐步压缩空间尺寸，是图像任务的基石。从 LeNet 到 ResNet，残差连接解决了超深网络训练困难的问题，至今仍是视觉骨干网络的基本范式。2024-2026 年 ConvNeXt 等现代卷积变体证明纯卷积结构经合理设计仍可逼近 Transformer 的性能。理解感受野与下采样策略，是读懂一切视觉骨干网络的钥匙。",
+      "points": [
+        "卷积核、步幅、填充与输出尺寸计算",
+        "感受野随层数加深的增长",
+        "ResNet 残差连接解决梯度消失",
+        "1×1 卷积与 Bottleneck 结构",
+        "分组卷积与深度可分离卷积（MobileNet 思想）",
+        "CNN 可视化（特征图、Grad-CAM）",
+        "现代设计趋势：深度可分离、大核卷积与 ConvNeXt"
+      ],
+      "tip": "亲手实现一个迷你 ResNet 并在 CIFAR-10 上复现论文精度，比调包印象深刻十倍。"
+    },
+    {
+      "name": "RNN、LSTM 与序列建模",
+      "summary": "RNN 把历史信息压缩进隐藏状态逐个处理序列，但长序列上梯度消失严重。LSTM/GRU 用门控机制选择性记忆与遗忘，一度是 NLP 与语音的标准方案；理解它们的局限（难以并行、长程依赖弱）正是 Attention 出现的动机。2024-2026 年 RNN 在部分端侧低延迟场景有复苏迹象，但作为学习材料，它的最大价值是帮你理解序列建模的难点谱系。",
+      "points": [
+        "RNN 的展开图与参数共享",
+        "梯度消失/爆炸与梯度裁剪",
+        "LSTM 的遗忘门、输入门、输出门",
+        "GRU 的简化门控与参数效率",
+        "Seq2Seq + Attention 的机器翻译范式",
+        "teacher forcing 与推理暴露偏差",
+        "双向 RNN 与 pack_padded_sequence 处理变长序列"
+      ],
+      "tip": "RNN 今天已不是主流，但它能帮你真正理解「序列依赖」和为什么 Attention 是革命。"
+    },
+    {
+      "name": "Attention 与 Transformer 雏形",
+      "summary": "Attention 让序列中每个位置直接「看见」所有位置并按相关性加权聚合，解决了 RNN 的顺序依赖问题。多头注意力、缩放点积与位置编码的组合，构成了 Transformer 的基本单元，也是所有现代大模型的源头。本阶段只需理解直觉与公式，系统的 Transformer 学习留给大模型原理课程，但注意力权重的可视化解读能力要在这里养成。",
+      "points": [
+        "Q/K/V 的含义与缩放点积注意力公式",
+        "注意力权重矩阵的可视化解读",
+        "多头注意力：多子空间并行关注",
+        "位置编码弥补失去的位置信息",
+        "因果掩码（causal mask）防止偷看未来",
+        "从自注意力到 Transformer Block 的组装",
+        "注意力计算量的 O(N²d) 与序列长度瓶颈"
+      ],
+      "tip": "本阶段只需理解直觉与公式；系统的 Transformer 学习留给大模型原理课程。"
+    },
+    {
+      "name": "训练技巧：初始化、归一化与学习率",
+      "summary": "深层网络能否稳定训练，往往取决于这些「工程细节」。合适的权重初始化打破对称性，BatchNorm/LayerNorm 平滑优化地形，学习率调度让模型在训练后期走得更稳。AMP 混合精度已成为 2024-2026 年训练的默认配置而非可选项。诊断训练不稳定（loss 发散、梯度爆炸）时，这一模块的工具箱是检查清单的第一页。",
+      "points": [
+        "Xavier/Kaiming 初始化的推导直觉",
+        "BatchNorm 与 LayerNorm 的适用场景（CV vs NLP）",
+        "学习率预热（warmup）与余弦退火",
+        "梯度裁剪防止 loss 爆炸",
+        "AMP 混合精度：float16/bfloat16 与 GradScaler 防下溢",
+        "梯度累积在小显存上模拟大 batch",
+        "torch.compile 的图编译加速与常见坑"
+      ],
+      "tip": "loss 出现 NaN 时，先查学习率与数值精度，别急着怀疑模型结构。"
+    },
+    {
+      "name": "正则化与泛化",
+      "summary": "深度学习模型参数量动辄百万，正则化是防止「背答案」的关键。Dropout 随机失活神经元，权重衰减限制参数幅度，数据增强扩充样本分布，early stopping 在过拟合前收手——四管齐下保障泛化。标签平滑与 Mixup/CutMix 等混合样本技术是 2024-2026 年竞赛与工业界提升泛化的常用手段。正则化强度要以验证集为准，而不是训练集表现越好越加。",
+      "points": [
+        "欠拟合/过拟合的识别：训练曲线解读",
+        "Dropout 的集成解释与推理时的尺度修正",
+        "权重衰减（weight decay）与 L2 正则",
+        "数据增强：翻转、裁剪、颜色扰动与 Mixup",
+        "标签平滑（label smoothing）校准置信度",
+        "early stopping 与验证集监控",
+        "大模型时代的隐式正则化：数据规模与训练时长"
+      ],
+      "tip": "正则化强度按「验证集 loss 不再下降」为准，而不是训练集表现越好越加。"
+    },
+    {
+      "name": "迁移学习",
+      "summary": "很少有人从零训练大模型：在 ImageNet 上预训练的骨干网络已学会通用的视觉特征，只需在小数据集上微调就能取得很好效果。学会冻结、解冻与学习率分层设置，是用最少数据干成大事的核心技能。2024-2026 年自监督预训练（DINOv2 等）提供了更强的通用特征提取器，微调范式本身也在向参数高效方向演进。",
+      "points": [
+        "预训练模型的特征提取（冻结骨干）",
+        "微调（替换分类头 + 小学习率）",
+        "逐层解冻与 discriminative learning rates",
+        "torchvision.models 与 timm 模型库",
+        "DINOv2 等自监督特征的零样本能力",
+        "迁移到小数据任务的实践要点",
+        "领域差距大时先做中间域预训练的补救策略"
+      ],
+      "tip": "小数据集任务默认从「冻结骨干 + 只训分类头」开始，不够再逐步放开。"
+    },
+    {
+      "name": "归一化家族：BN、LN、RMSNorm 与 GroupNorm",
+      "summary": "归一化通过稳定层输入分布让深层网络可训练，但家族成员各有地盘：BatchNorm 依赖 batch 统计，统治卷积视觉多年；LayerNorm 不依赖 batch，成为 Transformer 的标配；RMSNorm 进一步省去均值中心化以省算力。2024-2026 年大模型几乎全线采用 RMSNorm/Pre-Norm 结构，视觉端 GroupNorm 在检测、分割小 batch 场景成为 BN 的替代。选型错误的典型症状是训练 loss 抖动或验证性能对 batch size 极度敏感。",
+      "points": [
+        "BatchNorm 的训练/推理行为差异与动量统计",
+        "BN 对 batch size 与分布漂移的敏感性",
+        "LayerNorm 按特征维归一化与 Transformer 的契合",
+        "RMSNorm 的简化形式与 Llama 系模型的采用",
+        "GroupNorm/InstanceNorm 在小 batch 与风格任务中的定位",
+        "归一化位置的 Pre-Norm vs Post-Norm 之争",
+        "归一化与残差分支放缩（如 DeepNorm）的稳定性技巧"
+      ],
+      "tip": "出现「训练 loss 震荡、验证崩、换 batch size 就坏」三联征时，先怀疑归一化选型与统计量更新。"
+    },
+    {
+      "name": "优化器家族与学习率策略",
+      "summary": "SGD 带动量稳健但慢，Adam 自适应但容易过拟合泛化差，AdamW 把权重衰减从梯度里解耦出来成为 Transformer 训练的标准答案。2024-2026 年的主流配方是 AdamW + warmup + cosine/WS（warmup-stable-decay）调度，配合 β2 调大驯服大 batch。 Lion、Muon 等新优化器在特定场景有亮点，但掌握 AdamW 的正确用法仍是第一优先级。学习率是所有超参中最敏感的一个，值得为它单独做扫描。",
+      "points": [
+        "SGD+momentum 与 Adam 的二阶矩估计机制",
+        "AdamW 的解耦权重衰减及其泛化优势",
+        "β1/β2/eps 的影响与 Transformer 常用配置",
+        "warmup 对早期训练稳定的作用机理",
+        "cosine 退火与 WSD（warmup-stable-decay）调度对比",
+        "学习率与 batch size 的线性缩放经验法则",
+        " Lion/Muon 等新优化器的适用边界"
+      ],
+      "tip": "调参先扫学习率（对数网格 3~5 个值），它是性价比最高的单一超参。"
+    },
+    {
+      "name": "注意力变体与高效计算",
+      "summary": "标准多头注意力的 O(N²) 复杂度是长序列的瓶颈，催生了一整个高效注意力家族：MQA/GQA 共享 K/V 头压缩 KV Cache、FlashAttention 用分块计算消除显存瓶颈、线性注意力用核技巧逼近 softmax。2024-2026 年 GQA 已是开源大模型默认配置，FlashAttention 是训练框架标配，掌握它们的动机比记住公式更重要。本模块是从「会写 attention」到「懂工程选型」的分水岭。",
+      "points": [
+        "MHA/MQA/GQA 的头共享设计与 KV Cache 压缩比",
+        "FlashAttention 的 tiling 与重计算（不物化 N×N 矩阵）",
+        "线性注意力/状态空间模型（Mamba 类）的亚二次复杂度路线",
+        "稀疏注意力（滑动窗口、 block sparse）的取舍",
+        "KV Cache 显存估算与长序列推理瓶颈",
+        "PyTorch 中 scaled_dot_product_attention 的自动后端选择",
+        "变体选型的决策树：序列长度 × 显存 × 延迟"
+      ],
+      "tip": "先会调用 SDPA/F.scaled_dot_product_attention 享受内核加速，再回头理解 FlashAttention 原理。"
+    },
+    {
+      "name": "模型压缩与部署",
+      "summary": "训练好的模型要落地，往往受制于显存、功耗与延迟预算，压缩与部署是 2024-2026 年工业落地的必修课。三大压缩手段：剪枝（去掉不重要的权重/通道）、蒸馏（大教师教小学生）、量化（FP32→INT8/INT4 降低位宽）。部署链路上 ONNX 负责跨框架导出，TensorRT/ONNX Runtime 负责内核级加速，端侧则常配合 NCNN/TFLite。压缩必做精度回归测试，压缩率与掉点是一对永远的权衡。",
+      "points": [
+        "结构化/非结构化剪枝与稀疏训练的差异",
+        "知识蒸馏：软标签与中间特征蒸馏",
+        "PTQ（训练后量化）与 QAT（量化感知训练）的精度差距",
+        "INT8/FP8/INT4 的位宽与硬件支持矩阵",
+        "ONNX 导出与算子兼容性问题排查",
+        "TensorRT/ONNX Runtime 的推理加速流程",
+        "压缩后的回归评测集设计与容差标准"
+      ],
+      "tip": "先跑 PTQ 看掉点是否在可接受范围，不够再升级 QAT——按成本从低到高逐级尝试。"
+    }
+  ],
+  "projects": [
+    "CIFAR-10 图像分类：从零实现 CNN 与 ResNet，配合数据增强与余弦学习率达到 90%+ 准确率",
+    "猫狗识别（小数据迁移学习）：冻结 ImageNet 预训练骨干，在几百张图上微调并对比三种策略",
+    "电影评论情感分析：用 Embedding + LSTM 与简单 Transformer 各实现一版并对比",
+    "MNIST 手写数字识别：纯 PyTorch 手写前向、反向与 SGD，不依赖高层封装",
+    "迷你 Attention 可视化：实现缩放点积注意力并在短句上画注意力热力图",
+    "优化器对比实验：同一模型上对比 SGD/Adam/AdamW × 三种学习率调度，绘制收敛曲线并写分析报告",
+    "模型压缩流水线：把一个训练好的模型依次做剪枝、蒸馏、INT8 量化，输出压缩率-精度对照表"
+  ],
+  "pitfalls": [
+    "忘记 model.eval() 或忘了 torch.no_grad()，导致 Dropout/BatchNorm 行为错误、验证结果全乱",
+    "train/val 的 DataLoader 都开了 shuffle，或增强变换误用到了验证集",
+    "数据没有做归一化或均值方差不对，网络从一开始就学不动",
+    "loss 不降时只会「换更大的模型」，而不先检查学习率、标签格式和梯度范数",
+    "在小数据集上从零训练大网络，而不用迁移学习白白浪费算力",
+    "把 BatchNorm 用于 batch 极小的场景或 LLM，统计噪声导致性能抖动却以为是数据问题",
+    "量化/剪枝后只看精度报告里的平均值，没测最坏情况延迟与长尾样本掉点"
+  ]
+}

@@ -1,0 +1,109 @@
+---
+title: "广度优先搜索 BFS"
+level: 6
+order: 6
+duration: 120
+unit: "搜索算法"
+difficulty: 进阶
+goals:
+  - "理解 BFS「一层一层扩散」的搜索思想与队列的关系"
+  - "掌握 BFS 框架并用它求迷宫最短路"
+  - "掌握二叉树的层序遍历"
+---
+
+import Check from '../../../components/Check.astro';
+import Task from '../../../components/Task.astro';
+import Reveal from '../../../components/Reveal.astro';
+
+
+## 1. 从传纸条到水波纹
+上课想借块橡皮，DFS 是把纸条一个人一个人往深处传；而 BFS 的做法是：**你同时问左右同桌，同桌再同时问他们的同桌**——像水面扔进石子的涟漪，一圈一圈向外扩散。这就是**广度优先搜索（BFS，Breadth-First Search）**，也叫宽度优先搜索。
+
+BFS 有一个 DFS 比不了的超能力：**第一次到达某个状态时，走过的步数一定是最少的**。涟漪先扫到的地方必然离中心最近——所以**求「最少步数」「最短距离」类问题，首选 BFS**。
+
+## 2. 队列：BFS 的好搭档
+BFS 怎么做到「一圈一圈」？答案是**队列**（第 10 课会细讲）：把待处理的结点排成一队，处理队头时把它的新邻居按顺序排到队尾。先进先出，保证**离起点近的永远先被处理**。
+
+框架背下来：
+```cpp
+队列 q;
+q.push(起点); dist[起点] = 0;
+while (q 不空) {
+    取出队头 u，出队;
+    for (u 的每个邻居 v)
+        if (v 没访问过) {
+            dist[v] = dist[u] + 1;   // 比 u 远一步
+            q.push(v);
+        }
+}
+```
+
+## 3. 例题：迷宫最短路
+上一课用 DFS 判断迷宫「有没有出路」，如果还要问「最少走几步」，DFS 要枚举所有路径再比大小，而 BFS 天然一步到位：第一圈扩散到距离 1 的格子，第二圈距离 2……**第一次碰到出口时，当时的距离就是答案**。
+
+```cpp
+#include <iostream>
+#include <queue>
+using namespace std;
+char g[25][25];
+int dist[25][25], n, m;
+int dx[4] = {-1, 1, 0, 0}, dy[4] = {0, 0, -1, 1};
+int bfs() {
+    queue<int> qx, qy;
+    qx.push(1); qy.push(1); dist[1][1] = 0;
+    while (!qx.empty()) {
+        int x = qx.front(), y = qy.front();
+        qx.pop(); qy.pop();
+        if (x == n && y == m) return dist[x][y];
+        for (int k = 0; k < 4; k++) {
+            int nx = x + dx[k], ny = y + dy[k];
+            if (nx >= 1 && nx <= n && ny >= 1 && ny <= m
+                && g[nx][ny] == '.' && dist[nx][ny] == -1) {
+                dist[nx][ny] = dist[x][y] + 1;
+                qx.push(nx); qy.push(ny);
+            }
+        }
+    }
+    return -1;   // 到不了
+}
+```
+dist 数组初始化为 -1，一箭双雕：既表示「未访问」，又能存距离。
+
+<Check question="用 BFS 求迷宫最短路时，为什么第一次到达出口的距离就是最少步数？" options={['因为 BFS 运气总是最好','因为队列保证距离近的格子先被扩展，出口第一次被扫到时不可能有更短路径','因为 DFS 太慢','因为出口在地图角落']} answer={1} explanation="BFS 按距离一圈圈扩散，距离为 d 的格子全部出队后才会扩展距离为 d+1 的格子。所以第一次抵达出口时，不存在还没被处理的更短路径，答案最优。" />
+
+## 4. 二叉树的层序遍历
+BFS 在树上叫**层序遍历**：从上到下、从左到右逐层访问。用队列实现，出队一个结点就把它的左右孩子排进队尾：
+
+```cpp
+void level(int root) {
+    queue<int> q;
+    q.push(root);
+    while (!q.empty()) {
+        int u = q.front(); q.pop();
+        cout << val[u] << ' ';
+        if (lc[u]) q.push(lc[u]);
+        if (rc[u]) q.push(rc[u]);
+    }
+}
+```
+想想队列里的变化：根先进队；根出队时它的两个孩子入队；左孩子出队时孙子入队……完美复刻「一层一层」的访问顺序。给完全二叉树（数组存储）做层序遍历更简单：**直接从下标 1 循环输出到 n 就是层序序列**。
+
+> 教学提醒：层序遍历是「BFS + 队列」最经典的练习题，务必让学生徒手模拟一遍队列的入队出队过程，理解「为什么队列天然保证了分层」。讲透这一点，后面二叉树搜索、最短路的题都能迁移。
+
+## 5. 动手：魔方转盘的步数
+<Check question="用队列实现 BFS 时，队列的什么特性保证了「一圈一圈」逐层扩展？" options={['先进先出：先发现的（离起点近的）结点先被处理','后进先出','随机出队','容量大']} answer={0} explanation="队列先进先出：起点先入队，处理它时把距离 1 的邻居排到队尾；这些邻居先于距离 2 的结点被处理，扩散次序自然按距离分层。换成栈就变成 DFS 了。" />
+
+<Task title="最少按几次" input="一个三位数密码锁的初始状态 000 和目标状态，每次可以按其中一个数位让它加 1（9 再加变 0）。求最少按几次到达目标" output="最少按键次数" sampleIn="019" sampleOut="10">从 000 开始 BFS：每次状态有 3 种「按法」（三个数位各加一），用队列一层层扩散，第一次到达目标时的层数就是答案。</Task>
+<Reveal label="查看参考程序与思路"><pre><code>{`#include <iostream>\n#include <queue>\n#include <cstring>\nusing namespace std;\nint dist[1005];\nint bfs(int target){\n    memset(dist, -1, sizeof(dist));\n    queue<int> q;\n    q.push(0); dist[0] = 0;\n    while(!q.empty()){\n        int s = q.front(); q.pop();\n        if(s == target) return dist[s];\n        int p[3] = {s/100, (s/10)%10, s%10};\n        for(int i = 0; i < 3; i++){\n            int t[3] = {p[0], p[1], p[2]};\n            t[i] = (t[i] + 1) % 10;\n            int ns = t[0]*100 + t[1]*10 + t[2];\n            if(dist[ns] == -1){\n                dist[ns] = dist[s] + 1;\n                q.push(ns);\n            }\n        }\n    }\n    return -1;\n}\nint main(){\n    int t; cin>>t;\n    cout<<bfs(t)<<'\\n';\n}`}</code></pre>状态用三位数整数表示，拆成三个数位分别加一（模 10 处理 9 变 0）再拼回新状态。dist 数组兼作「是否访问」和「距离」两种用途。样例 019：百位按 1 次、个位按 9 次，共 10 次，BFS 逐层扩展正好在距离 10 处首次到达。</Reveal>
+
+## 6. DFS 还是 BFS？选型口诀
+- **问「能不能到」「所有方案」「连通块」** → DFS，代码短，回溯顺手。
+- **问「最少步数」「最短距离」「第几层」** → BFS，队列一圈圈扩散，天然最优。
+- 空间上 DFS 只存一条路径（省内存），BFS 要把整圈存进队列（费内存）。**时间都是每个状态处理一次**，选谁主要看题目问什么。
+
+## 7. 课后巩固
+1. 概念题：用「传纸条」类比写出 BFS 和 DFS 的区别（从扩展顺序和适用问题两方面）。
+2. 模拟题：对一棵 5 个结点的完全二叉树（数组存储），徒手写出层序遍历时队列的逐轮内容。
+3. 编程题：读入二叉树（左右孩子数组表示），输出层序遍历序列。
+4. 思考题：迷宫最短路里，如果把每个格子的「上下左右走一格」改成「有的路走 2 分钟、有的走 5 分钟」，BFS 还成立吗？为什么？
+5. 挑战题：用 BFS 求迷宫最短路并输出一条具体路线（记录每个格子是从哪个格子走过来的）。

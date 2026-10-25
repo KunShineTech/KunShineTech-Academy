@@ -1,0 +1,219 @@
+{
+  "roadmap": [
+    {
+      "stage": "所有权与借用",
+      "focus": "攻克 Rust 最核心的概念：所有权、借用与生命周期，理解编译期内存安全的思想。",
+      "topics": ["所有权三规则", "move 与 Copy/Clone", "借用与可变借用", "切片与字符串", "栈与堆"]
+    },
+    {
+      "stage": "结构体、枚举与模式匹配",
+      "focus": "用 struct 与 enum 建模数据，用 match 穷尽匹配表达复杂分支，体会 Rust 表达力。",
+      "topics": ["struct 三种形态", "enum 与 Option", "match 模式匹配", "if let 与 let else", "方法与 impl 块"]
+    },
+    {
+      "stage": "错误处理",
+      "focus": "掌握 Result 与 Option 的错误表达哲学，用 ? 运算符传播错误，告别异常思维。",
+      "topics": ["Result 与 ? 运算符", "panic! 的边界", "unwrap 的取舍", "自定义错误与 thiserror", "错误转换 From"]
+    },
+    {
+      "stage": "trait、泛型与生命周期",
+      "focus": "学习 trait 抽象行为、泛型与生命周期标注，写出复用性强且零成本抽象的代码。",
+      "topics": ["trait 定义与实现", "trait bound 与 impl Trait", "泛型单态化", "生命周期标注", "常用标准 trait"]
+    },
+    {
+      "stage": "并发安全与项目实战",
+      "focus": "用所有权模型写出无数据竞争的并发代码，熟悉 cargo 工具链并完成真实项目。",
+      "topics": ["线程与 move 闭包", "Send 与 Sync", "channel 消息传递", "Mutex 共享状态", "cargo 工作流"]
+    },
+    {
+      "stage": "工程化与生态进阶",
+      "focus": "掌握智能指针、异步编程与宏的基础，了解 crates.io 发布流程，进入真实 Rust 生态。",
+      "topics": ["Box、Rc 与 RefCell", "async/await 与 tokio", "macro_rules! 宏基础", "crate 发布", "典型应用方向"]
+    }
+  ],
+  "modules": [
+    {
+      "name": "所有权与借用",
+      "summary": "Rust 用所有权系统在编译期保证内存安全：每个值有唯一所有者，离开作用域自动释放；借用允许临时只读或独占访问。为什么重要：这是 Rust 与所有其他语言最大的区别，也是「敢写系统级代码」的底气。怎么学：反复练习 move 语义，直到能预测编译器为何报错。",
+      "points": [
+        "三条规则：每个值有且仅有一个所有者；所有者离开作用域值被释放；同一时刻只能有一个可变引用或多个不可变引用",
+        "赋值与传参会转移所有权（move），不是浅拷贝",
+        "Clone trait 显式深拷贝，Copy trait 标记可隐式拷贝的小类型",
+        "&T 不可变借用、&mut T 可变借用，借用期间所有权不能转移",
+        "悬垂引用在编译期被禁止，借用的生命周期不会长于所有者",
+        "字符串字面量 &str 与堆分配 String 的关系是理解借用的经典案例",
+        "NLL（非词法生命周期）让借用检查以使用情况而非代码块为准",
+        "函数返回值的所有权设计决定调用方的使用方式，签名即文档"
+      ],
+      "tip": "把编译器的所有权报错当免费老师：每条 borrow checker 错误都在教你内存何时该被释放。"
+    },
+    {
+      "name": "结构体、枚举与模式匹配",
+      "summary": "struct 组织数据，enum 表达「是这些可能之一」的类型，match 强制穷尽显式处理每种情况。为什么重要：enum + match 让「非法状态不可表示」成为可能，错误在编译期暴露而非运行期爆炸。怎么学：把 if/else 链改写成 match，体会穷尽的安心。",
+      "points": [
+        "struct 有具名字段、无名字段元组、单元三种形态",
+        "impl 块定义方法，&self、&mut self 与 self 三种接收者语义",
+        "enum 变体可以携带数据：Option<T>、Result<T, E> 都是普通枚举",
+        "match 必须覆盖所有分支，编译器强制检查穷尽性",
+        "通配符 _ 处理剩余分支，if let 与 let else 是单分支简写",
+        "模式匹配可解构结构体、枚举、元组与嵌套组合",
+        "match 的守卫条件 when 子句给分支加额外判断",
+        "std::mem 的 replace/take 在 match 中优雅取出字段所有权"
+      ],
+      "tip": "建模时多问「非法状态能不能用类型表达掉」，这是 Rust 设计的进阶思维。"
+    },
+    {
+      "name": "错误处理哲学",
+      "summary": "Rust 没有异常：可恢复错误用 Result<T, E> 显式返回，不可恢复用 panic! 直接终止。为什么重要：错误类型出现在函数签名里，调用方不可能「忘记处理」，编译器盯着每一处 ? 与 match。怎么学：习惯给返回 Result 的函数加 ? 传播错误，并理解它的自动转换机制。",
+      "points": [
+        "Result<T, E> 的 Ok/Err 两变体对应成功与失败",
+        "? 运算符：遇到 Err 自动返回并把错误转换为目标错误类型",
+        "From trait 让 ? 自动做错误类型转换",
+        "unwrap/expect 用于原型与确定不会出错处，expect 可定制 panic 信息",
+        "panic! 会展开栈或立即中止，不应作为常规错误处理",
+        "thiserror 定义自定义错误、anyhow 快速组装应用错误是社区主流",
+        "Option 与 Result 的 map/and_then 组合子链式处理",
+        "catch_unwind 捕获 panic 是测试与 FFI 边界的特殊手段"
+      ],
+      "tip": "库代码用 thiserror 定义精确错误类型，应用代码用 anyhow 一把梭，各司其职。"
+    },
+    {
+      "name": "trait 与泛型",
+      "summary": "trait 定义共享行为，可被多种类型实现；泛型配合 trait bound 在编译期生成具体代码，零运行时开销。为什么重要：这是 Rust 抽象与复用的支柱，标准库与第三方库都建立其上。怎么学：先模仿标准库的 Iterator、Display 等常用 trait 用法，再自己定义。",
+      "points": [
+        "trait 类似接口，但可为已有类型实现（受孤儿规则约束）",
+        "trait bound 约束泛型参数必须具备的行为：fn f<T: Display>(x: T)",
+        "impl Trait 在函数参数与返回值位置做抽象",
+        "关联类型让 trait 绑定一个输出类型（如 Iterator::Item）",
+        "泛型单态化：编译期为每个用到的类型生成专用代码，无装箱开销",
+        "常用 trait：Debug、Display、Clone、Copy、Drop、Iterator",
+        "默认方法与继承 trait 让 trait 体系可以逐层扩展",
+        "dyn Trait 动态分发与泛型静态分发的取舍：灵活还是快"
+      ],
+      "tip": "写泛型前先写具体类型的版本，再把重复出现的类型抽象为泛型参数。"
+    },
+    {
+      "name": "集合与字符串",
+      "summary": "Vec、HashMap、String 是三大常用类型，API 与迭代器深度结合，链式调用是 Rust 的日常风格。为什么重要：日常编程 80% 的操作围绕它们展开。怎么学：配合迭代器的 map/filter/collect 链式调用熟悉集合 API，理解三种迭代方式的差异。",
+      "points": [
+        "Vec<T> 动态数组，push/insert/remove，索引越界会 panic",
+        "HashMap<K, V> 哈希表，get 返回 Option<&V>",
+        "String 是堆分配可变字符串，&str 是字符串切片视图",
+        "迭代器适配器 map/filter/take 是惰性的，collect 才执行",
+        "entry API 优雅处理「不存在则插入」，避免二次哈希",
+        "iter()、iter_mut()、into_iter() 三种迭代方式的区别",
+        "String 的 push_str、format! 与 &str 的拼接规则",
+        "sort_by_key 与 sort_unstable_by 的性能差异场景"
+      ],
+      "tip": "String 与 &str 的转换写多了会乱：记住「需要拥有才 String，只看一眼就 &str」。"
+    },
+    {
+      "name": "并发与共享状态",
+      "summary": "Rust 用 Send/Sync trait 把「线程安全」变成类型问题：不能安全跨线程的类型根本编译不过。为什么重要：数据竞争在编译期被消灭，并发编程的安全性由类型系统担保，这是 Rust 最著名的卖点。怎么学：从 spawn + channel 消息传递入手，再接触 Mutex 共享内存。",
+      "points": [
+        "thread::spawn 启动线程，join 等待结束并接收返回值",
+        "闭包用 move 转移捕获变量的所有权进线程",
+        "mpsc channel 多生产者单消费者消息传递",
+        "Mutex<T> 互斥锁，锁保护的数据与锁绑定在一起",
+        "Arc<T> 原子引用计数实现多线程共享所有权",
+        "Send 标记可跨线程转移所有权，Sync 标记可跨线程共享引用",
+        "scoped thread（Rust 1.63+）借用栈数据spawn线程",
+        "RwLock 读写锁与 OnceLock/LazyLock 的初始化场景"
+      ],
+      "tip": "遇到 Mutex<RefCell> 之类的组合先停一下：Arc<Mutex<T>> 覆盖了绝大多数多线程共享场景。"
+    },
+    {
+      "name": "cargo 与工具链",
+      "summary": "cargo 是 Rust 的一体化工具：新建、构建、运行、测试、文档、发布全部一条命令。为什么重要：工具链的完整性是 Rust 生态快速发展的隐形功臣，也是它对比 C++ 的明显体验优势。怎么学：把每个练习都建成 cargo 项目，熟悉 Cargo.toml 的配置。",
+      "points": [
+        "cargo new / build / run / test / doc / publish 工作流",
+        "Cargo.toml 声明依赖与元数据，Cargo.lock 锁定版本保证可复现",
+        "crates.io 官方包仓库，docs.rs 自动托管文档",
+        "features 特性开关控制条件编译依赖",
+        "workspace 组织多 crate 大型项目",
+        "rustfmt 格式化、clippy 静态检查、rust-analyzer 编辑器支持",
+        "cargo add 搜索并添加依赖，cargo update 升级锁文件",
+        "语义化版本与 caret 要求的依赖声明语法"
+      ],
+      "tip": "cargo clippy 的警告含金量极高，比许多代码评审意见还专业。"
+    },
+    {
+      "name": "测试、文档与调试",
+      "summary": "Rust 把测试内建进语言：单元测试、集成测试、文档测试三种形态；doc comment 自动生成文档。为什么重要：文档测试保证示例代码永远可运行，这是 Rust 文档质量极高的结构性原因。怎么学：为公开函数写 /// 示例，跑 cargo test 看文档测试执行。",
+      "points": [
+        "tests 模块内的 #[test] 函数是单元测试，同文件私有访问",
+        "tests/ 目录放集成测试，只测公开 API",
+        "文档测试 ```rust 代码块随 cargo test 一起运行",
+        "#[should_panic] 测试 panic 场景与预期消息",
+        "assert_eq!/assert! 宏与自定义失败信息格式",
+        "dbg! 宏快速打印并返回表达式值",
+        "println! 搭配 {:?} 与 {:#?} 调试格式化",
+        "proptest/fuzzing 属性测试自动生成随机用例"
+      ],
+      "tip": "公开 API 都写文档测试示例：既教用户怎么用，又防代码改动弄坏例子。"
+    },
+    {
+      "name": "生命周期标注与智能指针",
+      "summary": "当编译器无法自动推断引用关系时需要显式生命周期标注；Box、Rc、RefCell 等智能指针在编译规则内提供更灵活的内存模式。为什么重要：生命周期标注是读懂错误信息与进阶代码的门槛，智能指针则是绕过部分所有权限制的标准工具。怎么学：从 &'a str 标注开始，逐个用 Box/Rc/RefCell 解决一个真实建模问题。",
+      "points": [
+        "生命周期标注描述引用之间的关系而非改变生命周期",
+        "函数签名 'a 标注保证返回值不短于参数",
+        "结构体持有引用时必须标注生命周期：struct Foo<'a> { x: &'a str }",
+        "Box<T> 堆分配单一所有权，递归类型的必备",
+        "Rc<T> 单线程共享所有权，clone 增加计数",
+        "RefCell<T> 运行期借用检查，配合 Rc 实现内部可变性",
+        "Weak<T> 打破 Rc 循环引用",
+        "常见组合：Rc<RefCell<T>> 单线程图结构、Arc<Mutex<T>> 多线程共享"
+      ],
+      "tip": "生命周期标注读作「至少活这么久」，它们只描述关系，从不会延长任何变量的生命。"
+    },
+    {
+      "name": "异步编程初探",
+      "summary": "Rust 用 async/await 语法配合 Future trait 表达异步，tokio 是最主流的异步运行时。为什么重要：网络服务与高性能 IO 离不开异步，这是 Rust 进军 Web 后端的关键能力。怎么学：先写一个 tokio 并发请求多个 URL 的程序，理解运行时与 .await 的关系。",
+      "points": [
+        "async fn 返回实现了 Future 的类型，调用本身不执行",
+        ".await 挂起点，让出线程而不阻塞",
+        "tokio 是异步运行时：调度器、定时器与 IO 驱动",
+        "#[tokio::main] 宏启动运行时",
+        "tokio::spawn 异步任务，JoinHandle 等待结果",
+        "tokio::select! 并发等待多个异步分支",
+        "mpsc 与 oneshot channel 在异步任务间传消息",
+        "Reqwest 异步 HTTP 客户端是最常见的练手依赖"
+      ],
+      "tip": "先会用 tokio 写并发任务，再回头理解 Future 轮询原理，顺序反了容易劝退。"
+    },
+    {
+      "name": "宏与典型应用方向",
+      "summary": "macro_rules! 提供声明式宏在编译期展开代码，过程宏则是 derive 背后的机制；Rust 的应用方向也正从系统编程扩展到 Web、CLI 与 WASM。为什么重要：println!、vec!、#[derive] 无处不在，理解宏才能看懂一半的标准库；选对方向则让学习动力最大化。怎么学：先会用 vec! 与 vec![x; n] 这类宏，再尝试写一个简单的 macro_rules! 递归宏。",
+      "points": [
+        "macro_rules! 声明式宏按模式匹配展开",
+        "vec!、println!、format! 都是宏而非函数",
+        "#[derive(Debug, Clone)] 过程宏自动生成 trait 实现",
+        "println! 的花括号 {} 与 {:?} 对应 Display 与 Debug",
+        "CLI 工具：clap 解析参数，Rust 单二进制分发极方便",
+        "Web 后端：Axum/Actix-web + tokio 异步运行时",
+        "WebAssembly：编译到 WASM 在浏览器或边缘运行",
+        "FFI：与 C 库互操作，接管旧系统的高风险模块"
+      ],
+      "tip": "先做一个命令行小工具发布到 crates.io，完整体验「写-测-文档-发布」闭环。"
+    }
+  ],
+  "projects": [
+    "命令行猜数字与计算器：熟悉所有权、Result 与 cargo 项目结构",
+    "学生成绩管理器：用 struct、Vec、HashMap 建模，文件 JSON 持久化，练习错误传播",
+    "grep 迷你版：读取文件按正则匹配输出行，体验迭代器与 trait（模仿 ripgrep 的雏形）",
+    "多线程下载器：channel 分发任务、Arc<Mutex> 汇总进度，理解并发安全约束",
+    "Web API 服务：Axum 提供 REST 接口并接入 SQLite，异步处理请求与数据库错误",
+    "文件系统爬虫：Rc<RefCell> 建模目录树，亲手体验引用计数的循环引用与 Weak 解法",
+    "tokio 并发抓取器：异步并发请求多个 URL，对比串行与并行的耗时并分析"
+  ],
+  "pitfalls": [
+    "与 borrow checker 硬刚：编译不通过就换思路——克隆一份、改成引用、或调整所有权结构，别在原地打转",
+    "到处 unwrap/expect：网络、文件、用户输入都可能失败，应返回 Result 并让 ? 传播",
+    "在循环中借用集合后还向它 push：push 可能触发扩容导致引用失效，可改用索引或先收集再修改",
+    "把 panic! 当异常用：panic 不可恢复，业务错误应走 Result",
+    "以为 Rc 可以跨线程：Rc 非线程安全，多线程共享必须 Arc（编译器会拦下，但初学者常困惑报错原因）",
+    "在 async fn 里用 std::sync::Mutex 长时间持锁阻塞线程：异步代码应使用 tokio::sync::Mutex",
+    "结构体里存了引用却想返回它：生命周期标注描述关系，返回引用受最短输入寿命限制，常需改为返回克隆或拥有值"
+  ]
+}

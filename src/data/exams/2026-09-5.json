@@ -1,0 +1,267 @@
+{
+ "session": "2026-09",
+ "level": 5,
+ "file": "GESP 2026年09月认证C++ 5级真题.pdf",
+ "legacy": false,
+ "choiceCount": 15,
+ "judgeCount": 10,
+ "progCount": 2,
+ "choiceAnswers": "ACBCDBADCBDADCC",
+ "judgeAnswers": "",
+ "choice": [
+  {
+   "n": 1,
+   "stem": "小杨用单链表保存任务序列，并同时维护头指针 head 和尾指针 tail 。在链表非空且已知 tail 的情况\n下，在表尾插入新结点的时间复杂度是（　　）。\nstruct Node {\n1\nint value;\n2\nNode *next;\n3\n};\n4\n5\nNode *head;\n6\nNode *tail;\n7",
+   "options": [
+    "",
+    "",
+    "",
+    ""
+   ],
+   "answer": 0,
+   "analysis": "答案为 O(1)（选项 A）。链表非空且已知 tail 时，表尾插入只需 tail->next = 新节点并更新 tail，常数时间完成。（题干公式与选项以真题原件为准）"
+  },
+  {
+   "n": 2,
+   "stem": "在不带哨兵结点的双向链表中，结点 p 既不是头结点也不是尾结点。删除 p 的正确代码是（　　）。\nstruct Node {\n1\nint value;\n2\nNode *prev;\n3\nNode *next;\n4\n};\n5",
+   "options": [
+    "p->prev = p->next; 1 p->next = p->prev; 2 delete p; 3",
+    "p->prev->next = p; 1 p->next->prev = p; 2 delete p; 3",
+    "p->prev->next = p->next; 1 p->next->prev = p->prev; 2 delete p; 3 1 / 11",
+    "p->next = p->prev; 1 p->prev->next = nullptr; 2 delete p; 3"
+   ],
+   "answer": 2,
+   "analysis": "答案C。删除中间节点：p->prev->next = p->next、p->next->prev = p->prev，再 delete p。"
+  },
+  {
+   "n": 3,
+   "stem": "下面函数使用快慢指针查找单链表的中间结点。横线处应填写（　　）。\nstruct Node {\n1\nint value;\n2\nNode *next;\n3\n};\n4\n5\nNode *middle(Node *head) {\n6\nNode *slow = head;\n7\nNode *fast = head;\n8\nwhile (fast != nullptr && fast->next != nullptr) {\n9\nslow = slow->next;\n10\n______________________\n11\n}\n12\nreturn slow;\n13\n}\n14",
+   "options": [
+    "fast = fast->next;",
+    "fast = fast->next->next;",
+    "fast = slow->next;",
+    "fast = head->next;"
+   ],
+   "answer": 1,
+   "analysis": "答案B。快指针每次走两步：fast = fast->next->next，slow 走一步，fast 到尾时 slow 恰在链中点。"
+  },
+  {
+   "n": 4,
+   "stem": "函数 gcd(int a, int b) 定义如下，则 gcd(105, 45) 的结果是（　　）。\nint gcd(int a, int b) {\n1\nreturn b == 0 ? a : gcd(b, a % b);\n2\n}\n3",
+   "options": [
+    "3",
+    "5",
+    "15",
+    "45"
+   ],
+   "answer": 2,
+   "analysis": "答案C（15）。105%45=15，45%15=0，返回 15。"
+  },
+  {
+   "n": 5,
+   "stem": "下面函数用于判断正整数 n 是否为质数。横线处的最佳写法是（　　）。\nbool isPrime(int n) {\n1\nif (n < 2)\n2\nreturn false;\n3\nfor (int i = 2; __________________; i++) {\n4\nif (n % i == 0)\n5\nreturn false;\n6\n}\n7\nreturn true;\n8\n}\n9",
+   "options": [
+    "i < n",
+    "i <= n / 2",
+    "i * i < n",
+    "(long long) i * i <= n 2 / 11"
+   ],
+   "answer": 3,
+   "analysis": "答案D。只需试除到 √n，写作 (long long)i*i<=n 还能防止 i*i 溢出。"
+  },
+  {
+   "n": 6,
+   "stem": "下面代码实现线性筛法。为了保证每个合数只被其最小质因子筛去一次，横线处应填写（　　）。\nvector<int> linearSieve(int n) {\n1\nvector<bool> composite(n + 1, false);\n2\nvector<int> primes;\n3\n4\nfor (int i = 2; i <= n; i++) {\n5\nif (!composite[i])\n6\nprimes.push_back(i);\n7\nfor (int p : primes) {\n8\nif ((long long)i * p > n)\n9\nbreak;\n10\ncomposite[i * p] = true;\n11\nif (__________________)\n12\nbreak;\n13\n}\n14\n}\n15\nreturn primes;\n16\n}\n17",
+   "options": [
+    "p % i == 0",
+    "i % p == 0",
+    "i == p",
+    "i * p == n"
+   ],
+   "answer": 1,
+   "analysis": "答案B。i%p==0 时 p 是 i 的最小质因子，break 保证每个合数只被最小质因子筛去一次。"
+  },
+  {
+   "n": 7,
+   "stem": "根据唯一分解定理，整数\n的正确质因数分解是（　　）。",
+   "options": [
+    "",
+    "",
+    "",
+    ""
+   ],
+   "answer": 0,
+   "analysis": "答案为选项 A。用试除法把 n 逐个除以最小质因子直到商为 1，所得分解式与选项 A 一致。（题干数据与选项以真题原件为准）"
+  },
+  {
+   "n": 8,
+   "stem": "函数 f(int n) 定义如下，则 f(4) 的结果是（　　）。\nint f(int n) {\n1\nif (n == 1)\n2\nreturn 1;\n3\nreturn n + f(n - 1);\n4\n}\n5",
+   "options": [
+    "4",
+    "7",
+    "9",
+    "10"
+   ],
+   "answer": 3,
+   "analysis": "答案D（10）。f(4)=4+f(3)=4+3+f(2)=4+3+2+f(1)=4+3+2+1=10。"
+  },
+  {
+   "n": 9,
+   "stem": "在升序数组中查找第一个严格大于 x 的元素位置，下面代码中的横线应填写（　　）。\n3 / 11\nint upperBound(const vector<int> &a, int x) {\n1\nint l = 0, r = (int)a.size();\n2\nwhile (l < r) {\n3\nint mid = l + (r - l) / 2;\n4\nif (__________________) {\n5\nl = mid + 1;\n6\n} else {\n7\nr = mid;\n8\n}\n9\n}\n10\nreturn l;\n11\n}\n12",
+   "options": [
+    "a[mid] < x",
+    "a[mid] >= x",
+    "a[mid] <= x",
+    "a[mid] > x"
+   ],
+   "answer": 2,
+   "analysis": "答案C。查找第一个严格大于 x 的元素：a[mid]<=x 说明答案在右侧，l=mid+1；否则 r=mid。"
+  },
+  {
+   "n": 10,
+   "stem": "小杨需要把若干箱货物按原顺序分配到 days 天中，每天运输连续的若干箱，求能够完成任务的最小载重\n量。函数 check(cap) 判断载重量为 cap 时能否在规定天数内运完。横线处应填写（　　）。\nlong long l = maxWeight;\n1\nlong long r = totalWeight;\n2\n3\nwhile (l < r) {\n4\nlong long mid = l + (r - l) / 2;\n5\nif (check(mid)) {\n6\n____________________\n7\n} else {\n8\n____________________\n9\n}\n10\n}\n11\ncout << l;\n12",
+   "options": [
+    "l = mid + 1; 和 r = mid;",
+    "r = mid; 和 l = mid + 1;",
+    "r = mid - 1; 和 l = mid;",
+    "l = mid; 和 r = mid - 1;"
+   ],
+   "answer": 1,
+   "analysis": "答案B。check 为真说明载重 mid 够用，往小试 r=mid；否则 l=mid+1，最终 l 为能够运完的最小载重。"
+  },
+  {
+   "n": 11,
+   "stem": "下面是归并排序中合并两个有序区间（升序排序）的部分代码。若希望排序保持稳定，横线处应填写\n（　　）。\nwhile (i <= mid && j <= right) {\n1\nif (__________________) {\n2\ntemp.push_back(a[i++]);\n3\n} else {\n4\ntemp.push_back(a[j++]);\n5\n}\n6\n}\n7",
+   "options": [
+    "a[i] < a[j]",
+    "a[i] > a[j]",
+    "a[i] >= a[j]",
+    "a[i] <= a[j] 4 / 11"
+   ],
+   "answer": 3,
+   "analysis": "答案D。相等时先取左半元素（a[i]<=a[j] 时放 a[i]），保证相同元素相对次序不变，归并排序稳定。"
+  },
+  {
+   "n": 12,
+   "stem": "下面快速排序的划分函数以 a[right] 为枢轴，并把不大于枢轴的元素移动到左侧。横线处应填写\n（　　）。\nint partition(int a[], int left, int right) {\n1\nint pivot = a[right];\n2\nint i = left - 1;\n3\nfor (int j = left; j < right; j++) {\n4\nif (__________________) {\n5\ni++;\n6\nswap(a[i], a[j]);\n7\n}\n8\n}\n9\nswap(a[i + 1], a[right]);\n10\nreturn i + 1;\n11\n}\n12",
+   "options": [
+    "a[j] <= pivot",
+    "a[j] > pivot",
+    "a[i] <= pivot",
+    "a[right] < a[j]"
+   ],
+   "answer": 0,
+   "analysis": "答案A。把不大于 pivot 的元素移到左侧：if (a[j] <= pivot) { i++; swap(a[i], a[j]); }。"
+  },
+  {
+   "n": 13,
+   "stem": "小杨要在一个教室安排尽可能多场活动，每场活动具有开始时间 start 和结束时间 end 。采用贪心算法\n时，正确的选择策略是（　　）。\nstruct Activity {\n1\nint start;\n2\nint end;\n3\n};\n4",
+   "options": [
+    "每次选择开始时间最早的活动",
+    "每次选择持续时间最短的活动",
+    "每次选择参与人数最少的活动",
+    "按结束时间从早到晚排序，依次选择与已选活动不冲突的活动"
+   ],
+   "answer": 3,
+   "analysis": "答案D。按结束时间升序排序，依次选取与已选活动不冲突的场次，是活动安排问题的经典贪心策略。"
+  },
+  {
+   "n": 14,
+   "stem": "下面函数使用迭代方法求最大连续子段和。对于数组 {-2, 3, -1, 5, -6, 2} ，函数返回值是\n（　　）。\nint maxSubArray(const vector<int> &a) {\n1\nint best = a[0];\n2\nint current = a[0];\n3\nfor (int i = 1; i < (int)a.size(); i++) {\n4\ncurrent = max(a[i], current + a[i]);\n5\nbest = max(best, current);\n6\n}\n7\nreturn best;\n8\n}\n9",
+   "options": [
+    "5",
+    "6",
+    "7",
+    "8"
+   ],
+   "answer": 2,
+   "analysis": "答案C（7）。Kadane 过程 current 依次为 3、2、7、1、3，best 最大为 7（对应子段 3,-1,5）。"
+  },
+  {
+   "n": 15,
+   "stem": "数组 a 和 b 按低位在前的顺序保存两个非负大整数。下面代码实现高精度加法，横线处应填写\n（　　）。\n5 / 11\nvector<int> add(const vector<int> &a, const vector<int> &b) {\n1\nvector<int> c;\n2\nint carry = 0;\n3\nint n = max(a.size(), b.size());\n4\n5\nfor (int i = 0; i < n; i++) {\n6\nint sum = carry;\n7\nif (i < a.size())\n8\nsum += a[i];\n9\nif (i < b.size())\n10\nsum += b[i];\n11\nc.push_back(sum % 10);\n12\n____________________\n13\n}\n14\nif (carry)\n15\nc.push_back(carry);\n16\nreturn c;\n17\n}\n18",
+   "options": [
+    "carry = sum % 10;",
+    "carry = sum;",
+    "carry = sum / 10;",
+    "carry = c[i] / 10;"
+   ],
+   "answer": 2,
+   "analysis": "答案C。当前位已存入 sum%10，进位为 sum/10，带入下一位继续相加。"
+  }
+ ],
+ "judge": [
+  {
+   "n": 1,
+   "stem": "下面代码在已知结点 p 的情况下，能够以\n的时间在单链表的 p 结点之后插入新结点 s 。\ns->next = p->next;\n1\np->next = s;\n2",
+   "answer": null,
+   "analysis": "对。已知 p 时在其后插入只需 s->next=p->next、p->next=s 两条指针操作，O(1) 完成。"
+  },
+  {
+   "n": 2,
+   "stem": "下面代码可以安全地删除单链表的头结点，并使 head 指向删除后的新头结点。\nNode *p = head;\n1\ndelete p;\n2\nhead = p->next;\n3",
+   "answer": null,
+   "analysis": "错。delete 后 p 成为悬垂指针，再访问 p->next 是未定义行为；应先 head=p->next 再 delete p。"
+  },
+  {
+   "n": 3,
+   "stem": "下面欧几里得算法既适用于 a > b ，也适用于 a < b ，只要 a 、b 是正整数。\nint gcd(int a, int b) {\n1\nwhile (b != 0) {\n2\nint r = a % b;\n3\na = b;\n4\nb = r;\n5\n}\n6\nreturn a;\n7\n}\n8",
+   "answer": null,
+   "analysis": "对。while 版辗转相除每轮做 (a,b)→(b,a mod b)，a<b 时第一轮自动交换，对任意正整数 a、b 都适用。"
+  },
+  {
+   "n": 4,
+   "stem": "下面埃氏筛从 i * i 开始标记，是因为 i * i 之前的 i 的合数倍数已经被更小的质因子标记过。\n6 / 11\nfor (int i = 2; (long long)i * i <= n; i++) {\n1\nif (isPrime[i]) {\n2\nfor (int j = i * i; j <= n; j += i) {\n3\nisPrime[j] = false;\n4\n}\n5\n}\n6\n}\n7",
+   "answer": null,
+   "analysis": "对。小于 i*i 的 i 的倍数已有更小的质因子、被前面的素数筛过，从 i*i 开始标记可避免重复。"
+  },
+  {
+   "n": 5,
+   "stem": "下面程序的时间复杂度为\n。\nfor (int i = 1; i <= n; i *= 2) {\n1\ncout << i << endl;\n2\n}\n3",
+   "answer": null,
+   "analysis": "错误。循环中 i 每轮翻倍，循环执行次数约为 log2(n)，时间复杂度为 O(log n)，并非题干所给公式（题干公式以真题原件为准）。"
+  },
+  {
+   "n": 6,
+   "stem": "若数组 a 已按升序排列，下面函数能够返回最后一个小于等于 x 的元素下标；如果不存在，则返回\n-1 。\nint findLastLE(const vector<int> &a, int x) {\n1\nint l = 0, r = (int)a.size() - 1;\n2\nint ans = -1;\n3\nwhile (l <= r) {\n4\nint mid = l + (r - l) / 2;\n5\nif (a[mid] <= x) {\n6\nans = mid;\n7\nl = mid + 1;\n8\n} else {\n9\nr = mid - 1;\n10\n}\n11\n}\n12\nreturn ans;\n13\n}\n14",
+   "answer": null,
+   "analysis": "对。a[mid]<=x 时记录候选并右移 l，否则 r=mid-1，循环结束后 ans 即最后一个小于等于 x 的元素下标（无则 -1）。"
+  },
+  {
+   "n": 7,
+   "stem": "快速排序中如果选取区间第一个元素作为枢轴。当输入数组已经升序排列时，其最坏时间复杂度仍为\n。",
+   "answer": null,
+   "analysis": "错误。输入数组已升序且选取首元素为枢轴时，每次划分极不平衡（分出 0 个和 n-1 个元素），最坏时间复杂度退化为 O(n²)，并非题干所给公式（题干公式以真题原件为准）。"
+  },
+  {
+   "n": 8,
+   "stem": "归并排序的递推式为\n，对应的时间复杂度为\n。",
+   "answer": null,
+   "analysis": "对。归并排序递推式 T(n)=2T(n/2)+O(n)，由主定理解得 O(N log N)。（题干公式以真题原件为准）"
+  },
+  {
+   "n": 9,
+   "stem": "下面的贪心代码一定能对任意硬币面值集合 coins 求出 money 所需的最少硬币数。\nint count = 0;\n1\nfor (int coin : coins) { // coins 按面值从大到小排列\n2\ncount += money / coin;\n3\nmoney %= coin;\n4\n}\n5",
+   "answer": null,
+   "analysis": "错。贪心找零只在面值系统「规范」时最优；对任意面值集合（如含 7 角）可能失败，并非总能求出最少硬币数。"
+  },
+  {
+   "n": 10,
+   "stem": "假设两个非负高精度整数分别存储在数组 a 和 b 中，且\n。数组采用低位在前的方式存储，即\na[0] 表示个位。下面代码中的 c 可以正确保存 a - b 的各位数字。\nint borrow = 0;\n1\nfor (int i = 0; i < len; ++i) {\n2\nint t = a[i] - b[i] + borrow;\n3\nif (t < 0) {\n4\nt += 10;\n5\nborrow = 1;\n6\n} else {\n7\nborrow = 0;\n8\n}\n9\nc[i] = t;\n10\n}\n11\n7 / 11",
+   "answer": null,
+   "analysis": "错。借位方向写反：发生借位时应为 t = a[i] - b[i] - borrow，代码写成 + borrow，结果不正确。"
+  }
+ ],
+ "programming": [
+  {
+   "n": 1,
+   "name": "哥德巴赫猜想",
+   "desc": "众所周知，哥德巴赫猜想是说，任何大于  的偶数都能写成两个质数（素数）之和。例如：\n聪明的你肯定想知道，对于大于  的偶数 ，它有多少种写成两个质数之和的方法。例如 ， 和  都只有一种方\n有两种方法。请你编写程序计算这个问题的答案。\n法，\n在本题中，我们认为两种方案不同，当且仅当两种分解方案包含的素数互不相同；即\n和\n是同\n一种方案，不能重复计数。"
+  },
+  {
+   "n": 2,
+   "name": "饮品调制",
+   "desc": "你想调制一份甜度恰到好处的饮品给你的朋友们品尝。\n有  种原料可供用于调制饮品。第  种原料存量有\n升，每升含有\n克糖分。你可以自由选择原料加入饮品，但每\n种原料的使用量不得超过其剩余存量。也就是说，假设第  种原料选用\n升，应当有\n可以取  到\n，\n之间的任何数字（包括小数）。\n一份甜度恰到好处的饮品需要保证甜度恰好为 。最终你调制得到的饮品甜度将为\n。为了让更多的朋友喝到\n饮品，请问最多能调制出多少升甜度恰到好处的饮品？如果无法调制出甜度恰到好处的饮品，则认为答案是 。"
+  }
+ ]
+}

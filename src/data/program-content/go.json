@@ -1,0 +1,234 @@
+{
+  "roadmap": [
+    {
+      "stage": "语法基础",
+      "focus": "掌握 Go 的极简语法：强类型、无继承、显式错误值，用 go tool 快速上手第一个程序。",
+      "topics": ["变量与短声明 :=", "基本类型与零值", "if/for/switch 控制流", "函数多返回值", "go run 与 go build"]
+    },
+    {
+      "stage": "结构体与接口",
+      "focus": "用结构体组合数据与方法，理解接口隐式实现的鸭子类型思想，这是 Go 设计的精髓。",
+      "topics": ["struct 与方法", "组合代替继承", "interface 隐式实现", "空接口与类型断言", "值接收者与指针接收者"]
+    },
+    {
+      "stage": "切片、map 与泛型",
+      "focus": "深入切片与 map 的底层行为，掌握 Go 1.18 引入的泛型，写出类型安全且高效的通用代码。",
+      "topics": ["切片共享底层数组", "append 与扩容", "map 无序与并发限制", "泛型类型参数", "约束 constraint"]
+    },
+    {
+      "stage": "goroutine 与 channel 并发",
+      "focus": "掌握 goroutine、channel 与 select，用「通过通信共享内存」的哲学写出安全并发程序。",
+      "topics": ["goroutine 启动与退出", "channel 收发与关闭", "select 多路复用", "WaitGroup 同步", "context 取消"]
+    },
+    {
+      "stage": "错误处理与标准库",
+      "focus": "习惯错误值而非异常的模式，熟练使用错误包装与常用标准库完成任务。",
+      "topics": ["error 接口", "errors.Is 与 As", "panic 与 recover", "net/http", "JSON 编解码与结构体标签"]
+    },
+    {
+      "stage": "性能分析与工程进阶",
+      "focus": "用 pprof 与 trace 定位性能瓶颈，熟悉测试基准与常用第三方生态，走向云原生微服务开发。",
+      "topics": ["pprof CPU 与内存分析", "benchmark 基准测试", "测试与覆盖率", "Gin/Gorm 生态概览", "Docker 化部署"]
+    }
+  ],
+  "modules": [
+    {
+      "name": "极简语法与强类型",
+      "summary": "Go 故意砍掉了很多特性：没有类继承、错误不靠异常、语法关键字一只手数得过来。为什么重要：语法包袱极小，团队代码风格天然统一，gofmt 让所有人写出一样的格式。怎么学：体会「少即是多」，对比 Java/C++ 中被砍掉的特性思考语言取舍的哲学。",
+      "points": [
+        ":= 短变量声明只能用于函数内，且左侧至少有一个新变量",
+        "强类型无隐式转换，int 与 int64 是不同类型，需显式转换",
+        "控制结构仅 if/for/switch，for 是唯一的循环关键字",
+        "switch 默认不贯穿（不需要 break），case 可接任意表达式",
+        "函数支持多返回值，(result, error) 是标准约定",
+        "包级标识符首字母大小写决定导出（公开）与否",
+        "零值可用：声明即初始化，int 为 0、string 为 \"\"、指针为 nil",
+        "iota 生成常量枚举序列，配合 const 块定义枚举"
+      ],
+      "tip": "代码写歪了别怪自己：先 gofmt 一下，八成只是格式问题。"
+    },
+    {
+      "name": "结构体与组合",
+      "summary": "struct 聚合字段，方法是挂在类型上的函数；Go 没有继承，用匿名嵌套实现组合。为什么重要：组合让依赖关系显式可见，避免了继承层次失控，也更贴合小接口的设计文化。怎么学：把 C++ 或 Java 的继承练习用 Go 的结构体组合重写一遍。",
+      "points": [
+        "type Point struct { X, Y int } 定义结构体，字段大写导出",
+        "值接收者复制一份、指针接收者 *Point 修改原对象",
+        "方法集规则决定接口由值还是指针实现",
+        "匿名嵌入字段实现组合，被嵌入类型的方法与字段被提升",
+        "new(T) 返回指针，&T{} 字面量创建更常用",
+        "结构体比较：字段全部可比较时支持 == 比较",
+        "嵌入接口与嵌入结构体是实现复用的两种核心手段",
+        "构造函数惯例：用 NewXxx 包级函数返回指针"
+      ],
+      "tip": "不确定用值还是指针接收者时选指针，既高效又能修改原对象，没有意外。"
+    },
+    {
+      "name": "接口与隐式实现",
+      "summary": "接口由使用者定义、类型隐式满足：只要方法集匹配，无需 implements 声明。为什么重要：这是 Go 最独特的设计，让依赖注入与 mock 测试变得极其自然，也是标准库小而美的根基。怎么学：先写调用方需要的接口，再实现具体类型，体会「面向接口编程」的落地方式。",
+      "points": [
+        "interface 是一组方法签名的集合",
+        "隐式实现：struct 无需声明就满足接口，编译期自动检查",
+        "小接口原则：接口越小越好，io.Reader 只有一个 Read 方法",
+        "接口由使用者定义，而非实现者，位于消费方包中",
+        "空接口 interface{}（any 是别名）可持有任意类型，配合类型断言取回",
+        "类型断言 v.(string) 返回 (值, ok) 双返回值，避免 panic",
+        "type switch 一次判断接口的动态类型",
+        "接口的 nil 陷阱：接口值为 nil 但动态类型非 nil 时不等于 nil"
+      ],
+      "tip": "把「面向接口编程」落实到习惯：函数参数尽量接受接口而非具体类型。"
+    },
+    {
+      "name": "切片与 map 深入",
+      "summary": "切片是引用底层数组的视图，append 可能触发扩容与拷贝；map 是无序哈希表，并发读写必须加锁。为什么重要：它们占 Go 日常编码的一半以上，底层行为不理解就会写出诡异的共享修改 bug。怎么学：用 append 共享底层数组的经典案例和并发 map 的 fatal error 亲手复现一次。",
+      "points": [
+        "切片 = 指针 + 长度 + 容量，多个切片可共享同一底层数组",
+        "append 超出容量时重新分配并拷贝，原切片不受影响",
+        "向共享底层数组的切片写入，会互相看到修改",
+        "copy 函数与 full slice expression s[low:high:max] 限制容量",
+        "make([]int, 0, 100) 预分配容量避免反复扩容",
+        "map 迭代顺序随机，不能依赖遍历顺序",
+        "并发读写 map 触发 fatal error，应使用 sync.RWMutex 或 sync.Map",
+        "map 元素不可取地址，struct 值较大时存指针更高效"
+      ],
+      "tip": "传切片给函数前先想清楚：调用方会改我的底层数组吗？不放心就传拷贝。"
+    },
+    {
+      "name": "泛型",
+      "summary": "Go 1.18 引入泛型，类型参数放在方括号中，配合约束（constraint）限制参数能力。为什么重要：它消除了 interface{} 加类型断言的冗长与运行时风险，让通用容器与工具函数类型安全。怎么学：把一个之前用 any 写的通用函数改写成泛型版本，对比可读性。",
+      "points": [
+        "泛型函数 func Min[T comparable](a, b T) T 的声明形式",
+        " comparable 是内置约束，支持 == 与 != 比较",
+        "自定义约束用接口嵌入类型集合：interface { ~int | ~string }",
+        "切片泛型与 map 泛型的零值创建方式",
+        "泛型不能替代所有 interface{}：方法集差异场景仍需接口",
+        "类型推断让大部分调用无需显式写类型实参",
+        "约束里的 ~ 前缀表示底层类型匹配，允许自定义类型的派生",
+        "过度泛化会让代码难读，先写具体版本再抽象"
+      ],
+      "tip": "泛型解决的是「代码重复且类型安全」，不是万金油；能用接口表达优先接口。"
+    },
+    {
+      "name": "错误处理",
+      "summary": "Go 没有 try/catch，函数返回 error 值，调用方显式检查。为什么重要：错误路径与正常路径同样醒目，不存在「异常从哪抛出」的悬念，代价是多写样板代码。怎么学：接受 if err != nil 的仪式感，学会用 errors 包包装错误链与判断错误类型。",
+      "points": [
+        "error 是内置接口，只有一个 Error() string 方法",
+        "(value, err) 双返回值约定，err 非 nil 时 value 通常不可用",
+        "errors.Is 判断错误链中是否包含目标错误",
+        "errors.As 把错误链中的错误提取到具体类型变量",
+        "fmt.Errorf(\"%w\", err) 包装错误保留链，%v 则丢失链信息",
+        "哨兵错误（如 io.EOF）用 var 定义包级变量配合 Is 判断",
+        "panic 用于不可恢复错误，recover 仅在 defer 中生效，普通业务不用",
+        "errors.Join（Go 1.20+）聚合多个错误"
+      ],
+      "tip": "不要 if err != nil { return nil } 静默吞错误：要么处理，要么包装后返回并附上上下文。"
+    },
+    {
+      "name": "goroutine 与 channel",
+      "summary": "goroutine 是轻量级线程，go 关键字一行启动；channel 在协程之间传递数据实现同步。为什么重要：并发是 Go 的立身之本，Docker、Kubernetes 等云原生基础设施几乎都由 Go 编写。怎么学：牢记「不要通过共享内存来通信，而要通过通信来共享内存」。",
+      "points": [
+        "go f() 启动 goroutine，运行时调度器自动管理，可轻松开成千上万个",
+        "channel 用 make(chan int) 创建，<- 收发，close 关闭",
+        "无缓冲 channel 同步收发，有缓冲 channel 解耦生产消费",
+        "for v := range ch 遍历直到 channel 关闭",
+        "select 同时等待多个 channel 操作，搭配 time.After 实现超时",
+        "sync.WaitGroup 等待一组 goroutine 完成",
+        "channel 方向可做函数签名约束：只进 chan<- 或只出 <-chan",
+        "单方向 channel 与 fan-in、fan-out 模式是并发编排的基本功"
+      ],
+      "tip": "每次 go 一个协程都想好它什么时候退出：死锁与 goroutine 泄漏是并发第一课。"
+    },
+    {
+      "name": "context 与并发安全",
+      "summary": "context.Context 跨 API 传递取消信号与截止时间；共享状态仍需互斥锁保护。为什么重要：HTTP 服务的每个请求都携带 context，链路上的取消与超时都靠它传播。怎么学：把网络请求的取消与超时时长全部接入 context，再用 -race 验证并发安全。",
+      "points": [
+        "context.WithCancel / WithTimeout / WithDeadline 创建派生 context",
+        "ctx.Done() 返回取消通道，select 监听实现优雅退出",
+        "函数第一个参数惯例传 ctx，链式向下传递",
+        "defer cancel() 防止 context 泄漏",
+        "sync.Mutex 与 sync.RWMutex 保护共享状态",
+        "sync.Map 与 channel 是特定场景的无锁替代",
+        "go vet 与 -race 竞态检测器是并发调试利器",
+        "context.Value 传请求级数据（如 trace id），滥用会变成隐式全局变量"
+      ],
+      "tip": "写完并发代码务必 go test -race 跑一遍，竞态在普通运行中常常「恰好」不发作。"
+    },
+    {
+      "name": "Go Modules 与 go tool",
+      "summary": "go mod 管理模块与版本，go tool 全家桶完成格式化、测试、静态检查与文档，无需外部构建工具。为什么重要：一条命令体系是 Go 工程效率的来源，也是「自带工具链」语言范式的代表。怎么学：掌握 go mod init/tidy，理解 go.sum 的校验作用与语义化版本规则。",
+      "points": [
+        "go mod init 创建模块，go get 添加依赖，go mod tidy 清理未用依赖",
+        "go.sum 记录依赖哈希，保证构建可复现与防篡改",
+        "语义化版本 vX.Y.Z 与最小版本选择（MVS）原则",
+        "go fmt / vet / build / test / run 一条龙命令",
+        "go doc 与 pkg.go.dev 查文档，godoc 风格注释生成文档",
+        "GOPROXY 与 GONOSUMDB 配置镜像加速与私有仓库",
+        "vendor 目录 vendoring 依赖用于可审计构建",
+        "go work（Go 1.18+）管理多模块本地开发"
+      ],
+      "tip": "提交代码前跑一遍 go fmt ./... && go vet ./...，把问题拦在本地。"
+    },
+    {
+      "name": "标准库与网络编程",
+      "summary": "Go 标准库以「完备」著称：net/http 几行起一个 Web 服务，encoding/json 开箱即用，io 抽象贯穿所有数据流。为什么重要：小工具常常零依赖即可完成，这是 Go 被运维与基础设施团队钟爱的原因。怎么学：以写一个 HTTP API 服务为线索串联 http、json、log 等包。",
+      "points": [
+        "http.HandleFunc 注册路由，http.ListenAndServe 启动服务",
+        "http.Client 发起请求，超时与取消通过 context 控制",
+        "json.Marshal / Unmarshal 在结构体与 JSON 间互转",
+        "结构体标签 json:\"name,omitempty\" 控制序列化字段与空值省略",
+        "io.Reader/io.Writer 接口抽象贯穿所有 IO 操作",
+        "log 与 log/slog（Go 1.21+）记录结构化日志",
+        "http.Server 的 ReadTimeout/WriteTimeout/IdleTimeout 三超时",
+        "middleware 模式包装 http.Handler 实现日志、鉴权、限流"
+      ],
+      "tip": "先翻标准库再装第三方包：Go 官方库的质量与稳定性通常是最好的。"
+    },
+    {
+      "name": "测试与基准",
+      "summary": "testing 包内建支持单元测试、基准测试与示例测试，表驱动测试是 Go 的惯用手法，覆盖分析与 fuzzing 也在工具链之内。为什么重要：Go 生态对测试的推崇体现在工具链的每个环节，CI 标配 go test。怎么学：为每个函数写表驱动测试，用 -cover 观察覆盖率，再写一个 Benchmark。",
+      "points": [
+        "测试文件以 _test.go 结尾，函数名 TestXxx，参数 *testing.T",
+        "表驱动测试：切片装用例循环执行，新增用例零成本",
+        "t.Helper() 标注辅助函数让报错定位到调用处",
+        "go test -race -cover ./... 是提交前标配组合",
+        "基准测试 BenchmarkXxx 用 -bench=. 运行，关注 ns/op 与 allocs/op",
+        "示例测试 ExampleXxx 输出被 godoc 展示，兼作文档",
+        "fuzzing（Go 1.18+）自动构造输入寻找 panic，适合解析器",
+        "httptest 包快速构造请求响应测试 HTTP 处理器"
+      ],
+      "tip": "测试与实现放在同一目录、同一包内，是 Go 社区的主流约定，别刻意建 test 目录。"
+    },
+    {
+      "name": "性能分析与典型生态",
+      "summary": "pprof 与 trace 分别剖析 CPU、内存与调度延迟，Gin、Gorm、cobra 等第三方库构成微服务开发生态。为什么重要：性能分析能力让你在团队中脱颖而出，生态认知则决定上手真实项目的速度。怎么学：给一个 HTTP 服务接入 pprof，用压测工具制造负载并分析火焰图。",
+      "points": [
+        "net/http/pprof 导入即暴露分析端点",
+        "go tool pprof 生成 CPU 火焰图与内存 alloc 剖面",
+        "runtime/trace 分析 goroutine 调度延迟与阻塞",
+        "Gin/Echo 提供路由、参数绑定与中间件的高性能 Web 框架",
+        "Gorm 是流行的 ORM，database/sql 是官方数据库抽象",
+        "cobra + viper 构建命令行应用的事实标准组合",
+        "zap/slog 高性能结构化日志",
+        "Docker 多阶段构建产出极小 Go 运行时镜像"
+      ],
+      "tip": "先把 net/http 学到能写中间件，再上手 Gin——你会发现它只是把标准库模式工程化了。"
+    }
+  ],
+  "projects": [
+    "命令行待办清单：练习结构体、文件 JSON 持久化与 flag 参数解析",
+    "并发网页抓取器：用 goroutine + channel 并发抓取多个页面并统计信息，体验 select 与超时",
+    "HTTP API 服务：用 net/http 实现带 context 取消与超时的 REST 接口，接入错误包装与表驱动测试",
+    "实时聊天室：WebSocket 广播消息，练习并发安全、连接管理与优雅退出",
+    "静态站点生成器：递归扫描 Markdown 文件并发渲染为 HTML，综合运用接口、并发与模板",
+    "单词频率管道：pprof 分析版爬虫，对比优化前后的 CPU 火焰图并写分析笔记",
+    "微服务雏形：Gin + Gorm 实现用户与订单两个服务，Docker Compose 一键编排运行"
+  ],
+  "pitfalls": [
+    "在循环变量上做 goroutine 闭包：Go 1.22 起已修复逐次拷贝，但旧版本代码与显式传参的习惯仍要保留",
+    "向已关闭的 channel 发送数据或重复 close，直接 panic；关闭 channel 应由发送方负责且只关一次",
+    "忘记检查 error 返回值：Go 的错误值不显式处理就静默跳过，程序带病运行",
+    "goroutine 泄漏：启动的协程因 channel 无人接收或 context 未取消而永远阻塞",
+    "用共享内存通信却不加锁：竞态检测器 -race 能查出的问题却从不运行它",
+    "切片共享底层数组引发意外修改：append 扩容前写入会波及同数组的其他切片",
+    "map 并发读写不加锁：触发 fatal error: concurrent map read and map write，直接崩溃"
+  ]
+}

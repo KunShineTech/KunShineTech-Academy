@@ -1,0 +1,43 @@
+---
+import Base from '../../layouts/Base.astro';
+import { programs } from '../../data/programs';
+import { resources, resourceKinds } from '../../data/resources';
+const extra = import.meta.glob('../../data/program-content/*.json', { eager: true });
+export function getStaticPaths() {
+  return programs.filter((p) => !['gesp', 'eng-primary-ket', 'eng-junior-pet', 'math-school'].includes(p.slug)).map((p) => ({ params: { slug: p.slug } }));
+}
+const info = programs.find((p) => p.slug === Astro.params.slug)!;
+const key = `${info.slug}.json`;
+const content: any = (extra as any)[`../../data/program-content/${key}`]?.default ?? (extra as any)[Object.keys(extra).find((k) => k.endsWith(key)) ?? '']?.default ?? null;
+const list = (resources as any)[info.slug] ?? [];
+---
+<Base title={info.title} description={info.intro} program={info.slug}><div class="container article" style="max-width:880px;padding:44px 0 80px"><div class="eyebrow">{info.code} · COURSE GUIDE</div><h1>{info.title}</h1><span class="pill">建设中</span><p>{info.tagline}{info.intro}</p>
+
+{content && <>
+{content.roadmap && content.roadmap.length > 0 && <><h2 id="roadmap">学习路线</h2>
+<div class="roadmap">{content.roadmap.map((r: any, i: number) => <div class="roadmap-stage">
+  <div class="roadmap-head"><span class="roadmap-no">{String(i + 1).padStart(2, '0')}</span><b>{r.stage}</b></div>
+  <p class="roadmap-focus">{r.focus}</p>
+  <div class="roadmap-topics">{r.topics.map((t: string) => <span class="rt-chip">{t}</span>)}</div>
+</div>)}</div></>}
+
+{content.modules && content.modules.length > 0 && <><h2 id="modules">核心内容</h2>
+{content.modules.map((m: any) => <div class="gram-card">
+  <h4>{m.name}</h4>
+  <p style="font-size:14px;line-height:1.9">{m.summary}</p>
+  {m.points && m.points.length > 0 && <ul style="margin:8px 0 0;padding-left:20px;line-height:2;font-size:14px">{m.points.map((pt: string) => <li>{pt}</li>)}</ul>}
+  {m.tip && <div class="tip">💡 {m.tip}</div>}
+</div>)}</>}
+
+{content.projects && content.projects.length > 0 && <><h2 id="projects">实践项目</h2>
+<ol style="line-height:2.1;font-size:14.5px;padding-left:22px">{content.projects.map((p: string) => <li>{p}</li>)}</ol></>}
+
+{content.pitfalls && content.pitfalls.length > 0 && <><h2 id="pitfalls">常见误区</h2>
+<ul style="line-height:2.1;font-size:14.5px;padding-left:22px;list-style:'⚠️ '">{content.pitfalls.map((p: string) => <li>{p}</li>)}</ul></>}
+</>}
+
+<h2>规划模块</h2><ul>{info.plans.map((m) => <li>{m}</li>)}</ul>
+
+{list.length > 0 && <><h2>精选学习资源</h2><p style="color:var(--muted);font-size:14px">本方向互联网上广受好评的免费/付费课程、经典图书与学习入口（外部链接，以各站点实际内容为准）。</p>{resourceKinds.map((k) => { const items = list.filter((r: any) => r.kind === k); return items.length > 0 && <><h3 class="res-kind">{k}</h3><ul class="res-list">{items.map((r: any) => <li><a href={r.url} target="_blank" rel="noopener">{r.name}</a><span class="res-provider">{r.provider}</span><span class="res-note">{r.note}</span></li>)}</ul></> })}</>}
+
+<p style="color:var(--muted);font-size:14px">适合人群：{info.audience}。本板块为学习路线与核心内容指南，配套课程正在筹备中；建议沿「学习路线」逐阶段推进，结合「实践项目」动手巩固。</p><p><a class="primary-btn" href="/">← 返回课程中心</a></p></div></Base>

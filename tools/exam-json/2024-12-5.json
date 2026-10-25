@@ -1,0 +1,242 @@
+{
+ "session": "2024-12",
+ "level": 5,
+ "file": "GESP 2024年12月认证C++ 5级真题.pdf",
+ "legacy": false,
+ "choiceCount": 15,
+ "judgeCount": 10,
+ "progCount": 2,
+ "choiceAnswers": "CCADCDBAABCBADB",
+ "judgeAnswers": "",
+ "choice": [
+  {
+   "n": 1,
+   "stem": "下面关于链表和数组的描述，错误的是（ ）。",
+   "options": [
+    "当数据数量不确定时，为了应对各种可能的情况，需要申请一个较大的数组，可能浪费空间；此时用链表比 较合适，大小可动态调整。",
+    "在链表中访问节点的效率较低，时间复杂度为 。",
+    "链表插入和删除元素效率较低，时间复杂度为 。",
+    "链表的节点在内存中是分散存储的，通过指针连在一起。"
+   ],
+   "answer": 2
+  },
+  {
+   "n": 2,
+   "stem": "在循环单链表中，节点的 next 指针指向下一个节点，最后一个节点的 next 指针指向（  ）。",
+   "options": [
+    "当前节点",
+    "nullptr",
+    "第一个节点",
+    "上一个节点"
+   ],
+   "answer": 2
+  },
+  {
+   "n": 3,
+   "stem": "为了方便链表的增删操作，一些算法生成一个虚拟头节点，方便统一删除头节点和其他节点。下面代码实现\n了删除链表中值为val 的节点，横线上应填的最佳代码是( )。\nstruct LinkedNode {\n1\nint val;\n2\nLinkedNode* next;\n3\nLinkedNode(int val):val(val), next(nullptr){}\n4\n};\n5\n6\nvoid removeElements(LinkedNode* head, int val) {\n7\nif (head == nullptr) {\n8\nreturn;\n9\n}\n10\nLinkedNode* cur;\n11\nLinkedNode* dummyHead = new LinkedNode(0); //虚拟头节点\n12\n________________________________     // 在此处填入代码\n13\n14\nwhile(cur ->next ！= nullptr) {\n15\nif(cur->next->val == val) {\n16\nLinkedNode* tmp = cur->next;\n17\ncur->next = cur->next->next;\n18\ndelete tmp;\n19\ntmp = nullptr;\n20\n}\n21\nelse {\n22\ncur = cur ->next;\n23\n}\n24\n}\n25\nhead = dummyHead->next;\n26\ndelete dummyHead;\n27\ndummyHead = nullptr;\n28\n}\n29",
+   "options": [
+    "dummyHead->next = head; cur = dummyHead;",
+    "dummyHead->next = head->next; cur = dummyHead;",
+    "dummyHead->next = head; cur = dummyHead->next;",
+    "dummyHead->next = head->next; cur = dummyHead->next;"
+   ],
+   "answer": 0
+  },
+  {
+   "n": 4,
+   "stem": "对下面两个函数，说法错误的是（  ）。\nint fibA(int n) {\n1\nif (n <= 1) return n;\n2\n3\nint f1 = 0, f2 = 1;\n4\nfor (int i = 2; i <= n; ++i) {\n5\nint temp = f2;\n6\nf2 = f1 + f2;\n7\nf1 = temp;\n8\n}\n9\nreturn f2;\n10\n}\n11\n12\nint fibB(int n) {\n13\nif (n <= 1) return n;\n14\nreturn fibB(n - 1) + fibB(n - 2);\n15\n}\n16\n17",
+   "options": [
+    "两个函数的实现的功能相同。",
+    "fibA采用递推方式。",
+    "fibB采用的是递归方式。",
+    "fibA时间复杂度为 ，fibB的时间复杂度为 。"
+   ],
+   "answer": 3
+  },
+  {
+   "n": 5,
+   "stem": "两块长方形土地的长宽分别为\n和\n米，要将它们分成正方形的小块，使得正方形的尺寸尽可能大。小杨\n采用如下的辗转相除函数gcd(24, 36) 来求正方形分块的边长，则函数gcd 调用顺序为（  ）。\nint gcd(int a, int b) {\n1\nint big = a > b ? a : b;\n2\nint small = a < b ? a : b;\n3\nif (big % small == 0) {\n4\nreturn small;\n5\n}\n6\nreturn gcd(small, big % small);\n7\n}\n8",
+   "options": [
+    "gcd(24, 36)、gcd(24, 12)、gcd(12, 0)",
+    "gcd(24, 36)、gcd(12, 24)、gcd(0, 12)",
+    "gcd(24, 36)、gcd(24, 12)",
+    "gcd(24, 36)、gcd(12, 24)"
+   ],
+   "answer": 2
+  },
+  {
+   "n": 6,
+   "stem": "唯⼀分解定理表明，每个⼤于1的⾃然数可以唯⼀地写成若⼲个质数的乘积。下⾯函数将⾃然数的所有质因\n数找出来，横线上能填写的最佳代码是（\n）。\n#include <vector>\n1\nvector<int> get_prime_factors(int n) {\n2\nvector<int> factors;\n3\nif (n <= 1) {\n4\ncout << \"输入的数必须是大于1的正整数\" << endl;\n5\nreturn;\n6\n}\n7\nwhile (n % 2 == 0) {\n8\nfactors.push_back(2);\n9\nn /= 2;\n10\n}\n11\n12\n________________________________    {    // 在此处填入代码\n13\nwhile (n % i == 0) {\n14\nfactors.push_back(i);\n15\nn /= i;\n16\n}\n17\n}\n18\n19\nif (n > 2) {\n20\nfactors.push_back(n);\n21\n}\n22\n23\nreturn factors;\n24\n}\n25",
+   "options": [
+    "for (int i = 3; i  <= n; i ++)",
+    "for (int i = 3; i * i <= n; i ++)",
+    "for (int i = 3; i  <= n; i += 2)",
+    "for (int i = 3; i * i <= n; i += 2)"
+   ],
+   "answer": 3
+  },
+  {
+   "n": 7,
+   "stem": "下述代码实现素数表的埃拉托色尼(埃氏)筛法，筛选出所有小于等于的素数。\nvector<int> sieve_Eratosthenes(int n) {\n1\nvector<bool> is_prime(n +1, true);\n2\nvector<int> primes;\n3\n4\nfor (int i = 2; i * i <= n; i++) {\n5\nif (is_prime[i]) {\n6\nprimes.push_back(i);\n7\n8\nfor (int j = i * i; j <= n; j += i) {\n9\nis_prime[j] = false;\n10\n}\n11\n}\n12\n}\n13\n14\nfor (int i = sqrt(n) + 1; i <= n; i++) {\n15\nif (is_prime[i]) {\n16\nprimes.push_back(i);\n17\n}\n18\n}\n19\n20\nreturn primes;\n21\n}\n22\n下面说法，正确的是（  ）。",
+   "options": [
+    "代码的时间复杂度是 。",
+    "在标记非素数时，代码从  开始，可以减少重复标记。",
+    "代码会输出所有小于等于  的奇数。",
+    "调用函数sieve_Eratosthenes(10) ，函数返回值的数组中包含的元素有：2, 3, 5, 7, 9 。"
+   ],
+   "answer": 1
+  },
+  {
+   "n": 8,
+   "stem": "下述代码实现素数表的线性筛法，筛选出所有小于等于的素数。下面说法正确的是( )。\nvector<int> sieve_linear(int n) {\n1\nvector<bool> is_prime(n +1, true);\n2\nvector<int> primes;\n3\n4\nfor (int i = 2; i <= n/2; i++) {\n5\nif (is_prime[i])\n6\nprimes.push_back(i);\n7\n8\nfor (int j = 0; j < primes.size() && i * primes[j] <= n; j++) {\n9\nis_prime[ i * primes[j] ] = 0;\n10\nif (i % primes[j] == 0)\n11\nbreak;\n12\n}\n13\n}\n14\n15\nfor (int i = n/2 +1; i <= n; i++) {\n16\nif (is_prime[i])\n17\nprimes.push_back(i);\n18\n}\n19\n20\nreturn primes;\n21\n}\n22",
+   "options": [
+    "线性筛的时间复杂度是 。",
+    "每个合数会被其所有的质因子标记一次。",
+    "线性筛和埃拉托色尼筛的实现思路完全相同。",
+    "以上都不对"
+   ],
+   "answer": 0
+  },
+  {
+   "n": 9,
+   "stem": "考虑以下C++代码实现的快速排序算法：\nint partition(vector<int>& arr, int left, int right) {\n1\nint pivot = arr[right]; // 基准值\n2\nint i = left - 1;\n3\n4\nfor (int j = left; j < right; j++) {\n5\nif (arr[j] < pivot) {\n6\ni++;\n7\nswap(arr[i], arr[j]);\n8\n}\n9\n}\n10\nswap(arr[i + 1], arr[right]);\n11\nreturn i + 1;\n12\n}\n13\n14\n// 快速排序\n15\nvoid quickSort(vector<int>& arr, int left, int right) {\n16\nif (left < right) {\n17\nint pi = partition(arr, left, right);\n18\nquickSort(arr, left, pi - 1);\n19\nquickSort(arr, pi + 1, right);\n20\n}\n21\n}\n22\n以下关于快速排序的说法，正确的是（  ）。",
+   "options": [
+    "快速排序通过递归对子问题进行求解。",
+    "快速排序的最坏时间复杂度是 。",
+    "快速排序是一个稳定的排序算法。",
+    "在最优情况下，快速排序的时间复杂度是 。"
+   ],
+   "answer": 0
+  },
+  {
+   "n": 10,
+   "stem": "下面关于归并排序，描述正确的是（  ）。",
+   "options": [
+    "归并排序是一个不稳定的排序算法。",
+    "归并排序的时间复杂度在最优、最差和平均情况下都是 。",
+    "归并排序需要额外的 空间。",
+    "对于输入数组 {12, 11, 13, 5, 6, 7}，代码输出结果为：7 6 5 13 12 11。"
+   ],
+   "answer": 1
+  },
+  {
+   "n": 11,
+   "stem": "给定一个长度为的有序数组nums ，其中所有元素都是唯一的。下面的函数返回数组中元素target 的索\n引。\nint binarySearch(vector<int> &nums, int target, int left, int right) {\n1\nif (left > right) {\n2\nreturn -1;\n3\n}\n4\n5\nint middle = left + ((right - left) / 2);\n6\nif (nums[middle] == target) {\n7\nreturn middle;\n8\n}\n9\nelse if (nums[middle] < target) {\n10\nreturn binarySearch(nums, target, middle + 1, right);\n11\n}\n12\nelse\n13\nreturn binarySearch(nums, target, left, middle - 1);\n14\n}\n15\n}\n16\n17\nint Find(vector<int> &nums, int target) {\n18\nint n = nums.size();\n19\nreturn binarySearch(nums, target, 0, n - 1);\n20\n}\n21\n关于上述函数，描述不正确的是（  ）。",
+   "options": [
+    "函数采用二分查找，每次计算搜索当前搜索区间的中点，然后根据中点的元素值排除一半搜索区间。",
+    "函数采用递归求解，每次问题的规模减小一半。",
+    "递归的终止条件是中间元素的值等于target ，若数组中不包含该元素，递归不会终止。",
+    "算法的复杂度为 ."
+   ],
+   "answer": 2
+  },
+  {
+   "n": 12,
+   "stem": "给定一个长度为的有序数组nums ，其中可能包含重复元素。下面的函数返回数组中某个元素target 的\n左边界，若数组中不包含该元素，则返回−1 。例如在数组nums = [5,7,7,8,8,10] 中查找target=8 ，函数返\n回在数组中的左边界的索引为。则横线上应填写的代码为（  ）。\nint getLeftBoundary(vector<int>& nums, int target) {\n1\nint left = 0;\n2\nint right = nums.size() - 1;\n3\n4\nwhile (left < right) {\n5\nint middle = left + ((right - left) / 2);\n6\nif (target <= nums[middle])\n7\n________________________________     // 在此处填入代码\n8\nelse\n9\nleft = middle+1;\n10\n}\n11\n12\nreturn nums[left]==target?left:-1;\n13\n}\n14",
+   "options": [
+    "right = middle - 1;",
+    "right = middle;",
+    "right = middle + 1;",
+    "以上都不对"
+   ],
+   "answer": 1
+  },
+  {
+   "n": 13,
+   "stem": "假设有多个孩子，数组g 保存所有孩子的胃口值。有多块饼干，数组s 保存所有饼干的尺寸。小杨给孩子\n们发饼干，每个孩子最多只能给一块饼干。饼干的尺寸大于等于孩子的胃口时，孩子才能得到满足。小杨的目标是\n尽可能满足越多数量的孩子，因此打算采用贪心算法来找出能满足的孩子的数目，则横线上应填写的代码为（  ）。\nint cooki4children(vector<int>& g, vector<int>& s) {\n1\nsort(g.begin(), g.end());\n2\nsort(s.begin(), s.end());\n3\n4\nint index = s.size() - 1; // 饼干数组下标\n5\nint result = 0;\n6\nfor (int i = g.size() - 1; i >= 0; i--) {\n7\nif (index >= 0 && s[index] >= g[i]) {\n8\n________________________________     // 在此处填入代码\n9\n}\n10\n}\n11\nreturn result;\n12\n}\n13",
+   "options": [
+    "result++;  index--;",
+    "result--;  index--;",
+    "result--;  index++;",
+    "result++;  index++;"
+   ],
+   "answer": 0
+  },
+  {
+   "n": 14,
+   "stem": "关于分治算法，以下说法中不正确的是（  ）。",
+   "options": [
+    "分治算法将问题分成子问题，然后分别解决子问题，最后合并结果。",
+    "归并排序采用了分治思想。",
+    "快速排序采用了分治思想。",
+    "冒泡排序采用了分治思想。"
+   ],
+   "answer": 3
+  },
+  {
+   "n": 15,
+   "stem": "小杨编写了一个如下的高精度减法函数：\nvector<int> highPrecisionSubtract(vector<int> a, vector<int> b) {\n1\nvector<int> result;\n2\nint borrow = 0;\n3\n4\nfor (int i = 0; i < a.size(); ++i) {\n5\nint digitA = a[i];\n6\nint digitB = i < b.size() ? b[i] : 0;\n7\n8\nint diff = digitA - digitB - borrow;\n9\nif (diff < 0) {\n10\ndiff += 10;\n11\nborrow = 1;\n12\n}\n13\nelse {\n14\nborrow = 0;\n15\n}\n16\n17\nresult.push_back(diff);\n18\n}\n19\n20\nwhile (result.size() > 1 && result.back() == 0) {\n21\nresult.pop_back();\n22\n}\n23\n24\nreturn result;\n25\n}\n26\n下面说法，正确的是（  ）。",
+   "options": [
+    "如果数组表示的整数小于表示的整数，代码会正确返回二者的差为负数。 存储为 {0, 0, 5} 。",
+    "代码假设输入数字是以倒序存储的，例如",
+    "代码的时间复杂度为",
+    "当减法结果为  时，结果数组仍然会存储很多个元素。"
+   ],
+   "answer": 1
+  }
+ ],
+ "judge": [
+  {
+   "n": 1,
+   "stem": "单链表只支持在表头进行插入和删除操作。",
+   "answer": null
+  },
+  {
+   "n": 2,
+   "stem": "线性筛相对于埃拉托斯特尼筛法，每个合数只会被它的最小质因数筛去一次，因此效率更高。",
+   "answer": null
+  },
+  {
+   "n": 3,
+   "stem": "任何一个大于1的自然数都可以分解成若干个不同的质数的乘积，且分解方式是唯一的。",
+   "answer": null
+  },
+  {
+   "n": 4,
+   "stem": "贪心算法通过每一步选择当前最优解，从而一定能获得全局最优解。",
+   "answer": null
+  },
+  {
+   "n": 5,
+   "stem": "递归算法必须有一个明确的结束条件，否则会导致无限递归并可能引发栈溢出。",
+   "answer": null
+  },
+  {
+   "n": 6,
+   "stem": "快速排序和归并排序的平均时间复杂度均为\n，且都是稳定排序。",
+   "answer": null
+  },
+  {
+   "n": 7,
+   "stem": "快速排序的时间复杂度总比插入排序的时间复杂度低。",
+   "answer": null
+  },
+  {
+   "n": 8,
+   "stem": "二分查找仅适用于数组而不适合链表，因为二分查找需要跳跃式访问元素，链表中执行跳跃式访问的效率\n低。",
+   "answer": null
+  },
+  {
+   "n": 9,
+   "stem": "对有序数组{5,13,19,21,37,56,64,75,88,92,100} 进行二分查找，成功查找元素19 的比较次数是2。",
+   "answer": null
+  },
+  {
+   "n": 10,
+   "stem": "递归函数每次调用自身时，系统都会为新开启的函数分配内存，以存储局部变量、调用地址和其他信息\n等，导致递归通常比迭代更加耗费内存空间。",
+   "answer": null
+  }
+ ],
+ "programming": [
+  {
+   "n": 1,
+   "name": "奇妙数字",
+   "desc": ""
+  },
+  {
+   "n": 2,
+   "name": "武器强化",
+   "desc": ""
+  }
+ ]
+}

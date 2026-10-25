@@ -1,0 +1,89 @@
+---
+// Mermaid 图表控件：图形 / 源代码 切换展示。
+// 用法（MDX）：<Mermaid title="标题" code={`flowchart TD\n...`} />
+// 图形由浏览器端 mermaid@10（jsDelivr CDN）渲染，需联网加载一次。
+const { title = '流程图', code = '' } = Astro.props;
+---
+<div class="mmd">
+  <div class="mmd-bar">
+    <span class="mmd-title">📊 {title}</span>
+    <span class="mmd-tabs">
+      <button type="button" class="mmd-tab active" data-tab="graph">图形</button>
+      <button type="button" class="mmd-tab" data-tab="code">源代码</button>
+    </span>
+  </div>
+  <div class="mmd-graph"></div>
+  <pre class="mmd-code" hidden><code>{code}</code></pre>
+  <template class="mmd-src">{code}</template>
+</div>
+<script>
+(function () {
+  var mp = null;
+  function themeName() { return document.documentElement.classList.contains('light') ? 'default' : 'dark'; }
+  function mermaidCfg() { return { startOnLoad: false, theme: themeName(), securityLevel: 'loose', fontFamily: 'Microsoft Yahei, sans-serif' }; }
+  function loadMermaid() {
+    if (!mp) {
+      mp = new Promise(function (resolve) {
+        if (window.mermaid) return resolve();
+        var s = document.createElement('script');
+        s.src = 'https://cdn.jsdelivr.net/npm/mermaid@10.9.3/dist/mermaid.min.js';
+        s.onload = function () {
+          window.mermaid.initialize(mermaidCfg());
+          resolve();
+        };
+        document.head.appendChild(s);
+      });
+    }
+    return mp;
+  }
+  function initAll() {
+    document.querySelectorAll('.mmd').forEach(function (box) {
+      if (box.dataset.ready) return;
+      box.dataset.ready = '1';
+      var graphEl = box.querySelector('.mmd-graph');
+      var codeEl = box.querySelector('.mmd-code');
+      var srcEl = box.querySelector('.mmd-src');
+      var code = srcEl ? srcEl.content.textContent.trim() : '';
+      var rendered = false;
+      function render() {
+        if (rendered) return;
+        rendered = true;
+        graphEl.textContent = '正在渲染图形…';
+        loadMermaid().then(function () {
+          var uid = 'mmdg' + Math.random().toString(36).slice(2);
+          window.mermaid.render(uid, code).then(function (out) {
+            graphEl.innerHTML = out.svg;
+          }).catch(function (e) {
+            graphEl.textContent = '图形渲染失败，可切换到「源代码」查看：' + e.message;
+          });
+        });
+      }
+      box.querySelectorAll('.mmd-tab').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          box.querySelectorAll('.mmd-tab').forEach(function (b) { b.classList.remove('active'); });
+          btn.classList.add('active');
+          var showCode = btn.dataset.tab === 'code';
+          codeEl.hidden = !showCode;
+          graphEl.hidden = showCode;
+          if (!showCode) render();
+        });
+      });
+      render();
+    });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initAll);
+  else initAll();
+  window.addEventListener('kst-theme', function () {
+    if (!window.mermaid) return;
+    window.mermaid.initialize(mermaidCfg());
+    document.querySelectorAll('.mmd').forEach(function (box) {
+      var g = box.querySelector('.mmd-graph');
+      var s = box.querySelector('.mmd-src');
+      if (!g || g.hidden || !s) return;
+      var code = s.content.textContent.trim();
+      var uid = 'mmdg' + Math.random().toString(36).slice(2);
+      window.mermaid.render(uid, code).then(function (out) { g.innerHTML = out.svg; });
+    });
+  });
+})();
+</script>

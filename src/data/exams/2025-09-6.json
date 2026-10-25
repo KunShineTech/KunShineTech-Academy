@@ -1,0 +1,267 @@
+{
+ "session": "2025-09",
+ "level": 6,
+ "file": "GESP 2025年09月认证C++ 6级真题.pdf",
+ "legacy": false,
+ "choiceCount": 15,
+ "judgeCount": 10,
+ "progCount": 2,
+ "choiceAnswers": "DACBABAABBDAACD",
+ "judgeAnswers": "",
+ "choice": [
+  {
+   "n": 1,
+   "stem": "下列关于类的说法，错误的是( )。",
+   "options": [
+    "构造函数不能声明为虚函数，但析构函数可以。",
+    "函数参数如声明为类的引用类型，调用时不会调用该类的复制构造函数。",
+    "静态方法属于类而不是某个具体对象，因此推荐用 类名::方法(...) 调用。",
+    "不管基类的析构函数是否是虚函数，都可以通过基类指针/引用正确删除派生类对象。"
+   ],
+   "answer": 3,
+   "analysis": "选D。错误的是D：基类析构函数不是虚函数时，通过基类指针删除派生类对象属于未定义行为，并不能正确删除；A、B、C均为正确说法。"
+  },
+  {
+   "n": 2,
+   "stem": "假设变量veh 是类Car 的一个实例，我们可以调用veh.move() ，是因为面向对象编程有（   ）性质。\nclass Vehicle {\n1\nprivate:\n2\nstring brand;\n3\n4\npublic:\n5\nVehicle(string b) : brand(b) {}\n6\n7\nvoid setBrand(const string& b) { brand = b; }\n8\nstring getBrand() const { return brand; }\n9\n10\nvoid move() const {\n11\ncout << brand << \" is moving...\" << endl;\n12\n}\n13\n};\n14\n15\nclass Car : public Vehicle {\n16\nprivate:\n17\nint seatCount;\n18\n19\npublic:\n20\nCar(string b, int seats) : Vehicle(b), seatCount(seats) {}\n21\n22\nvoid showInfo() const {\n23\ncout << \"This car is a \" << getBrand()\n24\n<< \" with \" << seatCount << \" seats.\" << endl;\n25\n}\n26\n};\n27",
+   "options": [
+    "继承 (Inheritance)",
+    "封装 (Encapsulation)",
+    "多态 (Polymorphism)",
+    "链接 (Linking)"
+   ],
+   "answer": 0,
+   "analysis": "选A（继承）。Car继承自Vehicle，因此Car的实例veh可以直接使用基类的move()方法。"
+  },
+  {
+   "n": 3,
+   "stem": "下面代码中v1 和v2 调用了相同接口 move() ，但输出结果不同，这体现了面向对象编程的（   ）特性。\nclass Vehicle {\n1\nprivate:\n2\nstring brand;\n3\n4\npublic:\n5\nVehicle(string b) : brand(b) {}\n6\n7\nvoid setBrand(const string& b) { brand = b; }\n8\nstring getBrand() const { return brand; }\n9\n10\nvirtual void move() const {\n11\ncout << brand << \" is moving...\" << endl;\n12\n}\n13\n};\n14\n15\nclass Car : public Vehicle {\n16\nprivate:\n17\nint seatCount;\n18\n19\npublic:\n20\nCar(string b, int seats) : Vehicle(b), seatCount(seats) {}\n21\n22\nvoid showInfo() const {\n23\ncout << \"This car is a \" << getBrand()\n24\n<< \" with \" << seatCount << \" seats.\" << endl;\n25\n}\n26\n27\nvoid move() const override {\n28\ncout << getBrand() << \" car is driving on the road!\" << endl;\n29\n}\n30\n};\n31\n32\nclass Bike : public Vehicle {\n33\npublic:\n34\nBike(string b) : Vehicle(b) {}\n35\n36\nvoid move() const override {\n37\ncout << getBrand() << \" bike is cycling on the path!\" << endl;\n38\n}\n39\n};\n40\n41\nint main() {\n42\nVehicle* v1 = new Car(\"Toyota\", 5);\n43\nVehicle* v2 = new Bike(\"Giant\");\n44\n45\nv1->move();\n46\nv2->move();\n47\n48\ndelete v1;\n49\ndelete v2;\n50\nreturn 0;\n51\n}\n52",
+   "options": [
+    "继承 (Inheritance)",
+    "封装 (Encapsulation)",
+    "多态 (Polymorphism)",
+    "链接 (Linking)"
+   ],
+   "answer": 2,
+   "analysis": "选C（多态）。move是虚函数，v1、v2两个基类指针分别指向Car和Bike对象，调用同一接口输出不同结果，体现运行时多态。"
+  },
+  {
+   "n": 4,
+   "stem": "栈的操作特点是（   ）。",
+   "options": [
+    "先进先出",
+    "先进后出",
+    "随机访问",
+    "双端进出"
+   ],
+   "answer": 1,
+   "analysis": "选B（先进后出）。栈在同一端插入删除，后进栈的元素先出栈。"
+  },
+  {
+   "n": 5,
+   "stem": "循环队列常用于实现数据缓冲。假设一个循环队列容量为 5 （即最多存放 4 个元素，留一个位置区分空与\n满），依次进行操作：入队数据1，2，3，出队1个数据，再入队数据4和5，此时队首到队尾的元素顺序是（   ）。",
+   "options": [
+    "[2, 3, 4, 5]",
+    "[1, 2, 3, 4]",
+    "[3, 4, 5, 2]",
+    "[2, 3, 5, 4]"
+   ],
+   "answer": 0,
+   "analysis": "选A。入队1、2、3，出队一次移除1，再入队4、5，队首到队尾为2、3、4、5。"
+  },
+  {
+   "n": 6,
+   "stem": "以下函数createTree() 构造的树是什么类型？\nstruct TreeNode {\n1\nint val;\n2\nTreeNode* left;\n3\nTreeNode* right;\n4\nTreeNode(int x) : val(x), left(nullptr), right(nullptr) {}\n5\n};\n6\n7\nTreeNode* createTree() {\n8\nTreeNode* root = new TreeNode(1);\n9\nroot->left = new TreeNode(2);\n10\nroot->right = new TreeNode(3);\n11\nroot->left->left = new TreeNode(4);\n12\nroot->left->right = new TreeNode(5);\n13\nreturn root;\n14\n}\n15",
+   "options": [
+    "满二叉树",
+    "完全二叉树",
+    "二叉排序树",
+    "其他都不对"
+   ],
+   "answer": 1,
+   "analysis": "选B。节点1、2、3、4、5按层序连续排列，是完全二叉树；因节点3没有孩子，不是满二叉树。"
+  },
+  {
+   "n": 7,
+   "stem": "已知二叉树的 中序遍历 是 [D, B, E, A, F, C]，先序遍历 是 [A, B, D, E, C, F]。请问该二叉树的后序遍历结果\n是（   ）。",
+   "options": [
+    "[D, E, B, F, C, A]",
+    "[D, B, E, F, C, A]",
+    "[D, E, B, C, F, A]",
+    "[B, D, E, F, C, A]"
+   ],
+   "answer": 0,
+   "analysis": "选A。先序A为根，中序分成{D,B,E}与{F,C}，递归还原后后序为D,E,B,F,C,A。"
+  },
+  {
+   "n": 8,
+   "stem": "完全二叉树可以用数组连续高效存储，如果节点从1 开始编号，则对有两个孩子节点的节点i ，（  ）。",
+   "options": [
+    "左孩子位于2i ，右孩子位于2i+1",
+    "完全二叉树的叶子节点可以出现在最后一层的任意位置",
+    "所有节点都有两个孩子",
+    "左孩子位于2i+1 ，右孩子位于2i+2"
+   ],
+   "answer": 0,
+   "analysis": "选A。完全二叉树从1编号时节点i的左孩子为2i、右孩子为2i+1，因此有两个孩子的节点i其左孩子在2i。"
+  },
+  {
+   "n": 9,
+   "stem": "设有字符集{a, b, c, d, e, f} ，其出现频率分别为 {5, 9, 12, 13, 16, 45} 。哈夫曼算法构造最优\n前缀编码，以下哪一组可能是对应的哈夫曼编码？（非叶子节点左边分支记作 0，右边分支记作 1，左右互换不影响\n正确性）。",
+   "options": [
+    "a: 00；b: 01；c: 10；d: 110；e: 111；f: 0",
+    "a: 1100；b: 1101；c: 100；d: 101；e: 111；f: 0",
+    "a: 000；b: 001；c: 01；d: 10；e: 110；f: 111",
+    "a: 10；b: 01；c: 100；d: 101；e: 111；f: 0"
+   ],
+   "answer": 1,
+   "analysis": "选B。频率45最高故f码长1；5、9次之码长4；12、13、16码长3：a:1100、b:1101、c:100、d:101、e:111、f:0，与B一致。"
+  },
+  {
+   "n": 10,
+   "stem": "下面代码生成格雷编码，则横线上应填写（   ）。\nvector<string> grayCode(int n) {\n1\nif (n == 0) return {\"0\"};\n2\nif (n == 1) return {\"0\", \"1\"};\n3\n4\nvector<string> prev = grayCode(n-1);\n5\nvector<string> result;\n6\nfor (string s : prev) {\n7\nresult.push_back(\"0\" + s);\n8\n}\n9\nfor (_______________) {  // 在此处填写代码\n10\nresult.push_back(\"1\" + prev[i]);\n11\n}\n12\nreturn result;\n13\n}\n14",
+   "options": [
+    "int i = 0; i < prev.size(); i++",
+    "int i = prev.size()-1; i >= 0; i--",
+    "auto s : prev",
+    "int i = prev.size()/2; i < prev.size(); i++"
+   ],
+   "answer": 1,
+   "analysis": "选B。反射法生成格雷码：先正向加前缀0，再逆序加前缀1，故循环应为int i = prev.size()-1; i >= 0; i--。"
+  },
+  {
+   "n": 11,
+   "stem": "请将下列树的深度优先遍历代码补充完整，横线处应填入（   ）。\nstruct TreeNode {\n1\nint val;\n2\nTreeNode* left;\n3\nTreeNode* right;\n4\nTreeNode(int x): val(x), left(nullptr), right(nullptr) {}\n5\n};\n6\n7\nvoid dfs(TreeNode* root) {\n8\nif (!root) return;\n9\n______<TreeNode*> temp;     // 在此处填写代码\n10\ntemp.push(root);\n11\nwhile (!temp.empty()) {\n12\nTreeNode* node = temp.top();\n13\ntemp.pop();\n14\ncout << node->val << \" \";\n15\nif (node->right) temp.push(node->right);\n16\nif (node->left) temp.push(node->left);\n17\n}\n18\n}\n19",
+   "options": [
+    "vector",
+    "list",
+    "queue",
+    "stack"
+   ],
+   "answer": 3,
+   "analysis": "选D。代码使用top()取栈顶并pop()，后进先出，辅助数据结构是栈（vector无pop成员语义、queue是先进先出）。"
+  },
+  {
+   "n": 12,
+   "stem": "令  是树的节点数目，下列代码实现了树的广度优先遍历，其时间复杂度是（   ）。\nvoid bfs(TreeNode* root) {\n1\nif (!root) return;\n2\nqueue<TreeNode*> q;\n3\nq.push(root);\n4\nwhile (!q.empty()) {\n5\nTreeNode* node = q.front();\n6\nq.pop();\n7\ncout << node->val << \" \";\n8\nif (node->left) q.push(node->left);\n9\nif (node->right) q.push(node->right);\n10\n}\n11\n}\n12",
+   "options": [
+    "",
+    "",
+    "",
+    ""
+   ],
+   "answer": 0,
+   "analysis": "选A（O(n)）。BFS中每个节点入队、出队各一次，访问节点数与总时间均为O(n)。"
+  },
+  {
+   "n": 13,
+   "stem": "在二叉排序树（Binary Search Tree, BST）中查找元素 50 ，从根节点开始：若根值为 60 ，则下一步应去\n搜索：",
+   "options": [
+    "左子树",
+    "右子树",
+    "随机",
+    "根节点"
+   ],
+   "answer": 0,
+   "analysis": "选A。50小于根值60，按二叉排序树性质下一步应在左子树中继续查找。"
+  },
+  {
+   "n": 14,
+   "stem": "删除二叉排序树中的节点时，如果节点有两个孩子，则横线处应填入（   ），其中findMax 和findMin 分\n别为寻找树的最大值和最小值的函数。\nstruct TreeNode {\n1\nint val;\n2\nTreeNode* left;\n3\nTreeNode* right;\n4\nTreeNode(int x): val(x), left(nullptr), right(nullptr) {}\n5\n};\n6\n7\nTreeNode* deleteNode(TreeNode* root, int key) {\n8\nif (!root) return nullptr;\n9\nif (key < root->val) {\n10\nroot->left = deleteNode(root->left, key);\n11\n}\n12\nelse if (key > root->val) {\n13\nroot->right = deleteNode(root->right, key);\n14\n}\n15\nelse {\n16\nif (!root->left) return root->right;\n17\nif (!root->right) return root->left;\n18\nTreeNode* temp = ____________;          // 在此处填写代码\n19\nroot->val = temp->val;\n20\nroot->right = deleteNode(root->right, temp->val);\n21\n}\n22\nreturn root;\n23\n}\n24",
+   "options": [
+    "root->left",
+    "root->right",
+    "findMin(root->right)",
+    "findMax(root->left)"
+   ],
+   "answer": 2,
+   "analysis": "选C。删除有两个孩子的BST节点，用右子树中的最小值（或左子树最大值）替换：temp = findMin(root->right)，随后在右子树中删除该值。"
+  },
+  {
+   "n": 15,
+   "stem": "给定个物品和一个最大承重为\n的背包，每个物品有一个重量\n和价值\n，每个物品只能选择放或\n，则横线上应填写（   ）。\n不放。目标是选择若干个物品放入背包，使得总价值最大，且总重量不超过\nint knapsack(int W, vector<int>& wt, vector<int>& val, int n) {\n1\nvector<int> dp(W+1, 0);\n2\nfor (int i = 0; i < n; ++i) {\n3\nfor (int w = W; w >= wt[i]; --w) {\n4\n________________________        // 在此处填写代码\n5\n6\n}\n7\n}\n8\nreturn dp[W];\n9\n}\n10",
+   "options": [
+    "dp[w] = max(dp[w], dp[w] + val[i]);",
+    "dp[w] = dp[w - wt[i]] + val[i];",
+    "dp[w] = max(dp[w - 1], dp[w - wt[i]] + val[i]);",
+    "dp[w] = max(dp[w], dp[w - wt[i]] + val[i]);"
+   ],
+   "answer": 3,
+   "analysis": "选D。一维0-1背包转移方程为dp[w] = max(dp[w], dp[w - wt[i]] + val[i]);"
+  }
+ ],
+ "judge": [
+  {
+   "n": 1,
+   "stem": "当基类可能被多态使用，其析构函数应该声明为虚函数。",
+   "answer": null,
+   "analysis": "对。基类可能通过基类指针多态地删除派生对象时，析构函数应声明为虚函数，否则无法正确析构派生部分，造成资源泄漏。"
+  },
+  {
+   "n": 2,
+   "stem": "哈夫曼编码是最优前缀码，且编码结果唯一。",
+   "answer": null,
+   "analysis": "错。哈夫曼编码是最优前缀码，但最优解不唯一——左右分支0/1互换即可得到另一组同样最优的编码。"
+  },
+  {
+   "n": 3,
+   "stem": "一个含有\n个节点的完全二叉树，高度为 。",
+   "answer": null,
+   "analysis": "错。n个节点的完全二叉树高度（根为第1层）为⌊log₂n⌋+1，题干给出的公式与此不符（题干公式以真题原件为准）。"
+  },
+  {
+   "n": 4,
+   "stem": "在 C++ STL 中，栈（std::stack ）的 pop 操作返回栈顶元素并移除它。",
+   "answer": null,
+   "analysis": "错。std::stack的pop()返回void，只负责删除栈顶元素，取栈顶应先调用top()。"
+  },
+  {
+   "n": 5,
+   "stem": "循环队列通过模运算循环使用空间。",
+   "answer": null,
+   "analysis": "对。循环队列通过(rear+1)%N等模运算让指针绕回数组开头，循环利用存储空间。"
+  },
+  {
+   "n": 6,
+   "stem": "一棵有  个节点的二叉树一定有\n条边。",
+   "answer": null,
+   "analysis": "对。n个节点的二叉树有且仅有n-1条边（除根外每个节点恰有一条指向父节点的边）。"
+  },
+  {
+   "n": 7,
+   "stem": "以下代码实现了二叉树的中序遍历。输入以下二叉树，中序遍历结果是4 2 5 1 3 6 。\n//     1\n1\n//    / \\\n2\n//   2   3\n3\n//  / \\   \\\n4\n// 4   5   6\n5\n6\nstruct TreeNode {\n7\nint val;\n8\nTreeNode* left;\n9\nTreeNode* right;\n10\nTreeNode(int x) : val(x), left(nullptr), right(nullptr) {}\n11\n};\n12\n13\nvoid inorderIterative(TreeNode* root) {\n14\nstack<TreeNode*> st;\n15\nTreeNode* curr = root;\n16\n17\nwhile (curr || !st.empty()) {\n18\nwhile (curr) {\n19\nst.push(curr);\n20\ncurr = curr->left;\n21\n}\n22\ncurr = st.top(); st.pop();\n23\ncout << curr->val << \" \";\n24\ncurr = curr->right;\n25\n}\n26\n}\n27",
+   "answer": null,
+   "analysis": "对。该代码是典型的迭代式中序遍历，对题图二叉树输出4 2 5 1 3 6，与题干一致。"
+  },
+  {
+   "n": 8,
+   "stem": "下面代码实现的二叉排序树的查找操作时间复杂度是\n，其中  为树高。\nTreeNode* searchBST(TreeNode* root, int val) {\n1\nwhile (root && root->val != val) {\n2\nroot = (val < root->val) ? root->left : root->right;\n3\n}\n4\nreturn root;\n5\n}\n6",
+   "answer": null,
+   "analysis": "对。二叉排序树查找沿一条从根到目标的路径进行，比较次数不超过树高，时间复杂度为O(h)。"
+  },
+  {
+   "n": 9,
+   "stem": "下面代码实现了动态规划版本的斐波那契数列计算，其时间复杂度是\n。\nint fib_dp(int n) {\n1\nif (n <= 1) return n;\n2\nvector<int> dp(n+1);\n3\ndp[0] = 0;\n4\ndp[1] = 1;\n5\nfor (int i = 2; i <= n; i++) {\n6\ndp[i] = dp[i-1] + dp[i-2];\n7\n}\n8\nreturn dp[n];\n9\n}\n10",
+   "answer": null,
+   "analysis": "错。该动态规划每个状态只计算一次，时间复杂度为O(n)；题干给出的复杂度与事实不符（题干公式以真题原件为准）。"
+  },
+  {
+   "n": 10,
+   "stem": "有一排香蕉，每个香蕉有不同的甜度值。小猴子想吃香蕉，但不能吃相邻的香蕉。以下代码能找到小猴子\n吃到最甜的香蕉组合。\n// bananas：香蕉的甜度\n1\nvoid findSelectedBananas(vector<int>& bananas, vector<int>& dp) {\n2\nvector<int> selected;\n3\nint i = bananas.size() - 1;\n4\n5\nwhile (i >= 0) {\n6\nif (i == 0) {\n7\nselected.push_back(0);\n8\nbreak;\n9\n}\n10\n11\nif (dp[i] == dp[i-1]) {\n12\ni--;\n13\n} else {\n14\nselected.push_back(i);\n15\ni -= 2;\n16\n}\n17\n}\n18\n19\nreverse(selected.begin(), selected.end());\n20\ncout << \"小猴子吃了第: \";\n21\nfor (int idx : selected)\n22\ncout << idx+1 << \" \";\n23\ncout << \"个香蕉\" << endl;\n24\n}\n25\n26\nint main() {\n27\nvector<int> bananas = {1, 2, 3, 1}; // 每个香蕉的甜\n28\n29\nvector<int> dp(bananas.size());\n30\ndp[0] = bananas[0];\n31\ndp[1] = max(bananas[0], bananas[1]);\n32\nfor (int i = 2; i < bananas.size(); i++) {\n33\ndp[i] = max(bananas[i] + dp[i-2], dp[i-1]);\n34\n}\n35\nfindSelectedBananas(bananas, dp);\n36\n37\nreturn 0;\n38\n}\n39",
+   "answer": null,
+   "analysis": "对。该代码用不相邻选数DP求最优值并回溯选取方案，对样例香蕉{1,2,3,1}能正确选出第1、3个香蕉（总甜度4）。"
+  }
+ ],
+ "programming": [
+  {
+   "n": 1,
+   "name": "划分字符串",
+   "desc": "小 A 有一个由  个小写字母组成的字符串 。他希望将  划分为若干个子串，使得子串中每个字母至多出现一次。\n例如，对于字符串 street 来说，str + e + e + t 是满足条件的划分；而 s + tree + t 不是，因为子串\ntree 中 e 出现了两次。\n额外地，小 A 还给出了价值\n，表示划分后长度为  的子串价值为\n。小 A 希望最大化划分后得到的子\n串价值之和。你能帮他求出划分后子串价值之和的最大值吗？"
+  },
+  {
+   "n": 2,
+   "name": "货物运输",
+   "desc": "A 国有  座城市，依次以\n编号，其中  号城市为首都。这  座城市由\n条双向道路连接，第  条道路\n）连接编号为\n的两座城市，道路长度为 。任意两座城市间均可通过双向道路到达。\n（\n现在 A 国需要从首都向各个城市运送货物。具体来说，满载货物的车队会从首都开出，经过一座城市时将对应的货\n物送出，因此车队需要经过所有城市。A 国希望你设计一条路线，在从首都出发经过所有城市的前提下，最小化经\n过的道路长度总和。注意一座城市可以经过多次，车队最后可以不返回首都。"
+  }
+ ]
+}

@@ -1,0 +1,267 @@
+{
+ "session": "2025-03",
+ "level": 4,
+ "file": "GESP 2025年03月认证C++ 4级真题.pdf",
+ "legacy": false,
+ "choiceCount": 15,
+ "judgeCount": 10,
+ "progCount": 2,
+ "choiceAnswers": "ABBDDCDDBBBBAAC",
+ "judgeAnswers": "",
+ "choice": [
+  {
+   "n": 1,
+   "stem": "关于下述代码，说法错误的是（  ）。\nint multiply(int x, int y);\n1\n2\nint main() {\n3\nint a = 4;\n4\nint b = 5;\n5\nint result = multiply(a, b);\n6\nstd::cout << \"The result is: \" << result << std::endl;\n7\nreturn 0;\n8\n}\n9\n10\nint multiply(int x, int y) {\n11\nreturn x * y;\n12\n}\n13",
+   "options": [
+    "函数multiply 的定义应该放到函数main 之前。",
+    "函数声明int multiply(int x, int y); 中明确指定了函数multiply() 的返回值为整数类型。",
+    "在main 函数中，函数multiply 通过multiply(a, b) 被调用，其中a 和b 是定义在main 函数中的变 量，它们作为实参传递给了multiply 函数的形参x 和y 。",
+    "运行上述代码，将输出The result is: 20 。"
+   ],
+   "answer": 0,
+   "analysis": "正确答案 A（说法错误项）。multiply 已有声明在先，定义写在 main 之后完全合法，“定义应该放到 main 之前”的说法错误；其余三项对声明、实参传值和运行结果（4×5=20）的描述都正确。"
+  },
+  {
+   "n": 2,
+   "stem": "执行下述代码将输出（  ）。\nint x = 10;\n1\nvoid func() { int x = 20; std::cout << x; }\n2\nint main() {\n3\nfunc();\n4\nstd::cout << x;\n5\nreturn 0;\n6\n}\n7",
+   "options": [
+    "2020",
+    "2010",
+    "1010",
+    "编译错误"
+   ],
+   "answer": 1,
+   "analysis": "正确答案 B。func 内输出局部 x=20，main 中输出全局 x=10，连起来是 2010。局部变量遮蔽全局变量是常见考点。"
+  },
+  {
+   "n": 3,
+   "stem": "执行下述代码后，变量a 的值为（  ）。\nint a = 10;\n1\nint* p = &a;\n2\n*p = 20\n3",
+   "options": [
+    "10",
+    "20",
+    "随机值",
+    "编译错误"
+   ],
+   "answer": 1,
+   "analysis": "正确答案 B。p 指向 a，*p = 20 即把 a 改为 20。"
+  },
+  {
+   "n": 4,
+   "stem": "以下哪种参数传递方式可以避免拷贝大型对象？",
+   "options": [
+    "只能用值传递",
+    "只能用引用传递",
+    "只能用指针传递",
+    "引用传递和指针传递均可"
+   ],
+   "answer": 3,
+   "analysis": "正确答案 D。引用传递和指针传递都只传地址不复制对象本体，都能避免拷贝大型对象；值传递会完整复制，开销大。"
+  },
+  {
+   "n": 5,
+   "stem": "执行下述代码，将输出（  ）。\nvoid swap(int a, int &b) {\n1\nint temp = a;\n2\na = b;\n3\nb = temp;\n4\n}\n5\nint main() {\n6\nint x = 1, y = 2;\n7\nswap(x, y);\n8\nstd::cout << x << y;\n9\nreturn 0;\n10\n}\n11",
+   "options": [
+    "12",
+    "21",
+    "22",
+    "11"
+   ],
+   "answer": 3,
+   "analysis": "正确答案 D。a 是值传递，函数内交换不改变 x（仍为 1）；b 是引用传递，swap 中 b = temp 把 y 改为 x 原来的值 1，故输出 11。混合传参要分开分析。"
+  },
+  {
+   "n": 6,
+   "stem": "下面的描述中，（  ）正确定义一个名为Person 的结构体并正确初始化了一个Person 结构体的变量p 。",
+   "options": [
+    "struct Person { 1 string name; 2 int age; 3 }; 4 Person p(\"Yang\", 10); 5",
+    "struct Person { 1 string name, 2 int age; 3 }; 4 Person p; 5 p.name = \"Yang\"; 6 p.age = 10; 7",
+    "struct Person { 1 string name; 2 int age; 3 }; 4 Person p = { \"Yang\", 10 }; 5",
+    "struct Person { 1 string name; 2 int age; 3 }; 4 Person p = new Person(\"Yang\", 10); 5"
+   ],
+   "answer": 2,
+   "analysis": "正确答案 C。Person p = { \"Yang\", 10 }; 是合法的聚合初始化；A 把结构体当类构造调用，B 成员间用了逗号分隔错误，D 对非指针变量用了 new。"
+  },
+  {
+   "n": 7,
+   "stem": "给定如下代码，\nstruct Person {\n1\nstd::string name;\n2\nint age;\n3\nstruct Address {\n4\nstd::string street;\n5\nstd::string city;\n6\n};\n7\nAddress address;\n8\n};\n9\n下面描述错误的是（  ）。",
+   "options": [
+    "结构Person 内嵌套结构Address",
+    "Person 有一个Address 类型的 address 成员",
+    "一个Person 类型的变量p 的address 的初始化可以写成：p.address.street = \"123 Main St\"; p.address.city = \"Anytown\";",
+    "结构的嵌套可以减少命名冲突，因此可以不必控制嵌套层次"
+   ],
+   "answer": 3,
+   "analysis": "正确答案 D（描述错误项）。结构体可以嵌套、嵌套能减少命名冲突，但嵌套层次过多会降低可读性、增加维护成本，“不必控制嵌套层次”的说法错误。"
+  },
+  {
+   "n": 8,
+   "stem": "假设int arr[2][3] = {{1,2,3},{4,5,6}}; ，则arr[1][2] 的值是（  ）。",
+   "options": [
+    "2",
+    "3",
+    "5",
+    "6"
+   ],
+   "answer": 3,
+   "analysis": "正确答案 D。arr[1][2] 是第 2 行第 3 列元素，值为 6。二维数组下标从 0 开始。"
+  },
+  {
+   "n": 9,
+   "stem": "下面（  ）正确定义了二维数组。",
+   "options": [
+    "int arr[3,4];",
+    "int arr[3][4];",
+    "int arr(3,4);",
+    "int a[3-4];"
+   ],
+   "answer": 1,
+   "analysis": "正确答案 B。int arr[3][4]; 正确；逗号写法、圆括号写法都非法，int a[3-4] 长度为负也是非法的。"
+  },
+  {
+   "n": 10,
+   "stem": "小杨正在爬楼梯，需要爬阶才能到达楼顶。如果每次可以爬个或个台阶，下面代码采用递推算法来计算\n一共有多少种不同的方法可以爬到楼顶，则横线上应填写（  ）。\nint f(int n) {\n1\nif (n == 1 || n == 2)\n2\nreturn n;\n3\n4\nint f1 = 1;\n5\nint f2 = 2;\n6\nint res = 0;\n7\nfor (int i = 3; i <= n; i++) {\n8\n________________________________     // 在此处填入代码\n9\n}\n10\nreturn res;\n11\n}\n12",
+   "options": [
+    "res += f1 + f2; 1 f1 = f2; 2 f2 = res; 3",
+    "res = f1 + f2; 1 f1 = f2; 2 f2 = res; 3",
+    "res += f1 + f2; 1 f2 = res; 2 f1 = f2; 3",
+    "res = f1 + f2; 1 f2 = res; 2 f1 = f2; 3"
+   ],
+   "answer": 1,
+   "analysis": "正确答案 B。爬楼梯方案数满足 f(n)=f(n-1)+f(n-2)：res = f1 + f2 先求当前项，再 f1 = f2、f2 = res 依次滚动更新；用 += 会累加出错。"
+  },
+  {
+   "n": 11,
+   "stem": "给定如下算法，其时间复杂度为（  ）。\nbool f(int arr[], int n, int target) {\n1\nfor (int i = 0; i < (1 << n); i++) {\n2\nint sum = 0;\n3\nfor (int j = 0; j < n; j++) {\n4\nif (i & (1 << j)) {\n5\nsum += arr[j];\n6\n}\n7\n}\n8\nif (sum == target) return true;\n9\n}\n10\nreturn false;\n11\n}\n12",
+   "options": [
+    "",
+    "",
+    "",
+    ""
+   ],
+   "answer": 1,
+   "analysis": "正确答案 B。外层循环 2^n 次，内层循环 n 次，总时间复杂度为 O(n·2^n)。子集枚举的位运算是典型考点。（选项文本以真题原件为准）"
+  },
+  {
+   "n": 12,
+   "stem": "下面关于排序稳定性的描述，正确的是（  ）。",
+   "options": [
+    "稳定性指算法的时间复杂度恒定",
+    "稳定排序保证相同元素的相对顺序不变",
+    "选择排序是稳定排序",
+    "插入排序不是稳定排序"
+   ],
+   "answer": 1,
+   "analysis": "正确答案 B。稳定性指排序后相等元素的相对顺序不变；选择排序不稳定，插入排序是稳定排序。"
+  },
+  {
+   "n": 13,
+   "stem": "对数组arr[]={5, 3, 8, 1} 进行升序排序，执行第一轮冒泡排序后数组arr 中的内容为（  ）。",
+   "options": [
+    "3, 5, 1, 8",
+    "3, 1, 5, 8",
+    "3, 5, 8, 1",
+    "5, 3, 8, 1"
+   ],
+   "answer": 0,
+   "analysis": "正确答案 A。第一轮冒泡：5,3→3,5；5,8 不换；8,1→1,8，结果为 {3,5,1,8}。每轮冒泡只把当前最大值换到末尾。"
+  },
+  {
+   "n": 14,
+   "stem": "运行下面的代码，将出现（  ）。\ndouble hmean(double a, double b) {\n1\nif (a == -b )\n2\nthrow runtime_error(\"Runtime error occurred.\");\n3\nreturn 2.0*a*b/(a + b);\n4\n}\n5\n6\nint main() {\n7\ndouble x = 10;\n8\ndouble y = -10;\n9\n10\ntry {\n11\nint result = hmean(x, y);\n12\ncout << \"hmean: \" << result << endl;\n13\n}\n14\ncatch (const runtime_error& e) {\n15\ncout << \"Caught: \" << e.what() << endl;\n16\n} catch (...) {\n17\ncout << \"Caught an unknown exception.\" << endl;\n18\n}\n19\nreturn 0;\n20\n}\n21",
+   "options": [
+    "屏幕上输出Caught: Runtime error occurred.",
+    "屏幕上输出Caught an unknown exception.",
+    "程序调用 std::terminate()",
+    "编译错误"
+   ],
+   "answer": 0,
+   "analysis": "正确答案 A。a 与 -b 相等（10 与 -10）抛出 runtime_error，被第一个 catch 捕获，输出 \"Caught: Runtime error occurred.\"。"
+  },
+  {
+   "n": 15,
+   "stem": "下面哪种方式不能实现将字符串\"Happy Spring!\" 输出重定向到文件log.txt （  ）。",
+   "options": [
+    "freopen(\"log.txt\", \"w\", stdout); 1 cout << \"Happy Spring!\" << endl; 2 fclose(stdout); 3",
+    "std::ofstream outFile(\"log.txt\"); 1 outFile << \"Happy Spring!\" << endl; 2 outFile.close(); 3",
+    "std::ofstream outFile(\"log.txt\"); 1 cout << \"Happy Spring!\" << endl; 2 outFile.close(); 3",
+    "ofstream log_file(\"log.txt\"); 1 streambuf* org_cout = cout.rdbuf(); 2 cout.rdbuf(log_file.rdbuf()); 3 cout << \"Happy Spring!\" << endl; 4 cout.rdbuf(org_cout); 5"
+   ],
+   "answer": 2,
+   "analysis": "正确答案 C。C 中输出仍走 cout，字符串不会写入文件，不能实现重定向；freopen、rdbuf 或直接向 ofstream 输出都可以。"
+  }
+ ],
+ "judge": [
+  {
+   "n": 1,
+   "stem": "函数是C++中的核心概念，用于封装可重用的代码块。",
+   "answer": null,
+   "analysis": "正确。函数用于封装可重复使用的代码块，是 C++ 程序设计的基本组织单位。"
+  },
+  {
+   "n": 2,
+   "stem": "在C++中，函数的返回类型可以省略，默认为int 。",
+   "answer": null,
+   "analysis": "错误。C++ 中函数必须显式写出返回类型（没有“默认 int”的规则），省略返回类型是编译错误。"
+  },
+  {
+   "n": 3,
+   "stem": "结构体的成员默认是public 访问权限。",
+   "answer": null,
+   "analysis": "正确。结构体成员默认具有 public 访问权限（类的成员默认才是 private）。"
+  },
+  {
+   "n": 4,
+   "stem": "假设整数数组arr[4]= {0, 1, 2, 3}; 的第一个元素在内存中的地址为0x7ffee4065820 , 经过int* p\n= arr; p += 1; 后，指针p 的值是1。",
+   "answer": null,
+   "analysis": "错误。p += 1 使指针移动一个 int（4 字节），p 的值变为地址 0x7ffee4065824，而不是数值 1；指针的值是地址。"
+  },
+  {
+   "n": 5,
+   "stem": "二维数组作为函数参数时，必须显式指定所有维度的大小。",
+   "answer": null,
+   "analysis": "错误。二维数组作函数参数时，第二维必须显式给出，第一维可以省略（如 int arr[][4]），并非所有维度都要写。"
+  },
+  {
+   "n": 6,
+   "stem": "递推是一种通过已知的初始值和递推公式，逐步求解目标值的算法。",
+   "answer": null,
+   "analysis": "正确。递推就是从已知初值和递推公式出发，逐步推出目标值的算法。"
+  },
+  {
+   "n": 7,
+   "stem": "考虑最坏情况下冒泡排序算法的时间复杂度，\n为待排序数字的数目为的复杂度，则其递推关系式为\n，\n。",
+   "answer": null,
+   "analysis": "正确。最坏情况下冒泡排序第 n 趟比较 n-1 次，递推式 T(n)=T(n-1)+n-1、T(1)=0 展开求和即得 O(n²)。（题干公式以真题原件为准）"
+  },
+  {
+   "n": 8,
+   "stem": "插入排序在最好情况（已有序）下的时间复杂度是\n。",
+   "answer": null,
+   "analysis": "错误。插入排序在最好情况（输入已有序）下每趟只需一次比较、无需移动元素，时间复杂度为 O(n)，并非题干所给公式（题干公式以真题原件为准）。"
+  },
+  {
+   "n": 9,
+   "stem": "对数组arr[]={4, 3, 1, 5, 2} 进行升序排序，执行第一轮选择排序后数组arr中的内容是{1, 4, 3, 5,\n2} 。",
+   "answer": null,
+   "analysis": "错误。第一轮选择排序选出最小值 1 与首元素 4 交换，结果应为 {1,3,4,5,2}，而非 {1,4,3,5,2}。选择排序每轮只交换一次。"
+  },
+  {
+   "n": 10,
+   "stem": "未捕获异常会调用std::terminate终止程序。",
+   "answer": null,
+   "analysis": "正确。异常若最终没有被捕获，将沿调用栈传播至 main 之外，由运行时调用 std::terminate 终止程序。"
+  }
+ ],
+ "programming": [
+  {
+   "n": 1,
+   "name": "荒地开垦",
+   "desc": ""
+  },
+  {
+   "n": 2,
+   "name": "编程题 2",
+   "desc": "小 A 有一个  行\n列的矩阵 。\n小 A 认为一个\n的矩阵\n是好的，当且仅当\n。其中\n表示矩阵\n的第  行第  列\n的元素。\n小 A 想知道  中有多少个好的子矩阵。"
+  }
+ ]
+}

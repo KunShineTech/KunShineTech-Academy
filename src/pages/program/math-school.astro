@@ -1,0 +1,7 @@
+---
+import MathCourse from '../../components/MathCourse.astro';
+import { getProgram } from '../../data/programs';
+import schoolData from '../../data/math/school.json';
+const info = getProgram('math-school')!;
+---
+<MathCourse info={info} data={schoolData} />

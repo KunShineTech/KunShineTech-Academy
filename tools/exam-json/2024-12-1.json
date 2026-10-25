@@ -1,0 +1,244 @@
+{
+ "session": "2024-12",
+ "level": 1,
+ "file": "GESP 2024年12月认证C++ 1级真题.pdf",
+ "legacy": false,
+ "choiceCount": 15,
+ "judgeCount": 10,
+ "progCount": 2,
+ "choiceAnswers": "CCDBBDBCCCDCDBD",
+ "judgeAnswers": "",
+ "choice": [
+  {
+   "n": 1,
+   "stem": "2024年10⽉8⽇，诺贝尔物理学奖“意外地”颁给了两位计算机科学家约翰·霍普菲尔德（John J. Hopfield）和杰\n弗⾥·⾟顿（Geoffrey E. Hinton）。这两位科学家的主要研究⽅向是（\n）。",
+   "options": [
+    "天体物理",
+    "流体⼒学",
+    "⼈⼯智能",
+    "量⼦理论"
+   ],
+   "answer": 2
+  },
+  {
+   "n": 2,
+   "stem": "下列软件中是操作系统的是（\n）。",
+   "options": [
+    "⾼德地图",
+    "腾讯会议",
+    "纯⾎鸿蒙",
+    "⾦⼭永中"
+   ],
+   "answer": 2
+  },
+  {
+   "n": 3,
+   "stem": "有关下列C++代码的说法，正确的是( )。\nprintf(\"Hello,GESP!\");\n1",
+   "options": [
+    "配对双引号内，不可以有汉字",
+    "配对双引号可以相应改变为英⽂单引号⽽输出效果不变",
+    "配对双引号可以相应改变为三个连续英⽂单引号⽽输出效果不变",
+    "配对双引号可以相应改变为三个连续英⽂双引号⽽输出效果不变"
+   ],
+   "answer": 3
+  },
+  {
+   "n": 4,
+   "stem": "C++表达式12 - 3 * 2 && 2 的值是(\n)。",
+   "options": [
+    "0",
+    "1",
+    "6",
+    "9"
+   ],
+   "answer": 1
+  },
+  {
+   "n": 5,
+   "stem": "在C++中，假设N为正整数2 ，则cout << (N / 3 + N % 3) 将输出(\n)。",
+   "options": [
+    "0",
+    "2",
+    "3",
+    "4"
+   ],
+   "answer": 1
+  },
+  {
+   "n": 6,
+   "stem": "C++语句cout << 7%3 <<\n' << \"7%3={7%3}\" 执⾏后的输出是(\n)。\n'\n'<< \"7%3\"<<\n'",
+   "options": [
+    "1 1 1=1",
+    "1 7%3 1=1 w C. 1 7%3 7%3=1 o D. 1 7%3 7%3={7%3}",
+    "",
+    ""
+   ],
+   "answer": 3,
+   "warn": "options=2"
+  },
+  {
+   "n": 7,
+   "stem": "下⾯C++代码执⾏后，求出⼏天后星期⼏。如果星期⽇则输出“星期天”否则输出形如“星期1” 。横线上应填⼊\n的代码是（\n）。\nint N, nowDay, afterDays;\n1\n2\ncout << \"今天星期几？\" <<endl;\ncin >> nowDay;\n3\n4\ncout << \"求几天后星期几？\"<< endl;\ncin >>afterDays;\n5\n6\nN = nowDay+afterDays;\n7\n8\nif(\n)\n9\nprintf(\"星期天\");\n10\nelse\n11\nprintf(\"星期%d\", N%7);\n12",
+   "options": [
+    "N % 7 != 0",
+    "N % 7 == 0 w C. N == 0",
+    "",
+    "N % 7"
+   ],
+   "answer": 1,
+   "warn": "options=3"
+  },
+  {
+   "n": 8,
+   "stem": "下⾯C++代码执⾏后输出是（\n）。\nint N=0,i;\n1\nfor (i = 1; i < 10; i++)\n2\nN += 1;\n3\ncout << (N + i);\n4",
+   "options": [
+    "54",
+    "20",
+    "19",
+    "18"
+   ],
+   "answer": 2
+  },
+  {
+   "n": 9,
+   "stem": "下⾯C++代码执⾏后输出的是（\n）。\nint tnt = 0;\n1\nfor (i = 0; i < 100; i++)\n2\ntnt += i % 10;\n3\ncout << tnt;\n4",
+   "options": [
+    "4950",
+    "5050",
+    "450 口",
+    "100"
+   ],
+   "answer": 2
+  },
+  {
+   "n": 10,
+   "stem": "下⾯C++代码执⾏后输出的是（\n）。\nint N=0,i;\n1\nint tnt = 0;\n2\nfor (i = 5; i < 100; i+=5){\n3\nif (i % 2 == 0)\n4\ncontinue;\n5\ntnt += 1;\n6\nif (i >= 50)\n7\nbreak;\n8\n}\n9\n10\ncout << tnt;\n11",
+   "options": [
+    "10",
+    "9",
+    "6",
+    "5"
+   ],
+   "answer": 2
+  },
+  {
+   "n": 11,
+   "stem": "下⾯的程序⽤于判断输⼊的整数N是否为能被3整除的偶数，横线处应填写代码是（\n）。\nint N;\n1\ncin >> N;\n2\n3\nif(\n)\n4\ncout << \"能被3整除的偶数\" << endl;\n5\nelse\n6\ncout << \"其他情形\" << endl;\n7\n8\n9\ncout << endl;\n10\n(N%2)&&(N%3)",
+   "options": [
+    "(N%2==0)&&(N%3)",
+    "",
+    "(N%2)&&(N%3==0)",
+    "(N%2==0)&&(N%3==0)"
+   ],
+   "answer": 3
+  },
+  {
+   "n": 12,
+   "stem": "下⾯C++代码执⾏后的输出是（\n）。\nint cnt;\n1\n2\ncnt = 0;\n3\nfor(int i = 1; i < 10; i++)\n4\ncnt += i++;\n5\n6\ncout << cnt;\n7\ncout << endl;\n8",
+   "options": [
+    "54",
+    "45",
+    "25",
+    "10"
+   ],
+   "answer": 2
+  },
+  {
+   "n": 13,
+   "stem": "int类型变量a的值是⼀个正⽅形的边长，如下图中的正⽅形的四条边长都为4 ，则下列哪个语句执⾏后能够\n使得正⽅形的周长（四条边长的和）增加4？（\n）。\n+\n+\n+\n+\n+\n1\n+\n+\n2\n+\n+\n3\n+\n+\n4\n+\n+\n+\n+\n+\n5",
+   "options": [
+    "a*4;",
+    "a+4;",
+    "a+1;",
+    "++a;"
+   ],
+   "answer": 3
+  },
+  {
+   "n": 14,
+   "stem": "C++表达式(6 > 2) * 2 的值是(\n)。",
+   "options": [
+    "1",
+    "2",
+    "true",
+    "truetrue"
+   ],
+   "answer": 1
+  },
+  {
+   "n": 15,
+   "stem": "下⾯C++代码⽤于判断输⼊的整数是否为位增数，即从⾸位到个位逐渐增⼤，是则输出1 。如123是⼀个位增\n数。下⾯横线处应填⼊的是（\n）。\nint N;\n1\nint n1,n2;\n2\n3\ncin >> N;\n4\n5\n;\n6\nwhile(N){\n7\nn1 = N % 10;\n8\nif(n1 >= n2){\n9\ncout << 0;\n10\nreturn 1;\n11\n}\n12\nn2 = n1, N /=10;\n13\n}\n14\n15\ncout << 1;\n16\n17\ncout << endl;\n18\nreturn 0;\n19",
+   "options": [
+    "n2 = N%10",
+    "N /= 10",
+    "n2 = N/10, N %= 10",
+    "n2 = N%10, N /= 10"
+   ],
+   "answer": 3
+  }
+ ],
+ "judge": [
+  {
+   "n": 1,
+   "stem": "在Windows的资源管理器中为已有⽂件A建⽴副本的操作是\n，然后\n。( )\nCtrl+C\nCtrl+V",
+   "answer": null
+  },
+  {
+   "n": 2,
+   "stem": "在C++中，表达式8/3 和8%3 的值相同。(\n)",
+   "answer": null
+  },
+  {
+   "n": 3,
+   "stem": "X是C++语⾔的基本类型变量，则语句cin>>X, cout <<X 能接收键盘输⼊并原样输出。(\n)",
+   "answer": null
+  },
+  {
+   "n": 4,
+   "stem": "下⾯C++代码执⾏后将输出10 。(\n)\nint N = 0;\n1\nfor (int i = 0; i < 10; i++){\n2\ncontinue;\n3\n4\nN += 1;\n}\n5\ncout << N;\n6",
+   "answer": null
+  },
+  {
+   "n": 5,
+   "stem": "下⾯C++代码执⾏后将输出100 。( )\nint i;\n1\nfor (i = 0; i <= 100; i++)\n2\ncontinue;\n3\ncout << i;\n4",
+   "answer": null
+  },
+  {
+   "n": 6,
+   "stem": "下⾯C++代码被执⾏时，将执⾏三次输出（即标记⾏L2将被执⾏⼀次）。(\n)\nfor (int i = 0; i < 10; i+=3)\n1\ncout << i;\n//L2\n2",
+   "answer": null
+  },
+  {
+   "n": 7,
+   "stem": "C++语句cout << (3,2) 执⾏后，将输出3和2 ，且3和2之间有逗号间隔。(\n)",
+   "answer": null
+  },
+  {
+   "n": 8,
+   "stem": "在C++代码中，studentName 、student_name 以及sStudentName 都是合法的变量名称。(\n)",
+   "answer": null
+  },
+  {
+   "n": 9,
+   "stem": "在C++中，对浮点变量float f ，则语句cin >> f; cout << (f<1); 在输⼊是2e-1 时，输出是0 。(\n)",
+   "answer": null
+  },
+  {
+   "n": 10,
+   "stem": "在C++的循环体内部，如果break 和continue 语句连续在⼀起，那么作⽤抵消，可以顺利执⾏下⼀次\n循环。( )",
+   "answer": null
+  }
+ ],
+ "programming": [
+  {
+   "n": 1,
+   "name": "温度转换",
+   "desc": "⼩杨最近学习了开尔⽂温度、摄⽒温度和华⽒温度的转换。令符号K 表⽰开尔⽂温度，符号C 表⽰摄⽒温度，符号\nF 表⽰华⽒温度，这三者的转换公⽰如下：\nC\nK\n273. 15\nF = C'X 1.8 + 32\n现在⼩杨想编写⼀个程序计算某⼀开尔⽂温度对应的摄⽒温度和华⽒温度，你能帮帮他吗？"
+  },
+  {
+   "n": 2,
+   "name": "奇数和偶数",
+   "desc": ""
+  }
+ ]
+}

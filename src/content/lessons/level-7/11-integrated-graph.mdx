@@ -1,0 +1,63 @@
+---
+title: "图论与哈希综合训练"
+level: 7
+order: 11
+duration: 120
+unit: "综合训练"
+difficulty: 进阶
+goals:
+  - "综合运用建图、DFS/BFS、泛洪解决图论问题"
+  - "综合运用哈希解决查找、计数与配对问题"
+  - "能在图论与数据结构混合题中选择合适工具"
+---
+
+import Check from '../../../components/Check.astro';
+import Task from '../../../components/Task.astro';
+import Reveal from '../../../components/Reveal.astro';
+
+
+## 1. 本级别图论与哈希知识地图
+把第 5~9 课串成一张作战图：
+
+- **建图**：邻接矩阵（稠密）、邻接表（稀疏，首选）
+- **遍历**：DFS（走到底、代码短）、BFS（按层扩散、求无权最短路）
+- **泛洪**：网格上的连通块统计与染色（四连通/八连通）
+- **哈希**：快速查找、计数、去重；unordered_set / unordered_map
+
+考场上选工具的口诀：**「路」的问题想图，「查」的问题想哈希；网格先想泛洪，步数先想 BFS。**
+
+## 2. 例题一：最少换乘
+<Task title="公交换乘" input="第一行 n、m、s、t（n≤1000 个站点，m≤10^4 条线路，每条线路是若干站点的双向连通），接下来 m 行，每行以 k 开头，后跟 k 个站点编号，表示一条线路经过这些站点" output="从 s 到 t 最少换乘几次；不可达输出 -1" sampleIn="5 2 1 5
+3 1 2 3
+3 3 4 5" sampleOut="1">样例：坐第一条线路从 1 到 3，换乘第二条线路到 5，共换乘 1 次。关键在于「同一条线路上的站点两两可达」——建图时这条信息怎么用？</Task>
+<Reveal label="查看参考程序与思路"><pre><code>{`#include <iostream>\n#include <vector>\n#include <queue>\nusing namespace std;\nvector<int> adj[1005];\nint dist[1005];\nint main(){\n    int n,m,s,t;\n    cin>>n>>m>>s>>t;\n    for(int line=0;line<m;line++){\n        int k; cin>>k;\n        vector<int> stops(k);\n        for(int i=0;i<k;i++) cin>>stops[i];\n        for(int i=0;i<k;i++)          // 同线路相邻站点连边\n            for(int j=i+1;j<k;j++){\n                adj[stops[i]].push_back(stops[j]);\n                adj[stops[j]].push_back(stops[i]);\n            }\n    }\n    for(int i=1;i<=n;i++) dist[i]=-1;\n    queue<int> q; q.push(s); dist[s]=0;\n    while(!q.empty()){\n        int u=q.front(); q.pop();\n        for(int v:adj[u])\n            if(dist[v]==-1){ dist[v]=dist[u]+1; q.push(v); }\n    }\n    if(dist[t]==-1) cout<<-1<<'\\n';\n    else cout<<dist[t]-1<<'\\n';\n}`}</code></pre>同线路的站点两两相连，建图时给每条线路的站点两两加边（或只连相邻站，效果相同），然后 BFS 求最少经过几站，换乘次数 = 经过的站数 - 1。难点不在 BFS，而在**读题建图**：把「线路」翻译成「边」，这是图论题的真功夫。</Reveal>
+
+## 3. 例题二：热门话题
+> 教学提醒：unordered_map 遍历是无序的，凡题目带「字典序最小」「第 k 小」之类的有序要求，要么换成有序容器，要么像例题这样在结果集上二次比较——不要默认哈希能自动排好序。
+
+<Task title="话题热度" input="第一行 n（n≤10^5），接下来 n 行，每行一个字符串（话题标签，长度不超过 20）" output="出现次数最多的标签；次数相同时输出字典序最小的" sampleIn="6
+sport
+music
+sport
+game
+music
+sport" sampleOut="sport">sport 出现 3 次最多。统计用哈希最快，但「次数相同输出字典序最小」这个要求，unordered_map 能帮上忙吗？</Task>
+<Reveal label="查看参考程序与思路"><pre><code>{`#include <iostream>\n#include <unordered_map>\n#include <string>\nusing namespace std;\nint main(){\n    int n;\n    cin>>n;\n    unordered_map<string,int> cnt;\n    for(int i=0;i<n;i++){\n        string s; cin>>s;\n        cnt[s]++;\n    }\n    string best;\n    int bestCnt=-1;\n    for(auto&p:cnt){\n        if(p.second>bestCnt||(p.second==bestCnt&&p.first<best)){\n            bestCnt=p.second;\n            best=p.first;\n        }\n    }\n    cout<<best<<'\\n';\n}`}</code></pre>unordered_map 统计次数是 O(n)，但遍历时**无序**——没关系，遍历全部条目时手动比较「次数大者优先，次数相同字典序小者优先」即可，选出最优答案。这提醒我们：哈希负责加速查找，排序要求可以在小规模结果集（去重后的标签数）上二次处理，两拨人马各司其职。</Reveal>
+
+<Check question="网格地图上统计湖泊（连通的 . 区域）数量，首选算法是？" options={['Dijkstra','泛洪（flood fill）','LIS','快速排序']} answer={1} explanation="网格连通块统计是泛洪的招牌应用：外层扫描找新水域，内部 DFS/BFS 染掉整片。" />
+
+<Check question="n=10^5 个数中查询某个数是否出现过 q=10^5 次，合适的做法是？" options={['每次查询都遍历一遍数组','排序后用二分查找','全部读入 unordered_set，每次 O(1) 查询','建邻接矩阵']} answer={2} explanation="O(n+q) 的哈希做法最省事；排序+二分（O(n log n+q log n)）也可行，但哈希更直接。" />
+
+## 4. 易错点清单
+- **建图漏边**：无向图双向加边；「同线路两两可达」要翻译成边。
+- **BFS 标记时机**：入队即标记，不要出队才标记。
+- **泛洪越界**：先判出界再判内容，两个 if 写在前两行。
+- **哈希的边界**：负数取模要修正；哈希不有序，排序需求另想办法。
+- **输出格式**：换乘次数、步数、边数的换算（-1 还是不减）以题意为准，拿样例核对。
+
+## 5. 课后巩固
+1. 概念题：默写「选工具口诀」，并各配一个本课例题。
+2. 编程题：有向图判环的入门版——用 DFS 三色标记法判断有向图是否有环。
+3. 编程题：读入 n 个人的姓名，输出第一个出现重复的名字（哈希查找的时序应用）。
+4. 编程题：地图最大湖泊面积（八连通版本的泛洪）。
+5. 思考题：例题一中如果把「换乘次数最少」改成「经过站点总数最少」，BFS 的边权假设还成立吗？需要怎么改？

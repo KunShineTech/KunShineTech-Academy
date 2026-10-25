@@ -1,0 +1,86 @@
+---
+title: "函数：声明、定义与调用"
+level: 4
+order: 3
+duration: 120
+unit: "函数与模块化"
+difficulty: 基础
+goals:
+  - "理解模块化编程思想，知道函数为什么存在"
+  - "掌握函数的定义、声明与调用"
+  - "理解形参与实参的概念及区别"
+---
+
+import Check from '../../../components/Check.astro';
+import Task from '../../../components/Task.astro';
+import Reveal from '../../../components/Reveal.astro';
+
+
+## 1. 厨房里的万能机器：函数是什么
+三级时我们写程序，所有代码都挤在 main 里，像一个厨房里什么东西都堆在灶台上。其实 C++ 允许我们造**一台台专用机器**：放进原料，按下按钮，出来成品。这台机器就是**函数**。
+
+库里的 `sqrt`、`max` 都是现成的机器；模块化编程的思想就是：**把大问题拆成小任务，每个任务交给一台机器（函数）去做**，main 只负责指挥。
+
+## 2. 函数的定义与调用
+定义一台机器要写清四件事：**返回类型、名字、参数、加工过程**。
+
+```cpp
+int add(int x, int y) {   // 返回类型 int，名字 add，参数 x、y
+    return x + y;         // 加工：把结果递出来
+}
+
+int main() {
+    int s = add(3, 5);    // 调用：放原料 3 和 5，接住成品
+    cout << s << '\n';    // 8
+    cout << add(10, 20) << '\n';  // 调用也可以直接塞进 cout
+}
+```
+
+三条铁律：
+1. `return` 把结果递出函数，函数**立即结束**。
+2. 返回类型写 `void` 表示「这台机器只办事，不出成品」，如 `void hello() { cout << "hi"; }`。
+3. 调用函数前，编译器必须已经见过它的声明或定义——就像下单前得先知道店里有这台机器。
+
+## 3. 函数的声明：先立一张字据
+有时函数太长，想把定义写在 main 的后面，那就在前面**先立字据（声明）**，告诉编译器「有这么一台机器，别慌」：
+
+```cpp
+int add(int x, int y);    // 声明：只写头部，以分号结尾
+
+int main() {
+    cout << add(3, 5) << '\n';
+}
+
+int add(int x, int y) {   // 定义：写完整函数体
+    return x + y;
+}
+```
+
+声明 = 函数头 + 分号，**没有函数体**；定义 = 函数头 + 函数体。声明里参数名可以省略（`int add(int, int);`），但类型不能省。
+
+> 教学提醒：函数要先声明（或定义）再调用。把函数定义写在 main 后面时忘记在前面加声明，是最经典的编译错误之一，报错类似「add was not declared in this scope」。
+
+## 4. 形参与实参：菜谱上的名字 vs 真实的原料
+```cpp
+int add(int x, int y) { return x + y; }   // x、y 是形参
+int s = add(3, 5);                        // 3、5 是实参
+```
+
+**形参（形式参数）**是函数定义时占的「空位」，像菜谱上写的「鸡蛋两枚」；**实参（实际参数）**是调用时真正放进去的值，像厨房里拿出的真鸡蛋。调用那一刻，实参的值被一一对应地装进形参的空位。
+
+<Check question="调用 add(3, 5) 时，3 和 5 叫做什么？" options={['形参','实参','返回值','局部变量']} answer={1} explanation="调用时传进去的实际值叫实参；add 定义里的 x、y 是占位的形参。" />
+
+<Check question="关于函数声明，下列说法正确的是？" options={['声明必须写在 main 里面','声明就是函数定义','声明以分号结尾，可以没有函数体','没有声明程序一定无法运行']} answer={2} explanation="声明只描述函数的头部（返回值、名字、参数类型），以分号结尾；定义才有函数体。函数定义在调用之前时可以不写声明。" />
+
+<Check question="void 类型的函数中，正确的做法是？" options={['必须用 return 0;','可以用 return; 提前结束函数','不能出现任何 return','编译一定报错']} answer={1} explanation="void 函数没有返回值，不能写 return 表达式，但可以写 return; 提前结束函数，也可以不写 return。" />
+
+<Task title="素数统计" input="第一行一个正整数 n（n≤100），第二行 n 个正整数（每个不超过 10000）" output="其中素数的个数" sampleIn="5
+2 3 4 5 8" sampleOut="3">先写一个 isPrime(x) 函数判断素数：小于 2 不是素数；用 2 到根号 x 试除。再在 main 里循环调用统计。</Task>
+<Reveal label="查看参考程序与思路"><pre><code>{`#include <iostream>\nusing namespace std;\nbool isPrime(int x){\n    if(x<2) return false;\n    for(int i=2;i*i<=x;i++)\n        if(x%i==0) return false;\n    return true;\n}\nint main(){\n    int n, cnt=0, x;\n    cin>>n;\n    for(int i=0;i<n;i++){\n        cin>>x;\n        if(isPrime(x)) cnt++;\n    }\n    cout<<cnt<<'\\n';\n}`}</code></pre>判断素数只需试除到根号 x（`i*i<=x` 避免了开方的浮点误差）。main 里只管「读一个、问一句、统计一下」，判断的脏活全交给函数——这就是模块化的味道。</Reveal>
+
+## 5. 课后巩固
+1. 概念题：形参和实参的区别是什么？各举一例。
+2. 默写：一个返回 int、带两个 int 参数的函数的声明长什么样？
+3. 编程：编写函数 max3(a,b,c) 返回三个数的最大值，并读入三个数测试。
+4. 编程：编写函数 digitSum(x) 返回整数 x 的各位数字之和，读入 n 个数输出各自的 digitSum。
+5. 思考：为什么把代码拆成函数后，main 反而更好读了？和同学讨论模块化的好处。

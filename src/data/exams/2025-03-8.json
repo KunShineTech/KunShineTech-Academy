@@ -1,0 +1,267 @@
+{
+ "session": "2025-03",
+ "level": 8,
+ "file": "GESP 2025年03月认证C++ 8级真题.pdf",
+ "legacy": false,
+ "choiceCount": 15,
+ "judgeCount": 10,
+ "progCount": 2,
+ "choiceAnswers": "BCBADDDBADCACBC",
+ "judgeAnswers": "",
+ "choice": [
+  {
+   "n": 1,
+   "stem": "国家“以旧换新”政策仍在继续，小杨家决定在家里旧的冰箱、电视、洗衣机、微波炉中选两种换新。其中，\n冰箱有4种型号可选，电视有6种型号可选，洗衣机有3种型号可选，微波炉有5种型号可选。请问小杨家共有多少种\n换新的方案？（  ）。",
+   "options": [
+    "18",
+    "119",
+    "238",
+    "360"
+   ],
+   "answer": 1,
+   "analysis": "选 B（119）。按选出的两种家电分类，用加法原理：4×6+4×3+4×5+6×3+6×5+3×5=119 种。"
+  },
+  {
+   "n": 2,
+   "stem": "小杨和3位朋友约好一起去看电影“哪吒2”。打开购票软件，他们发现，已经没有同一排连续的四个座位了\n（图中每个方框代表一个座位，红色方框代表已经售出）。朋友们商量了一下，决定分为两组，每组两人在同一排\n的相邻两个座位，且两组之间至少有一对座位是前后相邻的。请问共有多少种购票方案？（  ）。",
+   "options": [
+    "495",
+    "96",
+    "7",
+    "4"
+   ],
+   "answer": 2,
+   "analysis": "选 C（7）。按图中可选的相邻座位对与“前后相邻”的条件分类枚举（座位图以真题原件为准），逐一数出满足两组条件的方案共 7 种。"
+  },
+  {
+   "n": 3,
+   "stem": "下面关于C++类构造和析构函数的说法，错误的是（  ）。",
+   "options": [
+    "构造函数不能声明为虚函数。",
+    "析构函数必须声明为虚函数。",
+    "类的默认构造函数可以被声明为private。",
+    "类的析构函数可以被声明为private。"
+   ],
+   "answer": 1,
+   "analysis": "选 B。析构函数“必须”声明为虚函数是错误的：只有作为多态基类使用时才需要虚析构，普通类并不需要。"
+  },
+  {
+   "n": 4,
+   "stem": "下列关于树和图的说法，错误的是（  ）。",
+   "options": [
+    "树是一种有向无环图，有向无环图都是一棵树。",
+    "如果把树看做有向图，每个节点指向其子节点，则该图是弱连通图。",
+    "个顶点且连通的无向图，其最小生成树一定包含 个条边。",
+    "个顶点、 条边的有向图，一定不是强连通的。"
+   ],
+   "answer": 0,
+   "analysis": "选 A。说法错误：有向无环图（DAG）不一定是树，树还要求除根外每个节点恰有一个父节点且整体连通。"
+  },
+  {
+   "n": 5,
+   "stem": "从1到2025这2025个数中，包含数字5的个数（  ）。",
+   "options": [
+    "600",
+    "601",
+    "602",
+    "603"
+   ],
+   "answer": 3,
+   "analysis": "选 D（603）。用补集思想：不含数字 5 的数各位只有 9 种选择，按位数分段统计（注意千位与区间端点 2025），再用总数相减（按本题所给答案为 603）。"
+  },
+  {
+   "n": 6,
+   "stem": "已定义double 类型的变量r 和theta ，分别表示图中圆半径和圆心角。下列表达式中可以求出弦长s 的\n是（  ）。",
+   "options": [
+    "r * cos(theta)",
+    "r * cos(theta / 2) * 2",
+    "r * sin(theta)",
+    "r * sin(theta / 2) * 2"
+   ],
+   "answer": 3,
+   "analysis": "选 D。从圆心向弦作垂线得直角三角形，半弦长为 r·sin(θ/2)，故弦长 s=2r·sin(θ/2)。"
+  },
+  {
+   "n": 7,
+   "stem": "个节点的平衡二叉树的高为（  ）。",
+   "options": [
+    "",
+    "",
+    "",
+    "无法确定。"
+   ],
+   "answer": 3,
+   "analysis": "选 D。平衡二叉树的高度是 O(log n) 量级，但精确高度随树的形态而变化，不能由 n 唯一确定，故“无法确定”。"
+  },
+  {
+   "n": 8,
+   "stem": "下列关于算法的说法，错误的是（  ）。",
+   "options": [
+    "如果有足够的时间和空间，枚举法能解决一切有限的问题。",
+    "分治算法将原问题分为多个子问题进行求解，且分解出的子问题必须相互独立。",
+    "如果能找到合理的贪心原则，贪心算法往往能够比其他方法更快求解。",
+    "倍增法在搜索未知长度的有序数组时，通过动态倍增或减半步长，快速定位目标范围。"
+   ],
+   "answer": 1,
+   "analysis": "选 B。分治与动态规划的区别在于子问题是否重叠，而非是否独立；“分解出的子问题必须相互独立”的表述过于绝对。"
+  },
+  {
+   "n": 9,
+   "stem": "是个神奇的数字，因为它是由两个数\n和\n拼接而成，而且\n。小杨决定写个程序找找\n的正整数中共有多少这样神奇的数字。下面程序横线处应填入的是（  ）。\n小于\n#include <string>\n1\nint count_miracle(int N) {\n2\nint cnt = 0;\n3\nfor (int n = 1; n * n < N; n++) {\n4\nint n2 = n * n;\n5\nstd::string s = std::to_string(n2);\n6\nfor (int i = 1; i < s.length(); i++)\n7\nif (s[i] != '0') {\n8\nstd::string sl = s.substr(0, i);\n9\nstd::string sr = s.substr(i);\n10\nint nl = std::stoi(sl);\n11\nint nr = std::stoi(sr);\n12\nif (_________) // 在此处填入选项\n13\ncnt++;\n14\n}\n15\n}\n16\nreturn cnt;\n17\n}\n18",
+   "options": [
+    "nl + nr == n 1",
+    "nl + nr == n2 1",
+    "(nl + nr) * (nl + nr) == n 1",
+    "(nl + nr) ^ 2 == n2 1"
+   ],
+   "answer": 0,
+   "analysis": "选 A。n2 由 n 与其平方根拼接而成，即两半之和等于原数 n，故条件为 nl + nr == n。"
+  },
+  {
+   "n": 10,
+   "stem": "是个神奇的数字，因为它是由两个数\n和\n拼接而成，而且\n。小杨决定写个程序找\n的正整数中共有多少这样神奇的数字。该函数的时间复杂度为（  ）。\n找小于\n#include <string>\n1\nint count_miracle(int N) {\n2\nint cnt = 0;\n3\nfor (int n = 1; n * n < N; n++) {\n4\nint n2 = n * n;\n5\nstd::string s = std::to_string(n2);\n6\nfor (int i = 1; i < s.length(); i++)\n7\nif (s[i] != '0') {\n8\nstd::string sl = s.substr(0, i);\n9\nstd::string sr = s.substr(i);\n10\nint nl = std::stoi(sl);\n11\nint nr = std::stoi(sr);\n12\nif (_________) // 在此处填入选项\n13\ncnt++;\n14\n}\n15\n}\n16\nreturn cnt;\n17\n}\n18",
+   "options": [
+    "",
+    "",
+    "",
+    ""
+   ],
+   "answer": 3,
+   "analysis": "选 D。外层枚举到 √N，内层处理 n² 的十进制串（长度 O(log N)），总复杂度 O(√N·log N)（选项公式以真题原件为准）。"
+  },
+  {
+   "n": 11,
+   "stem": "下面的欧氏筛法程序中，两个横线处应填入的分别是（  ）。\nint primes[MAXP], num = 0;\n1\nbool isPrime[MAXN + 1] = {false};\n2\nvoid sieve() {\n3\nfor (int n = 2; n <= MAXN; n++) {\n4\nif (!isPrime[n])\n5\nprimes[num++] = n;\n6\nfor (int i = 0; i < num && ________; i++) { // 在此处填入选项\n7\nisPrime[n * primes[i]] = true;\n8\nif (________) // 在此处填入选项\n9\nbreak;\n10\n}\n11\n}\n12\n}\n13",
+   "options": [
+    "n * primes[i] < MAXN 1 n % primes[i] == 0 2",
+    "n * primes[i] < MAXN 1 primes[i] > n 2",
+    "n * primes[i] <= MAXN 1 n % primes[i] == 0 2",
+    "n * primes[i] <= MAXN 1 primes[i] > n 2"
+   ],
+   "answer": 2,
+   "analysis": "选 C。筛的范围是 ≤ MAXN：条件为 n * primes[i] <= MAXN；且当 n % primes[i] == 0 时 break，保证每个合数只被最小质因子筛一次。"
+  },
+  {
+   "n": 12,
+   "stem": "下面Floyd算法中，横线处应该填入的是（  ）。\n#include <iostream>\n1\nusing namespace std;\n2\n3\n#define N 21\n4\n#define INF 99999999\n5\nint map[N][N];\n6\nint main() {\n7\nint n, m, t1, t2, t3;\n8\ncin >> n >> m;\n9\nfor (int i = 1; i <= n; i++) {\n10\nfor (int j = 1; j <= n; j++) {\n11\nif (i == j)\n12\nmap[i][j] = 0;\n13\nelse\n14\nmap[i][j] = INF;\n15\n}\n16\n}\n17\nfor (int i = 1; i <= m; i++) {\n18\ncin >> t1 >> t2 >> t3;\n19\nmap[t1][t2] = t3;\n20\n}\n21\nfor (int k = 1; k <= n; k++)\n22\nfor (int i = 1; i <= n; i++)\n23\nfor (int j = 1; j <= n; j++)\n24\nif (map[i][j] > map[i][k] + map[k][j])\n25\n________; // 在此处填入选项\n26\nfor (int i = 1; i <= n; i++) {\n27\nfor (int j = 1; j <= n; j++) {\n28\ncout.width(4);\n29\ncout << map[i][j];\n30\n}\n31\ncout << endl;\n32\n}\n33\n}\n34",
+   "options": [
+    "map[i][j] = map[i][k] + map[k][j] 1",
+    "map[i][k] = map[i][j] - map[k][j] 1",
+    "map[i][j] = map[i][k] - map[k][j] 1",
+    "map[k][j] = map[i][j] - map[i][k] 1"
+   ],
+   "answer": 0,
+   "analysis": "选 A。松弛成功时用更短的路径替换：map[i][j] = map[i][k] + map[k][j]。"
+  },
+  {
+   "n": 13,
+   "stem": "下面Floyd算法程序的时间复杂度为（  ）。\n#include <iostream>\n1\nusing namespace std;\n2\n3\n#define N 21\n4\n#define INF 99999999\n5\nint map[N][N];\n6\nint main() {\n7\nint n, m, t1, t2, t3;\n8\ncin >> n >> m;\n9\nfor (int i = 1; i <= n; i++) {\n10\nfor (int j = 1; j <= n; j++) {\n11\nif (i == j)\n12\nmap[i][j] = 0;\n13\nelse\n14\nmap[i][j] = INF;\n15\n}\n16\n}\n17\nfor (int i = 1; i <= m; i++) {\n18\ncin >> t1 >> t2 >> t3;\n19\nmap[t1][t2] = t3;\n20\n}\n21\nfor (int k = 1; k <= n; k++)\n22\nfor (int i = 1; i <= n; i++)\n23\nfor (int j = 1; j <= n; j++)\n24\nif (map[i][j] > map[i][k] + map[k][j])\n25\n________; // 在此处填入选项\n26\nfor (int i = 1; i <= n; i++) {\n27\nfor (int j = 1; j <= n; j++) {\n28\ncout.width(4);\n29\ncout << map[i][j];\n30\n}\n31\ncout << endl;\n32\n}\n33\n}\n34",
+   "options": [
+    "",
+    "",
+    "",
+    ""
+   ],
+   "answer": 2,
+   "analysis": "选 C。三重循环各执行 n 次，Floyd 算法复杂度 O(n³)（选项公式以真题原件为准）。"
+  },
+  {
+   "n": 14,
+   "stem": "下列程序实现了输出杨辉三角形，代码中横线部分应该填入的是（  ）。\n#include <iostream>\n1\nusing namespace std;\n2\n#define N 35\n3\nint a[N];\n4\nint main() {\n5\nint n;\n6\ncin >> n;\n7\nfor (int i = 0; i < n; i++) {\n8\na[i] = 1;\n9\nfor (int j = i - 1; j > 0; j--)\n10\n________; // 在此处填入选项\n11\nfor (int j = 0; j <= i; j++)\n12\ncout << a[j] << \" \";\n13\ncout << endl;\n14\n}\n15\nreturn 0;\n16\n}\n17",
+   "options": [
+    "a[j] += a[j + 1] 1",
+    "a[j] += a[j - 1] 1",
+    "a[j - 1] += a[j] 1",
+    "a[j + 1] += a[j] 1"
+   ],
+   "answer": 1,
+   "analysis": "选 B。倒序递推避免覆盖：新的 a[j] 等于原 a[j] 与原 a[j-1] 之和，即 a[j] += a[j-1]。"
+  },
+  {
+   "n": 15,
+   "stem": "下列程序实现了输出杨辉三角形，其时间复杂度为（  ）。\n#include <iostream>\n1\nusing namespace std;\n2\n#define N 35\n3\nint a[N];\n4\nint main() {\n5\nint n;\n6\ncin >> n;\n7\nfor (int i = 0; i < n; i++) {\n8\na[i] = 1;\n9\nfor (int j = i - 1; j > 0; j--)\n10\n________; // 在此处填入选项\n11\nfor (int j = 0; j <= i; j++)\n12\ncout << a[j] << \" \";\n13\ncout << endl;\n14\n}\n15\nreturn 0;\n16\n}\n17",
+   "options": [
+    "",
+    "",
+    "",
+    ""
+   ],
+   "answer": 2,
+   "analysis": "选 C。双重循环总工作量为 1+2+…+n，输出杨辉三角的复杂度为 O(n²)（选项公式以真题原件为准）。"
+  }
+ ],
+ "judge": [
+  {
+   "n": 1,
+   "stem": "表达式'5' - 3.0 的结果为2.0 ，类型为double 。",
+   "answer": null,
+   "analysis": "错误。'5' 的 ASCII 码是 53，53-3.0=50.0，不是 2.0。"
+  },
+  {
+   "n": 2,
+   "stem": "在C++语言中，如果想要在一个函数内调用一个类的私有方法，可以在该类中将该函数声明为友元函数。",
+   "answer": null,
+   "analysis": "正确。把函数声明为类的友元后，该函数即可访问类的私有成员（包括私有方法）。"
+  },
+  {
+   "n": 3,
+   "stem": "插入排序一般是稳定的。",
+   "answer": null,
+   "analysis": "正确。插入排序只把元素插入到合适位置，相等元素的相对次序不变，一般是稳定排序。"
+  },
+  {
+   "n": 4,
+   "stem": "5个相同的红球和4个相同的蓝球排成一排，要求蓝球不能相邻，则一共有15种排列方案。",
+   "answer": null,
+   "analysis": "正确。先把 5 个红球排好形成 6 个空档，选 4 个空档放蓝球：C(6,4)=15 种。"
+  },
+  {
+   "n": 5,
+   "stem": "使用math.h 或cmath 头文件中的函数，表达式pow(2, 5) 的结果类型为int 、值为32 。",
+   "answer": null,
+   "analysis": "错误。pow 的返回类型是 double，不是 int。"
+  },
+  {
+   "n": 6,
+   "stem": "C++是一种面向对象编程语言，C则不是。多态是面向对象三大特性之一，虚函数是动态多态的代表特性。\n因此，使用C语言无法实现虚函数。",
+   "answer": null,
+   "analysis": "错误。C 语言可以用函数指针模拟虚函数表来实现多态，“无法实现”过于绝对。"
+  },
+  {
+   "n": 7,
+   "stem": "在\n个节点的平衡二叉树中查找指定元素的最差时间复杂度为\n。",
+   "answer": null,
+   "analysis": "错误。平衡二叉树的高度为 O(log n)，在其中查找指定元素的最差时间复杂度为 O(log n)，并非题干所给公式（题干公式以真题原件为准）。"
+  },
+  {
+   "n": 8,
+   "stem": "定义int 类型的变量a 和b ，求二次函数\n取最小值时x的值，可以通过表达式-a / 2.0 求\n得。",
+   "answer": null,
+   "analysis": "正确。对二次函数 y=x²+ax+b，其图象的对称轴为 x=-a/2，开口向上时在对称轴处取得最小值，故可用表达式 -a/2.0 求得取最小值时的 x（题干函数式以真题原件为准）。"
+  },
+  {
+   "n": 9,
+   "stem": "判断无向图中是否有环，可以通过广度优先搜索实现。",
+   "answer": null,
+   "analysis": "正确。对无向图做 BFS：若发现指向“已访问且非父节点”的边则有环；也可统计 BFS 访问到的边数是否达到顶点数。"
+  },
+  {
+   "n": 10,
+   "stem": "从32名学生中选出4人分别担任班长、副班长、学习委员和组织委员，共有\n种不同的选法。",
+   "answer": null,
+   "analysis": "错误。四个职务互不相同，应使用排列数 A(32,4)=32×31×30×29，而不是组合数 C(32,4)（题干公式以真题原件为准）。"
+  }
+ ],
+ "programming": [
+  {
+   "n": 1,
+   "name": "编程题 1",
+   "desc": "C 城可以视为由  个结点与\n条边组成的无向图。这些结点依次以\n标号，边依次以\n标号。第\n条边（\n）连接编号为\n与\n的结点，长度为  米。\n小 A 的学校坐落在 C 城中编号为  的结点。小 A 的同学们共有  位，他们想在保证不迟到的前提下，每天尽可能晚\n地出门上学。但同学们并不会计算从家需要多久才能到学校，于是找到了聪明的小 A。第  位同学（\n）告\n诉小 A，他的家位于编号为\n的结点，并且他每秒能行走 1 米。请你帮小 A 计算，每位同学从家出发需要多少秒才\n能到达学校呢？"
+  },
+  {
+   "n": 2,
+   "name": "割裂",
+   "desc": ""
+  }
+ ]
+}

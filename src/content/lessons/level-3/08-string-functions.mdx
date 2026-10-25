@@ -1,0 +1,73 @@
+---
+title: "字符串函数：查找、截取与替换"
+level: 3
+order: 8
+duration: 120
+unit: "字符与字符串"
+difficulty: 进阶
+goals:
+  - "掌握 find 与 npos、substr、replace、insert、erase"
+  - "掌握 append/push_back 与字符串拼接"
+  - "了解 to_string/stoi 数字与字符串互转"
+---
+
+import Check from '../../../components/Check.astro';
+import Task from '../../../components/Task.astro';
+import Reveal from '../../../components/Reveal.astro';
+
+
+## 1. 从瑞士军刀理解字符串函数
+string 内置了一整套瑞士军刀。掌握它们的关键是记住**三要素**：从哪个位置开始、操作多长、返回什么。下面这张表建议抄写背诵：
+
+| 函数 | 作用 | 例子（s = "abcde"） |
+|---|---|---|
+| `s.find(t)` | 找子串 t 首次出现的位置 | `s.find("cd")` 得 2 |
+| `s.substr(p, len)` | 从 p 截取 len 个字符 | `s.substr(1,3)` 得 "bcd" |
+| `s.replace(p, len, t)` | 把 p 起 len 个字符换成 t | `s.replace(1,2,"XY")` 得 "aXYde" |
+| `s.insert(p, t)` | 在 p 处插入 t | `s.insert(0,"*")` 得 "*abcde" |
+| `s.erase(p, len)` | 删除 p 起 len 个字符 | `s.erase(1,2)` 得 "ade" |
+| `s += t` / `s.append(t)` | 末尾拼接 | `s += "fg"` 得 "abcdefg" |
+
+## 2. find 与 npos：一对黄金搭档
+`find` 找到了返回位置（下标从 0 开始），**没找到**返回一个特殊常量 `string::npos`。所以判断查找是否成功的标准写法是：
+
+```cpp
+string s = "hello world";
+if (s.find("wor") != string::npos) {
+    cout << "找到了，位置是 " << s.find("wor") << '\n';  // 6
+} else {
+    cout << "没找到\n";
+}
+```
+
+> 教学提醒：npos 是无位置标记，不要把它当成 -1 参与计算；只用 `!= string::npos` 判断是否找到。
+
+## 3. 数字与字符串互转（了解）
+`to_string(123)` 得到 `"123"`；`stoi("456")` 得到整数 456。处理「把数字按位拆开」或「把读入的数字串求和」类题目时非常方便。
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+int main() {
+    string s = to_string(2025);   // "2025"
+    int x = stoi("42");           // 42
+    string r = s.substr(0, 2);    // "20"
+    s.replace(0, 4, "ok");        // s 变成 "ok"
+}
+```
+
+<Check question="s = 'abcde' 时，执行 s.substr(2, 2) 的结果是？" options={['\"cd\"','\"cde\"','\"bc\"','\"abc\"']} answer={0} explanation="substr(起始位置, 长度)：从下标 2 的 c 开始取 2 个字符，得 cd。" />
+
+<Check question="在 string s = 'hello' 中执行 s.find('x')，返回值是？" options={['-1','0','string::npos','5']} answer={2} explanation="找不到时 find 返回特殊常量 npos，判断方法是用 != string::npos。" />
+
+<Task title="查找子串" input="两行：第一行主串 s（一整行，可含空格），第二行子串 t（长度不超过 100）" output="若 t 在 s 中出现，输出第一次出现的位置（下标从 0 开始）；否则输出 -1" sampleIn="hello world
+wor" sampleOut="6">主串可能含空格，要用 getline 读入整行。之后直接使用 s.find(t)：返回值不等于 npos 就输出位置，否则输出 -1。</Task>
+<Reveal label="查看参考程序与思路"><pre><code>{`#include <iostream>\n#include <string>\nusing namespace std;\nint main(){\n    string s, t;\n    getline(cin, s);\n    getline(cin, t);\n    int pos = s.find(t);\n    if(pos != (int)string::npos) cout<<pos<<'\\n';\n    else cout<<-1<<'\\n';\n}`}</code></pre>find 找到返回下标，未找到返回 npos。注意 size_type 与 int 的比较，这里强转 int 更稳妥。样例中 wor 在 hello world 中首次出现在下标 6，输出 6。</Reveal>
+
+## 4. 课后巩固
+1. s = "program"，写出 `s.substr(3, 3)`、`s.erase(0, 3)`、`s.insert(0, "my")` 的结果。
+2. 解释 `string::npos` 的含义，并写出判断查找成功的标准条件。
+3. 编程：读入字符串 s，把其中所有子串 "is" 用 "was" 替换（可循环 find + replace）。
+4. 用 to_string 和 stoi 各写一个一句话示例，说明使用场景。
+5. 思考：`s.replace(p, len, t)` 中 len 的取值如果超过了剩余字符数，会发生什么？动手试试。

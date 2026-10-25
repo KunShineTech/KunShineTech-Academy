@@ -1,0 +1,242 @@
+{
+ "session": "2026-09",
+ "level": 2,
+ "file": "GESP 2026年09月认证C++ 2级真题.pdf",
+ "legacy": false,
+ "choiceCount": 15,
+ "judgeCount": 10,
+ "progCount": 2,
+ "choiceAnswers": "CBADACBDBDDCAAA",
+ "judgeAnswers": "",
+ "choice": [
+  {
+   "n": 1,
+   "stem": "第二届世界人形机器人运动会开幕式上，机器人方阵通过控制程序来完成整场表演。表演前，工程师们使用\n集成开发环境（IDE）编写并调试方阵的控制程序。下列关于 IDE 功能的描述，错误的是（　　）。",
+   "options": [
+    "可以提供代码自动补全，提高编程效率",
+    "可以提供辅助信息，帮助排查程序逻辑错误",
+    "可以直接控制机器人电机转动",
+    "支持语法高亮，使代码更易阅读"
+   ],
+   "answer": 2
+  },
+  {
+   "n": 2,
+   "stem": "计算机 CPU 中的高速缓冲存储器（Cache）主要为提升系统性能而设计。下列关于 Cache 的说法中正确的是\n（　　）。",
+   "options": [
+    "Cache 的容量比主存大，速度比主存快",
+    "Cache 通常用于暂存 CPU 频繁访问的数据",
+    "Cache 中的数据断电后不会丢失，属于非易失性存储器",
+    "Cache 的访问速度比 CPU 寄存器还要快"
+   ],
+   "answer": 1
+  },
+  {
+   "n": 3,
+   "stem": "执行如下 C++ 代码，其输出是（　　）。\ncout << (3 == 3.0);\n1",
+   "options": [
+    "1",
+    "1.0",
+    "0",
+    "-1"
+   ],
+   "answer": 0
+  },
+  {
+   "n": 4,
+   "stem": "执行如下 C++ 代码，其输出是（　　）。\ncout << (bool(5) + bool(-5) + bool(5.0));\n1",
+   "options": [
+    "0",
+    "1",
+    "2",
+    "3 1 / 10"
+   ],
+   "answer": 3
+  },
+  {
+   "n": 5,
+   "stem": "判断年份 N 是否为闰年的规则是：能被 4 整除但不能被 100 整除，或者能被 400 整除。以下 C++ 表达\n式中，能正确判断 N 是否为闰年的是（　　）。",
+   "options": [
+    "(N % 4 == 0 && N % 100 != 0) || (N % 400 == 0)",
+    "N % 4 == 0 && N % 100 == 0 || N % 400 == 0",
+    "(N / 4 == 0 && N / 100 != 0) || (N / 400 == 0)",
+    "(N % 4 == 0 && N % 100 != 0) && (N % 400 == 0)"
+   ],
+   "answer": 0
+  },
+  {
+   "n": 6,
+   "stem": "执行如下 C++ 代码，其输出是（　　）。\nint tot, i;\n1\ntot = 0;\n2\nfor (i = 0; i < 10; i++)\n3\nif (i)\n4\ntot += 1;\n5\ncout << tot;\n6",
+   "options": [
+    "0",
+    "8",
+    "9",
+    "10"
+   ],
+   "answer": 2
+  },
+  {
+   "n": 7,
+   "stem": "执行如下 C++ 代码，当输入 4 时，其输出是（　　）。\nint n, tot, i, j;\n1\ncin >> n;\n2\ntot = 0;\n3\nfor (i = 1; i < n; i++)\n4\nfor (j = 1; j < i; j++)\n5\ntot += 1;\n6\ncout << tot;\n7",
+   "options": [
+    "1",
+    "3",
+    "6",
+    "10"
+   ],
+   "answer": 1
+  },
+  {
+   "n": 8,
+   "stem": "下面的 C++ 代码执行后其输出是（　　）。\nint tnt, i;\n1\ntnt = 0;\n2\nfor (i = 0; i < 10; i++)\n3\nif (i % 3)\n4\ntnt += i;\n5\ncout << tnt;\n6",
+   "options": [
+    "12",
+    "18",
+    "22",
+    "27"
+   ],
+   "answer": 3
+  },
+  {
+   "n": 9,
+   "stem": "下面的 C++ 代码之后的输出是（　　）。\n2 / 10\nint tot = 0, i;\n1\nfor (i = -5; i < 5; i++)\n2\nif (not(i % 3 != 0))\n3\ntot += 1;\n4\ncout << tot;\n5",
+   "options": [
+    "2",
+    "3",
+    "7",
+    "9"
+   ],
+   "answer": 1
+  },
+  {
+   "n": 10,
+   "stem": "有关如下 C++ 代码描述，变量都是整型，错误的是（　　）。\nint n, limit, i;\n1\ncout << \"请输入一个正整数: \";\n2\ncin >> n;\n3\nif (n <= 1)\n4\nprintf(\"%d非素数\", n);\n5\nelse if (n == 2)\n6\nprintf(\"2是素数\");\n7\nelse {\n8\nlimit = sqrt(n) + 1;\n9\nfor (i = 2; i < limit; i++)\n10\nif (n % i == 0) {\n11\nprintf(\"%d非素数\", n);\n12\nbreak;\n13\n}\n14\nif (i >= limit)\n15\nprintf(\"%d是素数\", n);\n16\n}\n17",
+   "options": [
+    "n <= 1 条件用于判断输入 0 、1 以及负数时的情况，不能省略。",
+    "n == 2 条件及其相关代码省略，程序的输出结果没有区别。",
+    "break 语句不可以省略，否则非素数还将执行最后一行的语句。",
+    "limit = sqrt(n) + 1 语句中的 1 可以修改为其他大于等于 1 的正整数，执行结果不会有错误，但循环 次数增多，效率有所影响。"
+   ],
+   "answer": 3
+  },
+  {
+   "n": 11,
+   "stem": "执行以下 C++ 代码后，最终的输出结果是（　　）。\nint total, i, j;\n1\ntotal = 0;\n2\ni = 1;\n3\nwhile (i <= 3) {\n4\nfor (j = 1; j < i + 1; j++)\n5\ntotal += i * j;\n6\ni += 1;\n7\n}\n8\ncout << total;\n9",
+   "options": [
+    "9",
+    "11",
+    "23",
+    "25"
+   ],
+   "answer": 3
+  },
+  {
+   "n": 12,
+   "stem": "下面 C++ 代码执行后其输出是（　　）。\n3 / 10\nint count, i, j;\n1\ncount = 0;\n2\nfor (i = 1; i < 4; i++)\n3\nfor (j = 0; j < i; j++) {\n4\nif (j % 3 == 0)\n5\ncontinue;\n6\ncount += 1;\n7\nif (i * j >= 2)\n8\nbreak;\n9\n}\n10\nprintf(\"%d %d %d\", i, j, count);\n11",
+   "options": [
+    "2 3 2",
+    "3 0 2",
+    "4 1 2",
+    "4 2 3"
+   ],
+   "answer": 2
+  },
+  {
+   "n": 13,
+   "stem": "如下的 C++ 代码执行时输入 12 将输出如下数字图形。注意：最后一行之前没有空格。横线处应填入的代\n码是（　　）。\n0\n1\n12\n2\n345\n3\n6789\n4\n01234\n5\n567890\n6\n1234567\n7\n89012345\n8\n678901234\n9\n5678901234\n10\n56789012345\n11\n678901234567\n12\nint line, i, j, k;\n1\n2\ni = 0;\n3\ncout << \"请输入行数：\";\n4\ncin >> line;\n5\nfor (j = 0; j < line; j++) {\n6\nfor (k = 0; k < ___________; k++) // L1\n7\ncout << \" \";\n8\nfor (k = 0; k < j + 1; k++) {\n9\ncout << i;\n10\ni += 1;\n11\nif (i >= 10)\n12\ni = 0;\n13\n}\n14\ncout << endl;\n15\n}\n16",
+   "options": [
+    "line - j - 1",
+    "line - j",
+    "line",
+    "line + 1"
+   ],
+   "answer": 0
+  },
+  {
+   "n": 14,
+   "stem": "小北的身高是 1.65 米。班上有 n 个小朋友，小北想和身高最接近自己的人交朋友。如果有多个小朋友\n与小北的身高差相同，小北想和其中身高较矮的第一个小朋友做朋友。横线处应该填入的是（　　）。\n4 / 10\nint n, i;\n1\nfloat target, h, best_height, min_diff, diff;\n2\n3\ncout << \"请输入小朋友的人数: \";\n4\ncin >> n;\n5\ntarget = 1.65;\n6\nbest_height = 0.0;\n7\nmin_diff = 100.0;\n8\n9\nfor (i = 0; i < n; i++) {\n10\ncout << \"请输入第 \" << i << \" 个小朋友的身高: \";\n11\ncin >> h;\n12\ndiff = abs(h - target);\n13\n14\nif (____________________) { // L1\n15\nmin_diff = diff;\n16\nbest_height = h;\n17\n}\n18\n}\n19\ncout << \"小北的朋友身高为: \" << best_height;\n20",
+   "options": [
+    "diff < min_diff || (diff == min_diff && h < best_height)",
+    "diff <= min_diff && h < best_height",
+    "diff < min_diff && h < best_height",
+    "diff < min_diff || h < best_height"
+   ],
+   "answer": 0
+  },
+  {
+   "n": 15,
+   "stem": "小北的身高是 1.65 米。班上有 n 个小朋友，小北想和身高最接近自己的人交朋友。如果有多个小朋友\n与小北的身高差相同，小北想和其中身高较矮的第一个小朋友做朋友。横线处应该填入的是（　　）。\nint n, i;\n1\nfloat target, h, best_height, min_diff, diff;\n2\n3\ncout << \"请输入小朋友的人数: \";\n4\ncin >> n;\n5\ntarget = 1.65;\n6\nbest_height = 0.0;\n7\nmin_diff = 100.0;\n8\n9\nfor (i = 0; i < n; i++) {\n10\ncout << \"请输入第 \" << (i + 1) << \" 个小朋友的身高: \";\n11\ncin >> h;\n12\n13\nif (h > target)\n14\ndiff = h - target;\n15\nelse\n16\ndiff = target - h;\n17\n18\nif (diff < min_diff) {\n19\nmin_diff = diff;\n20\nbest_height = h;\n21\n} else if (diff == min_diff) {\n22\n__________________\n23\n__________________\n24\n}\n25\n}\n26\n27\ncout << \"小北的朋友身高为:\" << best_height;\n28\n5 / 10",
+   "options": [
+    "if (h < best_height) 1 best_height = h; 2",
+    "if (h > best_height) 1 best_height = h; 2",
+    "if (h > target) 1 best_height = h; 2",
+    "if (h >= best_height) 1 best_height = h; 2"
+   ],
+   "answer": 0
+  }
+ ],
+ "judge": [
+  {
+   "n": 1,
+   "stem": "C++ 程序执行 cin 或 scanf 语句时通常是使用键盘等输入设备来输入某个变量的值。",
+   "answer": null
+  },
+  {
+   "n": 2,
+   "stem": "执行 C++ 语句 cout << ( 5 && 2 ); 将输出 1 。",
+   "answer": null
+  },
+  {
+   "n": 3,
+   "stem": "C++ 表达式 2 * - '2' / 4 的值是 -1 。",
+   "answer": null
+  },
+  {
+   "n": 4,
+   "stem": "如下 C++ 代码执行后的输出是 10 。\nint a;\n1\na = 5;\n2\na == +5;\n3\ncout << a;\n4",
+   "answer": null
+  },
+  {
+   "n": 5,
+   "stem": "执行 C++ 代码 cout << (not not 5) 将输出 5 。",
+   "answer": null
+  },
+  {
+   "n": 6,
+   "stem": "下面 C++ 代码执行后将输出 369 。\nfor (int i = 1; i < 10; i++)\n1\nif (not(i % 3))\n2\ncout << i;\n3",
+   "answer": null
+  },
+  {
+   "n": 7,
+   "stem": "N 是整数，执行如下 C++ 代码，将能输出 0 到 N 之间(包含 N )所有数之和。\nint N, tot, i;\n1\ncin >> N;\n2\ntot = 0;\n3\nfor (i = 0; i < N + 1; i++)\n4\ntot += i;\n5\ncout << tot;\n6",
+   "answer": null
+  },
+  {
+   "n": 8,
+   "stem": "如下 C++ 代码执行后，输出值为 0 。\n6 / 10\nint cnt, i, j;\n1\ncnt = 0;\n2\nfor (i = 0; i < 10; i++) {\n3\ncontinue;\n4\nfor (j = 0; j < i; j++)\n5\ncnt += 1;\n6\n}\n7\ncout << i * cnt;\n8",
+   "answer": null
+  },
+  {
+   "n": 9,
+   "stem": "求解鸡兔同笼。在如下 C++ 代码中，tou 代表鸡和兔的头总数，jiao 代表鸡和兔的脚总数。先后两个输\n入均为正整数。该程序能求解鸡兔同笼。\nint tou, jiao, tu_tou, ji_tou;\n1\n2\ncout << \"请输入鸡和兔的头总数：\";\n3\ncin >> tou;\n4\ncout << \"请输入鸡和兔的脚总数：\";\n5\ncin >> jiao;\n6\n7\nfor (tu_tou = 0; tu_tou < tou + 1; tu_tou++) {\n8\nji_tou = tou - tu_tou;\n9\nif (tu_tou * 4 + ji_tou * 2 == jiao)\n10\nprintf(\"兔的数量=%d,鸡的数量=%d\\n\", tu_tou, ji_tou);\n11\n}\n12\nif (tu_tou == tou)\n13\nprintf(\"无解\\n\");\n14",
+   "answer": null
+  },
+  {
+   "n": 10,
+   "stem": "如果 N 和 M 均为整数，下列 C++ 代码则可以判断正整数 N 是 M 的平方。比如 9 是 3 的平方。\nint N, M;\n1\n2\ncout << \"请输入正整数N:\";\n3\ncin >> N;\n4\ncout << \"请输入整数M:\";\n5\ncin >> M;\n6\n7\nif (int(sqrt(N)) == abs(M))\n8\nprintf(\"%d是%d的平方\\n\", N, M);\n9",
+   "answer": null
+  }
+ ],
+ "programming": [
+  {
+   "n": 1,
+   "name": "直角三角形",
+   "desc": "小双刚学会勾股定理，得知直角三角形的斜边的平方等于两直角边的平方和。\n小双创造了直角三角形数列：数列前两项由小双指定，从第三项开始，数列中的每个数字的平方等于前两项的平方\n和。\n例如，第一项是\n，第二项是\n，则第三项是\n。\n其中\n表示  的算术平方根，可以使用 C/C++/Python 标准库中对应函数计算。\n小双给定了数列的前两项，并给定一个数列上限，想让你算算数列的第几项会超过小双给定的数列上限？\n7 / 10"
+  },
+  {
+   "n": 2,
+   "name": "字符变换",
+   "desc": "小明有一个\n的画布（8 行 16 列），画布中的格子从上到下从左到右编号，左上的编号为 ，第一排最后一个\n的编号为\n，最后一排第一个编号为\n，右下为\n。\n初始画布中的每个格子都是 * ，随后小明会给定三个正整数，小明会将对应编号的格子变为该正整数对应的 ASCII\n编码字符。\n最后请帮小明输出整个画布。"
+  }
+ ]
+}

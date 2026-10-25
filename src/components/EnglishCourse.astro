@@ -1,0 +1,89 @@
+---
+// 英语学习板块渲染器：单词表 / 短语 / 语法 / 写作 / 备考指南 + 精选资源。
+// 用法：<EnglishCourse info={programInfo} data={jsonData} />
+import Base from '../layouts/Base.astro';
+import { resources } from '../data/resources';
+const { info, data } = Astro.props as any;
+const s = data.sections;
+const resList = (resources as any)[info.slug] ?? [];
+const wordsCount = s.words.units.reduce((n: number, u: any) => n + u.words.length, 0);
+const phrCount = s.phrases.groups.reduce((n: number, g: any) => n + g.items.length, 0);
+---
+<Base title={info.title} description={info.intro} program={info.slug}>
+<div class="container" style="padding:44px 0 80px;max-width:960px">
+  <div class="eyebrow">{info.code} · ENGLISH COURSE</div>
+  <h1 style="font-size:32px">{info.title}</h1>
+  <p style="color:var(--muted);font-size:15px">{info.tagline}{info.intro}</p>
+  <div class="stats">
+    <div class="stat"><b>{wordsCount}</b> 核心单词</div>
+    <div class="stat"><b>{phrCount}</b> 高频短语</div>
+    <div class="stat"><b>{s.grammar.points.length}</b> 语法专题</div>
+    <div class="stat"><b>{s.writing.types.length}</b> 写作类型</div>
+    <div class="stat"><b>{s.exam.tips.length}</b> 备考建议</div>
+  </div>
+  <nav class="anchor-nav">
+    <a href="#words">{s.words.title}</a>
+    <a href="#phrases">{s.phrases.title}</a>
+    <a href="#grammar">{s.grammar.title}</a>
+    <a href="#writing">{s.writing.title}</a>
+    <a href="#exam">{s.exam.title}</a>
+    {resList.length > 0 && <a href="#resources">学习资源</a>}
+  </nav>
+
+  <h2 class="section-title" id="words">{s.words.title}</h2>
+  <p style="color:var(--muted);font-size:13.5px">{s.words.intro}</p>
+  {s.words.units.map((u: any) => <>
+    <h3 class="eng-h3">{u.name} <span class="eng-tag">{u.words.length} 词</span></h3>
+    <table class="eng-table">
+      <thead><tr><th style="width:110px">单词</th><th style="width:56px">词性</th><th style="width:150px">释义</th><th>例句</th></tr></thead>
+      <tbody>{u.words.map((w: any) => <tr><td><b>{w.w}</b></td><td style="color:var(--muted)">{w.pos}</td><td>{w.cn}</td><td style="color:var(--muted)">{w.eg}</td></tr>)}</tbody>
+    </table>
+  </>)}
+
+  <h2 class="section-title" id="phrases">{s.phrases.title}</h2>
+  {s.phrases.groups.map((g: any) => <>
+    <h3 class="eng-h3">{g.name} <span class="eng-tag">{g.items.length} 条</span></h3>
+    <table class="eng-table">
+      <tbody>{g.items.map((p: any) => <tr><td style="width:45%"><b>{p.en}</b></td><td style="color:var(--muted)">{p.cn}</td></tr>)}</tbody>
+    </table>
+  </>)}
+
+  <h2 class="section-title" id="grammar">{s.grammar.title}</h2>
+  {s.grammar.points.map((p: any, i: number) => <div class="gram-card">
+    <h4>{String(i + 1).padStart(2, '0')}. {p.title}{p.star && ' <span class="eng-star">★ 重点</span>'}</h4>
+    <p style="font-size:14px;line-height:1.9">{p.explain}</p>
+    {p.examples.map((e: any) => <p class="ex"><b>{e.en}</b><br/><span>{e.cn}</span></p>)}
+    {p.tip && <div class="tip">⚠️ 易错提醒：{p.tip}</div>}
+  </div>)}
+
+  <h2 class="section-title" id="writing">{s.writing.title}</h2>
+  {s.writing.types.map((t: any, i: number) => <div class="gram-card">
+    <h4>{String(i + 1).padStart(2, '0')}. {t.name}</h4>
+    <p style="font-size:14px;line-height:1.9">{t.guide}</p>
+    <h5 class="eng-h5">写作模板</h5>
+    <pre class="tpl-pre">{t.template}</pre>
+    <h5 class="eng-h5">范文与点评</h5>
+    <div class="sample-card">
+      <b style="font-size:14px">{t.sample.title}</b>
+      <p class="txt">{t.sample.text}</p>
+      <p class="notes">💡 {t.sample.notes}</p>
+    </div>
+  </div>)}
+
+  <h2 class="section-title" id="exam">{s.exam.title}</h2>
+  <ol style="line-height:2.1;font-size:14.5px;padding-left:22px">
+    {s.exam.tips.map((t: string) => <li>{t}</li>)}
+  </ol>
+
+  {resList.length > 0 && <>
+    <h2 class="section-title" id="resources">精选学习资源</h2>
+    <p style="color:var(--muted);font-size:13.5px">配套本阶段的优质免费/付费课程与工具（外部链接，以各站点实际内容为准）。</p>
+    <ul class="res-list">
+      {resList.map((r: any) => <li><a href={r.url} target="_blank" rel="noopener">{r.name}</a><span class="res-provider">{r.provider}</span><span class="res-note">{r.note}</span></li>)}
+    </ul>
+  </>}
+
+  <p style="color:var(--muted);font-size:12.5px;margin-top:24px">适合人群：{info.audience}。本板块为系统学习资料，持续完善中；建议每天 20~30 分钟，按「单词 → 短语 → 语法 → 写作」顺序循环学习。</p>
+  <p><a href="/">← 返回课程中心</a></p>
+</div>
+</Base>

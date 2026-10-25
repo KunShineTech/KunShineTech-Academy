@@ -1,0 +1,58 @@
+---
+title: "双重循环与图形输出"
+level: 2
+order: 7
+duration: 120
+unit: "控制结构"
+difficulty: 基础
+goals:
+  - "掌握for/while/do-while嵌套"
+  - "理解外层控制行、内层控制列"
+  - "独立输出矩形、直角三角形和乘法表"
+---
+
+import Check from '../../../components/Check.astro';
+import Task from '../../../components/Task.astro';
+import Reveal from '../../../components/Reveal.astro';
+
+
+## 1. 把循环理解为“行和列”
+单层循环重复一个动作，双重循环可以重复“一组动作”。输出矩形时，外层决定有多少行，内层决定每行有多少列。
+
+```cpp
+for(int i=1;i<=3;i++){
+    for(int j=1;j<=4;j++) cout<<'*';
+    cout<<'\n';
+}
+```
+
+输出3行、每行4颗星。注意 `cout<<'\n'` 必须放在内层循环结束之后。
+
+## 2. 数学原理：循环次数
+若外层循环 `n` 次，内层每次固定 `m` 次，内层语句共执行 `n×m` 次。
+
+若第 `i` 行输出 `i` 颗星，总次数为 `1+2+…+n = n(n+1)/2`。这个等差数列求和公式是理解三角形输出的关键。
+
+## 3. 例题：九九乘法表
+```cpp
+#include <iostream>
+using namespace std;
+int main(){
+    for(int i=1;i<=9;i++){
+        for(int j=1;j<=i;j++){
+            cout<<j<<"*"<<i<<"="<<i*j<<' ';
+        }
+        cout<<'\n';
+    }
+}
+```
+
+**思路拆解：** 第 `i` 行只打印 `j=1` 到 `i`；内层次数随外层变量变化，因此输出三角形而非矩形。
+
+<Check question="外层i从1到4，内层j从1到i，总共执行几次内层语句？" options={['4','8','10','16']} answer={2} explanation="1+2+3+4=10，也可用n(n+1)/2。" />
+
+<Task title="数字三角形" input="一个整数n，1≤n≤9" output="共n行，第i行连续输出1到i" sampleIn="4" sampleOut="1\n12\n123\n1234">必须使用双重循环，不允许手工拼接固定字符串。</Task>
+<Reveal label="查看参考程序"><pre><code>{`#include <iostream>\nusing namespace std;\nint main(){int n;cin>>n;for(int i=1;i<=n;i++){for(int j=1;j<=i;j++)cout<<j;cout<<'\\n';}}`}</code></pre></Reveal>
+
+## 4. 拓展
+将内层 `for` 改写为 `while`，再用 `do-while` 改写并讨论“至少执行一次”带来的差别。注意 `do-while` 在条件不成立时仍执行一次。

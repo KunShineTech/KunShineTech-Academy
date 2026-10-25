@@ -1,0 +1,94 @@
+---
+title: "变量、常量与输入输出"
+level: 1
+order: 3
+duration: 120
+unit: "变量与输入输出"
+difficulty: 入门
+goals:
+  - "理解变量与常量的概念，会用赋值语句"
+  - "掌握标识符命名规则并识别常见关键字"
+  - "会用 cin 读入数据，了解 scanf 与 printf"
+---
+
+import Check from '../../../components/Check.astro';
+import Task from '../../../components/Task.astro';
+import Reveal from '../../../components/Reveal.astro';
+
+
+## 1. 变量是贴标签的储物盒
+程序需要记住数据。把内存想象成一排储物盒：**变量**就是给盒子贴上标签（变量名），盒子里的东西（值）可以随时更换。
+
+```cpp
+int age = 12;   // 找到一个 int 型盒子，贴标签 age，放入 12
+age = 13;       // 赋值：把 age 盒子里的旧值换成 13
+```
+
+赋值语句的格式是「变量 = 表达式;」，方向从右往左：先算出右边的值，再放进左边的盒子。注意 `age = age + 1;` 在数学里不成立，在程序里却完全合法：把 age 的值加一，再存回 age。
+
+如果盒子贴上标签后就不许换内容，这就是**常量**，用 `const` 加锁：
+
+```cpp
+const double PI = 3.14159;  // 常量：定义后不能再修改
+```
+
+## 2. 标识符命名规则与关键字
+变量名（标识符）不是随便起的，要守规矩：
+
+1. 只能由字母、数字、下划线组成；
+2. 不能以数字开头；
+3. 区分大小写，`Age` 和 `age` 是两个不同的盒子；
+4. 不能用**关键字**——它们已被 C++ 占用。
+
+常见关键字：`int`、`double`、`char`、`bool`、`const`、`if`、`else`、`for`、`while`、`return`、`switch`。
+
+> 教学提醒：建议用有含义的名字，如 `sum`、`score`，不要图省事写成 `a1`、`a2`，代码是写给人读的。
+
+## 3. 用 cin 让程序学会“听话”
+`cout` 负责说，`cin` 负责听。`cin >>` 像一根吸管，把键盘输入吸进盒子：
+
+```cpp
+int a, b;
+cin >> a >> b;   // 依次读入两个整数，中间用空格或回车分隔
+cout << a + b << '\n';
+```
+
+C 语言风格的 `scanf` 和 `printf` 也能完成输入输出，GESP 一级只需了解：
+
+```cpp
+int x;
+scanf("%d", &x);          // 读入整数，& 表示取地址
+printf("%d\n", x);        // 输出整数
+printf("%.2f\n", 3.14159); // 保留两位小数输出
+```
+
+本课程以 `cin`、`cout` 为主，`scanf`、`printf` 能看懂即可。
+
+## 4. 例题解析
+**问题**：读入小明今年的年龄，输出他明年的年龄。
+
+**思路**：需要一个 int 盒子装年龄，用 `cin` 读入，再整体加一输出。
+
+```cpp
+#include <iostream>
+using namespace std;
+int main() {
+    int age;
+    cin >> age;            // 把键盘输入吸进 age 盒子
+    cout << age + 1 << '\n';
+    return 0;
+}
+```
+
+<Check question="下列标识符中，合法的是？" options={['2name','my_age','int','my-name']} answer={1} explanation="my_age 由字母和下划线组成且不以数字开头；2name 以数字开头，int 是关键字，my-name 含非法字符。" />
+<Check question="语句 a = a + 1; 的含义是？" options={['数学上不成立，编译报错','把 a 的值加一后再存回 a','把 1 赋给 a','让 a 变成两个']} answer={1} explanation="赋值先把右边的 a+1 算出来，再放进左边的盒子，所以 a 增加了 1。" />
+<Check question="一次读入两个整数 a 和 b，正确写法是？" options={['cin >> a >> b;','cin << a << b;','cin.a.b;','read a b;']} answer={0} explanation="cin 搭配 >>，可以连续写；<< 是 cout 的方向。" />
+
+<Task title="两数求和" input="两个整数 a 和 b（均不超过 1000）" output="两数之和" sampleIn="3 4" sampleOut="7">读入两个整数，计算并输出它们的和。先想清楚需要几个变量、用什么类型。</Task>
+<Reveal label="查看参考程序与思路"><pre><code>{`#include <iostream>\nusing namespace std;\nint main(){\n    int a, b;\n    cin >> a >> b;\n    cout << a + b << '\\n';\n    return 0;\n}`}</code></pre>思路：两个 int 盒子分别装 a 和 b，相加后输出。输入 3 和 4 时，3+4 等于 7，与样例一致。</Reveal>
+
+## 5. 课后巩固
+1. 说出变量的「三要素」：盒子（存储空间）、标签（变量名）、内容（值）。
+2. 判断并改正：`3abc`、`_ok`、`Int`、`for` 哪些是合法标识符？
+3. 解释 `const int N = 100;` 中 `const` 的作用，并尝试给 N 再赋值观察报错。
+4. 编程：读入一个整数，输出它的三倍（自己设计样例输入输出并验证）。

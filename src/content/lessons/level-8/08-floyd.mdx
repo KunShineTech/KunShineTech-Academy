@@ -1,0 +1,100 @@
+---
+title: "全源最短路：Floyd 算法"
+level: 8
+order: 8
+duration: 120
+unit: "图论算法"
+difficulty: 进阶
+goals:
+  - "理解全源最短路问题与 Floyd 的动态规划思想"
+  - "掌握 Floyd 三重循环的正确写法与初始化细节"
+  - "能根据问题规模在 Dijkstra 与 Floyd 之间灵活选择"
+---
+
+import Check from '../../../components/Check.astro';
+import Task from '../../../components/Task.astro';
+import Reveal from '../../../components/Reveal.astro';
+
+
+## 1. 新问题：任意两点都要最快
+上节课 Dijkstra 解决的是「从我家出发」的单源最短路。但物流公司要规划全城配送：任意两个网点之间的最短距离都要知道，该怎么办？
+
+**全源最短路**：求出图中**每一对**点之间的最短距离，共 n² 个答案。朴素办法是对每个点各跑一次 Dijkstra，共 O(n·m log n)。而 Floyd 算法只要**三重循环**，思路却优雅得像一首诗。
+
+## 2. Floyd 的思想：逐个请「中转点」
+把问题倒过来看：dist[i][j] 表示 i 到 j 的最短距离。我们逐个「放行」中转点 k=1,2,…,n，每放行一个 k 就问自己一句：
+
+> **「允许经过 k 中转，能不能让 i→j 更近？」**
+
+转移方程只有一行：
+
+**dist[i][j] = min(dist[i][j], dist[i][k] + dist[k][j])**
+
+放行完所有中转点，dist 里存的就是任意两点间的最短距离。这是典型的**动态规划**：阶段是「已放行的中转点集合」，决策是「要不要借道 k」。
+
+口诀：**中转点放外层，借道中转试一试，三重循环全 pair。**
+
+## 3. 代码与初始化
+```cpp
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+const long long INF = 1e15;
+long long dist[305][305];
+int n, m;
+
+int main() {
+    cin >> n >> m;
+    for (int i = 1; i <= n; i++)
+        for (int j = 1; j <= n; j++)
+            dist[i][j] = (i == j) ? 0 : INF;   // 自己到自己为 0
+    for (int i = 0; i < m; i++) {
+        int u, v; long long w;
+        cin >> u >> v >> w;
+        dist[u][v] = min(dist[u][v], w);       // 重边取最小
+        dist[v][u] = min(dist[v][u], w);       // 无向图双向存
+    }
+    for (int k = 1; k <= n; k++)               // 中转点 k 必须在最外层！
+        for (int i = 1; i <= n; i++)
+            for (int j = 1; j <= n; j++)
+                if (dist[i][k] + dist[k][j] < dist[i][j])
+                    dist[i][j] = dist[i][k] + dist[k][j];
+}
+```
+
+复杂度 **O(n³)**，三层循环直白得没有优化空间——所以 Floyd 的适用边界很清晰：**n ≤ 500 左右**（500³ = 1.25×10^8，勉强可过；n=10^3 就要三思）。
+
+> 教学提醒：三重循环中 **k 必须是最外层**！只有按「中转点逐个点亮」的顺序递推，dist[i][k] 和 dist[k][j] 才已经包含「只允许更早的中转点」的最优值。把 k 放内层等于同时允许所有点中转，递推关系被破坏，结果必然出错——这是 Floyd 最经典的失分点。
+
+## 4. Floyd 与 Dijkstra 怎么选
+| 对比项 | Floyd | Dijkstra |
+| --- | --- | --- |
+| 求解范围 | 一次算出**所有点对** | 固定**一个起点** |
+| 时间复杂度 | O(n³) | 朴素 O(n²)，堆优化 O((n+m) log n) |
+| 适用规模 | n ≤ 500 | n 可达 10^5 |
+| 负权边 | **允许**（但不能有负环） | 不允许 |
+| 代码量 | 极少 | 较多 |
+
+经验法则：**问一对点跑 Dijkstra，问所有点跑 Floyd；点多图疏用 Dijkstra（堆优化），点少查询多上 Floyd。** 八级真题常考「理解实现同一功能的不同算法的比较，并灵活解决相关问题」，这张表就是答题模板。
+
+<Check question="Floyd 算法的时间复杂度是？" options={['O(n²)','O(n² log n)','O(n³)','O(nm)']} answer={2} explanation="三层各 n 次的循环，共 n³ 次基本操作，与边数无关，这是 Floyd 的名字牌。" />
+<Check question="Floyd 三重循环中，哪一层必须是中转点 k？" options={['最内层','最外层','中间层','任意一层都可以']} answer={1} explanation="k 放最外层才能保证 dist[i][k]、dist[k][j] 用的是「更早中转点」的最优值，满足动态规划的阶段顺序。" />
+<Check question="关于 Floyd 与 Dijkstra 的比较，下列说法错误的是？" options={['Floyd 一次求出所有点对最短路','Dijkstra 可以处理负权边','Floyd 允许负权边但不能有负环','点多边少的图优先 Dijkstra（堆优化）']} answer={1} explanation="Dijkstra 的贪心依赖边权非负，不能处理负权边；Floyd 基于中转点递推，对负权边免疫（负环除外）。" />
+
+<Task title="旅游路线查询" input="第一行两个整数 n、m（2≤n≤300，1≤m≤10^4），表示城市数与双向道路数。接下来 m 行，每行三个整数 u、v、w，表示 u 与 v 之间有一条长度为 w 的双向道路。随后一行一个整数 q（1≤q≤10^4），接下来 q 行，每行两个整数 a、b，表示一次询问" output="一个整数：每次询问的 a 到 b 最短距离，不可达输出 -1" sampleIn="3 3
+1 2 3
+2 3 4
+1 3 10
+2
+1 3
+2 3" sampleOut="7
+4">Floyd 模板题：读图后用三重循环预处理所有点对最短路，每个询问 O(1) 回答。注意 dist[a][a] 应为 0。</Task>
+<Reveal label="查看参考程序与思路"><pre><code>{`#include <iostream>\n#include <cstring>\nusing namespace std;\nconst long long INF = 1e15;\nlong long dist[305][305];\nint main(){\n    int n, m;\n    cin>>n>>m;\n    for(int i=1;i<=n;i++)\n        for(int j=1;j<=n;j++)\n            dist[i][j] = (i==j) ? 0 : INF;\n    for(int i=0;i<m;i++){\n        int u, v; long long w;\n        cin>>u>>v>>w;\n        dist[u][v] = min(dist[u][v], w);\n        dist[v][u] = min(dist[v][u], w);\n    }\n    for(int k=1;k<=n;k++)\n        for(int i=1;i<=n;i++)\n            for(int j=1;j<=n;j++)\n                if(dist[i][k]+dist[k][j] < dist[i][j])\n                    dist[i][j] = dist[i][k]+dist[k][j];\n    int q; cin>>q;\n    while(q--){\n        int a, b;\n        cin>>a>>b;\n        if(dist[a][b] >= INF) cout<<-1<<'\\n';\n        else cout<<dist[a][b]<<'\\n';\n    }\n}`}</code></pre>样例：1→3 直达 10，但借道 2 中转只要 3+4=7；2→3 直达 4。本题询问多达 10^4 次，若每次跑 Dijkstra 会严重超时——这正是「点多查询多上 Floyd」的经典场景：一次 O(n³) 预处理，换 q 次 O(1) 查询。INF 加法用 long long 防止溢出。</Reveal>
+
+## 5. 课后巩固
+1. 概念：解释 Floyd 中「放行中转点」的含义，并写出转移方程。
+2. 计算：对 4 个点的三角形加一条对角线的图，手工执行 Floyd 前两轮（k=1,2），记录 dist 矩阵变化。
+3. 编程：输入有向图，用 Floyd 求所有点对最短路，并输出 dist[1][n]；与 Dijkstra 的结果对拍验证。
+4. 思考：为什么 Floyd 允许负权边但不允许负环？若图中存在负环会发生什么？
+5. 拓展：Floyd 的 dist[i][j] 初始为「能否一步到达」的 0/1 时，三重循环算出的是「传递闭包」。说说它解决的是什么问题（提示：好友的好友）。

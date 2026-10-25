@@ -1,0 +1,267 @@
+{
+ "session": "2024-03",
+ "level": 4,
+ "file": "GESP 2024年03月认证C++ 4级真题.pdf",
+ "legacy": false,
+ "choiceCount": 15,
+ "judgeCount": 10,
+ "progCount": 2,
+ "choiceAnswers": "CCDDCCDACBCCBCC",
+ "judgeAnswers": "",
+ "choice": [
+  {
+   "n": 1,
+   "stem": "若函数声明为int f(int &x){ x+=3; return x; } ，则对声明的变量int a=3 ，下面哪个调用能够改\n变a 的值(\n)。",
+   "options": [
+    "f(&a) ;",
+    "f(*a) ;",
+    "f(a) ;",
+    "f(a-3) ;"
+   ],
+   "answer": 2,
+   "analysis": "正确答案 C。f 的形参是 int &x（引用），调用时直接传变量名 f(a) 即可让函数修改 a；传 &a、*a 类型都不匹配，a-3 是右值无法绑定到非 const 引用。"
+  },
+  {
+   "n": 2,
+   "stem": "下面C++代码执行后，输出的是( )。\nint main()\n1\n{\n2\nint x[]={2, 0, 2, 4};\n3\nchar geSP[]=\"Grade Examination of SP\";\n4\n5\ncout << geSP[sizeof(x)] << endl;\n6\n7\ncout << endl;\n8\nreturn 0;\n9\n}\n10",
+   "options": [
+    "G",
+    "e",
+    "n",
+    "P"
+   ],
+   "answer": 2,
+   "analysis": "正确答案 C。sizeof(x) 是 4 个 int 共 16 字节，所以输出 geSP[16]；在字符串 \"Grade Examination of SP\" 中数到下标 16 的字符是 'n'。注意 sizeof 返回的是字节数而不是元素个数。"
+  },
+  {
+   "n": 3,
+   "stem": "下面C++代码执行后输出是( )。\nint foo(float *f)\n1\n{\n2\nreturn int(*f*2);\n3\n}\n4\n5\nint main()\n6\n{\n7\nfloat fnum[10]={1.1};\n8\nfnum[1]=foo(fnum);\n9\ncout << fnum[0]+fnum[1] << endl;\n10\n11\ncout << endl;\n12\nreturn 0;\n13\n}\n14",
+   "options": [
+    "1",
+    "1.1",
+    "3",
+    "3.1"
+   ],
+   "answer": 3,
+   "analysis": "正确答案 D。foo(fnum) 中 *f 为 1.1，int(1.1*2)=int(2.2)=2，赋给 fnum[1]；fnum[0]+fnum[1]=1.1+2=3.1。强转是截断取整而非四舍五入，是易错点。"
+  },
+  {
+   "n": 4,
+   "stem": "对二维数组int arr[3][16]; ，则arr[1] 占用内存的大小为（  ）字节。",
+   "options": [
+    "4",
+    "16",
+    "48",
+    "64"
+   ],
+   "answer": 3,
+   "analysis": "正确答案 D。arr[1] 是包含 16 个 int 的一行，占 16×4=64 字节；不要误答成 4 或 16（把字节数当成元素个数）。"
+  },
+  {
+   "n": 5,
+   "stem": "对二维数组int arr[3][16]; ，若arr 的地址是0x28cbc0 ，则arr[1] 的值是（  ）。",
+   "options": [
+    "0x28cbc4",
+    "0x28cbd0",
+    "0x28cc00",
+    "不确定"
+   ],
+   "answer": 2,
+   "analysis": "正确答案 C。arr[1] 的地址 = arr 的地址 + 一行字节数 = 0x28cbc0 + 16×4 = 0x28cc00。十六进制加 64（0x40）即 0x28cc00。"
+  },
+  {
+   "n": 6,
+   "stem": "下面C++代码执行后输出是（    ）。\nint main()\n1\n{\n2\nchar *p=\"I love GESP!\";\n3\ncout << p+5 << endl;\n4\n5\ncout << endl;\n6\nreturn 0;\n7\n}\n8",
+   "options": [
+    "e",
+    "I lov",
+    "e GESP!",
+    "GESP!"
+   ],
+   "answer": 2,
+   "analysis": "正确答案 C。p+5 指向字符串 \"I love GESP!\" 的第 5 个下标（从 0 数：I、空格、l、o、v），从 'e' 开始输出，即 \"e GESP!\"。"
+  },
+  {
+   "n": 7,
+   "stem": "下面C++代码执行以后输出的是（    ）。\nint rc=5;\n1\nint main()\n2\n{\n3\nint rc;\n4\ncout << ++rc << endl;\n5\n6\ncout << endl;\n7\nreturn 0;\n8\n}\n9\n10",
+   "options": [
+    "0",
+    "1",
+    "6",
+    "不确定"
+   ],
+   "answer": 3,
+   "analysis": "正确答案 D。main 中的局部 int rc 未初始化就 ++rc，其值是随机的，输出无法确定。未初始化的局部变量是经典的“不确定”陷阱。"
+  },
+  {
+   "n": 8,
+   "stem": "下面C++函数中采用的算法是（    ）。\nint fib(int n)\n1\n{\n2\nint i, f[n]={0, 1};\n3\n4\nfor(int i=2; i<=n; i++)\n5\nf[i]=f[i-1]+f[i-2];\n6\n7\nreturn f[n];\n8\n}\n9\n10",
+   "options": [
+    "递推",
+    "递归",
+    "迭代",
+    "循环"
+   ],
+   "answer": 0,
+   "analysis": "正确答案 A。由 f[i]=f[i-1]+f[i-2] 从已知初值逐项推出 f[n]，是从前向后递推，而不是函数自己调用自己的递归。"
+  },
+  {
+   "n": 9,
+   "stem": "插入排序在最好情况下的时间复杂度是（     ）。",
+   "options": [
+    "",
+    "",
+    "",
+    ""
+   ],
+   "answer": 2,
+   "analysis": "正确答案 C。插入排序在最好情况（数组已有序）下每趟只比较一次，时间复杂度为 O(n)；最坏和平均为 O(n²)。（选项文本以真题原件为准）"
+  },
+  {
+   "n": 10,
+   "stem": "在如下的C++代码执行后，设第11和12行的输出地址值分别为X 和Y ，则下面正确的是（    ）。\nstruct pass{\n1\nint no;\n2\nchar name[20];\n3\nint level;\n4\n};\n5\n6\nint main()\n7\n{\n8\nstruct pass XiaoYang;\n9\n10\ncout << \"&XiaoYang=\" << &XiaoYang << endl;  //第11行\n11\ncout << \"&(XiaoYang.no)=\" << &(XiaoYang.no) << endl; //第12行\n12\n13\ncout << endl;\n14\nreturn 0;\n15\n}\n16",
+   "options": [
+    "X>Y",
+    "X==Y",
+    "X<Y",
+    "不确定"
+   ],
+   "answer": 1,
+   "analysis": "正确答案 B。结构体的第一个成员存放在结构体的起始地址处，所以 &XiaoYang 与 &(XiaoYang.no) 相等，即 X==Y。"
+  },
+  {
+   "n": 11,
+   "stem": "如果文件1.txt 中的内容如下，则执行下面C++代码时，注释了#### 那行代码所输出的x 的值为（\n）。\n50 2024 3.16 I\n1\nlove\n2\nGESP!\n3\nint main()\n1\n{\n2\nifstream fin;\n3\nstring line;\n4\nint x;\n5\nfin.open(\"1.txt\",ios::in);\n6\n7\nfor (int i=0; i< 2; i++){\n8\nfin >> line;\n9\ncout << line << endl;\n10\n}\n11\nfin>>x;\n12\ncout << x << endl; //####\n13\n14\ncout << endl;\n15\nreturn 0;\n16\n}\n17",
+   "options": [
+    "5",
+    "2024",
+    "3",
+    "0"
+   ],
+   "answer": 2,
+   "analysis": "正确答案 C。前两次 fin>>line 读走 \"50\" 和 \"2024\"，fin>>x 遇到 \"3.16\" 时 int 只读整数部分 3，输出 3。按类型读取会在类型不匹配处停止，是文件读写的易错点。"
+  },
+  {
+   "n": 12,
+   "stem": "执行下列C++代码时输出中的第2行是（    ）。\nint main()\n1\n{\n2\nchar *s[]={(char*)\"2024\",(char*)\"3.16\",(char*)\"GESP\"};\n3\n4\nfor (int i=0; i< 2; i++){\n5\ncout << *s+i << endl;\n6\n}\n7\n8\ncout << endl;\n9\nreturn 0;\n10\n}\n11",
+   "options": [
+    "2024",
+    "3.16",
+    "024",
+    "3"
+   ],
+   "answer": 2,
+   "analysis": "正确答案 C。*s+i 等价于 (*s)+i，即第一个字符串的首地址加 i；i=1 时从第 2 个字符起输出 \"024\"。*s 是 char*，加 i 是地址偏移。"
+  },
+  {
+   "n": 13,
+   "stem": "C++语言中下面哪个关键字能够限定对象的作用域（    ）。",
+   "options": [
+    "extern",
+    "static",
+    "inline",
+    "public"
+   ],
+   "answer": 1,
+   "analysis": "正确答案 B。static 可限定变量的作用域与链接属性（如静态全局变量只在本文文件可见）；extern 是外部链接声明，inline 是内联函数，public 用于类的访问控制。"
+  },
+  {
+   "n": 14,
+   "stem": "小杨的父母最近刚刚给他买了一块华为手表，他说手表上跑的是鸿蒙，这个鸿蒙是（  ）。",
+   "options": [
+    "小程序",
+    "计时器",
+    "操作系统",
+    "神话人物"
+   ],
+   "answer": 2,
+   "analysis": "正确答案 C。鸿蒙（HarmonyOS）是华为开发的操作系统，可运行在手表、手机等多种设备上。"
+  },
+  {
+   "n": 15,
+   "stem": "中国计算机学会（CCF）在2024年1月27日的颁奖典礼上颁布了王选奖，王选先生的重大贡献是（  ）。",
+   "options": [
+    "制造自动驾驶汽车",
+    "创立培训学校",
+    "发明汉字激光照排系统",
+    "成立方正公司"
+   ],
+   "answer": 2,
+   "analysis": "正确答案 C。王选院士的重大贡献是发明汉字激光照排系统，推动中文印刷告别“铅与火”；他也是汉字信息处理领域的奠基人之一。"
+  }
+ ],
+ "judge": [
+  {
+   "n": 1,
+   "stem": "对int a[]={2,0,2,4,3,1,6} ，执行第一趟选择排序处理后a 中数据变为{0,2,2,4,3,1,6} 。(  )",
+   "answer": null,
+   "analysis": "正确。选择排序第一趟选出最小值 0，与首元素 2 交换，得到 {0,2,2,4,3,1,6}，与所述一致。"
+  },
+  {
+   "n": 2,
+   "stem": "如果待排序数据不能都装进内存，需要使用外排序算法。（  ）",
+   "answer": null,
+   "analysis": "正确。数据量太大无法全部装入内存时，必须借助外存分批处理，使用外排序算法（如归并思想的外排序）。"
+  },
+  {
+   "n": 3,
+   "stem": "定义变量int a=5 , 则cout << &++a 会输出6 。(\n)",
+   "answer": null,
+   "analysis": "错误。&++a 是取变量 a 的地址（前置 ++ 返回左值），输出的是地址而不是 6。"
+  },
+  {
+   "n": 4,
+   "stem": "两个函数之间可以使用全局变量来传递数据。 (\n)",
+   "answer": null,
+   "analysis": "正确。全局变量对整个程序可见，函数之间可以通过读写全局变量来共享和传递数据（但应谨慎使用）。"
+  },
+  {
+   "n": 5,
+   "stem": "定义数组int a[2024][3][16]={2,0,2,4,3,1,6} ，则cout << a[2023][2][15] 的结果不确定。（\n）",
+   "answer": null,
+   "analysis": "错误。定义时给出部分初值后，其余元素被自动初始化为 0，a[2023][2][15] 的值确定为 0，并非“不确定”。"
+  },
+  {
+   "n": 6,
+   "stem": "在C++语言中，函数的参数为指针时，可以在函数内部修改该参数的值。（  ）",
+   "answer": null,
+   "analysis": "错误。指针参数本身也是值传递：函数内修改指针变量（让它指向别处）不影响实参指针；但可以通过解引用修改指针所指向的变量的值。题目说法混淆了两者。"
+  },
+  {
+   "n": 7,
+   "stem": "在C++语言中try 子句里抛出的结构体等类型的异常无法被catch 捕获。（  ）",
+   "answer": null,
+   "analysis": "错误。catch 可以捕获任意类型的异常，包括结构体等自定义类型，只需 catch 处写相应类型即可。"
+  },
+  {
+   "n": 8,
+   "stem": "C++语言中cout << 9^2 << endl; 会输出81。（  ）",
+   "answer": null,
+   "analysis": "错误。<< 优先级高于 ^，cout<<9^2 实际是 (cout<<9)^2，不会输出 81；想输出 9^2 的结果应写 cout<<(9^2)。"
+  },
+  {
+   "n": 9,
+   "stem": "小杨今年春节回奶奶家了，奶奶家的数字电视要设置ip地址并接入到WIFI盒子才能收看节目，那这个WIFI盒\n子具有路由器的功能。（  ）",
+   "answer": null,
+   "analysis": "正确。WIFI 盒子能把家庭设备接入互联网并分配 IP，具有路由器的功能。"
+  },
+  {
+   "n": 10,
+   "stem": "任何一个for 循环都可以转化为等价的while 循环（  ）。",
+   "answer": null,
+   "analysis": "正确。for(初始化;条件;更新){体} 可直接改写为：初始化; while(条件){体;更新;}，二者等价。"
+  }
+ ],
+ "programming": [
+  {
+   "n": 1,
+   "name": "相似字符串",
+   "desc": "对于两个字符串  和 ，如果  可以通过删除一个字符，或插入一个字符，或修改一个字符变成 ，那么我们说\n和  是相似的。\n比如 apple 可以通过插入一个字符变成 applee ，可以通过删除一个字符变成 appe ，也可以通过修改一个字符\n变成 bpple ，因此 apple 和 applee 、appe 、bpple 都是相似的。但 applee 并不能通过任意一个操作变成\nbpple ，因此它们并不相似。\n特别地，完全相同的两个字符串也是相似的。\n给定  组\n，请你分别判断他们是否相似。"
+  },
+  {
+   "n": 2,
+   "name": "做题",
+   "desc": "小杨同学为了提高自己的实力制定了做题计划，在第  天时，他必须要完成  道题，否则他就会偷懒。\n小杨同学现在找到了一个题库，一共有  套题单，每一套题单中有一定数量的题目。但是他十分挑剔，每套题单他\n只会使用一次，每一天也只能使用一套题单里的题目，之后那套题单就会被弃之不用。对于每套题单，他不必完成\n题单内所有的题。\n那么问题来了，小杨同学最多会做题几天才偷懒呢？"
+  }
+ ]
+}

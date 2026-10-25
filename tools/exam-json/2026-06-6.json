@@ -1,0 +1,242 @@
+{
+ "session": "2026-06",
+ "level": 6,
+ "file": "GESP 2026年06月认证C++ 6级真题.pdf",
+ "legacy": false,
+ "choiceCount": 15,
+ "judgeCount": 10,
+ "progCount": 2,
+ "choiceAnswers": "DBCAABAABBDBABA",
+ "judgeAnswers": "",
+ "choice": [
+  {
+   "n": 1,
+   "stem": "下列关于 C++ 中继承和多态的描述中，错误的是（  ）。",
+   "options": [
+    "通过基类指针调用虚函数时，会根据对象实际类型决定调用版本。",
+    "基类析构函数常声明为虚函数，以便通过基类指针正确释放派生类对象。",
+    "派生类可以重写基类中的虚函数。",
+    "构造函数可以声明为 virtual ，以便在构造对象时实现动态绑定。"
+   ],
+   "answer": 3
+  },
+  {
+   "n": 2,
+   "stem": "下列代码中，d1->work(); 和 d2->work(); 输出不同结果的主要原因是（  ）。\nclass Device {\n1\npublic:\n2\nvirtual void work() {\n3\ncout << \"Device is working\" << endl;\n4\n}\n5\nvirtual ~Device() {}\n6\n};\n7\n8\nclass Printer : public Device {\n9\npublic:\n10\nvoid work() override {\n11\ncout << \"Printer is printing\" << endl;\n12\n}\n13\n};\n14\n15\nclass Scanner : public Device {\n16\npublic:\n17\nvoid work() override {\n18\ncout << \"Scanner is scanning\" << endl;\n19\n}\n20\n};\n21\n22\nint main() {\n23\nDevice* d1 = new Printer();\n24\nDevice* d2 = new Scanner();\n25\n26\nd1->work();\n27\nd2->work();\n28\n29\ndelete d1;\n30\ndelete d2;\n31\nreturn 0;\n32\n}\n33\n1 / 12",
+   "options": [
+    "Printer 和 Scanner 使用了相同的构造函数。",
+    "work() 是虚函数，且 d1 和 d2 实际指向不同派生类对象，发生动态绑定。",
+    "d1 和 d2 是不同的指针变量。",
+    "程序中使用了 delete 释放对象。"
+   ],
+   "answer": 1
+  },
+  {
+   "n": 3,
+   "stem": "下面代码在 main() 中有一行会导致编译错误，请找出来。\nclass Student {\n1\npublic:\n2\nStudent(string n, int s) : name(n), score(s) {}\n3\n4\nstring getName() {\n5\nreturn name;\n6\n}\n7\n8\nvoid setScore(int s) {\n9\nscore = s;\n10\n}\n11\n12\nprivate:\n13\nstring name;\n14\nint score;\n15\n};\n16\n17\nint main() {\n18\nStudent stu(\"Tom\", 85);\n19\ncout << stu.getName();   // ①\n20\nstu.setScore(90);        // ②\n21\nstu.score = 100;         // ③\n22\ncout << stu.getName();   // ④\n23\nreturn 0;\n24\n}\n25",
+   "options": [
+    "第 ① 行",
+    "第 ② 行",
+    "第 ③ 行",
+    "第 ④ 行"
+   ],
+   "answer": 2
+  },
+  {
+   "n": 4,
+   "stem": "某文本编辑器把用户输入的字符依次压入栈 S 。用户依次输入 X, Y, Z, W 后，连续执行两次撤销操作。\n每次撤销都会弹出栈顶一个字符。此时栈从栈底到栈顶的内容是（  ）。",
+   "options": [
+    "X Y",
+    "X Y Z",
+    "Y Z",
+    "X Z"
+   ],
+   "answer": 0
+  },
+  {
+   "n": 5,
+   "stem": "假设循环队列数组长度为 N = 7 ，队空判断条件为 front == rear 。入队和出队操作如下：\n2 / 12\nconst int N = 7;\n1\nint q[N];\n2\nint front = 3, rear = 3;\n3\n4\nvoid enqueue(int x) {\n5\nq[rear] = x;\n6\nrear = (rear + 1) % N;\n7\n}\n8\n9\nvoid dequeue() {\n10\nfront = (front + 1) % N;\n11\n}\n12\n依次执行：\nenqueue(10);\n1\nenqueue(20);\n2\nenqueue(30);\n3\ndequeue();\n4\nenqueue(40);\n5\ndequeue();\n6\nenqueue(50);\n7\n最终 (front, rear) 的值是（  ）。",
+   "options": [
+    "(5, 1)",
+    "(4, 0)",
+    "(5, 0)",
+    "(3, 1)"
+   ],
+   "answer": 0
+  },
+  {
+   "n": 6,
+   "stem": "以下函数 check() 用于判断一棵二叉树是否为（  ）。\nbool check(TreeNode* root) {\n1\nif (!root) return true;\n2\n3\nqueue<TreeNode*> q;\n4\nq.push(root);\n5\n6\nbool hasNull = false;\n7\n8\nwhile (!q.empty()) {\n9\nTreeNode* cur = q.front();\n10\nq.pop();\n11\n12\nif (cur == nullptr) {\n13\nhasNull = true;\n14\n} else {\n15\nif (hasNull) return false;\n16\nq.push(cur->left);\n17\nq.push(cur->right);\n18\n}\n19\n}\n20\n21\nreturn true;\n22\n}\n23",
+   "options": [
+    "满二叉树",
+    "完全二叉树 3 / 12",
+    "二叉搜索树",
+    "平衡二叉树"
+   ],
+   "answer": 1
+  },
+  {
+   "n": 7,
+   "stem": "以下代码实现了二叉树的哪种遍历方式？\nvoid traverse(TreeNode* root) {\n1\nif (root == nullptr) return;\n2\n3\ncout << root->val << \" \";\n4\ntraverse(root->left);\n5\ntraverse(root->right);\n6\n}\n7",
+   "options": [
+    "前序遍历",
+    "中序遍历",
+    "后序遍历",
+    "层序遍历"
+   ],
+   "answer": 0
+  },
+  {
+   "n": 8,
+   "stem": "已知一棵二叉树的先序遍历序列为：A B D E H C F G ，中序遍历序列为：D B H E A F C G ，\n则该二叉树的后序遍历序列是（  ）。",
+   "options": [
+    "D H E B F G C A",
+    "D E H B F G C A",
+    "H D E B F C G A",
+    "D H E B G F C A"
+   ],
+   "answer": 0
+  },
+  {
+   "n": 9,
+   "stem": "有  个字符，它们出现的次数分别为：\n，现在用哈夫曼编码为这些字符编码，最小加权路\n径长度 WPL 的值为（  ）。",
+   "options": [
+    "",
+    "",
+    "",
+    ""
+   ],
+   "answer": 1
+  },
+  {
+   "n": 10,
+   "stem": "对 n 个不同符号进行哈夫曼编码。若生成的哈夫曼树共有\n个结点，则 n 的值是（  ）。",
+   "options": [
+    "",
+    "",
+    "",
+    ""
+   ],
+   "answer": 1
+  },
+  {
+   "n": 11,
+   "stem": "在格雷码中，相邻两个编码只能有一位不同。若当前编码为 110 ，则它的下一个编码不可能是（  ）。",
+   "options": [
+    "010",
+    "111",
+    "100",
+    "001 4 / 12"
+   ],
+   "answer": 3
+  },
+  {
+   "n": 12,
+   "stem": "给定一棵二叉树，采用广度优先搜索 BFS 返回其右视图，其中右视图中的每个节点都是该层最右侧的节\n点。横线处应填写（  ）。\nvector<int> rightSideView(TreeNode* root) {\n1\nvector<int> result;\n2\nif (!root) return result;\n3\n4\nqueue<TreeNode*> q;\n5\nq.push(root);\n6\n7\nwhile (!q.empty()) {\n8\nint sz = q.size();\n9\n10\nfor (int i = 0; i < sz; ++i) {\n11\nTreeNode* node = q.front();\n12\nq.pop();\n13\n14\n__________________________\n15\n16\nif (node->left) q.push(node->left);\n17\nif (node->right) q.push(node->right);\n18\n}\n19\n}\n20\n21\nreturn result;\n22\n}\n23",
+   "options": [
+    "if (i == 0) result.push_back(node->val);",
+    "if (i == sz - 1) result.push_back(node->val);",
+    "result.push_back(q.front()->val);",
+    "if (node->right) result.push_back(node->right->val);"
+   ],
+   "answer": 1
+  },
+  {
+   "n": 13,
+   "stem": "下面代码实现二叉搜索树的插入操作。假设树中不存在重复值，横线处应填写（  ）。\nTreeNode* insertNode(TreeNode* root, int x) {\n1\nif (root == nullptr) {\n2\nreturn new TreeNode(x);\n3\n}\n4\n5\nif (x < root->val) {\n6\n__________________________\n7\n} else {\n8\nroot->right = insertNode(root->right, x);\n9\n}\n10\n11\nreturn root;\n12\n}\n13",
+   "options": [
+    "root->left = insertNode(root->left, x);",
+    "root = insertNode(root->left, x);",
+    "root->right = insertNode(root->left, x);",
+    "insertNode(root->left, x);"
+   ],
+   "answer": 0
+  },
+  {
+   "n": 14,
+   "stem": "给定一个整数数组 a ，每个元素表示一个位置上的数值。要求从数组中选择若干个元素，使得任意两个被\n选择的元素在原数组中都不相邻，并且所选元素的总和最大。函数 choose(vector<int>& a) 返回能够得到的最\n大总和，则横线处应填写（  ）。\n5 / 12\nint choose(vector<int>& a) {\n1\nif (a.empty()) return 0;\n2\n3\nint n = a.size();\n4\nif (n == 1) return a[0];\n5\n6\nvector<int> dp(n, 0);\n7\ndp[0] = a[0];\n8\ndp[1] = max(a[0], a[1]);\n9\n10\nfor (int i = 2; i < n; ++i) {\n11\ndp[i] = __________________________;\n12\n}\n13\n14\nreturn dp[n - 1];\n15\n}\n16",
+   "options": [
+    "dp[i - 1] + a[i]",
+    "max(dp[i - 1], dp[i - 2] + a[i])",
+    "max(dp[i - 2], a[i])",
+    "dp[i - 1] + dp[i - 2]"
+   ],
+   "answer": 1
+  },
+  {
+   "n": 15,
+   "stem": "下面代码实现 0/1 背包的一维动态规划。第 i 个物品重量为 wt[i] ，价值为 val[i] ，背包容量为 W 。\n横线处应填写（  ）。\nint knapsack(int W, vector<int>& wt, vector<int>& val) {\n1\nint n = wt.size();\n2\nvector<int> dp(W + 1, 0);\n3\n4\nfor (int i = 0; i < n; ++i) {\n5\nfor (int w = W; w >= wt[i]; --w) {\n6\n__________________________\n7\n}\n8\n}\n9\n10\nreturn dp[W];\n11\n}\n12",
+   "options": [
+    "dp[w] = max(dp[w], dp[w - wt[i]] + val[i]);",
+    "dp[w] = max(dp[w - 1], dp[w - wt[i]] + val[i]);",
+    "dp[w] = dp[w] + val[i];",
+    "dp[w - wt[i]] = max(dp[w], val[i]);"
+   ],
+   "answer": 0
+  }
+ ],
+ "judge": [
+  {
+   "n": 1,
+   "stem": "C++ 中构造函数可以声明为虚函数，从而实现运行时多态。",
+   "answer": null
+  },
+  {
+   "n": 2,
+   "stem": "通过指向 Base 的指针删除 Derived 对象时，一定会先调用 Derived 的析构函数，再调用 Base 的析\n构函数。\n6 / 12\n#include <iostream>\n1\nusing namespace std;\n2\n3\nclass Base {\n4\npublic:\n5\n~Base() {\n6\ncout << \"Base destructor\" << endl;\n7\n}\n8\n};\n9\n10\nclass Derived : public Base {\n11\npublic:\n12\n~Derived() {\n13\ncout << \"Derived destructor\" << endl;\n14\n}\n15\n};\n16\n17\nint main() {\n18\nBase* p = new Derived();\n19\ndelete p;\n20\nreturn 0;\n21\n}\n22",
+   "answer": null
+  },
+  {
+   "n": 3,
+   "stem": "在 C++ STL 中，stack 的 pop() 函数会返回栈顶元素并将其删除。",
+   "answer": null
+  },
+  {
+   "n": 4,
+   "stem": "程序运行后会输出 2 。\nint main() {\n1\nqueue<int> q;\n2\nq.push(1);\n3\nq.push(2);\n4\nq.push(3);\n5\nq.pop();\n6\ncout << q.front() << endl;\n7\nreturn 0;\n8\n}\n9",
+   "answer": null
+  },
+  {
+   "n": 5,
+   "stem": "下列函数试图将整数 x 插入到一棵二叉搜索树中。假设二叉搜索树满足如下性质：对于任意结点，左子树\n中所有结点的值均小于该结点的值，右子树中所有结点的值均大于或等于该结点的值。判断该函数是否能够在插入\n后保持二叉搜索树性质。\nstruct TreeNode {\n1\nint val;\n2\nTreeNode* left;\n3\nTreeNode* right;\n4\nTreeNode(int x) : val(x), left(nullptr), right(nullptr) {}\n5\n};\n6\n7\nTreeNode* insertNode(TreeNode* root, int x) {\n8\nif (root == nullptr) {\n9\nreturn new TreeNode(x);\n10\n}\n11\n12\nif (x < root->val) {\n13\nroot->right = insertNode(root->right, x);\n14\n} else {\n15\nroot->left = insertNode(root->left, x);\n16\n}\n17\n18\nreturn root;\n19\n}\n20\n7 / 12",
+   "answer": null
+  },
+  {
+   "n": 6,
+   "stem": "哈夫曼编码一定唯一，只要字符频率相同，得到的编码也一定完全相同。",
+   "answer": null
+  },
+  {
+   "n": 7,
+   "stem": "若用数组按层序存储完全二叉树，且根节点下标为 0 ，则下标为 i 的节点左孩子下标为 2 * i + 1 ，右\n孩子下标为 2 * i + 2 。",
+   "answer": null
+  },
+  {
+   "n": 8,
+   "stem": "以下代码可以正确地按层换行输出二叉树的节点值。\nvoid printByLevel(TreeNode* root) {\n1\nif (!root) return;\n2\n3\nqueue<TreeNode*> q;\n4\nq.push(root);\n5\n6\nwhile (!q.empty()) {\n7\nfor (int i = 0; i < q.size(); ++i) {\n8\nTreeNode* cur = q.front();\n9\nq.pop();\n10\ncout << cur->val << \" \";\n11\n12\nif (cur->left) q.push(cur->left);\n13\nif (cur->right) q.push(cur->right);\n14\n}\n15\ncout << endl;\n16\n}\n17\n}\n18",
+   "answer": null
+  },
+  {
+   "n": 9,
+   "stem": "使用栈非递归实现二叉树前序遍历时，若希望先访问左子树，通常应先将右孩子入栈，再将左孩子入栈。",
+   "answer": null
+  },
+  {
+   "n": 10,
+   "stem": "动态规划问题通常要求具有最优子结构，并且常常存在重叠子问题。",
+   "answer": null
+  }
+ ],
+ "programming": [
+  {
+   "n": 1,
+   "name": "条形蛋糕",
+   "desc": "寒假到了，小杨同学打算找一份兼职，顺便体验一下打工人的生活。\n小杨同学给一家蛋糕店发送了一份自己的简历，希望可以在寒假来这里帮忙。店长最近正好遇到了一个难题：店里\n每天会做一条长条蛋糕，但是不同长度的蛋糕块卖出的价格不同，应该怎么分才能卖得最多呢？\n有趣的是店长曾经学习过计算机专业。他最近对动态规划算法很感兴趣，于是打算用这个问题考一考小杨同学，问\n题如下：\n给定一条长度为  的长条蛋糕和一个价格表，该价格表表示长度为 （\n）的蛋糕块的价格为\n。求\n蛋糕的分割方案，使得总销售价格最大，注意蛋糕块的长度必须为整数。"
+  },
+  {
+   "n": 2,
+   "name": "满二叉树",
+   "desc": "给定一棵包含  个结点的有根二叉树，结点依次以\n编号，根结点编号为 。\n对于结点 ，其左儿子的编号记为 ，右儿子编号记为 。特别地，如果左儿子不存在则\n，如果右儿子不存在\n则\n。\n树中每个结点都对应一棵以其为根的子树。请你求出给定有根树的所有  棵子树中，有多少棵子树是满二叉树。\n满二叉树是指所有叶子深度均相同，且除叶子外均有两个儿子的二叉树，例如以下三棵二叉树均是满二叉树：\n()      ()            ()\n1\n/  \\          /  \\\n2\n()    ()      ()    ()\n3\n/  \\  /  \\\n4\n()   ()()   ()\n5\n例如，\n()\n1\n/  \\\n2\n()    ()\n3\n在上面这棵有  个节点的二叉树中，有  个子树是满二叉树（包括整个树本身，及所有的单个叶子节点）；\n又例如，\n(1)\n1\n/   \\\n2\n(2)   (3)\n3"
+  }
+ ]
+}

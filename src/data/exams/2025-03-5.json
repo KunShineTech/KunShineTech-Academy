@@ -1,0 +1,267 @@
+{
+ "session": "2025-03",
+ "level": 5,
+ "file": "GESP 2025年03月认证C++ 5级真题.pdf",
+ "legacy": false,
+ "choiceCount": 15,
+ "judgeCount": 10,
+ "progCount": 2,
+ "choiceAnswers": "AABBDCADABCAADB",
+ "judgeAnswers": "",
+ "choice": [
+  {
+   "n": 1,
+   "stem": "链表不具备的特点是( )。",
+   "options": [
+    "可随机访问任何一个元素",
+    "插入、删除操作不需要移动元素",
+    "无需事先估计存储空间大小",
+    "所需存储空间与存储元素个数成正比"
+   ],
+   "answer": 0,
+   "analysis": "答案A。链表只能从头顺序访问，不具备随机访问任意元素的能力；其余选项（插删不移动元素、无需预估空间、空间与元素数成正比）都是链表的特点。"
+  },
+  {
+   "n": 2,
+   "stem": "双向链表中每个结点有两个指针域prev 和next ，分别指向该结点的前驱及后继结点。设p 指向链表中的\n一个结点，它的前驱结点和后继结点均非空。要删除结点p ，则下述语句中错误的是（  ）。",
+   "options": [
+    "p->next->prev = p->next; 1 p->prev->next = p->prev; 2 delete p; 3",
+    "p->prev->next = p->next; 1 p->next->prev = p->prev; 2 delete p; 3",
+    "p->next->prev = p->prev; 1 p->next->prev->next = p->next; 2 delete p; 3",
+    "p->prev->next = p->next; 1 p->prev->next->prev = p->prev; 2 delete p; 3"
+   ],
+   "answer": 0,
+   "analysis": "答案A。A 中 p->next->prev=p->next、p->prev->next=p->prev 并没有让前后驱跳过 p，逻辑错误；其余三组都能正确互指后再 delete p。"
+  },
+  {
+   "n": 3,
+   "stem": "假设双向循环链表包含头尾哨兵结点(不存储实际内容)，分别为head 和tail ，链表中每个结点有两个指\n针域prev 和next ，分别指向该结点的前驱及后继结点。下面代码实现了一个空的双向循环链表，横线上应填的最\n佳代码是( )。\n// 链表结点\n1\ntemplate <typename T>\n2\nstruct ListNode {\n3\nT data;\n4\nListNode* prev;\n5\nListNode* next;\n6\n7\n// 构造函数\n8\nexplicit ListNode(const T& val = T())\n9\n: data(val), prev(nullptr), next(nullptr) {}\n10\n};\n11\n12\nstruct LinkedList {\n13\nListNode<T>* head;\n14\nListNode<T>* tail;\n15\n};\n16\n17\nvoid InitLinkedList(LinkedList* list) {\n18\nlist->head = new ListNode<T>;\n19\nlist->tail = new ListNode<T>;\n20\n________________________________    // 在此处填入代码\n21\n};\n22",
+   "options": [
+    "list->head->prev = list->head; 1 list->tail->prev = list->head; 2",
+    "list->head->next = list->tail; 1 list->tail->prev = list->head; 2",
+    "list->head->next = list->tail; 1 list->tail->next = list->head; 2",
+    "list->head->next = list->tail; 1 list->tail->next = nullptr; 2"
+   ],
+   "answer": 1,
+   "analysis": "答案B。空的双向循环链表：head->next 指向 tail、tail->prev 指向 head，两个哨兵互相衔接。"
+  },
+  {
+   "n": 4,
+   "stem": "用以下辗转相除法（欧几里得算法）求gcd(84, 60)的步骤中，第二步计算的数是（  ）。\nint gcd(int a, int b) {\n1\nint big = a > b ? a : b;\n2\nint small = a < b ? a : b;\n3\nif (big % small == 0) {\n4\nreturn small;\n5\n}\n6\nreturn gcd(small, big % small);\n7\n}\n8",
+   "options": [
+    "84和60",
+    "60和24",
+    "24和12",
+    "12和0"
+   ],
+   "answer": 1,
+   "analysis": "答案B。第一步 gcd(84,60) 算出 84%60=24，第二步即计算 gcd(60,24)。"
+  },
+  {
+   "n": 5,
+   "stem": "根据唯一分解定理，下面整数的唯一分解是正确的（  ）。",
+   "options": [
+    "18 = 3 × 6",
+    "28 = 4 × 7",
+    "36 = 2 × 3 × 6",
+    "30 = 2 × 3 × 5"
+   ],
+   "answer": 3,
+   "analysis": "答案D。30=2×3×5 才是质因数分解；A 的 6、B 的 4、C 的 6 都是合数，不符合「素数乘积」的要求。"
+  },
+  {
+   "n": 6,
+   "stem": "下述代码实现素数表的线性筛法，筛选出所有小于等于的素数，横线上应填的最佳代码是( )。\nvector<int> sieve_linear(int n) {\n1\nvector<bool> is_prime(n +1, true);\n2\nvector<int> primes;\n3\n4\nif (n < 2) return primes;\n5\n6\nis_prime[0] = is_prime[1] = false;\n7\nfor (int i = 2; i <= n/2; i++) {\n8\nif (is_prime[i])\n9\nprimes.push_back(i);\n10\n11\nfor (int j = 0; ________________________________ ; j++) {   // 在此处填入代码\n12\nis_prime[ i * primes[j] ] = false;\n13\nif (i % primes[j] == 0)\n14\nbreak;\n15\n}\n16\n}\n17\n18\nfor (int i = n/2 +1; i <= n; i++) {\n19\nif (is_prime[i])\n20\nprimes.push_back(i);\n21\n}\n22\n23\nreturn primes;\n24\n}\n25",
+   "options": [
+    "j < primes.size()",
+    "i * primes[j] <= n",
+    "j < primes.size() && i * primes[j] <= n",
+    "j <= n"
+   ],
+   "answer": 2,
+   "analysis": "答案C。内层既要保证素数表下标不越界（j<primes.size()），又要保证 i*primes[j] 不超过 n，两个条件缺一不可。"
+  },
+  {
+   "n": 7,
+   "stem": "在程序运行过程中，如果递归调用的层数过多，会因为（  ）引发错误。",
+   "options": [
+    "系统分配的栈空间溢出",
+    "系统分配的堆空间溢出",
+    "系统分配的队列空间溢出",
+    "系统分配的链表空间溢出"
+   ],
+   "answer": 0,
+   "analysis": "答案A。递归调用在栈上分配栈帧，层数过多会耗尽系统分配的栈空间而引发栈溢出错误。"
+  },
+  {
+   "n": 8,
+   "stem": "对下面两个函数，说法错误的是（  ）。\nint factorialA(int n) {\n1\nif (n <= 1) return 1;\n2\nreturn n * factorialA(n-1);\n3\n}\n4\nint factorialB(int n) {\n5\nif (n <= 1) return 1;\n6\nint res = 1;\n7\nfor(int i=2; i<=n; i++)\n8\nres *= i;\n9\n}\n10",
+   "options": [
+    "两个函数的实现的功能相同。",
+    "两个函数的时间复杂度均为 。",
+    "factorialA采用递归方式。",
+    "factorialB采用递归方式。"
+   ],
+   "answer": 3,
+   "analysis": "答案D。factorialB 用 for 循环累乘，是迭代（递推）方式，「采用递归方式」的说法错误。"
+  },
+  {
+   "n": 9,
+   "stem": "下算法中，（  ）是不稳定的排序。",
+   "options": [
+    "选择排序",
+    "插入排序",
+    "归并排序",
+    "冒泡排序"
+   ],
+   "answer": 0,
+   "analysis": "答案A。选择排序会发生跨距离交换，可能改变相等元素的相对次序，是不稳定排序；插入、归并、冒泡均可实现为稳定。"
+  },
+  {
+   "n": 10,
+   "stem": "考虑以下C++代码实现的快速排序算法，将数据从小到大排序，则横线上应填的最佳代码是( )。\nint partition(vector<int>& arr, int low, int high) {\n1\nint pivot = arr[high]; // 基准值\n2\nint i = low - 1;\n3\n4\nfor (int j = low; j < high; j++) {\n5\n________________________________       // 在此处填入代码\n6\n}\n7\nswap(arr[i + 1], arr[high]);\n8\nreturn i + 1;\n9\n}\n10\n11\n// 快速排序\n12\nvoid quickSort(vector<int>& arr, int low, int high) {\n13\nif (low < high) {\n14\nint pi = partition(arr, low, high);\n15\nquickSort(arr, low, pi - 1);\n16\nquickSort(arr, pi + 1, high);\n17\n}\n18\n}\n19",
+   "options": [
+    "if (arr[j] > pivot) { 1 i++; 2 swap(arr[i], arr[j]); 3 } 4",
+    "if (arr[j] < pivot) { 1 i++; 2 swap(arr[i], arr[j]); 3 } 4",
+    "if (arr[j] < pivot) { 1 swap(arr[i], arr[j]); 2 i++; 3 } 4",
+    "if (arr[j] == pivot) { 1 i++; 2 swap(arr[i], arr[j]); 3 } 4"
+   ],
+   "answer": 1,
+   "analysis": "答案B。升序划分时把小于 pivot 的元素换到左侧：if (arr[j] < pivot) { i++; swap(arr[i], arr[j]); }，与最后 swap(arr[i+1], arr[high]) 配合完成划分。"
+  },
+  {
+   "n": 11,
+   "stem": "若用二分法在[1, 100]内猜数，最多需要猜（  ）次。",
+   "options": [
+    "100",
+    "10",
+    "7",
+    "5"
+   ],
+   "answer": 2,
+   "analysis": "答案C（7 次）。在 [1,100] 内二分猜数，最坏需要 ⌈log2(100)⌉=7 次。"
+  },
+  {
+   "n": 12,
+   "stem": "下面代码实现了二分查找算法，在数组 arr 找到目标元素 target 的位置，则横线上能填写的最佳代码\n是（  ）。\nint binarySearch(int arr[], int left, int right, int target) {\n1\nwhile (left <= right) {\n2\n________________________________       // 在此处填入代码\n3\n4\nif (arr[mid] == target)\n5\nreturn mid;\n6\nelse if (arr[mid] < target)\n7\nleft = mid + 1;\n8\nelse\n9\nright = mid - 1;\n10\n}\n11\nreturn -1;\n12\n}\n13",
+   "options": [
+    "int mid = left + (right - left) / 2;",
+    "int mid = left;",
+    "int mid = (left + right) / 2;",
+    "int mid = right;"
+   ],
+   "answer": 0,
+   "analysis": "答案A。mid = left + (right-left)/2 既避免 (left+right) 溢出，又正确取到中点，是二分中点的标准写法。"
+  },
+  {
+   "n": 13,
+   "stem": "贪心算法的核心特征是（  ）。",
+   "options": [
+    "总是选择当前最优解",
+    "回溯尝试所有可能",
+    "分阶段解决子问题",
+    "总能找到最优解"
+   ],
+   "answer": 0,
+   "analysis": "答案A。贪心算法的核心特征就是每一步都选择当前最优解；它不回溯、也不保证全局最优。"
+  },
+  {
+   "n": 14,
+   "stem": "函数int findMax(int arr[], int low, int high) 计算数组中最大元素，其中数组arr 从索引\nlow 到high ，（   ）正确实现了分治逻辑。",
+   "options": [
+    "if (low == high) 1 return arr[low]; 2 int mid = (low + high) / 2; 3 return arr[mid]; 4",
+    "if (low >= high) 1 return arr[low]; 2 int mid = (low + high) / 2; 3 int leftMax = findMax(arr, low, mid - 1); 4 int rightMax = findMax(arr, mid, high); 5 return leftMax + rightMax; 6",
+    "if (low > high) 1 return 0; 2 int mid = low + (high - low) / 2; 3 int leftMax = findMax(arr, low, mid); 4 int rightMax = findMax(arr, mid + 1, high); 5 return leftMax * rightMax; 6",
+    "if (low == high) 1 return arr[low]; 2 int mid = low + (high - low) / 2; 3 int leftMax = findMax(arr, low, mid); 4 int rightMax = findMax(arr, mid + 1, high); 5 return (leftMax > rightMax) ? leftMax : rightMax; 6"
+   ],
+   "answer": 3,
+   "analysis": "答案D。先递归求左右两半的最大值再取较大者，边界 low==high 时返回唯一元素，是正确的分治实现；其余选项或漏掉区间或运算错误。"
+  },
+  {
+   "n": 15,
+   "stem": "小杨编写了一个如下的高精度乘法函数，则横线上应填写的代码为（  ）。\nvector<int> multiply(vector<int>& a, vector<int>& b) {\n1\nint m = a.size(), n = b.size();\n2\nvector<int> c(m + n, 0);\n3\n4\n// 逐位相乘，逆序存储\n5\nfor (int i = 0; i < m; i++) {\n6\nfor (int j = 0; j < n; j++) {\n7\nc[i + j] += a[i] * b[j];\n8\n}\n9\n}\n10\n11\n// 处理进位\n12\nint carry = 0;\n13\nfor (int k = 0; k < c.size(); ++k) {\n14\n________________________________     // 在此处填入代码\n15\nc[k] = temp % 10;\n16\ncarry = temp / 10;\n17\n}\n18\n19\nwhile (c.size() > 1 && c.back() == 0)\n20\nc.pop_back();\n21\nreturn c;\n22\n}\n23",
+   "options": [
+    "int temp = c[k];",
+    "int temp = c[k] + carry;",
+    "int temp = c[k] - carry;",
+    "int temp = c[k] * carry;"
+   ],
+   "answer": 1,
+   "analysis": "答案B。本位的和要加上来自低位的进位：temp = c[k] + carry，再取个位、更新进位。"
+  }
+ ],
+ "judge": [
+  {
+   "n": 1,
+   "stem": "要删除单链表中某个结点`p`(⾮尾结点)，但不知道头结点，可⾏的操作是将`p->next`的数据拷贝到`p`的数\n据部分，将`p->next`设置为`p->next->next`，然后删除`p->next`。",
+   "answer": null,
+   "analysis": "对。这是链表经典技巧：把 p->next 的数据与指针拷贝到 p，再删除 p->next，等效于删除 p 本身。"
+  },
+  {
+   "n": 2,
+   "stem": "链表存储线性表时要求内存中可用存储单元地址是连续的。",
+   "answer": null,
+   "analysis": "错。链表的优点恰恰是不要求物理连续，节点可分散存放、靠指针链接。"
+  },
+  {
+   "n": 3,
+   "stem": "线性筛相对于埃拉托斯特尼筛法，每个合数只会被它的最小质因数筛去一次，因此效率更高。",
+   "answer": null,
+   "analysis": "对。线性筛的精髓就是每个合数只被最小质因子筛去一次，因此效率高于埃氏筛。"
+  },
+  {
+   "n": 4,
+   "stem": "贪心算法通过每一步选择当前最优解，从而一定能获得全局最优解。",
+   "answer": null,
+   "analysis": "错。贪心不保证全局最优，如 0/1 背包中按单位价值贪心就得不到最优解。"
+  },
+  {
+   "n": 5,
+   "stem": "递归函数必须具有一个终止条件，以防止无限递归。",
+   "answer": null,
+   "analysis": "对。没有终止条件递归就无法收敛，必然导致栈溢出。"
+  },
+  {
+   "n": 6,
+   "stem": "快速排序算法的时间复杂度与输入是否有序无关，始终稳定\n为\n。",
+   "answer": null,
+   "analysis": "错。快排最坏 O(N²)（如有序数据选首元素为基准），其时间复杂度与输入是否有序密切相关。（题干公式以真题原件为准）"
+  },
+  {
+   "n": 7,
+   "stem": "归并排序算法的时间复杂度与输入是否有序无关，始终稳定为\n。",
+   "answer": null,
+   "analysis": "对。归并排序在任何情况下都是 O(N log N)，与输入有序与否无关。（题干公式以真题原件为准）"
+  },
+  {
+   "n": 8,
+   "stem": "二分查找适用于对无序数组和有序数组的查找。",
+   "answer": null,
+   "analysis": "错。二分查找只适用于有序序列，无序数组必须先排序才能二分。"
+  },
+  {
+   "n": 9,
+   "stem": "小杨有100元去超市买东西，每个商品有各自的价格，每种商品只能买1个，小杨的目标是买到最多数量的商\n品。小杨采用的策略是每次挑价格最低的商品买，这体现了分治思想。",
+   "answer": null,
+   "analysis": "错。每次挑价格最低的商品买，体现的是贪心的「当前最优」思想，不是分治思想。"
+  },
+  {
+   "n": 10,
+   "stem": "归并排序算法体现了分治算法，每次将大的待排序数组分成大小大致相等的两个小数组，然后分别对两个\n小数组进行排序，最后对排好序的两个小数组合并成有序数组。",
+   "answer": null,
+   "analysis": "对。归并排序正是分治三部曲：把大数组均分、递归排序两个小数组、再归并合并。"
+  }
+ ],
+ "programming": [
+  {
+   "n": 1,
+   "name": "编程题 1",
+   "desc": "小 A 有\n件物品，小 B 和小 C 想从小 A 手上买走这些物品。对于第  件物品，小 B 会以  的价格购买，而小 C 会\n以  的价格购买。为了平均分配这\n件物品，小 A 决定小 B 和小 C 各自只能买走恰好  件物品。你能帮小 A 求出\n他卖出这\n件物品所能获得的最大收入吗？"
+  },
+  {
+   "n": 2,
+   "name": "编程题 2",
+   "desc": "小 A 知道，对于质数  而言， 的原根  是满足以下条件的正整数：\n；\n；\n对于任意\n均有\n。\n其中\n表示  除以  的余数。\n小 A 现在有一个整数 ，请你帮他判断  是不是  的原根。"
+  }
+ ]
+}

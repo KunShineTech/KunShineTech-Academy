@@ -1,0 +1,78 @@
+---
+title: "异常处理机制"
+level: 4
+order: 11
+duration: 120
+unit: "异常处理"
+difficulty: 基础
+goals:
+  - "理解异常的概念与异常处理机制的作用"
+  - "掌握 try、throw、catch 的用法"
+  - "会编写带异常处理的程序，能处理除零等错误情况"
+---
+
+import Check from '../../../components/Check.astro';
+import Task from '../../../components/Task.astro';
+import Reveal from '../../../components/Reveal.astro';
+
+
+## 1. 程序也会「受伤」：认识异常
+跑步崴了脚，你不会当场倒下装死，而是喊一声「我受伤了」，让医护来处理。**异常（exception）**就是程序运行时出现的意外情况：除以 0、数组越界、文件打不开……以往这些情况轻则输出乱值，重则程序直接崩溃黑屏。
+
+异常处理机制让我们可以**主动布下哨兵**：预测可能出事的地段，一旦出事就抛出信号、转入专门的应急通道，让程序体面地报告错误，而不是原地爆炸。
+
+## 2. 三兄弟：try、throw、catch
+- **try**：圈出「可能出事」的代码块，像给路段围上警戒线圈。
+- **throw**：发现情况不对，**抛出**一个异常信号（可以抛 int、字符串、double 等任何值）。
+- **catch**：在路口接应，**捕获**对应类型的信号并处理。
+
+```cpp
+try {
+    if (b == 0) throw "除数不能为 0";   // 抛出 const char* 类型信号
+    cout << a / b << '\n';
+} catch (const char* msg) {              // 接住同类型的信号
+    cout << "发生错误：" << msg << '\n';
+}
+```
+
+口诀：**「try 圈地，throw 报警，catch 善后」**。流程是：try 里抛出异常后，**立即跳出 try 块**，匹配第一个类型相符的 catch 执行；如果没有任何 catch 接得住，程序仍会以异常终止。
+
+## 3. 完整示例：除零保护
+```cpp
+#include <iostream>
+using namespace std;
+int main() {
+    int a, b;
+    cin >> a >> b;
+    try {
+        if (b == 0) throw -1;        // 用 int 当信号
+        cout << a / b << '\n';
+    } catch (int e) {                // int 信号由这里接住
+        cout << "Error: 除数为零（代码 " << e << "）\n";
+    }
+    cout << "程序正常结束\n";        // 处理后继续往下走
+}
+```
+
+输入 10 0，输出 Error 提示后继续打印「程序正常结束」——程序没有崩溃，优雅地处理了意外。也可以写 `catch (...)` 表示「任何类型的异常我都接」，作为兜底的应急通道。
+
+> 教学提醒：throw 抛出值的类型要和 catch 参数类型匹配，匹配不上会漏接；漏接且没有 catch (...) 时程序会异常终止。教学中先让学生统一用 int 或字符串当信号，减少匹配混乱。
+
+## 4. 异常处理 vs 返回值判断
+「让函数返回 -1 表示出错」是老办法，但调用者可能忘记检查返回值；异常机制强制你必须应对（不接住就崩），错误不会被悄悄吞掉。不过也别滥用：**可预期的普通分支（如成绩不及格）用 if 就够，只有真正的「意外」才抛异常**。
+
+<Check question="throw 语句的作用是？" options={['捕获异常','抛出异常信号','定义异常类型','忽略错误继续运行']} answer={1} explanation="throw 负责在发现异常时抛出信号，随后程序立即离开 try 块去寻找匹配的 catch。" />
+
+<Check question="catch 块的作用是？" options={['抛出异常','捕获并处理对应类型的异常','编译期检查语法','加快程序运行速度']} answer={1} explanation="catch 负责接应：类型匹配上抛出的信号后执行其中的处理代码。" />
+
+<Check question="try 块中抛出的异常，会跳转到哪里执行？" options={['程序开头重新运行','类型匹配的 catch 块','操作系统','下一个循环']} answer={1} explanation="抛出后立刻离开 try，按顺序寻找第一个类型匹配的 catch；没有匹配则程序异常终止。" />
+
+<Task title="安全除法" input="一行两个整数 a、b（均为非负整数，不超过 10000）" output="若 b 不为 0，输出 a 除以 b 的商（整数除法）；若 b 为 0，输出 Error" sampleIn="7 2" sampleOut="3">用 try-catch 包裹除法：b 等于 0 时 throw 一个 int，catch 中输出 Error。再自测 10 0 的情况。</Task>
+<Reveal label="查看参考程序与思路"><pre><code>{`#include <iostream>\nusing namespace std;\nint main(){\n    int a, b;\n    cin>>a>>b;\n    try{\n        if(b==0) throw -1;\n        cout<<a/b<<'\\n';\n    }catch(int e){\n        cout<<"Error"<<'\\n';\n    }\n}`}</code></pre>b 为 0 时抛出 int 信号 -1，立即跳到 catch(int) 输出 Error；b 正常时 try 内直接输出商，catch 不执行。这就是「正常流程走 try，异常流程走 catch」的分工。</Reveal>
+
+## 5. 课后巩固
+1. 概念题：用「运动受伤与医护」类比解释 try、throw、catch 三个关键字。
+2. 说出异常抛出的流程：从 throw 到 catch 程序经历了什么？
+3. 编程：读入一个下标 i，访问数组 a[10]，若 i 越界（小于 0 或大于 9）抛异常输出 Out of range，否则输出 a[i]。
+4. 编程：改造第 10 课的文件程序，若 data.in 打不开则抛异常提示「文件不存在」。
+5. 思考：什么情况下适合用异常，什么情况用 if 判断就够了？各举一个例子。

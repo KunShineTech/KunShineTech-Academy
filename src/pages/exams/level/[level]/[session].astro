@@ -1,0 +1,57 @@
+---
+import Base from '../../../../layouts/Base.astro';
+import { levels } from '../../../../data/levels';
+import judgeKeyMap from '../../../../data/judge-answers.json';
+export function getStaticPaths() {
+  const all = import.meta.glob('../../../../data/exams/*.json', { eager: true });
+  return Object.values(all).map((p: any) => ({ params: { level: String(p.level), session: p.session } }));
+}
+const papers = import.meta.glob('../../../../data/exams/*.json', { eager: true });
+const lv = Number(Astro.params.level);
+const session = Astro.params.session!;
+const key = `${session}-${lv}`;
+const raw = (Object.values(papers) as any[]).find((p) => p.level === lv && p.session === session)!;
+const jkey = (judgeKeyMap as any)[key] || '';
+const cn = levels.find((l) => l.level === lv)!.cn;
+const choice = raw.choice.filter((c: any) => c.n <= 15 && !c.warn && c.answer !== null && c.answer !== undefined);
+const judge = raw.judge.filter((j: any) => j.n <= 10).map((j: any) => ({ ...j, answer: j.answer !== null && j.answer !== undefined ? j.answer : (jkey[j.n - 1] === '1') })).filter((j: any) => j.answer !== null && j.answer !== undefined);
+const title = `${session.replace('-', ' 年 ')} 月 · GESP C++ ${cn}`;
+---
+<Base title={`真题模考 · ${title}`}><div class="container" style="padding:40px 0 80px;max-width:900px"><div class="eyebrow">MOCK EXAM · {session}</div><h1 style="font-size:32px">{title}</h1><p style="color:var(--muted);font-size:14px">单选 {choice.length} 题（每题 2 分）+ 判断 {judge.length} 题（每题 2 分）= 客观题满分 {2 * (choice.length + judge.length)} 分，答完点击底部「交卷评分」；编程题请在洛谷提交评测。</p>
+<h2 class="section-title">一、单选题</h2>
+{choice.map((c: any) => <div class="eq" data-type="choice" data-answer={String(c.answer)}><p class="eq-q"><b>{c.n}.</b> {c.stem}</p><div class="eq-opts">{c.options.map((o: string, i: number) => <label><input type="radio" name={`c${c.n}`} value={i}/><span><b>{String.fromCharCode(65 + i)}.</b> {o}</span></label>)}</div><p class="eq-ans" hidden>正确答案：{String.fromCharCode(65 + c.answer)}</p>{c.analysis && <p class="eq-ana" hidden>💡 解析：{c.analysis}</p>}</div>)}
+<h2 class="section-title">二、判断题</h2>
+{judge.map((j: any) => <div class="eq" data-type="judge" data-answer={j.answer ? '1' : '0'}><p class="eq-q"><b>{j.n}.</b> {j.stem}</p><div class="eq-opts"><label><input type="radio" name={`j${j.n}`} value="1"/><span>✓ 正确</span></label><label><input type="radio" name={`j${j.n}`} value="0"/><span>✗ 错误</span></label></div><p class="eq-ans" hidden>正确答案：{j.answer ? '✓ 正确' : '✗ 错误'}</p>{j.analysis && <p class="eq-ana" hidden>💡 解析：{j.analysis}</p>}</div>)}
+<h2 class="section-title">三、编程题（每题 25 分）</h2>
+{raw.programming.map((p: any) => <div class="prog-card"><b>编程题 {p.n} · {p.name}</b>{p.desc && <p>{p.desc}</p>}<a class="primary-btn" style="padding:6px 16px;font-size:13px" href={`https://www.luogu.com.cn/problem/list?keyword=${encodeURIComponent('GESP ' + p.name)}`} target="_blank" rel="noopener">到洛谷练习本题 →</a></div>)}
+<div class="exam-actions"><button type="button" class="check-btn exam-submit" id="submit-exam">交卷评分</button><div id="exam-result" class="exam-result" hidden></div></div>
+<p style="color:var(--muted);font-size:12.5px;margin-top:20px">题目由真题 PDF 自动提取，代码类题目可能缺少代码截图内容，以官方真题原件为准；评分仅覆盖客观题，编程题请到洛谷提交评测。</p>
+</div></Base>
+<script>
+document.getElementById('submit-exam')!.addEventListener('click', () => {
+  let cRight = 0, jRight = 0, un = 0;
+  const cTotal = document.querySelectorAll('.eq[data-type=choice]').length;
+  const jTotal = document.querySelectorAll('.eq[data-type=judge]').length;
+  document.querySelectorAll('.eq').forEach(q => {
+    const type = q.getAttribute('data-type')!, ans = q.getAttribute('data-answer')!;
+    const picked = q.querySelector('input:checked');
+    q.classList.remove('eq-right', 'eq-wrong');
+    const a = q.querySelector('.eq-ans'); if (a) (a as HTMLElement).hidden = false;
+    const ana = q.querySelector('.eq-ana'); if (ana) (ana as HTMLElement).hidden = false;
+    if (!picked) { un++; q.classList.add('eq-wrong'); }
+    else {
+      const ok = (picked as HTMLInputElement).value === ans;
+      q.classList.add(ok ? 'eq-right' : 'eq-wrong');
+      if (type === 'choice') { if (ok) cRight++; } else { if (ok) jRight++; }
+    }
+  });
+  const score = 2 * (cRight + jRight);
+  const r = document.getElementById('exam-result')!;
+  r.hidden = false;
+  const pct = cTotal + jTotal ? Math.round(100 * (cRight + jRight) / (cTotal + jTotal)) : 0;
+  r.innerHTML = '<b>客观题得分：' + score + ' 分</b>（单选 ' + cRight + '/' + cTotal + '，判断 ' + jRight + '/' + jTotal + '，正确率 ' + pct + '%）' +
+    (un ? '<br><span style="color:#fbbf24">有 ' + un + ' 题未作答</span>' : '') +
+    '<br><span style="color:var(--muted);font-size:13px">编程题 2 道（共 50 分）请在洛谷提交评测后自评。官方通过线为 60 分（含编程）。</span>';
+  r.scrollIntoView({ behavior: 'smooth', block: 'center' });
+});
+</script>

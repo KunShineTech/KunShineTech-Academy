@@ -1,0 +1,242 @@
+{
+ "session": "2024-03",
+ "level": 2,
+ "file": "GESP 2024年03月认证C++ 2级真题.pdf",
+ "legacy": false,
+ "choiceCount": 15,
+ "judgeCount": 10,
+ "progCount": 2,
+ "choiceAnswers": "BBBCBCDBCADACCC",
+ "judgeAnswers": "",
+ "choice": [
+  {
+   "n": 1,
+   "stem": "下列流程图的输出结果是？(  )",
+   "options": [
+    "优秀",
+    "良好",
+    "不及格",
+    "没有输出"
+   ],
+   "answer": 1
+  },
+  {
+   "n": 2,
+   "stem": "以下选项中不符合 C++变量命名规则的是？（ ）",
+   "options": [
+    "student",
+    "2_from",
+    "_to",
+    "Text"
+   ],
+   "answer": 1
+  },
+  {
+   "n": 3,
+   "stem": "以下选项中，不能用于表示分支结构的C++保留字是？（ ）",
+   "options": [
+    "switch",
+    "return",
+    "else",
+    "if"
+   ],
+   "answer": 1
+  },
+  {
+   "n": 4,
+   "stem": "下列说法错误的是？（　）",
+   "options": [
+    "while 循环满足循环条件时不断地运行，直到指定的条件不满足为止",
+    "if 语句通常用于执行条件判断",
+    "在C++中可以使用foreach 循环",
+    "break 和continue 语句都可以用在for 循环和while 循环中"
+   ],
+   "answer": 2
+  },
+  {
+   "n": 5,
+   "stem": "下列4个表达式中，答案不是整数8的是？（ ）",
+   "options": [
+    "abs(-8)",
+    "min(max(8, 9), 10)",
+    "int(8.88)",
+    "sqrt(64)"
+   ],
+   "answer": 1
+  },
+  {
+   "n": 6,
+   "stem": "下面C++代码执行后的输出是？（）\nint n,a,m,i;\n1\n2\nn=3, a = 5;\n3\nm = (a - 1) * 2;\n4\nfor (i=0; i<n-1; i++)\n5\nm = (m - 1) * 2;\n6\n7\ncout << m;\n8",
+   "options": [
+    "8",
+    "14",
+    "26",
+    "50"
+   ],
+   "answer": 2
+  },
+  {
+   "n": 7,
+   "stem": "下面C++代码执行后的输出是？（）\nint n,i,result;\n1\n2\nn = 81;\n3\ni = 1, result = 1;\n4\nwhile (i * i <= n){\n5\nif (n % (i * i) == 0)\n6\nresult = i * i;\n7\ni += 1;\n8\n}\n9\n10\ncout << result;\n11",
+   "options": [
+    "16",
+    "36",
+    "49",
+    "81"
+   ],
+   "answer": 3
+  },
+  {
+   "n": 8,
+   "stem": "下面C++代码执行后的输出是？（）\nint s,t,ans;\n1\ns = 2, t = 10;\n2\nans = 0;\n3\nwhile (s != t){\n4\nif (t % 2 == 0 && t / 2 >= s)\n5\nt /= 2;\n6\nelse\n7\nt -= 1;\n8\nans += 1;\n9\n}\n10\ncout << ans;\n11",
+   "options": [
+    "2",
+    "3",
+    "4",
+    "5"
+   ],
+   "answer": 1
+  },
+  {
+   "n": 9,
+   "stem": "下面C++代码执行后的输出是？（）\nint n, masks, days,cur;\n1\nn = 17, masks = 10, days = 0;\n2\ncur = 2;\n3\nwhile (masks != n){\n4\nif (cur == 0 || cur == 1)\n5\nmasks += 7;\n6\nmasks -= 1;\n7\ndays += 1;\n8\ncur = (cur + 1) % 7;\n9\n}\n10\n11\ncout << days;\n12",
+   "options": [
+    "5",
+    "6",
+    "7",
+    "8"
+   ],
+   "answer": 2
+  },
+  {
+   "n": 10,
+   "stem": "以下C++代码判断一个正整数N的各个数位是否都是偶数。如果都是，则输出“是”，否则输出“否”。例如\nN=2024时输出“是”。则横线处应填入（\n）。\nint N,Flag;\n1\ncin >> N;\n2\nFlag = true;\n3\nwhile (N != 0){\n4\nif (N %2 != 0){\n5\nFlag = false;\n6\n_____________\n7\n}\n8\nelse\n9\nN /= 10;\n10\n}\n11\nif(Flag == true)\n12\ncout << \"是\";\n13\nelse\n14\ncout << \"否\";\n15",
+   "options": [
+    "break",
+    "continue",
+    "N = N / 10",
+    "N = N % 10"
+   ],
+   "answer": 0
+  },
+  {
+   "n": 11,
+   "stem": "有句俗话叫“三天打渔，两天晒网”。如果小杨前三天打渔，后两天晒网，一直重复这个过程，以下程序代码\n用于判断，第n天小杨是在打鱼还是晒网，横线处应填写？（ ）\nint n,i;\n1\ncin >> n;\n2\ni = n % 5;\n3\nif (__________________) // 在此处填写代码\n4\ncout << \"晒网\";\n5\nelse\n6\ncout << \"打鱼\";\n7",
+   "options": [
+    "i == 0",
+    "i == 4",
+    "i == 0 && i == 4",
+    "i == 0 || i == 4"
+   ],
+   "answer": 3
+  },
+  {
+   "n": 12,
+   "stem": "一个数的所有数字倒序排列后这个数的大小保持不变，这个数就是回文数，比如 101 与 6886 都是回文数，\n而 100 不是回文数。以下程序代码用于判断一个数是否为回文数，横线处应填写？（ ）\nint n,a,k;\n1\ncin >> n;\n2\na = 0;\n3\nk = n;\n4\nwhile (n > 0){\n5\na = __________;  // 在此处填写代码\n6\nn /= 10;\n7\n}\n8\nif (a == k)\n9\ncout << \"是回文数\";\n10\nelse\n11\ncout << \"不是回文数\";\n12",
+   "options": [
+    "10 * a + n % 10",
+    "a  + n % 10",
+    "10 * a + n / 10",
+    "a + n / 10"
+   ],
+   "answer": 0
+  },
+  {
+   "n": 13,
+   "stem": "给定两个整数  与，打印出一个栅栏图形，这个栅栏应该分成  段，段与段之间的间隔为 + ， 段内的填\n充为  个 - 。形如\n，\n时，图形如下：\n+------+------+------+------+------+\n1\n以下程序代码用于绘制该图形，横线处应填写？（ ）\nint n, k, i, j;\n1\nn = 5, k = 6;\n2\nfor (i = 0; i < n; i++){\n3\n__________ // 在此处填写代码\n4\nfor (j = 1; j < k; j++)\n5\ncout << '-' ;\n6\n}\n7\ncout << '+';\n8",
+   "options": [
+    "cout << '+' << endl;",
+    "cout << '+' << ' ' << endl;",
+    "cout << '+';",
+    "cout << '+' << ' ';"
+   ],
+   "answer": 2
+  },
+  {
+   "n": 14,
+   "stem": "小杨的父母最近刚刚给他买了一块华为手表，他说手表上跑的是鸿蒙，这个鸿蒙是。（  ）",
+   "options": [
+    "小程序",
+    "计时器",
+    "操作系统",
+    "神话人物"
+   ],
+   "answer": 2
+  },
+  {
+   "n": 15,
+   "stem": "中国计算机学会（CCF）在2024年1月27日的颁奖典礼上颁布了王选奖，王选先生的重大贡献是（  ）。",
+   "options": [
+    "制造自动驾驶汽车",
+    "创立培训学校",
+    "发明汉字激光照排系统",
+    "成立方正公司"
+   ],
+   "answer": 2
+  }
+ ],
+ "judge": [
+  {
+   "n": 1,
+   "stem": "如果有以下C++代码：\ndouble s;\n1\nint t;\n2\ns = 18.5;\n3\nt = int(s) + 10;\n4\n那么cout << t 的结果为 28.5 。",
+   "answer": null
+  },
+  {
+   "n": 2,
+   "stem": "Xyz ，xYz ，xyZ 是三个不同的变量。",
+   "answer": null
+  },
+  {
+   "n": 3,
+   "stem": "cout << (8< 9< 10) 的输出结果为true 。",
+   "answer": null
+  },
+  {
+   "n": 4,
+   "stem": "for (i = 0; i < 100; i+=2) ; 语句中变量i的取值范围是0到99。",
+   "answer": null
+  },
+  {
+   "n": 5,
+   "stem": "C++中cout << float(2022) 与 cout << float('2022') 运行后的输出结果均为2022。",
+   "answer": null
+  },
+  {
+   "n": 6,
+   "stem": "已知A 的ASCII码值为65，表达式int('C')+abs(-5.8) 的值为72.8。",
+   "answer": null
+  },
+  {
+   "n": 7,
+   "stem": "bool() 函数用于将给定参数或表达式转换为布尔类型。语句 bool(-1) 返回的是 false 值。（ ）",
+   "answer": null
+  },
+  {
+   "n": 8,
+   "stem": "如果变量a 的值使得C++表达式sqrt(a)==abs(a) ，则a 的值为0。（  ）",
+   "answer": null
+  },
+  {
+   "n": 9,
+   "stem": "小杨今年春节回奶奶家了，奶奶家的数字电视要设置ip地址并接入到WIFI盒子才能收看节目，那这个WIFI盒\n子具有路由器的功能。（  ）",
+   "answer": null
+  },
+  {
+   "n": 10,
+   "stem": "任何一个for 循环都可以转化为等价的while 循环（  ）。",
+   "answer": null
+  }
+ ],
+ "programming": [
+  {
+   "n": 1,
+   "name": "乘法问题",
+   "desc": "小 A 最近刚刚学习了乘法，为了帮助他练习，我们给他若干个正整数，并要求他将这些数乘起来。\n对于大部分题目，小 A 可以精准地算出答案，不过，如果这些数的乘积超过\n，小 A 就不会做了。\n请你写一个程序，告诉我们小 A 会如何作答。"
+  },
+  {
+   "n": 2,
+   "name": "小杨的日字矩阵",
+   "desc": "小杨想要构造一个\n的日字矩阵（\n为奇数），具体来说，这个矩阵共有\n行，每行\n个字符，其中最左\n列、最右列都是 | ，而第一行、最后一行、以及中间一行（即第\n个字符都是 - ，其余所\n行）的第\n有字符都是半角小写字母 x 。例如，一个\n的日字矩阵如下：\n|---|\n1\n|xxx|\n2\n|---|\n3\n|xxx|\n4\n|---|\n5\n请你帮小杨根据给定的\n打印出对应的“日字矩阵”。"
+  }
+ ]
+}

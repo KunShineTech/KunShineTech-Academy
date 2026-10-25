@@ -1,0 +1,242 @@
+{
+ "session": "2025-06",
+ "level": 1,
+ "file": "GESP 2025年06月认证C++ 1级真题.pdf",
+ "legacy": false,
+ "choiceCount": 15,
+ "judgeCount": 10,
+ "progCount": 2,
+ "choiceAnswers": "CADDCBDCABACDCB",
+ "judgeAnswers": "",
+ "choice": [
+  {
+   "n": 1,
+   "stem": "2025年4月19日在北京举行了一场颇为瞩目的人形机器人半程马拉松赛。比赛期间，跑动着的机器人会利用\n身上安装的多个传感器所反馈的数据来调整姿态、保持平衡等，那么这类传感器类似于计算机的(   )。",
+   "options": [
+    "处理器",
+    "存储器",
+    "输入设备",
+    "输出设备"
+   ],
+   "answer": 2
+  },
+  {
+   "n": 2,
+   "stem": "在某集成开发环境中调试下面代码段时尝试设置断点和检查局部变量，下面哪个说法是错误的（  ）。\nint i,N = 0; // L1\n1\ncin >> N; // L2\n2\nfor (i = 1; i < 9; i++)\n3\nif (N % i == 0) break;  // L3\n4\nif (i < 9)\n5\nprintf(\"N不能大于9\\n\"); // L4\n6",
+   "options": [
+    "断点不可以设在L1标记的代码行",
+    "执行暂停在L2标记的代码行时，可以检测i的值",
+    "执行暂停在L3标记的代码行时，可以修改i的值",
+    "执行有可能暂停在L4标记的代码行"
+   ],
+   "answer": 0
+  },
+  {
+   "n": 3,
+   "stem": "对下列C++的代码，描述准确的是(\n)。\nint first = 10;\n1\nprintf(\"{%d}\\n\", First)\n2",
+   "options": [
+    "执行后输出10",
+    "执行后输出{First}",
+    "执行后输出\"{First}\"",
+    "编译报错，因为First应该是first"
+   ],
+   "answer": 3
+  },
+  {
+   "n": 4,
+   "stem": "在C++中，下列可以做变量名的是(\n)。",
+   "options": [
+    "X.cpp",
+    "X-cpp",
+    "X#cpp",
+    "X_cpp"
+   ],
+   "answer": 3
+  },
+  {
+   "n": 5,
+   "stem": "C++表达式14-3*3%2 的值是(\n)。",
+   "options": [
+    "0",
+    "11",
+    "13",
+    "-67"
+   ],
+   "answer": 2
+  },
+  {
+   "n": 6,
+   "stem": "下面的C++代码执行后，其输出是(\n)。\nint x = 10, y = 20;\n1\nx = x + y;\n2\ny = x - y;\n3\nx = x - y;\n4\ncout << x << ' ' << y;\n5",
+   "options": [
+    "10 20",
+    "20 10",
+    "10 10",
+    "20 20"
+   ],
+   "answer": 1
+  },
+  {
+   "n": 7,
+   "stem": "定义整型变量int a=16 ，则执行++a += 3 之后，a的值会是（  ）。",
+   "options": [
+    "3",
+    "17",
+    "19",
+    "20"
+   ],
+   "answer": 3
+  },
+  {
+   "n": 8,
+   "stem": "C++的int 类型变量X 的值为8，如果执行cout << (++X)++; ，则输出和执行后X 的值分别是（    ）。",
+   "options": [
+    "8 9",
+    "9 9",
+    "9 10",
+    "编译错误，无法执行"
+   ],
+   "answer": 2
+  },
+  {
+   "n": 9,
+   "stem": "下面C++代码执行后的输出是（\n）。\nint a,b;\n1\na = 3;\n2\nb = 4;\n3\nprintf(\"a+b=%02d#a+b={a+b}\", a+b, a+b);\n4",
+   "options": [
+    "a+b=07#a+b={a+b}",
+    "a+b= 7#a+b=7",
+    "a+b=7#a+b={a+b}",
+    "a+b=7#a+b=7"
+   ],
+   "answer": 0
+  },
+  {
+   "n": 10,
+   "stem": "下面的C++代码用于求M天后是星期几，两处横线处分别应填入的代码是（\n）。\nint N, M, D;\n1\ncout << \"当前星期几? \"; // 星期日是0\n2\ncin >> N;\n3\ncout << \"求多少天后? \"; // 输入正整数\n4\ncin >> M;\n5\n6\nD = ____________;\n7\nif (____________)\n8\nprintf(\"%d天后是星期日\", M);\n9\nelse\n10\nprintf(\"%d天后是星期%d\", M, D);\n11",
+   "options": [
+    "(N + M) / 7 1 D == 0 2",
+    "(N + M) % 7 1 D == 0 2",
+    "(N + M) / 7 1 D <= 0 2",
+    "(N + M) % 7 1 D = 0 2"
+   ],
+   "answer": 1
+  },
+  {
+   "n": 11,
+   "stem": "下面C++代码执行后输出是（    ）。\nint i;\n1\nfor (i = 1; i < 11; i += 3){\n2\ncontinue;\n3\nif (i % 2 == 0)\n4\nbreak;\n5\nprintf(\"%d#\", i);\n6\n}\n7\nif (i >= 11)\n8\nprintf(\"END\");\n9",
+   "options": [
+    "END",
+    "1#",
+    "1#4#END",
+    "1#4#7#10#END"
+   ],
+   "answer": 0
+  },
+  {
+   "n": 12,
+   "stem": "下面的C++代码用于求N的所有因数（即能将N整除的数），如输入12则将输出12,6,4,3,2,1 。（    ）。\nint i, N;\n1\ncin >> N;\n2\ni = N;\n3\nwhile (_______){\n4\nif (N % i == 0)\n5\nprintf(\"%d,\", i);\n6\ni -= 1;\n7\n}\n8\nprintf(\"1\");\n9",
+   "options": [
+    "i -= 1",
+    "i == 1",
+    "i > 1",
+    "i >= 1"
+   ],
+   "answer": 2
+  },
+  {
+   "n": 13,
+   "stem": "下面C++代码执行后输出的是（    ）。\nint Sum = 0;\n1\nfor (int i = 0; i < 10; i++){\n2\nif (i % 2 == 0)\n3\ncontinue;\n4\nif (i % 5 == 0)\n5\nbreak;\n6\nSum += i;\n7\n}\n8\ncout << Sum;\n9",
+   "options": [
+    "55",
+    "15",
+    "9",
+    "4"
+   ],
+   "answer": 3
+  },
+  {
+   "n": 14,
+   "stem": "试图编译并执行下面C++代码，下面描述正确的是（\n）。\nfloat x;\n1\nx = 101;\n2\nx++;\n3\ncout << ++x;\n4",
+   "options": [
+    "输出101",
+    "输出102",
+    "输出103",
+    "编译将报错，无法执行"
+   ],
+   "answer": 2
+  },
+  {
+   "n": 15,
+   "stem": "以下C++代码可以找出百位、十位和个位满足特定条件的三位数，横线处应该填入的是（   ）\nint count = 0;\n1\nfor (int i = 100; i <= 999; i++) {\n2\nint a = i / 100;\n3\n_________________________\n4\nint c = i % 10;\n5\nif (a * a + b * b == c * c) {\n6\ncount++;\n7\n}\n8\n}\n9",
+   "options": [
+    "int b = (i / 10) / 10;",
+    "int b = (i / 10) % 10;",
+    "int b = (i % 10) / 10;",
+    "int b = (i % 10) % 10;"
+   ],
+   "answer": 1
+  }
+ ],
+ "judge": [
+  {
+   "n": 1,
+   "stem": "人们现在参加很多闭卷考试时通常都不允许带智能手机、平板电脑等，此外很多种智能手表同样因为具有嵌\n入操作系统及通信等功能，所以也不允许随身携带。（  ）",
+   "answer": null
+  },
+  {
+   "n": 2,
+   "stem": "如果N是C++的整型变量，值为5，则表达式(N + !N) 的值为4。 (\n)",
+   "answer": null
+  },
+  {
+   "n": 3,
+   "stem": "在下面C++代码中，删除break语句对程序执行结果没有影响。 (  )\nint i;\n1\nfor (i = 0; i < 10; i++){\n2\ncontinue;\n3\ncout << i << \"#\";\n4\nbreak;\n5\n}\n6\nif (i >= 10)\n7\ncout << \"END\";\n8",
+   "answer": null
+  },
+  {
+   "n": 4,
+   "stem": "删除下面C++代码中的continue后其输出是0#2#4#6#8#。（  ）\nint i;\n1\nfor (i = 0; i < 10; i++){\n2\nif (i % 2 == 0){\n3\ncout << i << \"#\";\n4\ncontinue;\n5\n}\n6\n}\n7\nif (i >= 10)\n8\ncout << \"END\";\n9",
+   "answer": null
+  },
+  {
+   "n": 5,
+   "stem": "将下面C++代码中的i < 100; i = i + 1 修改为i < 200; i += i + 1 ，其输出与当前代码输出相同。（\n）\nint cnt = 0;\n1\nfor (int i = 0; i < 100; i = i + 1)\n2\ncnt += 1;\n3\ncout << cnt;\n4",
+   "answer": null
+  },
+  {
+   "n": 6,
+   "stem": "交换下面C++代码中的i += 2 和cnt += 1 ，交换前后分别运行的两次输出相同。（  ）\nint i, cnt = 0;\n1\ncnt = 0;\n2\nwhile (i < 10){\n3\ni += 2;\n4\ncnt += 1;\n5\n}\n6\ncout << cnt;\n7",
+   "answer": null
+  },
+  {
+   "n": 7,
+   "stem": "下面的C++代码执行后将输出45。（  ）\nint cnt;\n1\nfor (int i = 0; i < 10; i++)\n2\ncnt += 1;\n3\ncout << cnt;\n4",
+   "answer": null
+  },
+  {
+   "n": 8,
+   "stem": "执行C++代码cout << (12 + 12.12) 将报错，因为12是int类型，而12.12是float类型，不同类型不能直接运\n算。（  ）",
+   "answer": null
+  },
+  {
+   "n": 9,
+   "stem": "在C++代码中，不可以将变量命名为false，因为false是C++语言的关键字。（  ）",
+   "answer": null
+  },
+  {
+   "n": 10,
+   "stem": "X是C++的整型变量，则表达式3 < X < 5 求值结果是4。(  )",
+   "answer": null
+  }
+ ],
+ "programming": [
+  {
+   "n": 1,
+   "name": "假期阅读",
+   "desc": "小 A 有一本厚厚的书。这本书总共有  页，小 A 一天中最多只能阅读完其中的  页。小 A 的假期总共有  天，他想\n知道在假期中最多能阅读完这本书的多少页。"
+  },
+  {
+   "n": 2,
+   "name": "值日",
+   "desc": "小杨和小红是值日生，负责打扫教室。小杨每\n天值日一次，小红每  天值日一次。今天他们两个一起值日，请问\n至少多少天后，他们会再次同一天值日？"
+  }
+ ]
+}

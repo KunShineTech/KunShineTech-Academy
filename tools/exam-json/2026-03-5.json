@@ -1,0 +1,242 @@
+{
+ "session": "2026-03",
+ "level": 5,
+ "file": "GESP 2026年03月认证C++ 5级真题.pdf",
+ "legacy": false,
+ "choiceCount": 15,
+ "judgeCount": 10,
+ "progCount": 2,
+ "choiceAnswers": "DCBACCBADABBCBB",
+ "judgeAnswers": "",
+ "choice": [
+  {
+   "n": 1,
+   "stem": "关于单链表、双链表和循环链表，下列说法正确的是（ ）。",
+   "options": [
+    "在单链表中，若已知任意结点的指针，则可以在 时间内删除该结点。",
+    "循环链表中一定不存在空指针。",
+    "在循环双链表中，尾结点的next 指针一定为nullptr 。",
+    "在带头结点的循环单链表中，判定链表是否为空只需判断头结点的 next 是否指向自身。"
+   ],
+   "answer": 3
+  },
+  {
+   "n": 2,
+   "stem": "双向循环链表中要在结点 p 之前插入新结点 s （均非空），以下指针操作正确的是（  ）。",
+   "options": [
+    "s -> next = p; 1 p -> prev = s; 2 p -> next = s; 3 s -> prev = p; 4",
+    "s -> prev = p; 1 s -> next = p -> next; 2 p -> next -> prev = s; 3 p -> next = s; 4",
+    "s -> next = p; 1 s -> prev = p->prev; 2 p -> prev -> next = s; 3 p -> prev = s; 4",
+    "s -> next = p; 1 s -> prev = nullptr; 2 p -> prev = s; 3"
+   ],
+   "answer": 2
+  },
+  {
+   "n": 3,
+   "stem": "下面函数用“哑结点”统一处理删除单向链表中的头结点与中间结点。横线处应填（ ）。\n1\n/\n14\n第\n页\n共\n页\nstruct Node{\n1\nint val;\n2\nNode* next;\n3\nNode(int v):val(v),next(nullptr){}\n4\n};\n5\n6\nNode* eraseAll(Node* head, int x){\n7\nNode dummy(0);\n8\ndummy.next = head;\n9\nNode* cur = &dummy;\n10\nwhile(cur->next){\n11\nif(cur->next->val == x){\n12\nNode* del = cur->next;\n13\n______________________\n14\ndelete del;\n15\n}else cur = cur->next;\n16\n}\n17\nreturn dummy.next;\n18\n}\n19",
+   "options": [
+    "cur = cur->next; 1",
+    "cur->next = del->next; 1",
+    "del->next = cur->next; 1",
+    "cur->next = nullptr; 1"
+   ],
+   "answer": 1
+  },
+  {
+   "n": 4,
+   "stem": "对如下代码实现的欧几里得算法（辗转相除法），执行 gcd(48, 18) 得到的调用序列为（ ）。\nint gcd(int a, int b) {\n1\nreturn b == 0 ? a : gcd(b, a % b);\n2\n}\n3",
+   "options": [
+    "gcd(48,18) -> gcd(18,12) -> gcd(12,6) -> gcd(6,0) 1",
+    "gcd(48,18) -> gcd(30,18) -> gcd(12,18) 1",
+    "gcd(48,18) -> gcd(18,30) -> gcd(30,6) 1",
+    "gcd(48,18) -> gcd(12,18) -> gcd(6,12) 1"
+   ],
+   "answer": 0
+  },
+  {
+   "n": 5,
+   "stem": "下面代码实现了欧拉（线性）筛，横线处应填写（  ）。\n第 2 页 / 共 14 页\nvector<int> euler_sieve(int n) {\n1\nvector<bool> is_composite(n + 1, false);\n2\nvector<int>  primes;\n3\n4\nfor (int i = 2; i <= n; i++) {\n5\nif (!is_composite[i])\n6\nprimes.push_back(i);\n7\n8\nfor (int j = 0; __________________________ && (long long)i * primes[j] <= n; j++) {\n9\nis_composite[i * primes[j]] = true;\n10\n11\nif (i % primes[j] == 0)\n12\nbreak;\n13\n}\n14\n}\n15\nreturn primes;\n16\n}\n17",
+   "options": [
+    "j <= n 1",
+    "j < sqrt(n) 1",
+    "j < primes.size() 1",
+    "j < i 1"
+   ],
+   "answer": 2
+  },
+  {
+   "n": 6,
+   "stem": "埃氏筛中将内层循环从 j = i*i 开始而不是 j = 2*i 的主要原因是（ ）。\nvector<int> eratosthenes_sieve(int n) {\n1\nvector<bool> is_composite(n + 1, false);\n2\nvector<int>  primes;\n3\n4\nfor (int i = 2; i <= n; i++) {\n5\nif (is_composite[i]) continue;\n6\n7\nprimes.push_back(i);\n8\n9\nfor (long long j = (long long)i * i; j <= n; j += i)\n10\nis_composite[j] = true;\n11\n}\n12\nreturn primes;\n13\n}\n14",
+   "options": [
+    "因为 2*i 一定不是合数",
+    "i*i 一定是质数",
+    "小于 i*i 的 i 的倍数已被更小质因子筛过",
+    "这样可以把时间复杂度降为"
+   ],
+   "answer": 2
+  },
+  {
+   "n": 7,
+   "stem": "下面程序的运行结果为（ ）。\n第 3 页 / 共 14 页\nbool check(int n, int a[], int k, int dist) {\n1\nint cnt = 1;\n2\nint last = a[0];\n3\n4\nfor (int i = 1; i < n; i++) {\n5\nif (a[i] - last >= dist) {\n6\ncnt++;\n7\nlast = a[i];\n8\n}\n9\n}\n10\n11\nreturn cnt >= k;\n12\n}\n13\n14\nint solve(int n, int a[], int k) {\n15\nstd::sort(a, a + n);\n16\n17\nint l = 0;\n18\nint r = a[n - 1] - a[0];\n19\n20\nwhile (l < r) {\n21\nint mid = (l + r + 1) / 2;\n22\n23\nif (check(n, a, k, mid))\n24\nl = mid;\n25\nelse\n26\nr = mid - 1;\n27\n}\n28\n29\nreturn l;\n30\n}\n31\n32\nint main() {\n33\nint a[] = {1, 2, 8, 4, 9};\n34\nint n = 5;\n35\nint k = 3;\n36\n37\nstd::cout << solve(n, a, k) << std::endl;\n38\n39\nreturn 0;\n40\n}\n41",
+   "options": [
+    "2",
+    "3",
+    "4",
+    "5"
+   ],
+   "answer": 1
+  },
+  {
+   "n": 8,
+   "stem": "在升序数组中查找第一个大于等于x 的位置，下面循环中横线应填（ ）。\nint lowerBound(const vector<int>& a, int x){\n1\nint l=0, r=a.size();\n2\nwhile(l<r){\n3\nint mid = l + (r - l)/2;\n4\nif(a[mid] >= x)  _____________;\n5\nelse l = mid + 1;\n6\n}\n7\nreturn l;\n8\n}\n9\n第 4 页 / 共 14 页",
+   "options": [
+    "r = mid; 1",
+    "r = mid - 1; 1",
+    "l = mid; 1",
+    "l = mid + 1; 1"
+   ],
+   "answer": 0
+  },
+  {
+   "n": 9,
+   "stem": "关于递归函数调用，下列说法错误的是（  ）。",
+   "options": [
+    "递归调用层次过深时，可能会耗尽栈空间导致栈溢出",
+    "尾递归函数可以通过编译器优化来避免栈溢出",
+    "所有递归函数都可以通过循环结构来改写，从而避免栈溢出",
+    "栈溢出发生时，程序会抛出异常并可以继续执行后续代码"
+   ],
+   "answer": 3
+  },
+  {
+   "n": 10,
+   "stem": "给定 n 根木头，第 i 根长度为 a[i] 。要切成不少于 m 段等长木段，求最大可能长度，则横线上应填\n写（   ）。\n第 5 页 / 共 14 页\nconst int MAXN = 100005;\n1\nlong long a[MAXN];\n2\nint n, m;\n3\n4\nbool check(long long x){\n5\nlong long cnt = 0;\n6\nfor(int i = 1; i <= n; i++){\n7\nif(x == 0) return true;\n8\ncnt += a[i] / x;\n9\nif(cnt >= m) return true;\n10\n}\n11\nreturn false;\n12\n}\n13\n14\nint main(){\n15\ncin >> n >> m;\n16\nlong long mx = 0;\n17\nfor(int i = 1; i <= n; i++){\n18\ncin >> a[i];\n19\nmx = max(mx, a[i]);\n20\n}\n21\n22\nlong long l = 1, r = mx;\n23\nlong long ans = 0;\n24\n25\nwhile(l <= r){\n26\nlong long mid = l + (r - l) / 2;\n27\n28\nif(check(mid)){\n29\nans = mid;\n30\n______________________\n31\n}else{\n32\n______________________\n33\n}\n34\n}\n35\n36\ncout << ans << endl;\n37\nreturn 0;\n38\n}\n39",
+   "options": [
+    "l = mid + 1; 1 r = mid - 1; 2",
+    "l = mid - 1; 1 r = mid + 1; 2",
+    "l = mid + 1; 1 r = mid; 2",
+    "l = mid; 1 r = mid + 1; 2"
+   ],
+   "answer": 0
+  },
+  {
+   "n": 11,
+   "stem": "下面代码用分治求“最大连续子段和”，其时间复杂度为（ ）。\n第 6 页 / 共 14 页\nint solve(vector<int>& a, int l, int r){\n1\nif(l == r) return a[l];\n2\n3\nint mid = l + (r - l) / 2;\n4\n5\nint left = solve(a, l, mid);\n6\nint right = solve(a, mid + 1, r);\n7\n8\nint sum = 0, lmax = INT_MIN;\n9\nfor(int i = mid; i >= l; i--){\n10\nsum += a[i];\n11\nlmax = max(lmax, sum);\n12\n}\n13\n14\nsum = 0;\n15\nint rmax = INT_MIN;\n16\nfor(int i = mid + 1; i <= r; i++){\n17\nsum += a[i];\n18\nrmax = max(rmax, sum);\n19\n}\n20\n21\nreturn max({left, right, lmax + rmax});\n22\n}\n23",
+   "options": [
+    "",
+    "",
+    "",
+    ""
+   ],
+   "answer": 1
+  },
+  {
+   "n": 12,
+   "stem": "游戏大赛决赛，两组选手分别按得分从小到大排好队，现在要把他们合并成一个有序排行榜。\nA组：A = {12, 35, 67, 89} ，B组：B = {20, 45, 55, 78} ，下面是归并合并函数的核心循环，横线处应填\n入（ ）。\nint i = 0, j = 0;\n1\nvector<int> result;\n2\n3\nwhile (i < A.size() && j < B.size()) {\n4\nif (___________________) {\n5\nresult.push_back(A[i++]);\n6\n} else {\n7\nresult.push_back(B[j++]);\n8\n}\n9\n}\n10\n11\nwhile (i < A.size()) {\n12\nresult.push_back(A[i++]);\n13\n}\n14\n15\nwhile (j < B.size()) {\n16\nresult.push_back(B[j++]);\n17\n}\n18",
+   "options": [
+    "A[i] >= B[j]",
+    "A[i] <= B[j]",
+    "i >= j",
+    "i <= j 第 7 页 / 共 14 页"
+   ],
+   "answer": 1
+  },
+  {
+   "n": 13,
+   "stem": "有  位同学的成绩已经从小到大排好序，现在对它执行下面这段以第一个元素为 pivot 的快速排序，请\n问此次排序的时间复杂度是（  ）。\nvoid quicksort(vector<int>& a, int l, int r) {\n1\nif (l >= r) return;\n2\nint pivot = a[l];\n3\nint i = l, j = r;\n4\nwhile (i < j) {\n5\nwhile (i < j && a[j] >= pivot) j--;\n6\nwhile (i < j && a[i] <= pivot) i++;\n7\nif (i < j) swap(a[i], a[j]);\n8\n}\n9\nswap(a[l], a[i]);\n10\nquicksort(a, l, i - 1);\n11\nquicksort(a, i + 1, r);\n12\n}\n13",
+   "options": [
+    "",
+    "",
+    "",
+    ""
+   ],
+   "answer": 2
+  },
+  {
+   "n": 14,
+   "stem": "下面关于排序算法的描述中，不正确的是(   )。",
+   "options": [
+    "冒泡排序和插入排序都是稳定的排序算法",
+    "快速排序和归并排序都是不稳定的排序算法",
+    "冒泡排序和插入排序最好时间复杂度均为",
+    "归并排序在最好、最坏和平均三种情况的时间复杂度均为"
+   ],
+   "answer": 1
+  },
+  {
+   "n": 15,
+   "stem": "下面代码实现两个整数除法，其中被除数为一个“大整数”，用字符串表示，除数是一个小整数，用int 表\n示，则横线处应该填写（  ）。\n第 8 页 / 共 14 页\nint main(){\n1\nstring s;\n2\nint b;\n3\ncin >> s >> b;\n4\n5\nvector<int> a;\n6\nfor(char c : s){\n7\na.push_back(c - '0');\n8\n}\n9\n10\nvector<int> c;\n11\nlong long rem = 0;\n12\n13\nfor(int i = 0; i < a.size(); i++){\n14\nrem = rem * 10 + a[i];\n15\nint q = rem / b;\n16\nc.push_back(q);\n17\n______________________\n18\n}\n19\n20\nint pos = 0;\n21\nwhile(pos < c.size() - 1 && c[pos] == 0) pos++;\n22\n23\nfor(int i = pos; i < c.size(); i++){\n24\ncout << c[i];\n25\n}\n26\n27\ncout << endl;\n28\ncout << rem << endl;\n29\nreturn 0;\n30\n}\n31",
+   "options": [
+    "rem /= b; 1",
+    "rem %= b; 1",
+    "rem = b; 1",
+    "rem = q; 1"
+   ],
+   "answer": 1
+  }
+ ],
+ "judge": [
+  {
+   "n": 1,
+   "stem": "有一个存储了个整数的线性表，分别用数组和单链表两种方式实现。在已知下标（或结点指针）的前提\n下，数组的随机访问是\n， 而在链表中已知某结点的指针时，在该结点之后插入一个新结点的操作也是\n。",
+   "answer": null
+  },
+  {
+   "n": 2,
+   "stem": "若数组 a 已按升序排列，则下面代码可以正确实现 “在 a 中查找第一个大于等于 x 的元素的位置”。\n第 9 页 / 共 14 页\nint lowerBound(vector<int>& a,int x){\n1\nint l=0, r=a.size();\n2\nwhile(l < r) {\n3\nint mid = (l + r) / 2;\n4\nif( a[mid] >= x) r = mid;\n5\nelse l = mid + 1;\n6\n}\n7\nreturn l;\n8\n}\n9",
+   "answer": null
+  },
+  {
+   "n": 3,
+   "stem": "快速排序只要每次都选取中间元素作为枢轴，就一定是稳定排序。",
+   "answer": null
+  },
+  {
+   "n": 4,
+   "stem": "若某算法满足递推式：\n，则其时间复杂度为\n。",
+   "answer": null
+  },
+  {
+   "n": 5,
+   "stem": "在一个数组中，如果两个元素 a[i] 和 a[j] 满足i < j 且 a[i] > a[j] ，则a[i] 和 a[j] 是一个逆\n序对。\n下面代码可以正确统计数组a 区间 [l,r] 内的逆序对总数。\nlong long cnt=0;\n1\nvoid merge_count(vector<int>& a, int l, int m, int r){\n2\nint i = l, j = m + 1;\n3\nwhile(i <= m && j <= r) {\n4\nif(a[i] <= a[j]) i++;\n5\nelse {\n6\ncnt += (m -  i+ 1);\n7\nj++;\n8\n}\n9\n}\n10\n}\n11",
+   "answer": null
+  },
+  {
+   "n": 6,
+   "stem": "根据唯⼀分解定理，如果⼤于1的整数不能被任何不超其平⽅根的质数整除，那么n 必定是质数。",
+   "answer": null
+  },
+  {
+   "n": 7,
+   "stem": "假设数\n组  的值域范围是\n，以下程序的时间复杂度是\n。\n10\n/\n14\n第\n页\n共\n页\nbool check(int n, int a[], int k, int dist) {\n1\nint cnt = 1;\n2\nint last = a[0];\n3\n4\nfor (int i = 1; i < n; i++) {\n5\nif (a[i] - last >= dist) {\n6\ncnt++;\n7\nlast = a[i];\n8\n}\n9\n}\n10\n11\nreturn cnt >= k;\n12\n}\n13\n14\nint solve(int n, int a[], int k) {\n15\nstd::sort(a, a + n);\n16\n17\nint l = 0;\n18\nint r = a[n - 1] - a[0];\n19\n20\nwhile (l < r) {\n21\nint mid = (l + r + 1) / 2;\n22\n23\nif (check(n, a, k, mid))\n24\nl = mid;\n25\nelse\n26\nr = mid - 1;\n27\n}\n28\n29\nreturn l;\n30\n}\n31\n32\nint main() {\n33\nint a[] = {1, 2, 8, 4, 9};\n34\nint n = 5;\n35\nint k = 3;\n36\n37\nstd::cout << solve(n, a, k) << std::endl;\n38\n39\nreturn 0;\n40\n}\n41",
+   "answer": null
+  },
+  {
+   "n": 8,
+   "stem": "若一个问题满足最优子结构性质，则一定可以用贪心算法得到最优解。",
+   "answer": null
+  },
+  {
+   "n": 9,
+   "stem": "线性筛相比埃氏筛的核心改进在于：埃氏筛中一个合数可能被多个质数重复标记，线性筛通过\"每个合数只\n被其最大质因子筛去\"的策略，保证每个合数恰好被标记一次，从而实现\n的时间复杂度。",
+   "answer": null
+  },
+  {
+   "n": 10,
+   "stem": "任何递归程序都可以改写为等价的非递归程序，但改写后的非递归程序一定需要显式地使用栈来模拟递归\n调用过程。",
+   "answer": null
+  }
+ ],
+ "programming": [
+  {
+   "n": 1,
+   "name": "有限不循环小数",
+   "desc": "若\n可化为一个有限的，不循环的小数，则称  为终止数。\n请你求出在  到  中终止数的数量。"
+  },
+  {
+   "n": 2,
+   "name": "找数",
+   "desc": "给定一个包含  个互不相同的正整数的数组  与一个包含\n个互不相同的正整数的数组 ，请你帮忙计算有多少数\n在数组  与 数组  中均出现。"
+  }
+ ]
+}

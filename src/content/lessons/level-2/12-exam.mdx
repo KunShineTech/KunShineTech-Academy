@@ -1,0 +1,62 @@
+---
+title: "考前综合实战与独立解题流程"
+level: 2
+order: 12
+duration: 120
+unit: "综合测评"
+difficulty: 基础
+goals:
+  - "熟悉二级认证题型与120分钟时间安排"
+  - "独立完成分支与嵌套循环编程题"
+  - "学会用边界样例和复盘清单检查代码"
+---
+
+import Check from '../../../components/Check.astro';
+import Task from '../../../components/Task.astro';
+import Reveal from '../../../components/Reveal.astro';
+
+
+## 1. 官方考试结构
+根据上传的 GESP C++ 二级认证标准第13页：
+
+| 题型 | 数量 | 分值 | 合计 |
+|---|---:|---:|---:|
+| 单选题 | 15 | 2 | 30 |
+| 判断题 | 10 | 2 | 20 |
+| 编程题 | 2 | 25 | 50 |
+| **总计** | **27** | | **100** |
+
+考试时间120分钟。**本课题目均为原创教学练习，不是官方真题或命题预测。**
+
+## 2. 建议时间分配
+- 0—20分钟：完成单选题。
+- 20—35分钟：完成判断题。
+- 35—75分钟：完成第一道编程题。
+- 75—110分钟：完成第二道编程题。
+- 110—120分钟：检查代码、边界、输入输出格式。
+
+这只是教学时间策略，学生可按自身速度调整。
+
+## 3. 综合选择题
+<Check question="OSI七层模型中，数据链路层位于哪两层之间？" options={['网络层和物理层','应用层和表示层','会话层和传输层','网络层和传输层']} answer={0} explanation="从上到下：网络层→数据链路层→物理层。" />
+<Check question="下列哪个表达式的结果是浮点数2.5？" options={['5/2','double(5/2)','5/2.0','int(5.9)/2']} answer={2} explanation="只要一个操作数为浮点类型，5/2.0得到2.5。" />
+<Check question="for(int i=1;i<=3;i++) for(int j=1;j<=2;j++)，内层语句执行几次？" options={['2','3','5','6']} answer={3} explanation="外层3次，每次内层2次，共6次。" />
+
+## 4. 编程题A：分段停车费
+<Task title="停车费用" level="综合" time="30分钟" input="停车小时数h（1≤h≤100，整数）" output="费用（整数）" sampleIn="5" sampleOut="16">前2小时每小时2元，3—5小时部分每小时4元，超过5小时的部分每小时6元。要求写分段函数并测试2、3、5、6。</Task>
+<Reveal label="参考答案：停车费用"><pre><code>{`#include <iostream>\nusing namespace std;\nint main(){int h;cin>>h;int ans;if(h<=2)ans=2*h;else if(h<=5)ans=4+4*(h-2);else ans=16+6*(h-5);cout<<ans<<'\\n';}`}</code></pre>当h=5时：前2小时4元，后3小时12元，共16元。</Reveal>
+
+## 5. 编程题B：回文数字方阵
+<Task title="对称数字三角形" level="综合" time="35分钟" input="n（1≤n≤9）" output="第i行输出从1递增到i，再递减到1的数字序列" sampleIn="3" sampleOut="1\n121\n12321">用两个内层循环：第一个递增1到i，第二个从i-1递减到1。</Task>
+<Reveal label="参考答案：对称数字三角形"><pre><code>{`#include <iostream>\nusing namespace std;\nint main(){int n;cin>>n;for(int i=1;i<=n;i++){for(int j=1;j<=i;j++)cout<<j;for(int j=i-1;j>=1;j--)cout<<j;cout<<'\\n';}}`}</code></pre></Reveal>
+
+## 6. 独立解题评分量表
+| 维度 | 观察要点 |
+|---|---|
+| 读题 | 能说出输入、输出和限制条件 |
+| 算法 | 能用文字或流程图解释解法 |
+| 实现 | 能独立完成可编译的C++程序 |
+| 测试 | 能设计边界样例并解释结果 |
+| 复盘 | 能定位并修复至少一种错误 |
+
+**毕业建议**：连续两次独立完成综合题，且基础知识题正确率达到预设教学目标，再报名适当的认证场次。认证结果以官方实际评分为准。

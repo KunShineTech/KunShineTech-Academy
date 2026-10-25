@@ -1,0 +1,267 @@
+{
+ "session": "2024-06",
+ "level": 2,
+ "file": "GESP 2024年06月认证C++ 2级真题.pdf",
+ "legacy": false,
+ "choiceCount": 15,
+ "judgeCount": 10,
+ "progCount": 2,
+ "choiceAnswers": "CBAAACDBCCDDABD",
+ "judgeAnswers": "",
+ "choice": [
+  {
+   "n": 1,
+   "stem": "小杨父母带他到某培训机构给他报名参加CCF组织的GESP认证考试的第1级，那他可以选择的认证语言有几\n种？（      ）",
+   "options": [
+    "1",
+    "2",
+    "3",
+    "4"
+   ],
+   "answer": 2,
+   "analysis": "选 C（3）。GESP 认证语言有图形化编程、Python、C++ 三种。"
+  },
+  {
+   "n": 2,
+   "stem": "下面流程图在yr输入2024时，可以判定yr代表闰年，并输出2月是29天，则图中菱形框中应该填入（  ）。",
+   "options": [
+    "(yr%400==0) || (yr%4==0)",
+    "(yr%400==0) || (yr%4==0 && yr%100!=0)",
+    "(yr%400==0) && (yr%4==0)",
+    "(yr%400==0) && (yr%4==0 && yr%100!=0)"
+   ],
+   "answer": 1,
+   "analysis": "选 B。闰年判定：能被 400 整除，或者能被 4 整除且不能被 100 整除，即 (yr%400==0) || (yr%4==0 && yr%100!=0)。（题干流程图以真题原件为准）"
+  },
+  {
+   "n": 3,
+   "stem": "在C++中，下列不可做变量的是( )。",
+   "options": [
+    "five-Star",
+    "five_star",
+    "fiveStar",
+    "_fiveStar"
+   ],
+   "answer": 0,
+   "analysis": "选 A（five-Star）。标识符只能由字母、数字、下划线组成，不能含有减号。"
+  },
+  {
+   "n": 4,
+   "stem": "在C++中，与for(int i=0; i<10; i++) 效果相同的是(\n)。",
+   "options": [
+    "for(int i=0; i<10; i+=1)",
+    "for(int i=1; i<=10; i++)",
+    "for(int i=10; i>0; i--)",
+    "for(int i=10; i<1; i++)"
+   ],
+   "answer": 0,
+   "analysis": "选 A。i += 1 与 i++ 完全等价，都是 i 从 0 循环到 9。"
+  },
+  {
+   "n": 5,
+   "stem": "在C++中，cout << (5 % 2 && 5 % 3) 的输出是(\n)。",
+   "options": [
+    "1",
+    "2",
+    "true",
+    "false"
+   ],
+   "answer": 0,
+   "analysis": "选 A（1）。5 % 2 = 1，5 % 3 = 2，1 && 2 两个操作数都非 0，结果为 1。"
+  },
+  {
+   "n": 6,
+   "stem": "6.执行下面的C++代码时输入1 ，则输出是(\n)。\nint month;\n1\n2\ncin >> month;\n3\n4\nswitch(month){\n5\ncase 1:\n6\ncout << \"Jan \";\n7\ncase 3:\n8\ncout << \"Mar \";\n9\nbreak;\n10\ndefault:\n11\n;\n12\n}\n13",
+   "options": [
+    "Jan",
+    "Mar",
+    "Jan Mar",
+    "以上均不对"
+   ],
+   "answer": 2,
+   "analysis": "选 C（Jan Mar）。switch 中 case 1 后没有 break，会贯穿执行到 case 3 遇到 break 为止。"
+  },
+  {
+   "n": 7,
+   "stem": "执行下面C++代码后，有关说法错误的是（    ）。\nint a, b;\n1\ncin >> a >> b;\n2\nif (a && b)\n3\ncout << \"1\";\n4\nelse if (!(a || b))\n5\ncout << \"2\";\n6\nelse if (a || b)\n7\ncout << \"3\";\n8\nelse\n9\ncout << \"4\";\n10",
+   "options": [
+    "如果先后输入1和1，则将输出1",
+    "如果先后输入0和1或者1和0，则将输出3",
+    "如果先后输入0和0，则将输出2",
+    "如果先后输入0和0，则将输出4"
+   ],
+   "answer": 3,
+   "analysis": "选 D。输入 0 和 0 时 a||b 为假，!(a||b) 为真，输出 2，不会输出 4。"
+  },
+  {
+   "n": 8,
+   "stem": "某货币由5元，2元和1元组成。输入金额（假设为正整数），计算出最少数量。为实现其功能，横线处应填\n入代码是（    ）。\nint N;\n1\ncin >>N;\n2\n3\nint M5,M2,M1;\n4\nM5 = N / 5;\n5\nM2 = ______________;\n6\nM1 = ______________;\n7\nprintf(\"5*%d+2*%d+1*%d\", M5, M2, M1);\n8",
+   "options": [
+    "第1横线处应填入：N / 2 第2横线处应填入：N - M5 - M2",
+    "第1横线处应填入：(N - M5 * 5) / 2 第2横线处应填入：N - M5 * 5 - M2 * 2",
+    "第1横线处应填入：N - M5 * 5 / 2 第2横线处应填入：N - M5 * 5 - M2 * 2",
+    "第1横线处应填入：(N - M5 * 5) / 2 第2横线处应填入：N - M5  - M2"
+   ],
+   "answer": 1,
+   "analysis": "选 B。先算 5 元个数 M5 = N/5，剩余 N - M5*5；再算 2 元个数 (N - M5*5)/2；最后 1 元个数为 N - M5*5 - M2*2。"
+  },
+  {
+   "n": 9,
+   "stem": "下面C++代码执行后的输出是（    ）。\nint loopCount = 0;\n1\nfor (int i=0; i < 10; i++)\n2\nfor (int j=1; j < i; j++)\n3\nloopCount += 1;\n4\ncout << loopCount;\n5",
+   "options": [
+    "55",
+    "45",
+    "36",
+    "28"
+   ],
+   "answer": 2,
+   "analysis": "选 C（36）。内层循环次数为 0+1+2+…+8 = 36。"
+  },
+  {
+   "n": 10,
+   "stem": "下面C++代码执行后的输出是（\n）。\nint loopCount = 0;\n1\nfor (int i=0; i < 10; i++){\n2\nfor (int j=0; j < i; j++)\n3\nif (i * j % 2)\n4\nbreak;\n5\nloopCount += 1;\n6\n}\n7\ncout << loopCount;\n8",
+   "options": [
+    "25",
+    "16",
+    "10",
+    "9"
+   ],
+   "answer": 2,
+   "analysis": "选 C（10）。loopCount += 1 在内层循环之外、外层循环之内，只随外层执行 10 次；内层循环的 break 不影响它。"
+  },
+  {
+   "n": 11,
+   "stem": "假设下面C++代码执行过程中仅输入正负整数或0，有关说法错误的是（    ）。\nint N,Sum = 0;\n1\ncin >> N;\n2\nwhile (N){\n3\nSum += N;\n4\ncin >> N;\n5\n}\n6\ncout << Sum;\n7",
+   "options": [
+    "执行上面代码如果输入0，将终止循环",
+    "执行上面代码能实现所有非0整数的求和",
+    "执行上面代码第一次输入0，最后将输出0",
+    "执行上面代码将陷入死循环，可将while (N) 改为while (N==0)"
+   ],
+   "answer": 3,
+   "analysis": "选 D。输入 0 即终止循环，程序不会死循环；改成 while(N==0) 后只在 N 为 0 时循环，反而失去了原功能。"
+  },
+  {
+   "n": 12,
+   "stem": "执行下面的C++代码，有关说法正确的是（    ）【质数是指仅能被1和它本身整除的正整数】。\nint N;\n1\ncin >> N;\n2\nbool Flag = true;\n3\nfor ( int i = 2; i < N; i++){\n4\nif (i * i > N)\n5\nbreak;\n6\nif (N % i == 0){\n7\nFlag = false;\n8\nbreak;\n9\n}\n10\n}\n11\nif (Flag)\n12\ncout << N << \"是质数\" << endl;\n13\nelse\n14\ncout << N << \"不是质数\" << endl;\n15",
+   "options": [
+    "如果输入正整数，上面代码能正确判断N是否为质数",
+    "如果输入整数，上面代码能正确判断N是否为质数",
+    "如果输入大于等于0的整数，上面代码能正确判断N是否质数",
+    "如将Flag = true 修改为Flag = N>=2? true:false 则能判断所有整数包括负整数、0、正整数是否为质 数"
+   ],
+   "answer": 3,
+   "analysis": "选 D。原代码对 N=1 会误判为质数；若改为 Flag = N>=2 ? true : false，则对包括负数、0 在内的所有整数都能正确判断。"
+  },
+  {
+   "n": 13,
+   "stem": "下面C++代码用于实现如下图所示的效果，其有关说法正确的是（    ）。\nfor (int i = 1; i < 6; i++){ // L1\n1\nfor (int j = 1; j < i+1; j++) //L2\n2\ncout << i*j << \" \";\n3\ncout << endl;\n4\n}\n5",
+   "options": [
+    "当前代码能实现预期效果，无需调整代码",
+    "如果cout << endl; 移到循环L2内部，则可实现预期效果",
+    "如果cout << endl; 移到循环L1外部，则可实现预期效果",
+    "删除cout << endl; 行，则可实现预期效果"
+   ],
+   "answer": 0,
+   "analysis": "选 A。当前代码的行结构正好实现图示效果，无需调整。"
+  },
+  {
+   "n": 14,
+   "stem": "下面C++代码执行后，输出是（    ）。\nint cnt1 = 0, cnt2 = 0;\n1\nfor (int i = 0; i < 10; i++){\n2\nif (i % 2 == 0)\n3\ncontinue;\n4\nif (i % 2)\n5\ncnt1 += 1;\n6\nelse if (i % 3 == 0)\n7\ncnt2 += 1;\n8\n}\n9\ncout << cnt1 << \" \" << cnt2;\n10",
+   "options": [
+    "5 2",
+    "5 0",
+    "0 2",
+    "0 0"
+   ],
+   "answer": 1,
+   "analysis": "选 B（5 0）。i 为奇数时 cnt1 加 1（共 5 次）；i 为偶数时先执行 continue，else if 永远执行不到，cnt2 保持 0。"
+  },
+  {
+   "n": 15,
+   "stem": "在下面的C++代码中，N必须是小于10大于1的整数，M为正整数（大于0）。如果M被N整除则M为幸运\n数，如果M中含有N且能被N整除，则为超级幸运数，否则不是幸运数。程序用于判断M是否为幸运数或超级幸运数\n或非幸运数。阅读下面代码，有关说法正确的是（    ）。\nint N, M;\n1\ncout << \"请输入幸运数字：\";\n2\ncin >> N;\n3\ncout << \"请输入正整数：\";\n4\ncin >> M;\n5\n6\nbool Lucky;\n7\nif (M % N == 0)\n8\nLucky = true;\n9\nelse\n10\nLucky = false;\n11\nwhile (M){\n12\nif (M % 10 == N && Lucky){\n13\nprintf(\"%d是%d的超级幸运数!\", M, N);\n14\nbreak;\n15\n}\n16\nM /= 10;\n17\n}\n18\nif (M == 0)\n19\nif (Lucky)\n20\nprintf(\"%d是%d的幸运数!\", M, N);\n21\nelse\n22\nprintf(\"%d非%d的幸运数!\", M, N);\n23",
+   "options": [
+    "如果N输入3，M输入36则将输出：36是3的超级幸运数!",
+    "如果N输入7，M输入21则将输出：21是7的幸运数!",
+    "如果N输入8，M输入36则将输出：36非8的超级幸运数!",
+    "如果N输入3，M输入63则将输出：63是3的超级幸运数!"
+   ],
+   "answer": 3,
+   "analysis": "选 D。N=3、M=63：63%3==0 是幸运数，个位含 3，输出“63是3的超级幸运数!”；其余选项中 M 在循环中被不断除 10 改变，最终输出与描述不符。"
+  }
+ ],
+ "judge": [
+  {
+   "n": 1,
+   "stem": "执行C++代码cout << '9'+'1'; 的输出为10。(  )",
+   "answer": null,
+   "analysis": "错误。'9'、'1' 参与运算时用 ASCII 码：57 + 49 = 106，不是 10。"
+  },
+  {
+   "n": 2,
+   "stem": "C++表达式-12 % 10 的值为2。(\n)",
+   "answer": null,
+   "analysis": "错误。C++ 中取余结果的符号跟随被除数，-12 % 10 = -2。"
+  },
+  {
+   "n": 3,
+   "stem": "C++表达式int(12.56) 的值为13。（  ）",
+   "answer": null,
+   "analysis": "错误。int() 强制转换直接截断小数部分，int(12.56) = 12。"
+  },
+  {
+   "n": 4,
+   "stem": "C++的整型变量N被赋值为10，则语句cout << N / 3 << \"-\" << N % 3 执行后输出是3-1。 (  )",
+   "answer": null,
+   "analysis": "正确。10 / 3 = 3，10 % 3 = 1，输出“3-1”。"
+  },
+  {
+   "n": 5,
+   "stem": "在C++代码中，不可以将变量命名为scanf，因为scanf是C++语言的关键字。（  ）",
+   "answer": null,
+   "analysis": "错误。scanf 是库函数名而不是关键字（虽然不建议用 scanf 作变量名，但不会因此报错）。"
+  },
+  {
+   "n": 6,
+   "stem": "下面C++代码执行后将导致死循环。（  ）\nfor (int i = 0; i < 10; i++)\n1\ncontinue;\n2",
+   "answer": null,
+   "analysis": "错误。continue 只跳过循环体剩余语句，i++ 照常执行，循环 10 次后正常结束，不会死循环。"
+  },
+  {
+   "n": 7,
+   "stem": "下面C++代码执行后将输出10。（  ）\nint cnt = 0;\n1\nfor (int i = 0; i < 10; i++)\n2\nfor (int j = 0; j < i; j++){\n3\ncnt += 1;\n4\nbreak;\n5\n}\n6\ncout << cnt;\n7",
+   "answer": null,
+   "analysis": "错误。内层循环每次执行一次就 break，i=0 时内层 0 次，i=1~9 各 1 次，cnt=9，不是 10。"
+  },
+  {
+   "n": 8,
+   "stem": "下面C++代码执行后，将输出5。（  ）\nint cnt = 0;\n1\nfor (int i = 1; i < 5; i++)\n2\nfor (int j = i; j < 5; j +=i)\n3\nif (i * j % 2 == 0)\n4\ncnt += 1;\n5\ncout << cnt;\n6",
+   "answer": null,
+   "analysis": "正确。逐组统计：i=1 时 j=1、2、4 使积为偶数（3 次中 2 次），i=2 时 2 次，i=3 时 0 次，i=4 时 1 次，cnt=5。"
+  },
+  {
+   "n": 9,
+   "stem": "下面C++代码能实现正整数各位数字之和。（  ）\nint N,Sum = 0;\n1\ncin >> N;\n2\nwhile (N){\n3\nSum += N % 10;\n4\nN /= 10;\n5\n}\n6\ncout << Sum;\n7",
+   "answer": null,
+   "analysis": "正确。N % 10 取个位、N /= 10 去个位，循环累加即得各位数字之和。"
+  },
+  {
+   "n": 10,
+   "stem": "GESP测试是对认证者的编程能力进行等级认证，同一级别的能力基本上与编程语言无关。（  ）",
+   "answer": null,
+   "analysis": "正确。GESP 认证的是编程能力，同一级别的能力要求基本上与编程语言无关。"
+  }
+ ],
+ "programming": [
+  {
+   "n": 1,
+   "name": "平方之和",
+   "desc": ""
+  },
+  {
+   "n": 2,
+   "name": "计数",
+   "desc": ""
+  }
+ ]
+}

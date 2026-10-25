@@ -1,0 +1,92 @@
+---
+title: "分治算法：归并排序与快速排序"
+level: 5
+order: 10
+duration: 120
+unit: "分治算法"
+difficulty: 进阶
+goals:
+  - "理解分治「分、治、合」三步思想"
+  - "掌握归并排序的合并过程与写法"
+  - "理解快速排序的分区思想及平均 O(n log n) 的复杂度"
+---
+
+import Check from '../../../components/Check.astro';
+import Task from '../../../components/Task.astro';
+import Reveal from '../../../components/Reveal.astro';
+
+
+## 1. 分治：大事化小，小事化了
+全班按身高排队太乱？那就**分**成两组分别排，再把两列**合并**——这就是**分治**（Divide and Conquer）：把大问题拆成结构相同的子问题，递归解决子问题，最后把结果**合**并起来。**分、治、合**三步缺一不可，和递归天生一对（子问题用递归解决）。
+
+排序是分治的主战场。著名的两大 O(n log n) 排序——归并排序、快速排序——都是分治的产物，它们比 O(n²) 的冒泡、选择排序快一个量级，是处理 10⁵ 级数据的标配。
+
+<Check question="分治算法通常包含哪三个步骤？" options={['读、算、写','分、治、合','猜、试、改','排、查、删']} answer={1} explanation="分：把问题拆成更小的同类子问题；治：递归解决子问题（小到一定程度直接解）；合：把子问题的解合并成原问题的解。" />
+
+## 2. 归并排序：先分两半，再有序合并
+归并排序像整理两叠已排好序的扑克牌：两叠牌面朝上，每次取较小的一张放到新堆。前提是两叠**各自有序**——那就先把数组递归对半分，分到只剩 1 个元素（天然有序），再逐级合并。
+
+```cpp
+int a[100005], tmp[100005];
+void mergeSort(int l, int r) {
+    if (l >= r) return;                 // 出口：区间长度 <= 1，天然有序
+    int mid = (l + r) / 2;
+    mergeSort(l, mid);                  // 分：左半排好
+    mergeSort(mid + 1, r);              // 分：右半排好
+    int i = l, j = mid + 1, k = l;      // 合：双指针有序归并
+    while (i <= mid && j <= r)
+        tmp[k++] = (a[i] <= a[j]) ? a[i++] : a[j++];
+    while (i <= mid) tmp[k++] = a[i++]; // 左半边剩余
+    while (j <= r)   tmp[k++] = a[j++]; // 右半边剩余
+    for (int t = l; t <= r; t++) a[t] = tmp[t];
+}
+```
+
+每层合并 O(n)，共 log n 层，总复杂度 **O(n log n)**，且**稳定**（相等元素的相对顺序不变）。
+
+> 教学提醒：归并的「双指针合并」是算法竞赛高频子模块（逆序对、区间合并都靠它），值得单独练熟。可让学生先手工模拟 {3,1,4,2} 的分治合并树。
+
+## 3. 快速排序：选标兵，分左右
+快排的思路反过来：**先治后分**。选一个**基准值 pivot**（常取中间元素），把数组重排成「≤pivot 的在左，>pivot 的在右」，然后对左右两边递归。
+
+```cpp
+void quickSort(int l, int r) {
+    if (l >= r) return;
+    int pivot = a[(l + r) / 2];
+    int i = l, j = r;
+    while (i <= j) {
+        while (a[i] < pivot) i++;
+        while (a[j] > pivot) j--;
+        if (i <= j) { swap(a[i], a[j]); i++; j--; }
+    }
+    quickSort(l, j);                    // 递归左段
+    quickSort(i, r);                    // 递归右段
+}
+```
+
+平均复杂度 O(n log n)，但实际比赛中直接用 `sort(a, a+n)`（底层是 introsort，快排+堆排的保险版）即可，**手写快排的意义在于理解分区思想**——它还能 pivot 变形解决「第 k 大」等问题。
+
+<Check question="归并排序与快速排序的共同点是？" options={['都是 O(n²)','都用分治思想，平均 O(n log n)','都不需要递归','都只适合小数据']} answer={1} explanation="两者都是分治排序：归并是「先分治后合并」，快排是「先分区后分治」，平均时间都是 O(n log n)，远优于 O(n²) 的冒泡排序。" />
+
+## 4. 复杂度与稳定性速览
+| 排序 | 平均复杂度 | 最坏 | 稳定性 | 特点 |
+|------|-----------|------|--------|------|
+| 冒泡/选择 | O(n²) | O(n²) | 冒泡稳/选择不稳 | 写法简单，只适合 n≤10⁴ |
+| 归并 | O(n log n) | O(n log n) | 稳定 | 需要额外数组，合并可扩展 |
+| 快速 | O(n log n) | O(n²) | 不稳定 | 原地排序，常数小 |
+
+**口诀：数据一多别冒泡，n log n 起步走；要稳定选归并，要原地选快排。**
+
+## 5. 实战：逆序对数量
+归并排序还有个隐藏技能：合并时「右边剩下的每个元素都比左边当前元素小」，可以直接数出**逆序对**（`i<j` 但 `a[i]>a[j]`）的总数。
+
+<Task title="逆序对" input="第一行一个正整数 n（n≤100000），第二行 n 个整数" output="逆序对的总数（对数可能很大，用 long long）" sampleIn="4
+2 4 1 3" sampleOut="3">O(n²) 双重循环会超时。在归并排序的合并步骤里统计：每当右边元素被取走时，左边剩余元素个数就是它以左形成的逆序对数。</Task>
+<Reveal label="查看参考程序与思路"><pre><code>{`#include <iostream>\nusing namespace std;\nint a[100005], tmp[100005];\nlong long ans = 0;\nvoid mergeSort(int l, int r){\n    if(l >= r) return;\n    int mid = (l+r)/2;\n    mergeSort(l, mid);\n    mergeSort(mid+1, r);\n    int i = l, j = mid+1, k = l;\n    while(i<=mid && j<=r){\n        if(a[i] <= a[j]) tmp[k++] = a[i++];\n        else { ans += mid - i + 1; tmp[k++] = a[j++]; }\n    }\n    while(i<=mid) tmp[k++] = a[i++];\n    while(j<=r) tmp[k++] = a[j++];\n    for(int t=l;t<=r;t++) a[t] = tmp[t];\n}\nint main(){\n    int n; cin>>n;\n    for(int i=0;i<n;i++) cin>>a[i];\n    mergeSort(0, n-1);\n    cout<<ans<<'\\n';\n}`}</code></pre>关键洞察在 else 分支：把 a[j] 放进 tmp 时，左半区还剩下的 a[i..mid] 都大于 a[j]（因为左半区已排好序），且它们的下标都在 j 之前——正好贡献 mid-i+1 个逆序对。归并本身 O(n log n)，统计零额外代价。样例 2 4 1 3：(2,1)、(4,1)、(4,3) 共 3 对。逆序对总数最多约 n²/2 = 5×10⁹，必须开 long long。这是分治「边治边算」的经典范式。</Reveal>
+
+## 6. 课后巩固
+1. 概念题：画出数组 {6, 3, 8, 2} 的归并排序分治树，标出每一次合并的结果。
+2. 编程题：手写归并排序，读 n 个数（n≤10⁵）并升序输出。
+3. 编程题：读 n 个数，用 sort 降序输出前 5 个（体会库排序的用法）。
+4. 思考题：快排最坏情况 O(n²) 在什么输入下发生？为什么实际中仍认为它快？
+5. 拓展：归并排序是稳定排序。若用快排排「（分数，学号）」记录并按分数升序，学号的顺序会怎样？什么时候稳定性重要？

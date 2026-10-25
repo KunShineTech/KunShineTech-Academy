@@ -1,0 +1,71 @@
+---
+title: "多层分支与区间判断"
+level: 2
+order: 6
+duration: 120
+unit: "控制结构"
+difficulty: 基础
+goals:
+  - "熟练使用if/else if/else嵌套"
+  - "理解条件区间与边界"
+  - "掌握switch的基本使用与break"
+---
+
+import Check from '../../../components/Check.astro';
+import Task from '../../../components/Task.astro';
+import Reveal from '../../../components/Reveal.astro';
+
+
+## 1. 为什么需要多层分支？
+生活中的收费、等级评价、购票优惠通常不是只有“是/否”两个结果，而是根据多个条件决定结果。
+
+```cpp
+if (score >= 90) cout << "A";
+else if (score >= 80) cout << "B";
+else if (score >= 60) cout << "C";
+else cout << "D";
+```
+
+**数学原理：分段函数。** 上述代码对应四个互不重叠的区间：`[90,100]`、`[80,90)`、`[60,80)`、`[0,60)`。因为程序按顺序判断，所以第二个条件不必再写 `score<90`。
+
+## 2. switch的典型结构
+```cpp
+switch(day){
+    case 1: cout<<"Mon"; break;
+    case 2: cout<<"Tue"; break;
+    default: cout<<"Other";
+}
+```
+
+`switch`适合比较整型或枚举等离散值，不适合直接表达 `score>=90` 这样的区间。缺少 `break` 时可能继续执行后面的 `case`，需要有意识地使用。
+
+## 3. 例题：阶梯水费
+输入非负整数用水量 `n`：前10吨每吨2元，11—20吨部分每吨3元，超过20吨部分每吨5元。
+
+分段公式：
+- `0≤n≤10`：`2n`
+- `10<n≤20`：`20+3(n-10)`
+- `n>20`：`20+30+5(n-20)`
+
+```cpp
+#include <iostream>
+using namespace std;
+int main(){
+    int n; cin>>n;
+    int cost;
+    if(n<=10) cost=2*n;
+    else if(n<=20) cost=20+3*(n-10);
+    else cost=50+5*(n-20);
+    cout<<cost<<'\n';
+}
+```
+
+测试：`10→20`、`11→23`、`20→50`、`21→55`。边界值是分段题最重要的测试点。
+
+<Check question="score=90时，以上等级程序输出什么？" options={['A','B','C','D']} answer={0} explanation="第一条score>=90成立，后续else if不再执行。" />
+
+<Task title="电影票优惠" input="年龄age（0—120）" output="age<6输出FREE；6≤age<18输出HALF；18≤age<60输出FULL；否则输出SENIOR" sampleIn="18" sampleOut="FULL">要求使用 `if / else if / else`；必须测试5、6、17、18、59、60。</Task>
+<Reveal label="查看参考程序"><pre><code>{`#include <iostream>\nusing namespace std;\nint main(){int age;cin>>age;if(age<6)cout<<"FREE";else if(age<18)cout<<"HALF";else if(age<60)cout<<"FULL";else cout<<"SENIOR";cout<<'\\n';}`}</code></pre></Reveal>
+
+## 4. 进阶练习
+设计一个“月份→季节”的 `switch` 结构，要求每3个月为一季，合理处理非法月份。说明为何可以让多个 `case` 共用一个输出。

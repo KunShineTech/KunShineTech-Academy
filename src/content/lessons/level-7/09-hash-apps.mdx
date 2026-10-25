@@ -1,0 +1,83 @@
+---
+title: "哈希表的应用"
+level: 7
+order: 9
+duration: 120
+unit: "哈希表"
+difficulty: 进阶
+goals:
+  - "能用哈希解决快速查找、去重、计数三类问题"
+  - "掌握 set 与 map 在竞赛中的典型用法"
+  - "了解字符串哈希与 pair 哈希的基本思想"
+---
+
+import Check from '../../../components/Check.astro';
+import Task from '../../../components/Task.astro';
+import Reveal from '../../../components/Reveal.astro';
+
+
+## 1. 哈希三大件：查存在、做计数、来去重
+上一课我们造了哈希表这台「发动机」，这一课把它开到路上。绝大多数哈希应用都出自三个场景：
+
+1. **快速查找**：「这个元素出现过吗？」——O(1) 回答，代替 O(n) 的逐个扫描。
+2. **计数**：「每个元素出现了几次？」——哈希值直接当下标，cnt[x]++。
+3. **去重**：「去掉重复只留一份」——查过了就不再收。
+
+考场上不用每次都手写拉链法，C++ 的 STL 已经造好了成品：**unordered_set**（只存键）、**unordered_map**（键值对），底层就是哈希表，开箱即用。
+
+```cpp
+#include <unordered_map>
+unordered_map<string, int> cnt;   // 字符串也能当「下标」！
+
+string s;
+while (cin >> s) cnt[s]++;        // 统计每种单词出现次数
+```
+
+## 2. 应用一：判定存在与去重
+判重问题几乎是一套固定话术：
+
+```cpp
+unordered_set<int> seen;
+for (int i = 1; i <= n; i++) {
+    cin >> x;
+    if (seen.count(x)) {          // 查存在，O(1)
+        cout << "重复：" << x << '\n';
+    } else {
+        seen.insert(x);           // 登记入库
+    }
+}
+```
+
+以前判重要双重循环 O(n²)，1 万个数就要比较上亿次；哈希一来，1 秒跑完百万级数据。**当 n 到了 10⁵ 而你的算法还是 O(n²) 时，先想想哈希。**
+
+## 3. 应用二：统计与配对
+计数升级版：不只是「有没有」，还要「有几个」「和别的什么配成一对」。map 把任意类型映射到任意信息：
+
+```cpp
+unordered_map<long long, int> firstPos;  // 数值 -> 首次出现的位置
+```
+
+常见套路还有：统计频率后按频率排序找 Top-K；把「值」映射到「下标」实现快速反查；用 map 给离散的大数值重新编号（离散化思想）。
+
+## 4. 应用三：字符串与 pair 哈希
+哈希不限于整数。**字符串哈希**的思想：把字符串看成「大整数」（如把 "GESP" 视为 71×p³+69×p²+83×p+80），再取模压进表里——两个字符串哈希值相同，大概率内容相同。这是字符串匹配的利器（七级了解思想即可）。
+
+**pair 哈希**：想按「(姓名, 科目)」两个字段一起查？把两个字段组合成一个整数键（如 a×大质数+b）再哈希。 unordered_map 甚至可以接受自定义哈希函数的 pair 键。
+
+> 教学提醒：哈希速度快但有代价——unordered_set/map **不保证元素有序**。如果题目要求「按从小到大输出」或「找第 k 小」，请回头用 set/map（红黑树）或排序，别硬用哈希。
+
+<Check question="下列哪个场景最适合用哈希解决？" options={['把数列从小到大排序输出','快速判断一个新元素是否在已出现的元素集合中','求斐波那契第 n 项','输出九九乘法表']} answer={1} explanation="判存在是哈希的看家本领，O(1) 完成；排序类需求应该用 sort 或有序容器。" />
+
+<Check question="unordered_map 相比 map，主要优势与代价分别是？" options={['有序且更快','平均 O(1) 但无序','更省内存且有序','能存重复键']} answer={1} explanation="unordered_map 底层是哈希表，平均操作 O(1)，但不维护键的顺序；map 底层是平衡树，O(log n) 且有序。" />
+
+## 5. 实战：两数之和
+<Task title="两数之和" input="第一行 n、target（n≤10^5，数值与 target 的绝对值不超过 10^9），第二行 n 个整数" output="是否存在两个不同的数之和等于 target，存在输出 YES，否则输出 NO" sampleIn="6 10
+1 4 6 5 3 8" sampleOut="YES">样例中 4+6=10。双重循环 O(n²) 会超时，想想：读到一个数 x 时，我们真正想问的是什么？</Task>
+<Reveal label="查看参考程序与思路"><pre><code>{`#include <iostream>\n#include <unordered_set>\nusing namespace std;\nint main(){\n    int n;\n    long long target,x;\n    cin>>n>>target;\n    unordered_set<long long> seen;\n    bool ok=false;\n    for(int i=0;i<n;i++){\n        cin>>x;\n        if(seen.count(target-x)) ok=true;\n        seen.insert(x);\n    }\n    cout<<(ok?"YES":"NO")<<'\\n';\n}`}</code></pre>读入 x 时，只需查「target-x 是否已经出现过」——一次哈希查询 O(1)。注意先查询再插入，保证两个数是不同的位置；一旦发现可行可以提前结束读入。把 seen 换成排序+二分同样可行（O(n log n)），哈希方案则平均做到 O(n)。</Reveal>
+
+## 6. 课后巩固
+1. 概念题：说出哈希三大应用场景，各写一句「什么时候该想到用它」。
+2. 编程题：读入 n 个数，用 unordered_set 去重后按读入顺序输出每种数一次。
+3. 编程题：统计一篇短文中每个单词出现的次数，按次数从大到小输出前 5 个。
+4. 思考题：为什么判存在要先查再插入？颠倒顺序在两数之和问题里会错成什么样？
+5. 思考题：unordered_map 存了 10⁶ 个键之后变慢了，可能是什么原因？怎么验证？

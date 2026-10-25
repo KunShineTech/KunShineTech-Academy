@@ -1,0 +1,59 @@
+---
+title: "计算机存储：RAM、ROM与Cache"
+level: 2
+order: 1
+duration: 120
+unit: "计算机基础"
+difficulty: 基础
+goals:
+  - "区分RAM、ROM、Cache的功能与断电特性"
+  - "理解容量、速度与成本的取舍"
+  - "解释程序从磁盘加载到内存的过程"
+---
+
+import Check from '../../../components/Check.astro';
+import Task from '../../../components/Task.astro';
+import Reveal from '../../../components/Reveal.astro';
+
+
+## 1. 从生活中的书桌理解存储层级
+把计算机想成一名学生：**硬盘**像书柜，容量大但拿书慢；**RAM（内存）**像书桌，正在使用的书摆在上面；**Cache（高速缓存）**像手边最常翻的一张便签，容量小但访问快。**ROM**更像出厂时写好的启动说明，典型特性是断电仍能保存内容。
+
+| 名称 | 核心作用 | 断电后 | 特点 |
+|---|---|---|---|
+| RAM | 存放正在运行的程序和数据 | 通常丢失 | 可读写，容量较大 |
+| ROM | 存储固件等非易失信息 | 通常保留 | 典型用途是固件存储 |
+| Cache | 缓存CPU近期可能访问的数据 | 通常丢失 | 比RAM更快，容量更小 |
+| SSD/硬盘 | 长期保存文件 | 保留 | 容量大，访问较慢 |
+
+> 教学提醒：这里比较的是**典型用途和常见实现**。ROM不是“永远不能改写”；现代固件常用可更新的闪存。CPU缓存通常由SRAM构成。
+
+## 2. 数学与程序原理
+容量换算：在常见二进制容量单位中，1 KiB = 1024 B，1 MiB = 1024 KiB。计算机用位（bit）存储0和1；8位通常组成1字节（Byte）。
+
+若一张图片有 `1024×768` 个像素、每像素3字节，则未压缩像素数据量为 `1024×768×3=2,359,296 B`，约 `2.25 MiB`。这是**未压缩数据估算**，实际文件大小取决于格式与压缩。
+
+```cpp
+#include <iostream>
+using namespace std;
+int main() {
+    long long width = 1024, height = 768;
+    long long bytes = width * height * 3;
+    cout << bytes << '\n';
+}
+```
+
+## 3. 例题解析
+**问题：** 为什么关闭电脑后，保存在硬盘的代码还在，但程序运行中的临时变量不一定保留？
+
+**思路：** 区分“文件保存位置”和“程序执行位置”。源代码文件保存在非易失存储中；运行时变量一般在内存中，断电后其值通常不保留。
+
+<Check question="程序运行时，变量通常主要位于哪里？" options={['RAM','显示器','打印机','键盘']} answer={0} explanation="变量运行时一般占用内存；编译器和操作系统还会决定寄存器等具体存放位置。" />
+
+<Task title="图片容量估算" input="三个正整数 w、h、b（像素宽、高、每像素字节数）" output="未压缩字节数" sampleIn="100 50 3" sampleOut="15000">编写程序计算 `w*h*b`。为什么用 `long long` 比 `int` 更稳妥？先考虑最大可能乘积。</Task>
+<Reveal label="查看参考程序与思考"><pre><code>{`#include <iostream>\nusing namespace std;\nint main(){long long w,h,b;cin>>w>>h>>b;cout<<w*h*b<<'\\n';}`}</code></pre>乘法结果可能超出32位整数范围，因此先使用长整型存储。</Reveal>
+
+## 4. 课后巩固
+1. 画一张“CPU—Cache—RAM—SSD”的简图，说明数据为何分层存储。
+2. 用自己的语言解释 RAM 与 ROM 的差别。
+3. 把 `2048 KiB` 换算成 MiB，并说明换算过程。

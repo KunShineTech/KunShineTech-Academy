@@ -1,0 +1,63 @@
+---
+title: "计算机网络：LAN、WAN、TCP/IP与OSI"
+level: 2
+order: 2
+duration: 120
+unit: "计算机基础"
+difficulty: 基础
+goals:
+  - "区分局域网、城域网和广域网"
+  - "了解TCP/IP四层与OSI七层"
+  - "认识IP地址、子网掩码与常见协议"
+---
+
+import Check from '../../../components/Check.astro';
+import Task from '../../../components/Task.astro';
+import Reveal from '../../../components/Reveal.astro';
+
+
+## 1. 网络为什么要分层？
+两个人寄快递，需要写内容、封装、地址、运输和交付。网络通信也需要不同层分别解决问题，分层的好处是**每层只负责一类任务**。
+
+| 网络范围 | 缩写 | 典型例子 |
+|---|---|---|
+| 局域网 | LAN | 家庭Wi-Fi、学校机房 |
+| 城域网 | MAN | 覆盖城市范围的网络 |
+| 广域网 | WAN | 跨城市、跨国家的网络 |
+
+### TCP/IP 四层模型（教学常见表述）
+1. **应用层**：HTTP、DNS等应用协议。
+2. **传输层**：TCP、UDP，负责端到端传输。
+3. **网络层**：IP，负责逻辑寻址与路由。
+4. **网络接口层**：局域链路传输，例如以太网。
+
+OSI 七层从上到下为：应用、表示、会话、传输、网络、数据链路、物理。OSI是参考模型，TCP/IP是互联网实际协议体系的常用分层表示。
+
+## 2. IP地址与子网的数学原理
+IPv4地址由32位组成，常写成4段十进制数，例如 `192.168.1.10`，每段在0—255之间。`/24` 表示前24位是网络前缀，剩下8位为主机部分。一个 `/24` 地址块共有 `2^8=256` 个地址；传统普通子网常有254个可用主机地址，但具体使用规则需看网络环境。
+
+**例题：** `192.168.1.10/24` 和 `192.168.1.20/24` 是否属于同一子网？
+
+**解析：** 两者前24位相同，对应网络地址都是 `192.168.1.0/24`，因此属于同一子网。
+
+```cpp
+#include <iostream>
+using namespace std;
+int main(){
+    int a,b,c,d; char dot1,dot2,dot3;
+    cin>>a>>dot1>>b>>dot2>>c>>dot3>>d;
+    if(a>=0&&a<=255&&b>=0&&b<=255&&c>=0&&c<=255&&d>=0&&d<=255)
+        cout<<"IPv4四段范围有效\n";
+    else cout<<"范围错误\n";
+}
+```
+
+> 这段程序只检查每段数字范围，不是完整的IPv4文本格式校验器；格式校验属于教学扩展。
+
+<Check question="在TCP/IP四层模型中，IP协议通常位于哪一层？" options={['应用层','传输层','网络层','网络接口层']} answer={2} explanation="IP负责逻辑寻址与路由，通常归于网络层。" />
+
+<Task title="同一/24网段判断" input="两组IPv4地址，每组四个0到255的整数" output="若前三段相同输出YES，否则输出NO" sampleIn="192 168 1 10\n192 168 1 20" sampleOut="YES">只针对 `/24` 掩码，比较前三段。先画出条件判断流程图。</Task>
+<Reveal label="参考思路"><pre><code>{`#include <iostream>\nusing namespace std;\nint main(){int a,b,c,d,e,f,g,h;cin>>a>>b>>c>>d>>e>>f>>g>>h;cout<<(a==e&&b==f&&c==g?"YES":"NO")<<'\\n';}`}</code></pre>注意：一般CIDR子网判断不能只比较前三段，此题专为 `/24` 设计。</Reveal>
+
+## 3. 课后练习
+绘制从浏览器打开网页到服务器响应的简化过程，标出HTTP、TCP、IP；解释为什么家里几台电脑通常构成LAN。

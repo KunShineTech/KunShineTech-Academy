@@ -1,0 +1,89 @@
+---
+title: "面向对象与类"
+level: 6
+order: 9
+duration: 120
+unit: "面向对象"
+difficulty: 基础
+goals:
+  - "理解面向对象思想，认识封装、继承、多态三个基本概念"
+  - "掌握类的定义：成员变量、成员函数、构造函数与访问控制"
+  - "能够创建类并解决简单的实际问题"
+---
+
+import Check from '../../../components/Check.astro';
+import Task from '../../../components/Task.astro';
+import Reveal from '../../../components/Reveal.astro';
+
+
+## 1. 从「散装零件」到「整机」
+之前的程序像一盘散沙：学生的姓名是一个字符串、年龄是一个 int、成绩是一个数组，各过各的。如果班里有 50 个学生，变量会多到让人崩溃。**面向对象**的想法是：把「数据」和「操作这些数据的功能」打包成一个整体——就像手机把屏幕、芯片、摄像头封装成一个整机，你按按钮就行，不用管内部电路。
+
+这个「整机」在 C++ 里叫**类（class）**，造出来的具体物件叫**对象**。类是图纸，对象是按图纸造出的实物：一张「学生」图纸，可以造出小明、小红无数个学生对象。
+
+## 2. 封装：数据配保镖
+打包只是第一招，面向对象的第一个核心概念是**封装**：把成员变量设为私有（private），只留公开的成员函数（public）作为「对外窗口」。
+
+```cpp
+class Student {
+private:
+    string name;              // 私有：外面不能直接碰
+    int age;
+public:
+    void setAge(int a) {      // 公开的「设置窗口」
+        if (a >= 0 && a <= 150) age = a;   // 顺带把关
+    }
+    int getAge() { return age; }
+};
+```
+
+为什么要这么麻烦？想想 ATM 机：钱箱锁在机器里（private），你只能按公开按钮（public 函数）操作——**不该改的数据外面改不动，想捣乱也乱不了**。setAge 里的 if 把关还能拦截「年龄 = -5」这种脏数据。
+
+> 教学提醒：struct 和 class 在 C++ 里几乎一样，唯一区别是默认访问权限：struct 默认 public，class 默认 private。竞赛代码里常见用 struct 存图上的边，也是合法的「类」。
+
+## 3. 构造函数与 this
+对象出生时自动执行的函数叫**构造函数**，名字和类名相同、没有返回值类型，常常用来初始化：
+
+```cpp
+class Student {
+private:
+    string name;
+    int age;
+public:
+    Student(string n, int a) {   // 构造函数
+        name = n; age = a;
+    }
+    void show() {
+        cout << name << ' ' << age << '\n';
+    }
+};
+Student stu("小明", 12);          // 出生时就起好名字
+stu.show();
+```
+
+当参数名和成员变量同名时，用 `this->` 指「本对象的成员」：`this->age = age;`。this 就是对象自己的「自我介绍牌」。
+
+## 4. 继承与多态：会认祖归宗
+- **继承**：新类在旧类的基础上扩展。`class Pupil : public Student` 表示「小学生是一种学生」，自动拥有学生的一切成员，还可以加自己的新成员（如「少先队员编号」）。像孩子继承父母的基因又长出新的特点。
+- **多态**：「同一句话，不同对象听出不同反应」。C++ 里通过**虚函数**实现：父类指针指向哪个对象，就执行哪个对象重写的版本。了解概念即可：马戏团驯兽师喊「叫一声」，狗汪汪、猫喵喵——**同一指令，因对象而异**。
+
+六级要求「了解」继承与多态的概念，重点会写简单的类并正确使用。
+
+<Check question="关于 C++ 类的访问控制，下列说法正确的是？" options={['class 的成员默认是 public','class 的成员默认是 private，struct 默认是 public','private 成员在类外可以直接访问','构造函数必须写返回值类型']} answer={1} explanation="class 默认 private、struct 默认 public，这是两者唯一区别；private 成员只能通过 public 成员函数间接访问；构造函数没有返回值类型，名字与类名相同。" />
+
+## 5. 动手：银行账户类
+<Check question="关于构造函数，下列说法正确的是？" options={['函数名与类名相同，没有返回值类型，创建对象时自动执行','必须返回 int 类型','一个类最多只能定义一个构造函数','必须声明为 private']} answer={0} explanation="构造函数名字与类相同、无返回类型、对象出生时自动调用，常用于初始化成员。一个类可以定义多个构造函数（参数不同，即重载）；一般声明为 public，否则没法创建对象。" />
+
+<Task title="设计 BankAccount 类" input="第一行整数 n（n≤100），接下来 n 行，每行一条操作：'D x' 表示存入 x 元，'W x' 表示取出 x 元（x 为正整数，不超过 1000）。初始余额为 0" output="执行完所有操作后的余额（取出时若余额不足则该次操作忽略）" sampleIn="4
+D 100
+W 30
+W 100
+D 50" sampleOut="120">把余额作为类的私有成员，存取写成成员函数，在函数内部判断是否透支。体会「数据被保护，只能通过规定的方法修改」。</Task>
+<Reveal label="查看参考程序与思路"><pre><code>{`#include <iostream>\nusing namespace std;\nclass BankAccount {\nprivate:\n    int balance;\npublic:\n    BankAccount() { balance = 0; }\n    void deposit(int x) { balance += x; }\n    void withdraw(int x) {\n        if(balance >= x) balance -= x;   // 余额不足则忽略\n    }\n    int getBalance() { return balance; }\n};\nint main(){\n    int n; cin>>n;\n    BankAccount acct;\n    for(int i = 1; i <= n; i++){\n        char op; int x;\n        cin>>op>>x;\n        if(op == 'D') acct.deposit(x);\n        else acct.withdraw(x);\n    }\n    cout<<acct.getBalance()<<'\\n';\n}`}</code></pre>balance 是私有成员，main 里无法直接读写，只能调用 deposit、withdraw、getBalance 三个公开窗口——这正是封装的意义：所有规则（如透支检查）都收在类的内部，外面想违规都做不到。样例：存 100，取 30 剩 70，取 100 因不足被忽略，再存 50，结果 120。</Reveal>
+
+## 6. 课后巩固
+1. 概念题：解释「类是图纸，对象是实物」，并举两个生活中的类与对象的例子。
+2. 概念题：什么是封装？为什么要把成员变量设为 private？
+3. 编程题：设计一个 Rectangle 类，有长和宽两个私有成员，提供设置、求面积、求周长的公开函数，并写 main 测试。
+4. 思考题：构造函数和普通成员函数有什么区别？对象销毁时能自动执行的函数叫什么？（课外了解：析构函数）
+5. 挑战题：用继承写一个 Animal 父类和 Dog、Cat 两个子类，各有一个 speak 函数输出不同叫声，体会多态的思想。

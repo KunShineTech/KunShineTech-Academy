@@ -1,0 +1,267 @@
+{
+ "session": "2024-12",
+ "level": 8,
+ "file": "GESP 2024年12月认证C++ 8级真题.pdf",
+ "legacy": false,
+ "choiceCount": 15,
+ "judgeCount": 10,
+ "progCount": 2,
+ "choiceAnswers": "BADDCCCBDACBBAD",
+ "judgeAnswers": "",
+ "choice": [
+  {
+   "n": 1,
+   "stem": "小杨家响应国家“以旧换新”政策，将自家的汽油车置换为新能源汽车，正在准备自编车牌。自编车牌包括5\n位数字或英文字母，要求第5位必须是数字，前4位中可以有最多1位英文字母。英文字母必须是大写，而且不能是O\n或I（因为容易与数字0或1混淆）。请问自编车牌共有多少种可能性？（  ）。",
+   "options": [
+    "100,000",
+    "1,060,000",
+    "1,360,000",
+    "1,460,000"
+   ],
+   "answer": 1,
+   "analysis": "选 B（1,060,000）。前 4 位：0 个字母 10⁴ 种，恰 1 个字母 C(4,1)×24×10³ 种，共 106000 种；第 5 位数字 10 种，相乘得 1,060,000。"
+  },
+  {
+   "n": 2,
+   "stem": "新年到，四家人在一起聚会。其中两家有三口人，另外两家有两口人。现在要安排大家在一张十人圆桌坐\n下，要求一家人必须相邻就座。由于有“主座”的习俗，每个座位都被认为是不同的。请问共有多少种就座方案？（\n）。",
+   "options": [
+    "8640",
+    "6912",
+    "144",
+    "60"
+   ],
+   "answer": 0,
+   "analysis": "选 A（8640）。捆绑法：每家人视为一个整体做圆排列 (4-1)!，家庭内部 3!·3!·2!·2!，因座位有主座区分再乘 10，共 6×6×6×2×2×10=8640 种。"
+  },
+  {
+   "n": 3,
+   "stem": "下面关于C++类继承的说法，错误的是（  ）。",
+   "options": [
+    "一个类可以继承多个类。",
+    "一个类可以被多个类继承。",
+    "一个类可以继承另一个类的子类。",
+    "抽象类必须被至少一个类继承，否则会编译错误。"
+   ],
+   "answer": 3,
+   "analysis": "选 D。抽象类即使不被任何类继承也不会编译错误，只是不能实例化；多重继承、被多个类继承、继承子类等说法均成立。"
+  },
+  {
+   "n": 4,
+   "stem": "使用邻接表表达一个简单有向图，图中包含v 个顶点、e 条边，则该出边表中边节点的个数为（  ）。",
+   "options": [
+    "",
+    "",
+    "",
+    ""
+   ],
+   "answer": 3,
+   "analysis": "选 D。出边邻接表中每条有向边恰好存储一个边结点，共 e 个边结点（选项公式以真题原件为准）。"
+  },
+  {
+   "n": 5,
+   "stem": "以下将二维数组作为参数的函数声明，哪个是符合语法的？（  ）。",
+   "options": [
+    "void Bubble(int a[10][], int m);",
+    "void Bubble(int a[][], int n, int m);",
+    "void Bubble(int (*a)[20], int n);",
+    "void Bubble(int * a[20], int n);"
+   ],
+   "answer": 2,
+   "analysis": "选 C。int (*a)[20] 是指向“含 20 个 int 的数组”的指针，与二维数组类型匹配；a[10][]、a[][] 缺少第二维大小，int *a[20] 则是一个指针数组。"
+  },
+  {
+   "n": 6,
+   "stem": "已知两个点A 、B 在平面直角坐标系下的坐标分别为\n，并分别定义变量double xa, ya,\n和\nxb, yb; 存储坐标。假设直线AB 的斜率存在，下列哪个表达式可以用来表达它？（  ）。",
+   "options": [
+    "(xa - xb) / (ya - yb)",
+    "(xa - xb) / (yb - ya)",
+    "(ya - yb) / (xa - xb)",
+    "(ya - yb) / (xb - xa)"
+   ],
+   "answer": 2,
+   "analysis": "选 C。斜率 = 纵坐标差 / 横坐标差，即 (ya-yb)/(xa-xb)，注意分子分母分别对应哪个坐标。"
+  },
+  {
+   "n": 7,
+   "stem": "二项式\n项的系数是（  ）。\n的展开式中",
+   "options": [
+    "6",
+    "15",
+    "20",
+    "120"
+   ],
+   "answer": 2,
+   "analysis": "选 C（20）。二项展开系数即杨辉三角中的组合数，所求为 C(6,3)=20（题干公式以真题原件为准）。"
+  },
+  {
+   "n": 8,
+   "stem": "以下关于动态规划的说法中，错误的是（  ）。",
+   "options": [
+    "动态规划方法有递推和递归两种实现形式。",
+    "递归实现动态规划方法的时间复杂度总是不低于递推实现。",
+    "动态规划方法将原问题分解为一个或多个相似的子问题。",
+    "动态规划方法通常能够列出递推公式。"
+   ],
+   "answer": 1,
+   "analysis": "选 B。“总是不低于”过于绝对：带记忆化的递归实现与递推实现复杂度相当，不存在必然的“总是”关系。"
+  },
+  {
+   "n": 9,
+   "stem": "在下面的程序中，使用整数表示一种组合。整数二进制表示的某一位为1，表示该位对应的数被选中，反之\n为0表示未选中。例如，从0 - 5 这6 个数中选出3 个，则0b111000 代表选中3, 4, 5 三个数，0b011001 代表\n选中0, 3, 4 三个数。zuhe_next 函数按组合对应的整数由大到小的顺序，求出组合c 的下一个组合。横线处可\n以填入的是（  ）。\nint intlow2(int c) {\n1\nreturn ________;  // 在此处填入选项\n2\n}\n3\nint zuhe_next_incur(int c, int n, int l) {\n4\nif (n == 1) return c;\n5\nif ((c & (1 << l)) == 0) {\n6\nint d = intlow2(c);\n7\nc = (c & ~d);\n8\nc = (c | (d >> 1));\n9\n} else {\n10\nc = (c & ~(1 << l));\n11\nc = zuhe_next_incur(c, n - 1, l + 1);\n12\nint d = intlow2(c);\n13\nc = (c | (d >> 1));\n14\n}\n15\nreturn c;\n16\n}\n17\n// 从n个数中选m个，当前组合为c\n18\nint zuhe_next(int c, int n, int m) {\n19\nreturn zuhe_next_incur(c, n, 0);\n20\n}\n21",
+   "options": [
+    "((c - 1) ^ c)",
+    "(((c - 1) ^ c) + 1)",
+    "(((c - 1) ^ c) >> 1)",
+    "((((c - 1) ^ c) + 1) >> 1)"
+   ],
+   "answer": 3,
+   "analysis": "选 D。(c-1)^c 把 c 的低位变为连续的 1，加 1 再右移一位即得到最低位的 1（lowbit），这是二进制位运算的典型技巧。"
+  },
+  {
+   "n": 10,
+   "stem": "下面程序的输出为（  ）。\n#include <iostream>\n1\nusing namespace std;\n2\nint main() {\n3\nint N = 15, cnt = 0;\n4\nfor (int x = 0; x + x + x <= N; x++)\n5\nfor (int y = x; x + y + y <= N; y++)\n6\nfor (int z = y; x + y + z <= N; z++)\n7\ncnt++;\n8\ncout << cnt << endl;\n9\nreturn 0;\n10\n}\n11",
+   "options": [
+    "174",
+    "447",
+    "816",
+    "4096"
+   ],
+   "answer": 0,
+   "analysis": "选 A（174）。程序统计 0≤x≤y≤z 且 x+y+z≤15 的三元组个数，按 x 的取值分类累加即得 174。"
+  },
+  {
+   "n": 11,
+   "stem": "下面最长公共子序列程序中，横线处应该填入的是（  ）。\n#define MAX(A, B) (((A) > (B)) ? (A) : (B))\n1\n#define MIN(A, B) (((A) < (B)) ? (A) : (B))\n2\nint dp[MAX_L + 1][MAX_L + 1];\n3\nint LCS(char str1[], char str2[]) {\n4\nint len1 = strlen(str1);\n5\nint len2 = strlen(str2);\n6\nfor (int i = 0; i < len1; i++)\n7\nfor(int j = 0; j < len2; j++)\n8\nif (str1[i] == str2[j])\n9\ndp[i + 1][j + 1] = dp[i][j] + 1;\n10\nelse\n11\n________;  // 在此处填入选项\n12\nreturn dp[len1][len2];\n13\n}\n14",
+   "options": [
+    "dp[i + 1][j + 1] = dp[i][j + 1] + dp[i + 1][j]",
+    "dp[i + 1][j + 1] = MIN(dp[i][j + 1], dp[i + 1][j])",
+    "dp[i + 1][j + 1] = MAX(dp[i][j + 1], dp[i + 1][j])",
+    "dp[i + 1][j + 1] = MAX(dp[i][j + 1], dp[i + 1][j]) + 1"
+   ],
+   "answer": 2,
+   "analysis": "选 C。字符不同时，LCS 长度取“去掉 str1 末字符”与“去掉 str2 末字符”两种情形的最大值：MAX(dp[i][j+1], dp[i+1][j])。"
+  },
+  {
+   "n": 12,
+   "stem": "下列Dijkstra算法中，横线处应该填入的是（  ）。\ntypedef struct Edge {\n1\nint in, out;    // 从下标in顶点到下标out顶点的边\n2\nint len;        // 边长度\n3\nstruct Edge * next;\n4\n} Edge;\n5\n// v：顶点个数，graph：出边邻接表，start：起点下标，dis：输出每个顶点的最短距离\n6\nvoid dijkstra(int v, Edge * graph[], int start, int * dis) {\n7\nconst int MAX_DIS = 0x7fffff;\n8\nfor (int i = 0; i < v; i++)\n9\ndis[i] = MAX_DIS;\n10\ndis[start] = 0;\n11\nint * visited = new int[v];\n12\nfor (int i = 0; i < v; i++)\n13\nvisited[i] = 0;\n14\nvisited[start] = 1;\n15\nfor (int t = 0; ; t++) {\n16\nint min = MAX_DIS, minv = -1;\n17\nfor (int i = 0; i < v; i++) {\n18\nif (visited[i] == 0 && min > dis[i]) {\n19\nmin = dis[i];\n20\nminv = i;\n21\n}\n22\n}\n23\nif (minv < 0)\n24\nbreak;\n25\nvisited[minv] = 1;\n26\nfor (Edge * e = graph[minv]; e != NULL; e = e->next) {\n27\n________;  // 在此处填入选项\n28\n}\n29\n}\n30\ndelete[] visited;\n31\n}\n32",
+   "options": [
+    "if (dis[e->out] > e->len) 1 dis[e->out] = e->len; 2",
+    "if (dis[e->out] > min + e->len) 1 dis[e->out] = min + e->len; 2",
+    "if (dis[e->in] > e->len) 1 dis[e->in] = e->len; 2",
+    "if (dis[e->in] > min + e->len) 1 dis[e->in] = min + e->len; 2"
+   ],
+   "answer": 1,
+   "analysis": "选 B。用当前已确定的最短距离 min 松弛出边：dis[e->out] > min + e->len 时更新 dis[e->out]。"
+  },
+  {
+   "n": 13,
+   "stem": "假设图graph中顶点数v、边数e，上题程序的时间复杂度为（  ）。",
+   "options": [
+    "",
+    "",
+    "",
+    ""
+   ],
+   "answer": 1,
+   "analysis": "选 B。邻接表版 Dijkstra：每轮 O(v) 线性找最近顶点、共 v 轮，再加每条出边各检查一次，复杂度 O(v²+e)（选项公式以真题原件为准）。"
+  },
+  {
+   "n": 14,
+   "stem": "下面的快速排序程序中，两处横线处分别应填入的是（  ）。\nvoid quick_sort(int a[], int n) {\n1\nif (n <= 1)\n2\nreturn;\n3\nint pivot = 0, l = 0, r = n - 1;\n4\nwhile (________) {  // 在此处填入选项\n5\nwhile (r > pivot && a[r] >= a[pivot])\n6\nr--;\n7\nif (r > pivot) {\n8\nint temp = a[pivot];\n9\na[pivot] = a[r];\n10\na[r] = temp;\n11\npivot = r;\n12\n}\n13\nwhile (l < pivot && a[l] <= a[pivot])\n14\nl++;\n15\nif (l < pivot) {\n16\nint temp = a[pivot];\n17\na[pivot] = a[l];\n18\na[l] = temp;\n19\npivot = l;\n20\n}\n21\n}\n22\nquick_sort(a, pivot);\n23\nquick_sort(________);  // 在此处填入选项\n24\n}\n25",
+   "options": [
+    "l < r 1 a + pivot + 1, n - pivot - 1 2",
+    "l < r 1 a + pivot + 1, n - pivot 2",
+    "l <= r 1 a + pivot + 1, n - pivot - 1 2",
+    "l <= r 1 a + pivot + 1, n - pivot 2"
+   ],
+   "answer": 0,
+   "analysis": "选 A。外层循环条件为 l<r（两侧指针未交叉）；右半部分递归为 quick_sort(a + pivot + 1, n - pivot - 1)。"
+  },
+  {
+   "n": 15,
+   "stem": "上题程序的时间复杂度为（  ）。",
+   "options": [
+    "",
+    "",
+    "",
+    ""
+   ],
+   "answer": 3,
+   "analysis": "选 D。快速排序平均 O(n log n)，但当每次划分极不平衡（如已有序数据）时最差退化为 O(n²)（选项公式以真题原件为准）。"
+  }
+ ],
+ "judge": [
+  {
+   "n": 1,
+   "stem": "表达式'3' + '5' 的结果为'8' ，类型为char 。",
+   "answer": null,
+   "analysis": "错误。'3'+'5' 中字符先提升为 int，结果是 51+53=104，类型为 int，不是 '8'。"
+  },
+  {
+   "n": 2,
+   "stem": "在C++语言中，可以在函数内定义结构体，但该结构体类型只能在该函数内使用。",
+   "answer": null,
+   "analysis": "正确。函数内定义的结构体属于该函数的作用域，只能在该函数内使用。"
+  },
+  {
+   "n": 3,
+   "stem": "对个元素的数组进行排序，快速排序和归并排序的平均时间复杂度都为\n。但快速排序存在退化情\n况，使得时间复杂度升高至\n；归并排序需要额外的空间开销。",
+   "answer": null,
+   "analysis": "正确。快速排序与归并排序平均都是 O(n log n)；快排存在 O(n²) 的退化情形，归并排序需要 O(n) 辅助空间（题干公式以真题原件为准）。"
+  },
+  {
+   "n": 4,
+   "stem": "二维数组的最后一维在内存中一定是连续的，但第一维在内存中可能不连续。",
+   "answer": null,
+   "analysis": "错误。二维数组在内存中整体连续存放（按行优先），第一维同样是连续的，不会“不连续”。"
+  },
+  {
+   "n": 5,
+   "stem": "使用math.h 或cmath 头文件中的函数，表达式log(1000) 的结果类型为double 、值约为3 。",
+   "answer": null,
+   "analysis": "错误。cmath 的 log 是自然对数，log(1000)≈6.91 而不是 3；常用对数需以 10 为底换算。"
+  },
+  {
+   "n": 6,
+   "stem": "你有三种硬币，分别面值2元、5元和7元，每种硬币都有足够多。买一本书需要27元，则有8种硬币组合（组\n合与顺序无关，“1个2元+1个5元+1个2元”与“1个5元+2个2元”认为是同样的组合）可以正好付清，且不需要对方找\n钱。",
+   "answer": null,
+   "analysis": "正确。按 7 元硬币枚数分类枚举：0 枚 3 种、1 枚 3 种、2 枚 1 种、3 枚 1 种，共 8 种组合。"
+  },
+  {
+   "n": 7,
+   "stem": "使用哈希函数f(x) = x % p 建立键值为int 类型的哈希表，只要p 取小于等于哈希表大小的素数，可保\n证不发生碰撞。",
+   "answer": null,
+   "analysis": "错误。素数 p 不保证无碰撞：只要存在两个键值模 p 同余就会冲突，当元素个数 ≥ p 时由鸽巢原理必然发生。"
+  },
+  {
+   "n": 8,
+   "stem": "杨辉三角中的第行、第\n项，即为将二项式\n展开后\n项的系数。",
+   "answer": null,
+   "analysis": "错误。杨辉三角第 n 行第 k 项是二项式 (a+b)^(n-1) 展开式中第 k 项的系数 C(n-1, k-1)，与题干所给公式存在错位（题干公式以真题原件为准）。"
+  },
+  {
+   "n": 9,
+   "stem": "判断图是否连通，可以通过广度优先搜索实现。\n，需要先判断表达式a ^ 2 - b * 4 >= 0 是否为真。",
+   "answer": null,
+   "analysis": "正确。从任一顶点做 BFS，能访问到全部顶点即连通，BFS 可以判断图的连通性（题干语句以真题原件为准）。"
+  },
+  {
+   "n": 10,
+   "stem": "要求解一元二次方程",
+   "answer": null,
+   "analysis": "错误。应先判断判别式 b²-4ac≥0，且 ^ 在 C++ 中是按位异或而不是乘方，正确表达式是 b * b - 4 * a * c >= 0。"
+  }
+ ],
+ "programming": [
+  {
+   "n": 1,
+   "name": "树上移动",
+   "desc": ""
+  },
+  {
+   "n": 2,
+   "name": "排队",
+   "desc": "小杨所在班级共有  位同学，依次以\n标号。这  位同学想排成一行队伍，其中有些同学之间关系非常\n好，在队伍里需要排在相邻的位置。具体来说，有\n对这样的关系（\n是一个非负整数）。当\n时，第  对关\n）给出\n，表示排队时编号为\n的同学需要排在编号为  的同学前面，并且两人在队伍中相邻。\n系（\n现在小杨想知道总共有多少种排队方式。由于答案可能很大，你只需要求出答案对\n取模的结果。"
+  }
+ ]
+}

@@ -1,0 +1,58 @@
+---
+title: "字符串综合应用：回文、统计与加密"
+level: 3
+order: 9
+duration: 120
+unit: "字符与字符串"
+difficulty: 进阶
+goals:
+  - "掌握回文字符串的判断方法（首尾双指针）"
+  - "掌握字符分类统计（元音、数字、大写）"
+  - "实现单词反转与简单凯撒加密"
+---
+
+import Check from '../../../components/Check.astro';
+import Task from '../../../components/Task.astro';
+import Reveal from '../../../components/Reveal.astro';
+
+
+## 1. 从回文诗理解对称判断
+「上海自来水来自海上」正着读反着读都一样，这叫**回文**。判断回文的经典方法是**首尾双指针**：左指针 i 从 0 出发，右指针 j 从末尾出发，每轮比较 `s[i]` 与 `s[j]` 是否相等；不等立刻不是回文，相等则 i 右移、j 左移，直到两指针相遇。
+
+```cpp
+bool ok = true;
+for (int i = 0, j = s.size() - 1; i < j; i++, j--) {
+    if (s[i] != s[j]) { ok = false; break; }
+}
+```
+
+## 2. 字符统计与单词反转
+**统计**的套路不变：计数器清零，遍历每个字符，用条件分类累加。统计元音字母：`s[i]=='a' || s[i]=='e' || s[i]=='i' || s[i]=='o' || s[i]=='u'`（注意要同时考虑大写）。
+
+**单词反转**：把一个句子的每个单词字母倒序，单词顺序不变。核心是把字符串按空格切成单词，逐词逆序输出——本质还是下标遍历。
+
+## 3. 凯撒加密：每个字母往后挪三位
+凯撒加密把每个字母变成字母表中往后数 3 位的字母：`a→d`、`b→e`、……、`x→a`（绕回开头）。用取模实现循环：`(c - 'a' + 3) % 26 + 'a'`。
+
+```cpp
+for (int i = 0; i < s.size(); i++) {
+    if (s[i] >= 'a' && s[i] <= 'z')
+        s[i] = char((s[i] - 'a' + 3) % 26 + 'a');
+}
+```
+
+> 教学提醒：凯撒加密只是教学扩展，让大家体会字符编码与取模的应用，真正的加密远比这复杂。解密就是把 +3 换成 +23（往回挪 3 位）。
+
+<Check question="字符串 'level' 是否是回文？" options={['是','不是','无法判断','仅当长度为奇数时是']} answer={0} explanation="首尾双指针比较 l-l、e-e、v，全部相等，是回文。" />
+
+<Check question="对字母 y 做「往后挪 3 位」的凯撒加密，结果是？" options={['z','a','b','c']} answer={2} explanation="y(24)+3=27，27%26=1，对应字母 b，实现了绕回。" />
+
+<Task title="回文判断" input="一行仅由小写字母组成的字符串 s（长度不超过 100）" output="若是回文输出 YES，否则输出 NO" sampleIn="level" sampleOut="YES">使用首尾双指针逐个比较，遇到不等立刻输出 NO；全部比完则输出 YES。</Task>
+<Reveal label="查看参考程序与思路"><pre><code>{`#include <iostream>\n#include <string>\nusing namespace std;\nint main(){\n    string s; cin>>s;\n    bool ok=true;\n    for(int i=0,j=(int)s.size()-1;i<j;i++,j--){\n        if(s[i]!=s[j]){ ok=false; break; }\n    }\n    cout<<(ok?"YES":"NO")<<'\\n';\n}`}</code></pre>i 从前往后、j 从后往前同步走，只需比到 i 与 j 相遇。level：l=l、e=e、v 对 v，ok 保持真，输出 YES；若输入 abca，首末 a=a、次对 b≠c，输出 NO。</Reveal>
+
+## 4. 课后巩固
+1. 判断 "noon"、"abcba"、"abcdba" 是否为回文，并写出双指针每轮的比较。
+2. 编程：统计一行字符串中数字字符的个数与它们的和（用 `'7'-'0'` 技巧）。
+3. 编程：把句子 "I love cpp" 的每个单词倒序输出（词序不变），如 "I evol ppc"。
+4. 编程：实现凯撒**解密**：读入密文，每个字母往前挪 3 位还原明文。
+5. 思考：回文判断的循环条件为什么是 `i < j` 而不是 `i < s.size()`？

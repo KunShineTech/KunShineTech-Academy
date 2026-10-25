@@ -1,0 +1,74 @@
+---
+title: "综合算法：循环、分支与数学函数"
+level: 2
+order: 11
+duration: 120
+unit: "综合应用"
+difficulty: 基础
+goals:
+  - "组合使用嵌套循环和条件判断"
+  - "从自然语言抽取输入、处理、输出"
+  - "完成多步算法并验证边界"
+---
+
+import Check from '../../../components/Check.astro';
+import Task from '../../../components/Task.astro';
+import Reveal from '../../../components/Reveal.astro';
+
+
+## 1. 综合题如何拆解？
+遇到复杂题目，不要立刻敲代码。先写四行：**输入是什么？输出是什么？候选有哪些？如何判断？**
+
+本课的“枚举与模拟”是为训练二级控制结构增加的教学扩展，不能误认为官方二级单列算法考点。
+
+## 2. 例题：统计区间内的完全平方数
+输入 `L,R`（`0≤L≤R≤10000`），统计区间内的完全平方数个数。完全平方数是某个非负整数的平方，例如0、1、4、9、16。
+
+方法A：对每个 `x` 从L到R，计算平方根并判断是否整数。但浮点比较有误差风险。
+
+方法B（推荐）：枚举 `k`，检查 `L≤k*k≤R`，避免浮点问题。
+
+```cpp
+#include <iostream>
+using namespace std;
+int main(){
+    int L,R;cin>>L>>R;
+    int count=0;
+    for(int k=0;k*k<=R;k++){
+        if(k*k>=L) count++;
+    }
+    cout<<count<<'\n';
+}
+```
+
+**数学分析：** 因为 `k*k` 随非负 `k` 增大而增大，枚举到 `k*k>R` 就可以结束。样例 `[1,10]` 中有1、4、9，共3个。
+
+## 3. 例题：统计满足条件的数对
+输入 `n`，统计满足 `1≤a&lt;b≤n` 且 `a+b` 为偶数的数对数量。
+
+```cpp
+#include <iostream>
+using namespace std;
+int main(){
+    int n,ans=0;cin>>n;
+    for(int a=1;a<=n;a++){
+        for(int b=a+1;b<=n;b++){
+            if((a+b)%2==0) ans++;
+        }
+    }
+    cout<<ans<<'\n';
+}
+```
+
+**数学原理：** 两数之和为偶数，当且仅当两数奇偶性相同。可先手工列出 `n=4` 的所有合法数对：`(1,3)`、`(2,4)`。
+
+<Check question="为什么数对题让b从a+1开始？" options={['保证a<b且不重复','让循环更慢','避免使用if','让a总为偶数']} answer={0} explanation="b>a确保不计(a,a)和反向重复数对。" />
+
+<Task title="特殊数对计数" input="整数n（2≤n≤100）" output="满足1≤a&lt;b≤n且a+b能被3整除的数对个数" sampleIn="4" sampleOut="2">先枚举手工验证 `(1,2)`、`(2,4)`，再写双重循环。</Task>
+<Reveal label="参考实现"><pre><code>{`#include <iostream>\nusing namespace std;\nint main(){int n,ans=0;cin>>n;for(int a=1;a<=n;a++)for(int b=a+1;b<=n;b++)if((a+b)%3==0)ans++;cout<<ans<<'\\n';}`}</code></pre></Reveal>
+
+## 4. 复盘清单
+- 是否遗漏最小值和最大值？
+- 是否误把 `<` 写成 `<=`？
+- 是否出现重复计数？
+- 是否可以手算小样例核验？

@@ -1,0 +1,242 @@
+{
+ "session": "2024-09",
+ "level": 4,
+ "file": "GESP 2024年09月认证C++ 4级真题.pdf",
+ "legacy": false,
+ "choiceCount": 15,
+ "judgeCount": 10,
+ "progCount": 2,
+ "choiceAnswers": "ABABDABDABCAAAC",
+ "judgeAnswers": "",
+ "choice": [
+  {
+   "n": 1,
+   "stem": "在 C++ 中，（  ）正确定义了一个返回整数值并接受两个整数参数的函数。",
+   "options": [
+    "int add(int a, int b) { return a + b; }",
+    "void add(int a, int b) { return a + b; }",
+    "int add(a, b) { return a + b; }",
+    "void add(int a, int b) { return a - b; }"
+   ],
+   "answer": 0
+  },
+  {
+   "n": 2,
+   "stem": "在C++中，形参与实参的关系描述正确的是（ ）。",
+   "options": [
+    "形参在函数调用时指定，实参在函数定义时传递",
+    "形参在函数定义时指定，实参在函数调用时传递",
+    "形参和实参可以互换",
+    "形参和实参必须是完全相同的类型，不能有任何差异。"
+   ],
+   "answer": 1
+  },
+  {
+   "n": 3,
+   "stem": "运行以下代码，屏幕上将输出（  ）。\n#include <iostream>\n1\nusing namespace std;\n2\n3\nint var = 100;\n4\n5\nvoid function() {\n6\nint var = 200;\n7\n8\ncout << var <<  \" \";\n9\ncout << ::var <<  \" \";\n10\n}\n11\n12\nint main() {\n13\ncout << var << \" \";\n14\n15\nfunction();\n16\n17\nvar += 100;\n18\ncout << var << \" \";\n19\n20\nreturn 0;\n21\n}\n22",
+   "options": [
+    "100 200 100 200",
+    "100 200 100 300",
+    "100 200 200 200",
+    "100 200 200 300"
+   ],
+   "answer": 0
+  },
+  {
+   "n": 4,
+   "stem": "运行下面代码，屏幕上输出是（  ）。\nint arr[3] = {24, 9, 7};\n1\nint* p = arr;\n2\np++;\n3\ncout << *p << endl;\n4",
+   "options": [
+    "24",
+    "9",
+    "7",
+    "不确定"
+   ],
+   "answer": 1
+  },
+  {
+   "n": 5,
+   "stem": "运行下面代码片段的结果是（  ）。\nint x = 20;\n1\nint y = 24;\n2\nint* p = &x;\n3\nint* q = &y;\n4\n5\np = q;\n6",
+   "options": [
+    "将赋值为24",
+    "将赋值为20",
+    "将指向的地址",
+    "将指向的地址"
+   ],
+   "answer": 3
+  },
+  {
+   "n": 6,
+   "stem": "在 C++ 中，（  ）正确定义一个名为student 的结构体，其中包含一个name 字符数组和一个age 整数？",
+   "options": [
+    "struct student { char name[20]; int age; };",
+    "student struct { char name[20]; int age; };",
+    "student struct { string name; int age; };",
+    "struct student { char[20] name; int age; };"
+   ],
+   "answer": 0
+  },
+  {
+   "n": 7,
+   "stem": "在 C++ 中，（ ）正确声明了一个 3 行 4 列的二维数组。",
+   "options": [
+    "int arr[3, 4];",
+    "int arr[3][4];",
+    "int arr[4][3];",
+    "int arr(3, 4);"
+   ],
+   "answer": 1
+  },
+  {
+   "n": 8,
+   "stem": "一个二维数组定义为 int arr[3][4]; （假设一个int变量占4个字节），则int arr[0] 占用（ ）个字节\n的内存。",
+   "options": [
+    "3",
+    "4",
+    "12",
+    "16"
+   ],
+   "answer": 3
+  },
+  {
+   "n": 9,
+   "stem": "下面代码采用递推算法来实现整数的阶乘（\n），则横线上应填写（  ）。\nint factorial(int n) {\n1\nint result = 1;\n2\nfor (int i = 2; i <= n; i++) {\n3\n________________________________     // 在此处填入代码\n4\n}\n5\nreturn result;\n6\n}\n7",
+   "options": [
+    "result *= i;",
+    "result += i;",
+    "result *= result;",
+    "result += result;"
+   ],
+   "answer": 0
+  },
+  {
+   "n": 10,
+   "stem": "在排序算法中，稳定性指的是（ ）。",
+   "options": [
+    "排序后数据不会丢失",
+    "排序后相同元素的相对顺序保持不变",
+    "排序后数据不会被修改",
+    "排序后数据的时间复杂度不变"
+   ],
+   "answer": 1
+  },
+  {
+   "n": 11,
+   "stem": "下面代码实现了冒泡排序函数，则横线上应填写（    ）。\n//交换数组arr的第i个元素和第j个元素\n1\nvoid swap(vector<int> &arr, int i, int j) {\n2\nint tmp = arr[i];\n3\narr[i] = arr[j];\n4\narr[j] = tmp;\n5\n}\n6\n7\nint bubble_sort(vector<int> &arr) {\n8\nfor (int i = arr.size() - 1; i > 0; i--) {\n9\nbool flag = false; // 标志位\n10\n________________________________ {    // 在此处填入代码\n11\n12\nif (arr[j] > arr[j + 1]) {\n13\nswap(arr, i, j);\n14\nflag = true;\n15\n}\n16\n}\n17\nif (!flag)\n18\nbreak; // 此轮“冒泡”未交换任何元素\n19\n}\n20\n}\n21",
+   "options": [
+    "for (int j = 0; j < arr.size() - 1; j++)",
+    "for (int j = arr.size() - 1; j > 0; j--)",
+    "for (int j = 0; j < i; j++)",
+    "for (int j = i-1; j <=0; j--)"
+   ],
+   "answer": 2
+  },
+  {
+   "n": 12,
+   "stem": "上一题算法的时间复杂度为（  ）。",
+   "options": [
+    "",
+    "",
+    "",
+    ""
+   ],
+   "answer": 0
+  },
+  {
+   "n": 13,
+   "stem": "下面代码实现了插入排序函数（升序），则横线上应填写（  ）。\nvoid insertion_sort(vector<int> &nums) {\n1\nfor (int i = 1; i < nums.size(); i++) {\n2\nint base = nums[i], j = i - 1;\n3\n4\n________________________________ {    // 在此处填入代码\n5\nnums[j + 1] = nums[j];\n6\nj--;\n7\n}\n8\nnums[j + 1] = base;\n9\n}\n10\n}\n11",
+   "options": [
+    "while (j >= 0 && nums[j] > base)",
+    "while (j > 0 && nums[j] > base)",
+    "while (j >= 0 && nums[j] < base)",
+    "while (j > 0 && nums[j] < base)"
+   ],
+   "answer": 0
+  },
+  {
+   "n": 14,
+   "stem": "小杨用文件重定向实现在log.txt 文件中输出日志，则下面横线上应填写（  ）。\n#include <iostream>\n1\n#include <fstream>\n2\n#include <string>\n3\nusing namespace std;\n4\n5\nint main() {\n6\nofstream log_file(\"log.txt\");\n7\n8\nstreambuf* original_cout = cout.rdbuf();\n9\ncout.rdbuf(log_file.rdbuf());\n10\n11\n___________________________________     // 在此处填入代码\n12\n13\ncout.rdbuf(original_cout);  // 恢复原始的标准输出缓冲区\n14\nreturn 0;\n15\n}\n16",
+   "options": [
+    "cout << \"This output will go to the log file.\" << endl;",
+    "log_file << \"This output will go to the log file.\" << endl;",
+    "cout >> \"This output will go to the log file.\" >> endl;",
+    "log_file >> \"This output will go to the log file.\" >> endl;"
+   ],
+   "answer": 0
+  },
+  {
+   "n": 15,
+   "stem": "运行下面的代码，屏幕上将输出（  ）。\n#include <iostream>\n1\nusing namespace std;\n2\n3\nint divide(int a, int b) {\n4\nif (b == 0) {\n5\nthrow runtime_error(\"division by zero error \");\n6\n}\n7\nreturn a / b;\n8\n}\n9\n10\nint main() {\n11\nint x = 10;\n12\nint y = 0;  // 设为 0 会导致除零错误\n13\n14\ntry {\n15\nint result = divide(x, y);\n16\ncout << \"result: \" << result << endl;\n17\n} catch (const runtime_error& e) {\n18\ncout << \"caught an exception: \" << e.what() << endl;\n19\n}\n20\n21\nreturn 0;\n22\n}\n23",
+   "options": [
+    "division by zero error result: caught an exception:",
+    "result: caught an exception: division by zero error",
+    "caught an exception: division by zero error",
+    "division by zero error caught an exception: division by zero error"
+   ],
+   "answer": 2
+  }
+ ],
+ "judge": [
+  {
+   "n": 1,
+   "stem": "代码int a = 10; int* p = &a; 可以正确定义指针和初始化指针。",
+   "answer": null
+  },
+  {
+   "n": 2,
+   "stem": "在 C++ 中，引用传递允许函数修改传递给它的参数的值。",
+   "answer": null
+  },
+  {
+   "n": 3,
+   "stem": "指针的大小与其所指向的变量的数据类型的大小相同。",
+   "answer": null
+  },
+  {
+   "n": 4,
+   "stem": "二维数组的行的大小的必须在定义时确定，列的大小可以动态变化。",
+   "answer": null
+  },
+  {
+   "n": 5,
+   "stem": "递推算法通过逐步求解当前状态和前一个或几个状态之间的关系来解决问题。",
+   "answer": null
+  },
+  {
+   "n": 6,
+   "stem": "选择排序是稳定的排序算法。",
+   "answer": null
+  },
+  {
+   "n": 7,
+   "stem": "插入排序的时间复杂度总是比冒泡排序低。",
+   "answer": null
+  },
+  {
+   "n": 8,
+   "stem": "在 C++ 中，如果没有捕获到异常（没有匹配的 catch 块），程序会继续执行而不会终止。",
+   "answer": null
+  },
+  {
+   "n": 9,
+   "stem": "以下代码用递推法求斐波那契数列的第项，时间复杂度为指数级。\nint fibonacci(int n) {\n1\nif (n == 0) return 0;\n2\nif (n == 1) return 1;\n3\n4\nint f0 = 0; // F(0)\n5\nint f1 = 1; // F(1)\n6\nint current;\n7\n8\nfor (int i = 2; i <= n; i++) {\n9\ncurrent = f0+ f1; // F(n) = F(n-1) + F(n-2)\n10\nf0 = f1;\n11\nf1 = current;\n12\n}\n13\n14\nreturn current\n;\n15\n}\n16",
+   "answer": null
+  },
+  {
+   "n": 10,
+   "stem": "执行下面C++代码后，输出的是20。\nint point(int* p){\n1\nreturn *p * 2;\n2\n}\n3\n4\nint main() {\n5\nint a = 10;\n6\nint* p = &a;\n7\n*p = point(p);\n8\ncout << *p << endl;\n9\n}\n10",
+   "answer": null
+  }
+ ],
+ "programming": [
+  {
+   "n": 1,
+   "name": "黑白方块",
+   "desc": ""
+  },
+  {
+   "n": 2,
+   "name": "区间排序",
+   "desc": ""
+  }
+ ]
+}

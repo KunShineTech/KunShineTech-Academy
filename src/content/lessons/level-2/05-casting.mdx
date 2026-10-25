@@ -1,0 +1,57 @@
+---
+title: "数据类型转换与整数除法"
+level: 2
+order: 5
+duration: 120
+unit: "语言基础"
+difficulty: 基础
+goals:
+  - "理解隐式转换和显式转换"
+  - "解释整数除法、浮点除法和截断"
+  - "避免计算平均值时丢失小数"
+---
+
+import Check from '../../../components/Check.astro';
+import Task from '../../../components/Task.astro';
+import Reveal from '../../../components/Reveal.astro';
+
+
+## 1. 数据类型转换是什么？
+C++中的 `int`、`long long`、`double`、`char` 表示不同类型的数据。表达式计算或赋值时可能发生**隐式类型转换**；程序员也可以通过 `static_cast<T>(x)` 显式要求转换。
+
+```cpp
+int a = 7, b = 2;
+cout << a / b << '\n';                    // 3：整数除法
+cout << double(a) / b << '\n';            // 3.5：浮点除法
+cout << static_cast<int>(3.9) << '\n';   // 3：向零截断
+```
+
+> 注意：`int(-3.9)` 的结果是 `-3`，不是向下取整的 `-4`。`static_cast<int>` 对超出目标整数可表示范围的值不能随意使用。
+
+## 2. 数学原理：平均值
+三个数的算术平均值是 `(a+b+c)/3`。但如果三者都是 `int`，表达式会做整数除法。正确做法之一：`(a+b+c)/3.0`。
+
+**例题：** 80、81、82 的平均值为81；80、81、83 的平均值为81.333…，整数除法会丢失小数。
+
+```cpp
+#include <iostream>
+using namespace std;
+int main(){
+    int a,b,c;cin>>a>>b>>c;
+    cout<<(a+b+c)/3.0<<'\n';
+}
+```
+
+## 3. 类型与优先级易错点
+- `double(a / b)`：先进行整数除法，再转换，精度已经丢失。
+- `double(a) / b`：先把 `a` 转为浮点数，再计算。
+- `a % b`：对整数求余，`b`不能为0。
+- `char` 与整数运算：常会发生整型提升，例如 `'A'+1` 得到数值66。
+
+<Check question="a=5、b=2时，double(a/b)的值是多少？" options={['2.5','2.0','3.0','编译错误']} answer={1} explanation="a/b先做整数除法得到2，之后才转换成double。" />
+
+<Task title="计算三门课平均分" input="三个0—100的整数" output="平均分，保留两位小数" sampleIn="80 81 83" sampleOut="81.33">用 `<iomanip>` 中的 `fixed` 和 `setprecision(2)`，先判断为何除数应写 `3.0`。</Task>
+<Reveal label="查看参考程序"><pre><code>{`#include <iostream>\n#include <iomanip>\nusing namespace std;\nint main(){int a,b,c;cin>>a>>b>>c;cout<<fixed<<setprecision(2)<<(a+b+c)/3.0<<'\\n';}`}</code></pre></Reveal>
+
+## 4. 课堂复盘
+分别解释 `7/2`、`7/2.0`、`double(7/2)` 的输出。要求不仅说结果，还要说出运算发生的先后顺序。

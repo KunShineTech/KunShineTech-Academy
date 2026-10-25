@@ -1,0 +1,68 @@
+---
+title: "string 类型：定义、读入与遍历"
+level: 3
+order: 7
+duration: 120
+unit: "字符与字符串"
+difficulty: 基础
+goals:
+  - "掌握 string 的定义、初始化与读入方式"
+  - "掌握 size()/length() 与下标遍历字符串"
+  - "理解字符串的字典序比较与拼接"
+---
+
+import Check from '../../../components/Check.astro';
+import Task from '../../../components/Task.astro';
+import Reveal from '../../../components/Reveal.astro';
+
+
+## 1. 从快递单理解 string
+字符数组像手写便签：好用但得自己管结束符、长度。`string` 类型是 C++ 自带的「智能快递袋」——能自动变长、自带尺子（求长度）、还有一堆工具（查找、替换、截取）。GESP 三级以后处理文字，优先用 string。
+
+使用前记得 `#include <string>`。
+
+## 2. 定义、读入与长度
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+int main() {
+    string s = "hello";       // 定义并初始化
+    string t(5, 'a');         // 5 个 a：aaaaa
+    string u;                 // 空串
+    cin >> u;                 // 读入一个不含空格的词
+    getline(cin, u);          // 读入一整行（含空格）——了解
+    cout << s.size() << ' ' << s.length() << '\n';  // 5 5
+}
+```
+
+两种读入方式的区别：`cin >> u` 遇到空格就停，只读一个「词」；`getline` 读入整行直到回车，空格也读进来。初学竞赛题多数用 `cin`，读整行时再请 getline 出场。
+
+长度用 `s.size()` 或 `s.length()`，两者完全一样，返回字符个数（例如 `"hello"` 返回 5）。
+
+## 3. 下标、遍历、比较与拼接
+string 支持下标访问 `s[i]`，下标从 0 开始，遍历写法：
+
+```cpp
+for (int i = 0; i < s.size(); i++) cout << s[i];
+```
+
+字符串比较用字典序：从第一个字符开始逐位比 ASCII，分出大小就立刻停止。`"abc" < "abd"` 为真，`"apple" < "banana"` 为真。相等判断用 `==`；`s.compare(t)` 也能比较（了解），返回 0 表示相等。
+
+拼接用 `+`：`string s = "he" + string("llo");`，还可以在末尾追加：`s += "!"` 或 `s.push_back('!')`。
+
+<Check question="执行 string s = 'hello'; 后，s.size() 的值是？" options={['4','5','6','不确定']} answer={1} explanation="size 数的是字符个数，hello 共 5 个字符；结尾符不计入长度。" />
+
+<Check question="下列哪个表达式的值为真（1）？" options={['\"b\" 小于 \"apple\"','\"apple\" 小于 \"apply\"','\"Apple\" 小于 \"Zoo\" 为假','\"abc\" 等于 \"abd\"']} answer={1} explanation="apple 与 apply 前四个字母相同，第五个 e 小于 y，所以 apple 小于 apply。" />
+
+<Task title="字符串长度与拼接" input="两个不含空格的字符串 s 和 t（长度均不超过 100）" output="第一行输出拼接后的字符串；第二行输出它的长度" sampleIn="hello
+world" sampleOut="helloworld
+10">用 + 拼接，用 size() 求长度。注意先读 s 再读 t，两行输入各读一个词。</Task>
+<Reveal label="查看参考程序与思路"><pre><code>{`#include <iostream>\n#include <string>\nusing namespace std;\nint main(){\n    string s, t;\n    cin>>s>>t;\n    string r = s + t;\n    cout<<r<<'\\n';\n    cout<<r.size()<<'\\n';\n}`}</code></pre>cin 默认按空格分隔，依次读入两个词。r = s + t 得到 helloworld，size 为 5+5=10，与样例一致。</Reveal>
+
+## 4. 课后巩固
+1. 写出两种读入字符串的方式，并说明各自遇到空格时的行为。
+2. 解释 `"abc" < "abd"` 的判定过程：比较到第几个字符分出大小？
+3. 编程：读入一个字符串，倒序输出它（提示：下标从 size()-1 递减到 0）。
+4. 判断：`"a" + "b"` 能否直接写？试一试，并说明为什么需要写成 `string("a") + "b"` 或 `s += "b"`。
+5. 思考：string 相比字符数组，在「长度」这件事上方便在哪里？

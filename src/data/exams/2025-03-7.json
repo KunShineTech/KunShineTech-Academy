@@ -1,0 +1,267 @@
+{
+ "session": "2025-03",
+ "level": 7,
+ "file": "GESP 2025年03月认证C++ 7级真题.pdf",
+ "legacy": false,
+ "choiceCount": 15,
+ "judgeCount": 10,
+ "progCount": 2,
+ "choiceAnswers": "BABCBBBADDACBBD",
+ "judgeAnswers": "",
+ "choice": [
+  {
+   "n": 1,
+   "stem": "下列哪个选项是C++中的关键字？",
+   "options": [
+    "function",
+    "class",
+    "method",
+    "object"
+   ],
+   "answer": 1,
+   "analysis": "选B。class 是 C++ 定义类的关键字；function、method、object 都只是普通标识符（标准库另有 std::function 类模板）。"
+  },
+  {
+   "n": 2,
+   "stem": "下面代码输出的是（）\nint main() {\n1\nint a = 5, b = 2;\n2\ncout << (a >> b) << endl;\n3\n}\n4",
+   "options": [
+    "1",
+    "2",
+    "5",
+    "10"
+   ],
+   "answer": 0,
+   "analysis": "选A。5=0101₂ 右移 2 位，低两位移出，得 0001₂=1。右移一位相当于除以 2 向下取整。"
+  },
+  {
+   "n": 3,
+   "stem": "以下代码的输出是什么？\nint main() {\n1\nint a = 10;\n2\nint *p = &a;\n3\nint *&q = p;\n4\n*q = 20;\n5\ncout << a << endl;\n6\nreturn 0;\n7\n}\n8",
+   "options": [
+    "10",
+    "20",
+    "地址值",
+    "编译错误"
+   ],
+   "answer": 1,
+   "analysis": "选B。q 是指针 p 的引用，二者是同一个指针对象、都指向 a，*q=20 就是修改 a 本身，输出 20。"
+  },
+  {
+   "n": 4,
+   "stem": "下面代码输出的是（）\nint main() {\n1\nint arr[5] = {1, 2, 3, 4, 5};\n2\nint *p = arr + 2;\n3\ncout << *p << endl;\n4\nreturn 0;\n5\n}\n6",
+   "options": [
+    "1",
+    "2",
+    "3",
+    "4"
+   ],
+   "answer": 2,
+   "analysis": "选C。p=arr+2 指向下标 2 的元素，*p 即 arr[2]=3。"
+  },
+  {
+   "n": 5,
+   "stem": "下列关于排序的说法，正确的是(  )。",
+   "options": [
+    "选择排序是最快的排序算法之一。",
+    "归并排序通常是稳定的。",
+    "最差情况， 个元素做快速排序的时间复杂度为 。",
+    "最好情况， 个元素做插入排序的时间复杂度为 。"
+   ],
+   "answer": 1,
+   "analysis": "选B。归并时相等元素优先取左半部分即可保持相对次序，归并排序通常稳定；快排最坏 O(n²) 而非 O(n log n)，插排最好 O(n) 而非 O(n²)。"
+  },
+  {
+   "n": 6,
+   "stem": "下面关于C++类构造和析构函数的说法，错误的是（  ）。",
+   "options": [
+    "构造函数不能声明为虚函数。",
+    "析构函数必须声明为虚函数。",
+    "类的默认构造函数可以被声明为private。",
+    "类的析构函数可以被声明为private。"
+   ],
+   "answer": 1,
+   "analysis": "选B。析构函数'必须'声明为虚函数的说法错误——只有需要通过基类指针释放派生类对象时才应声明虚析构。构造函数不能为虚函数、构造与析构都可声明为 private 均正确。"
+  },
+  {
+   "n": 7,
+   "stem": "下列关于树和图的说法，错误的是（  ）。",
+   "options": [
+    "树是一种有向无环图，但有向无环图不都是一棵树。",
+    "如果把树看做有向图，每个节点指向其子节点，则该图是强连通图。",
+    "个顶点且连通的无向图，其最小生成树一定包含 个条边。",
+    "个顶点、 条边的有向图，一定不是强连通的。"
+   ],
+   "answer": 1,
+   "analysis": "选B。把树看作父指向子的有向图后，只能沿边向下到达，子结点无法回到祖先，不是强连通图。n 顶点连通无向图的最小生成树恰含 n−1 条边，A、C、D 均正确。"
+  },
+  {
+   "n": 8,
+   "stem": "是个神奇的数字，因为它是由两个数\n和\n拼接而成，而且\n。小杨决定写个程序找找\n的正整数中共有多少这样神奇的数字。下面程序横线处应填入的是（  ）。\n小于\n#include <string>\n1\nint count_miracle(int N) {\n2\nint cnt = 0;\n3\nfor (int n = 1; n * n < N; n++) {\n4\nint n2 = n * n;\n5\nstd::string s = std::to_string(n2);\n6\nfor (int i = 1; i < s.length(); i++)\n7\nif (s[i] != '0') {\n8\nstd::string sl = s.substr(0, i);\n9\nstd::string sr = s.substr(i);\n10\nint nl = std::stoi(sl);\n11\nint nr = std::stoi(sr);\n12\nif (_________) // 在此处填入选项\n13\ncnt++;\n14\n}\n15\n}\n16\nreturn cnt;\n17\n}\n18",
+   "options": [
+    "nl + nr == n 1",
+    "nl + nr == n2 1",
+    "(nl + nr) * (nl + nr) == n 1",
+    "(nl + nr) ^ 2 == n2 1"
+   ],
+   "answer": 0,
+   "analysis": "选A。神奇数满足两段之和的平方等于 n²，即 (nl+nr)²=n2；两段非负且 n>0 时等价于 nl+nr==n，故选 A。易错：D 中 ^ 是按位异或而非乘方，C 把平方根 n 与候选数 n2 混淆。"
+  },
+  {
+   "n": 9,
+   "stem": "给定一个无向图，图的节点编号从 0 到 n-1，图的边以邻接表的形式给出。下面的程序使用深度优先搜索\n（DFS）遍历该图，并输出遍历的节点顺序。横线处应该填入的是（）\n#include <iostream>\n1\n#include <vector>\n2\n#include <stack>\n3\nusing namespace std;\n4\n5\nvoid DFS(int start, vector<vector<int>>& graph, vector<bool>& visited) {\n6\nstack<int> s;\n7\ns.push(start);\n8\nvisited[start] = true;\n9\n10\nwhile (!s.empty()) {\n11\nint node = s.top();\n12\ns.pop();\n13\ncout << node << \" \"; // 输出当前节点\n14\n15\n// 遍历邻接节点\n16\nfor (int neighbor : graph[node]) {\n17\nif (!visited[neighbor]) {\n18\n__________________\n19\n__________________\n20\n21\n}\n22\n}\n23\n}\n24\n}\n25\n26\nint main() {\n27\nint n, m;\n28\ncin >> n >> m;\n29\n30\nvector<vector<int>> graph(n);\n31\nfor (int i = 0; i < m; i++) {\n32\nint u, v;\n33\ncin >> u >> v;\n34\ngraph[u].push_back(v);\n35\ngraph[v].push_back(u);\n36\n}\n37\n38\n39\nvector<bool> visited(n, false);\n40\n41\n// 从节点 0 开始DFS遍历\n42\nDFS(0, graph, visited);\n43\n44\nreturn 0;\n45\n}\n46",
+   "options": [
+    "visited[neighbor] = true; 1 s.push(neighbor-1); 2",
+    "visited[neighbor] = true; 1 s.push(neighbor+1); 2",
+    "visited[neighbor] = false; 1 s.push(neighbor); 2",
+    "visited[neighbor] = true; 1 s.push(neighbor); 2"
+   ],
+   "answer": 3,
+   "analysis": "选D。发现未访问邻点时应立即标记 visited[neighbor]=true 并把 neighbor 本身压栈，防止重复入栈；A、B 错在改动顶点编号，C 错在不标记访问。"
+  },
+  {
+   "n": 10,
+   "stem": "给定一个整数数组 nums，找到其中最长的严格上升子序列的长度。\n子序列是指从原数组中删除一些元素（或不删除）后，剩余元素保持原有顺序的序列。\n下面的程序横线处应该填入的是（）\n#include <iostream>\n1\n#include <vector>\n2\n#include <algorithm>\n3\nusing namespace std;\n4\n5\nint lengthOfLIS(vector<int>& nums) {\n6\nint n = nums.size();\n7\nif (n == 0) return 0;\n8\nvector<int> dp(n, 1);\n9\n10\nfor (int i = 1; i < n; i++) {\n11\nfor (int j = 0; j < i; j++) {\n12\nif (nums[i] > nums[j]) {\n13\n_________________________\n14\n}\n15\n}\n16\n}\n17\nreturn *max_element(dp.begin(), dp.end());\n18\n}\n19\n20\nint main() {\n21\nint n;\n22\ncin >> n;\n23\nvector<int> nums(n);\n24\nfor (int i = 0; i < n; i++) {\n25\ncin >> nums[i];\n26\n}\n27\n28\nint result = lengthOfLIS(nums);\n29\ncout << result << endl;\n30\n31\nreturn 0;\n32\n}\n33",
+   "options": [
+    "dp[i] = max(dp[i], dp[j]);",
+    "dp[i] = max(dp[i+1], dp[j] + 1);",
+    "dp[i] = max(dp[i], dp[j] - 1);",
+    "dp[i] = max(dp[i], dp[j] + 1);"
+   ],
+   "answer": 3,
+   "analysis": "选D。nums[i]>nums[j] 时可以把 nums[i] 接到以 j 结尾的上升子序列之后：dp[i]=max(dp[i], dp[j]+1)。"
+  },
+  {
+   "n": 11,
+   "stem": "给定一个整数数组 nums，找到其中最长的严格上升子序列的长度。\n子序列是指从原数组中删除一些元素（或不删除）后，剩余元素保持原有顺序的序列。\n该程序的时间复杂度为（）\n#include <iostream>\n1\n#include <vector>\n2\n#include <algorithm>\n3\nusing namespace std;\n4\n5\nint lengthOfLIS(vector<int>& nums) {\n6\nint n = nums.size();\n7\nif (n == 0) return 0;\n8\nvector<int> dp(n, 1);\n9\n10\nfor (int i = 1; i < n; i++) {\n11\nfor (int j = 0; j < i; j++) {\n12\nif (nums[i] > nums[j]) {\n13\n_________________________\n14\n}\n15\n}\n16\n}\n17\nreturn *max_element(dp.begin(), dp.end());\n18\n}\n19\n20\nint main() {\n21\nint n;\n22\ncin >> n;\n23\nvector<int> nums(n);\n24\nfor (int i = 0; i < n; i++) {\n25\ncin >> nums[i];\n26\n}\n27\n28\nint result = lengthOfLIS(nums);\n29\ncout << result << endl;\n30\n31\nreturn 0;\n32\n}\n33",
+   "options": [
+    "",
+    "",
+    "",
+    ""
+   ],
+   "answer": 0,
+   "analysis": "选A。对每个 i 枚举其前面所有 j，比较次数 1+2+…+(n−1)=Θ(n²)。"
+  },
+  {
+   "n": 12,
+   "stem": "给定两个无向图\nG1和 G2 ，判断它们是否同构。图的同构是指两个图的节点可以通过某种重新编号的方式完全匹配，且边的连接关\n系一致。\n为了简化问题，假设图的节点编号从 0 到 n-1，并且图的边以邻接表的形式给出。下面程序中横线处应该给出的是\n（）\n#include <iostream>\n1\n#include <vector>\n2\n#include <map>\n3\n#include <algorithm>\n4\nusing namespace std;\n5\n6\nstring graphHash(vector<vector<int>>& graph) {\n7\nvector<string> nodeHashes(graph.size());\n8\nfor (int i = 0; i < graph.size(); i++) {\n9\nvector<int> neighbors = graph[i];\n10\nsort(neighbors.begin(), neighbors.end());\n11\nstring hash;\n12\nfor (int neighbor : neighbors) {\n13\n——————————————————————————\n14\n}\n15\nnodeHashes[i] = hash;\n16\n}\n17\nsort(nodeHashes.begin(), nodeHashes.end());\n18\nstring finalHash;\n19\nfor (string h : nodeHashes) {\n20\nfinalHash += h + \";\";\n21\n}\n22\nreturn finalHash;\n23\n}\n24\n25\nint main() {\n26\nint n;\n27\ncin >> n;\n28\n29\nvector<vector<int>> G1(n);\n30\nfor (int i = 0; i < n; i++) {\n31\nint k;\n32\nwhile (cin >> k) {\n33\nG1[i].push_back(k);\n34\nif (cin.get() == '\\n') break;\n35\n}\n36\n}\n37\n38\nvector<vector<int>> G2(n);\n39\nfor (int i = 0; i < n; i++) {\n40\nint k;\n41\nwhile (cin >> k) {\n42\nG2[i].push_back(k);\n43\nif (cin.get() == '\\n') break;\n44\n}\n45\n}\n46\n47\nstring hash1 = graphHash(G1);\n48\nstring hash2 = graphHash(G2);\n49\n50\nif (hash1 == hash2) {\n51\ncout << \"YES\" << endl;\n52\n} else {\n53\ncout << \"NO\" << endl;\n54\n}\n55\n56\nreturn 0;\n57\n}\n58",
+   "options": [
+    "hash += to_string(neighbor);",
+    "hash += to_string(neighbors);",
+    "hash += to_string(neighbor) + \",\";",
+    "hash -= to_string(neighbors);"
+   ],
+   "answer": 2,
+   "analysis": "选C。拼接邻接点编号必须加分隔符，否则 {1,23} 与 {12,3} 会产生相同字符串。注意：这种依赖原编号的字符串哈希并不是图同构不变量，严格说不能判定任意两图同构，本题按真题口径作答。"
+  },
+  {
+   "n": 13,
+   "stem": "给定一个 m×n的二维网格 grid，每个格子中有一个非负整数。请找出一条从左上角 (0, 0) 到右下角 (m-1, n-\n1) 的路径，使得路径上的数字总和最小。每次只能向右或向下移动。横线处应该填入的是（）\n#include <iostream>\n1\n#include <vector>\n2\n#include <algorithm>\n3\nusing namespace std;\n4\n5\nint minPathSum(vector<vector<int>>& grid) {\n6\nint m = grid.size();\n7\nint n = grid[0].size();\n8\n9\nvector<vector<int>> dp(m, vector<int>(n, 0));\n10\n11\ndp[0][0] = grid[0][0];\n12\nfor (int j = 1; j < n; j++) {\n13\ndp[0][j] = dp[0][j - 1] + grid[0][j];\n14\n}\n15\nfor (int i = 1; i < m; i++) {\n16\ndp[i][0] = dp[i - 1][0] + grid[i][0];\n17\n}\n18\nfor (int i = 1; i < m; i++) {\n19\nfor (int j = 1; j < n; j++) {\n20\n————————————————————————————————\n21\n}\n22\n}\n23\nreturn dp[m - 1][n - 1];\n24\n}\n25\n26\nint main() {\n27\nint m, n;\n28\ncin >> m >> n;\n29\nvector<vector<int>> grid(m, vector<int>(n));\n30\nfor (int i = 0; i < m; i++) {\n31\nfor (int j = 0; j < n; j++) {\n32\ncin >> grid[i][j];\n33\n}\n34\n}\n35\nint result = minPathSum(grid);\n36\ncout << result << endl;\n37\n38\nreturn 0;\n39\n}\n40",
+   "options": [
+    "dp[i][j] = min(dp[i - 1][j], dp[i][j - 1]) + grid[i][1];",
+    "dp[i][j] = min(dp[i - 1][j], dp[i][j - 1]) + grid[i][j];",
+    "dp[i][j] = min(dp[i - 1][j], dp[i][j]) + grid[i][j];",
+    "dp[i][j] = min(dp[i][j], dp[i][j - 1]) + grid[i][j];"
+   ],
+   "answer": 1,
+   "analysis": "选B。到 (i,j) 只能来自上方或左方，取较小前驱加当前格：dp[i][j]=min(dp[i−1][j], dp[i][j−1])+grid[i][j]。"
+  },
+  {
+   "n": 14,
+   "stem": "给定一个整数数组 nums，找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大\n和。下面横线处应该填入的是（）\n#include <iostream>\n1\n#include <vector>\n2\n#include <algorithm>\n3\nusing namespace std;\n4\n5\nint maxSubArray(vector<int>& nums) {\n6\nint n = nums.size();\n7\nif (n == 0) return 0;\n8\n9\nvector<int> dp(n, 0);\n10\ndp[0] = nums[0];\n11\nint maxSum = dp[0];\n12\n13\nfor (int i = 1; i < n; i++) {\n14\n_____________________________________\n15\nmaxSum = max(maxSum, dp[i]);\n16\n}\n17\n18\nreturn maxSum;\n19\n}\n20\n21\nint main() {\n22\nint n;\n23\ncin >> n;\n24\n25\nvector<int> nums(n);\n26\nfor (int i = 0; i < n; i++) {\n27\ncin >> nums[i];\n28\n}\n29\n30\nint result = maxSubArray(nums);\n31\ncout << result << endl;\n32\n33\nreturn 0;\n34\n}\n35",
+   "options": [
+    "dp[i] = max(nums[i+1], dp[i - 1] + nums[i]);",
+    "dp[i] = max(nums[i], dp[i - 1] + nums[i]);",
+    "dp[i] = max(nums[i], dp[i + 1] + nums[i]);",
+    "dp[i] = max(nums[i], dp[i - 1] + nums[i+1]);"
+   ],
+   "answer": 1,
+   "analysis": "选B。以 i 结尾的最大子段和要么从 nums[i] 重新开始，要么接在 dp[i−1] 之后：dp[i]=max(nums[i], dp[i−1]+nums[i])（Kadane 思想）。"
+  },
+  {
+   "n": 15,
+   "stem": "在哈希表的实现中，冲突解决是一个重要的问题。以下哪种方法 不是 常见的哈希表冲突解决策略？",
+   "options": [
+    "链地址法（Chaining）",
+    "开放地址法（Open Addressing）",
+    "二次哈希法（Double Hashing）",
+    "二分查找法（Binary Search）"
+   ],
+   "answer": 3,
+   "analysis": "选D。链地址法、开放定址法、二次哈希都是哈希冲突策略；二分查找面向有序序列，与哈希冲突无关。"
+  }
+ ],
+ "judge": [
+  {
+   "n": 1,
+   "stem": "在C++语法中，表达式1e6 、1000000 和10^6 的值是相同的。",
+   "answer": null,
+   "analysis": "错（×）。1e6 与 1000000 都是一百万，而 10^6 是按位异或运算，结果为 12，三者并不相同。"
+  },
+  {
+   "n": 2,
+   "stem": "在C++语言中，函数调用前必须有函数声明或定义。",
+   "answer": null,
+   "analysis": "对（√）。编译器在调用点必须已经见过函数的声明或定义，才能完成参数与返回类型检查。"
+  },
+  {
+   "n": 3,
+   "stem": "快速排序一般是不稳定的。",
+   "answer": null,
+   "analysis": "对（√）。典型原地快速排序会让相等元素跨区间交换，一般是不稳定的排序算法。"
+  },
+  {
+   "n": 4,
+   "stem": "long long 类型能表达的数都能使用double 类型精确表达。",
+   "answer": null,
+   "analysis": "错（×）。double 只有约 53 位二进制有效精度，long long 有 64 位，并非所有 long long 值都能被 double 精确表示。"
+  },
+  {
+   "n": 5,
+   "stem": "使用math.h 或cmath 头文件中的函数，表达式cos(60) 的结果类型为double 、值约为0.5 。",
+   "answer": null,
+   "analysis": "错（×）。cos 的参数按弧度解释，cos(60)≈−0.952，不是 cos60°=0.5。"
+  },
+  {
+   "n": 6,
+   "stem": "一颗\n层的满二叉树，一定有\n个结点。",
+   "answer": null,
+   "analysis": "对（√）。N 层满二叉树每层结点数依次为 1,2,…,2^(N−1)，总数恰为 2^N−1。"
+  },
+  {
+   "n": 7,
+   "stem": "邻接表和邻接矩阵都是图的存储形式。为了操作时间复杂度考虑，同一个图可以同时维护两种存储形式。",
+   "answer": null,
+   "analysis": "错误。同一图若同时维护邻接表和邻接矩阵，存储空间翻倍，且每次增删边都要同步修改两种结构，并不能因此降低操作的时间复杂度，得不偿失，通常不会同时维护。"
+  },
+  {
+   "n": 8,
+   "stem": "子类对象包含父类的所有成员（包括私有成员）。从父类继承的私有成员也是子类的成员，因此子类可以直\n接访问。",
+   "answer": null,
+   "analysis": "正确。子类对象包含父类的所有成员（包括私有成员），从父类继承的私有成员同样属于子类对象的一部分；按官方判定，本题说法成立。"
+  },
+  {
+   "n": 9,
+   "stem": "动态规划算法通常有递归实现和递推实现。但由于递归调用在运行时会由于层数过多导致程序崩溃，有些动\n态规划算法只能用递推实现。",
+   "answer": null,
+   "analysis": "对（√）。递归调用层数过深可能耗尽调用栈，当 DP 状态数量巨大、递归深度超过栈容量时只能用递推实现，故'有些动态规划算法只能用递推实现'按官方口径判对。"
+  },
+  {
+   "n": 10,
+   "stem": "按照下面的规则生成一棵二叉树：以一个人为根节点，其父亲为左子节点，母亲为右子节点。对其父亲、\n母亲分别用同样规则生成左子树和右子树。以此类推，记录30代的直系家谱，则这是一棵满二叉树。",
+   "answer": null,
+   "analysis": "正确。按照规则，每个人对应一个节点，都有父亲、母亲两个孩子，生成的树中不存在只有一个孩子的节点，符合“所有节点都有 0 个或 2 个孩子”的满二叉树定义。"
+  }
+ ],
+ "programming": [
+  {
+   "n": 1,
+   "name": "编程题 1",
+   "desc": "小 A 有一张包含  个结点与\n条边的无向图，结点以\n标号。小 A 会从图上选择一个结点作为起点，每一\n步移动到某个与当前小 A 所在结点相邻的结点。对于每个结点 （\n），小 A 想知道从结点  出发恰好移动\n步之后，小 A 可能位于哪些结点。由于满足条件的结点可能有很多，你只需要求出这些结点的数量。"
+  },
+  {
+   "n": 2,
+   "name": "编程题 2",
+   "desc": "小 A 有一个仅包含小写英文字母的字符串 。\n对于一个字符串，如果能通过每次删去其中两个相同字符的方式，将这个字符串变为空串，那么称这个字符串是可\n以被等价消除的。\n小 A 想知道  有多少子串是可以被等价消除的。\n一个字符串\n是  的子串，当且仅当删去  的某个可以为空的前缀和某个可以为空的后缀之后，可以得到\n。"
+  }
+ ]
+}

@@ -1,0 +1,267 @@
+{
+ "session": "2025-12",
+ "level": 6,
+ "file": "GESP 2025年12月认证C++ 6级真题.pdf",
+ "legacy": false,
+ "choiceCount": 15,
+ "judgeCount": 10,
+ "progCount": 2,
+ "choiceAnswers": "CCCABBCABBACBBB",
+ "judgeAnswers": "",
+ "choice": [
+  {
+   "n": 1,
+   "stem": "在面向对象编程中，下列关于 虚函数 的描述中，错误的是（ ）。",
+   "options": [
+    "虚函数用于支持运行时多态",
+    "通过基类指针调用虚函数时，会根据对象实际类型决定调用版本",
+    "构造函数可以声明为虚函数以支持多态",
+    "基类析构函数常声明为虚函数以避免资源泄漏"
+   ],
+   "answer": 2,
+   "analysis": "选C。错误的是构造函数可以声明为虚函数以支持多态：C++禁止虚构造函数；虚析构函数才常用于通过基类指针安全删除对象。"
+  },
+  {
+   "n": 2,
+   "stem": "执行如下代码，会输出 钢琴：叮咚叮咚 和 吉他：咚咚当当。这体现了面向对象编程的（   ）特性。\n第 1 页 / 共 13 页\nclass Instrument {\n1\npublic:\n2\nvirtual void play() {\n3\ncout << \"乐器在演奏声音\" << endl;\n4\n}\n5\n6\nvirtual ~Instrument() {}\n7\n};\n8\n9\nclass Piano : public Instrument {\n10\npublic:\n11\nvoid play() override {\n12\ncout << \"钢琴：叮咚叮咚\" << endl;\n13\n}\n14\n};\n15\n16\nclass Guitar : public Instrument {\n17\npublic:\n18\nvoid play() override {\n19\ncout << \"吉他：咚咚当当\" << endl;\n20\n}\n21\n};\n22\n23\nint main() {\n24\nInstrument* instruments[2];\n25\ninstruments[0] = new Piano();\n26\ninstruments[1] = new Guitar();\n27\n28\nfor (int i = 0; i < 2; ++i) {\n29\ninstruments[i]->play();\n30\n}\n31\n32\nfor (int i = 0; i < 2; ++i) {\n33\ndelete instruments[i];\n34\n}\n35\nreturn 0;\n36\n}\n37",
+   "options": [
+    "继承",
+    "封装",
+    "多态",
+    "链接"
+   ],
+   "answer": 2,
+   "analysis": "选C（多态）。Instrument*数组分别指向Piano和Guitar对象，调用虚函数play时按对象实际类型动态绑定，输出不同内容。"
+  },
+  {
+   "n": 3,
+   "stem": "关于以下代码，说法正确的是（   ）。\n2\n/\n13\n第\n页\n共\n页\nclass Instrument {\n1\npublic:\n2\nvoid play() {\n3\ncout << \"乐器在演奏声音\" << endl;\n4\n}\n5\n6\nvirtual ~Instrument() {}\n7\n};\n8\n9\nclass Piano : public Instrument {\n10\npublic:\n11\nvoid play() override {\n12\ncout << \"钢琴：叮咚叮咚\" << endl;\n13\n}\n14\n};\n15\n16\nclass Guitar : public Instrument {\n17\npublic:\n18\nvoid play() override {\n19\ncout << \"吉他：咚咚当当\" << endl;\n20\n}\n21\n};\n22\n23\nint main() {\n24\nInstrument* instruments[2];\n25\ninstruments[0] = new Piano();\n26\ninstruments[1] = new Guitar();\n27\n28\nfor (int i = 0; i < 2; ++i) {\n29\ninstruments[i]->play();\n30\n}\n31\n32\nfor (int i = 0; i < 2; ++i) {\n33\ndelete instruments[i];\n34\n}\n35\nreturn 0;\n36\n}\n37",
+   "options": [
+    "执行代码会输出两行，内容分别为：钢琴：叮咚叮咚 和 吉他：咚咚当当",
+    "执行代码会输出两行，内容分别为：乐器在演奏声音 和 乐器在演奏声音",
+    "代码编译出现错误",
+    "代码运行出现错误"
+   ],
+   "answer": 2,
+   "analysis": "选C。基类play()不是虚函数，而Piano和Guitar中用了override重写标记，override只能改写基类虚函数，因此代码编译出错。"
+  },
+  {
+   "n": 4,
+   "stem": "某文本编辑器把用户输入的字符依次压入栈 S。用户依次输入 A , B , C , D 后，用户按了两次撤销（每次\n撤销，弹出栈顶一个字符）。此时栈从栈底到栈顶的内容是：（   ）。",
+   "options": [
+    "A B",
+    "A B C",
+    "A B D",
+    "B C"
+   ],
+   "answer": 0,
+   "analysis": "选A（A B）。依次压入A、B、C、D后弹两次，弹出D、C，栈底到栈顶剩A、B。"
+  },
+  {
+   "n": 5,
+   "stem": "假设循环队列数组长度为 N ，其中队空判断条件为：front == rear ，队满判断条件为：(rear + 1) %\nN == front ，出队对应的操作为：front = (front + 1) % N ，入队对于的操作为：rear = (rear + 1) %\nN 。循环队列长度 N = 6 ，初始 front = 1 , rear = 1 ，执行操作序列为：入队, 入队, 入队, 出队, 入队, 入队，\n则最终 (front, rear) 的值是（   ）。",
+   "options": [
+    "(2, 5) 3 / 13 第 页 共 页",
+    "(2, 0)",
+    "(3, 5)",
+    "(3, 0)"
+   ],
+   "answer": 1,
+   "analysis": "选B（(2,0)）。三次入队rear为1→4，出队front为1→2，再两次入队rear为4→5→0（对6取模），最终front=2、rear=0。"
+  },
+  {
+   "n": 6,
+   "stem": "以下函数 check() 用于判断一棵二叉树是否为（   ）。\nbool check(TreeNode* root) {\n1\nif (!root) return true;\n2\n3\nqueue<TreeNode*> q;\n4\nq.push(root);\n5\nbool hasNull = false;\n6\nwhile (!q.empty()) {\n7\nTreeNode* cur = q.front(); q.pop();\n8\nif (!cur) {\n9\nhasNull = true;\n10\n} else {\n11\nif (hasNull) return false;\n12\nq.push(cur->left);\n13\nq.push(cur->right);\n14\n}\n15\n}\n16\nreturn true;\n17\n}\n18",
+   "options": [
+    "满二叉树",
+    "完全二叉树",
+    "二叉搜索树",
+    "平衡二叉树"
+   ],
+   "answer": 1,
+   "analysis": "选B。层序遍历时允许空节点入队，一旦出现过空节点之后又遇到非空节点即返回false，这是判断完全二叉树的经典算法。"
+  },
+  {
+   "n": 7,
+   "stem": "以下代码实现了二叉树的（  ）。\nvoid traverse(TreeNode* root) {\n1\nif (!root) return;\n2\ntraverse(root->left);\n3\ntraverse(root->right);\n4\ncout << root->val << \" \";\n5\n}\n6",
+   "options": [
+    "前序遍历",
+    "中序遍历",
+    "后序遍历",
+    "层序遍历"
+   ],
+   "answer": 2,
+   "analysis": "选C。先递归左右子树、最后访问根，是左—右—根的后序遍历。"
+  },
+  {
+   "n": 8,
+   "stem": "下面代码实现了哈夫曼编码，则横线处应填写的代码是（  ）。\n第 4 页 / 共 13 页\nstruct Symbol {\n1\nchar ch;            //字符\n2\nlong long freq;     //频率\n3\nstring code;        //哈夫曼编码\n4\n};\n5\n6\nstruct Node {\n7\nlong long w;        //权值\n8\nint l, r;           //左右孩子（节点下标），-1 表示空\n9\nint sym;            // 叶子对应符号下标；内部节点为 -1\n10\nNode(long long _w=0, int _l=-1, int _r=-1, int _sym=-1)\n11\n: w(_w), l(_l), r(_r), sym(_sym) {}\n12\n};\n13\n14\n// 从 A(leafIdx) 和 B(internalIdx) 的队首取最小的一个节点下标\n15\nstatic int PopMinNode(const vector<Node>& nodes,\n16\nconst vector<int>& leafIdx, int n, int& pA,\n17\nconst vector<int>& internalIdx, int& pB) {\n18\nif (pA < n && (pB >= (int)internalIdx.size() ||\n19\nnodes[leafIdx[pA]].w <= nodes[internalIdx[pB]].w)) {\n20\nreturn leafIdx[pA++];\n21\n}\n22\nelse {\n23\nreturn internalIdx[pB++];\n24\n}\n25\n}\n26\n27\n// DFS 生成编码（左 0，右 1）\n28\nstatic void DFSBuildCodes(int u, const vector<Node>& nodes, Symbol sym[], string& path) {\n29\nif (u == -1) return;\n30\n31\nif (nodes[u].sym != -1) {               // 叶子\n32\nsym[nodes[u].sym].code = path;\n33\nreturn;\n34\n}\n35\n36\npath.push_back('0');\n37\nDFSBuildCodes(nodes[u].l, nodes, sym, path);\n38\npath.pop_back();\n39\n40\npath.push_back('1');\n41\nDFSBuildCodes(nodes[u].r, nodes, sym, path);\n42\npath.pop_back();\n43\n}\n44\n45\nint BuildHuffmanCodes(Symbol sym[], int n) {\n46\nfor (int i = 0; i < n; i++) sym[i].code.clear();\n47\nif (n <= 0) return -1;\n48\n49\n// 只有一个字符：约定编码为 \"0\"\n50\nif (n == 1) {\n51\nsym[0].code = \"0\";\n52\nreturn 0;\n53\n}\n54\n55\nvector<Node> nodes;\n56\nnodes.reserve(2 * n);\n57\n58\n// 1) 建立叶子节点\n59\nvector<int> leafIdx(n);\n60\nfor (int i = 0; i < n; i++) {\n61\nleafIdx[i] = (int)nodes.size();\n62\nnodes.push_back(Node(sym[i].freq, -1, -1, i));\n63\n}\n64\n第 5 页 / 共 13 页\n65\n// 2) 叶子按权值排序（A 队列）\n66\nsort(leafIdx.begin(), leafIdx.end(),\n67\n[&](int a, int b) {\n68\nif (nodes[a].w != nodes[b].w) return nodes[a].w < nodes[b].w;\n69\nreturn nodes[a].sym < nodes[b].sym; // 稳定一下\n70\n});\n71\n72\n// B 队列（内部节点下标队列）\n73\nvector<int> internalIdx;\n74\ninternalIdx.reserve(n);\n75\n76\nint pA = 0, pB = 0;\n77\n78\n// 3) 合并 n-1 次\n79\nfor (int k = 1; k < n; k++) {\n80\nint x = PopMinNode(nodes, leafIdx, n, pA, internalIdx, pB);\n81\nint y = PopMinNode(nodes, leafIdx, n, pA, internalIdx, pB);\n82\n83\nint z = (int)nodes.size();\n84\n________________________        // 在此处填写代码\n85\n}\n86\n87\nint root = internalIdx.back();\n88\n89\n// 4) DFS 生成编码\n90\nstring path;\n91\nDFSBuildCodes(root, nodes, sym, path);\n92\nreturn root;\n93\n}\n94",
+   "options": [
+    "nodes.push_back(Node(nodes[x].w + nodes[y].w, x, y, -1)); 1 internalIdx.push_back(z); 2",
+    "nodes.push_back(Node(nodes[x].w + nodes[y].w, x, y, -1)); 1 leafIdx.push_back(z); 2",
+    "internalIdx.push_back(z); 1 nodes.push_back(Node(nodes[x].w + nodes[y].w, x, y, x+y)); 2",
+    "nodes.push_back(Node(nodes[x].w + nodes[y].w, x, y, x+y)); 1 leafIdx.push_back(z); 2"
+   ],
+   "answer": 0,
+   "analysis": "选A。合并两个最小节点应新建内部节点：nodes.push_back(Node(nodes[x].w+nodes[y].w, x, y, -1));并把新节点下标z放入内部节点队列internalIdx.push_back(z);"
+  },
+  {
+   "n": 9,
+   "stem": "以下关于哈夫曼编码的说法，正确的是（  ）。",
+   "options": [
+    "哈夫曼编码是定长编码",
+    "哈夫曼编码中，没有任何一个字符的编码是另一个字符编码的前缀",
+    "哈夫曼编码一定唯一",
+    "哈夫曼编码不能用于数据压缩"
+   ],
+   "answer": 1,
+   "analysis": "选B。哈夫曼编码是前缀编码：没有任何一个字符的编码是另一个字符编码的前缀，因此能唯一解码；它是变长编码且不唯一。"
+  },
+  {
+   "n": 10,
+   "stem": "以下函数实现了二叉排序树（BST）的（   ）操作。\n第 6 页 / 共 13 页\nTreeNode* op(TreeNode* root, int x) {\n1\nif (!root) return new TreeNode(x);\n2\nif (x < root->val)\n3\nroot->left = op(root->left, x);\n4\nelse\n5\nroot->right = op(root->right, x);\n6\nreturn root;\n7\n}\n8",
+   "options": [
+    "查找",
+    "插入",
+    "删除",
+    "遍历"
+   ],
+   "answer": 1,
+   "analysis": "选B。空树位置创建新节点，小于根的插左、否则插右，是二叉排序树的插入操作。"
+  },
+  {
+   "n": 11,
+   "stem": "下列代码实现了树的深度优先遍历，则横线处应填入（   ）。\nstruct TreeNode {\n1\nint val;\n2\nTreeNode* left;\n3\nTreeNode* right;\n4\nTreeNode(int x): val(x), left(nullptr), right(nullptr) {}\n5\n};\n6\n7\nvoid dfs(TreeNode* root) {\n8\nif (!root) return;\n9\nstack<TreeNode*> st;\n10\nst.push(root);\n11\nwhile (!st.empty()) {\n12\nTreeNode* node = st.top(); st.pop();\n13\ncout << node->val << \" \";\n14\nif (node->right) st.push(node->right);\n15\n________________________\n16\n}\n17\n}\n18",
+   "options": [
+    "if (node->left) st.push(node->left);",
+    "if (node->left) st.pop(node->left);",
+    "if (node->left) st.front(node->left);",
+    "if (node->left) st.push(node->right);"
+   ],
+   "answer": 0,
+   "analysis": "选A。右孩子已压栈，横线应把左孩子压栈：if (node->left) st.push(node->left);"
+  },
+  {
+   "n": 12,
+   "stem": "给定一棵普通二叉树（节点值没有大小规律），下面代码判断是否存在值为 x 的结点，则横线处应填入（\n）。\n第 7 页 / 共 13 页\nstruct TreeNode {\n1\nint val;\n2\nTreeNode* left;\n3\nTreeNode* right;\n4\nTreeNode(int x): val(x), left(nullptr), right(nullptr) {}\n5\n};\n6\n7\nTreeNode* bfsFind(TreeNode* root, int x) {\n8\nif (!root) return nullptr;\n9\n10\nqueue<TreeNode*> q;\n11\nq.push(root);\n12\n13\nwhile (!q.empty()) {\n14\nTreeNode* cur = q.front(); q.pop();\n15\nif (cur->val == x) return cur;\n16\n________________________\n17\n}\n18\nreturn nullptr;\n19\n}\n20",
+   "options": [
+    "q.push(cur);",
+    "if (cur->right) q.push(cur->right);",
+    "if (cur->left) 1 q.push(cur->left); 2 if (cur->right) 3 q.push(cur->right); 4",
+    "q.push(cur->left); 1 q.push(cur->right); 2"
+   ],
+   "answer": 2,
+   "analysis": "选C。BFS查找应把当前节点的左右孩子依次入队：if (cur->left) q.push(cur->left); if (cur->right) q.push(cur->right);"
+  },
+  {
+   "n": 13,
+   "stem": "在二叉排序树（Binary Search Tree, BST）中，假设节点值互不相同。给定如下搜索函数，以下说法一定正\n确的是（   ）。\nbool find(Node* root, int x) {\n1\nwhile (root) {\n2\nif (root->val == x) return true;\n3\nroot = (x < root->val) ? root->left : root->right;\n4\n}\n5\nreturn false;\n6\n}\n7",
+   "options": [
+    "最坏情况下，访问结点数是",
+    "最坏情况下，访问结点数是",
+    "无论如何，访问结点数都不超过树高的一半",
+    "一定比在普通二叉树中搜索快"
+   ],
+   "answer": 1,
+   "analysis": "选B。BST查找路径最长为树高，最坏情况下访问的结点数是O(h)（h为树高）；说一定更快或不超过树高一半都不对。"
+  },
+  {
+   "n": 14,
+   "stem": "0/1 背包（每件物品最多选一次）问题通常可用一维动态规划求解，核心代码如下。则下面说法正确的是（\n）。\nfor each item (w, v):\n1\nfor (int j = W; j >= w; --j)\n2\ndp[j] = max(dp[j], dp[j-w] + v);\n3\n第 8 页 / 共 13 页",
+   "options": [
+    "内层 j 必须从小到大，否则会漏解",
+    "内层 j 必须从大到小，否则同一件物品会被用多次",
+    "j 从大到小或从小到大都一样",
+    "只要 dp 初始为 0 ，方向无所谓"
+   ],
+   "answer": 1,
+   "analysis": "选B。一维0-1背包必须让容量j从大到小枚举：否则dp[j-w]可能已被当前物品更新，同一件物品会被重复装入。"
+  },
+  {
+   "n": 15,
+   "stem": "以下关于动态规划的说法中，错误的是（ ）。",
+   "options": [
+    "动态规划方法通常能够列出递推公式。",
+    "动态规划方法的时间复杂度通常为状态的个数。",
+    "动态规划方法有递推和递归两种实现形式。",
+    "对很多问题，递推实现和递归实现动态规划方法的时间复杂度相当。"
+   ],
+   "answer": 1,
+   "analysis": "选B。错误的是B：动态规划的时间复杂度通常是状态个数乘以每次转移的代价，并非仅为状态个数；A、C、D均为正确说法。"
+  }
+ ],
+ "judge": [
+  {
+   "n": 1,
+   "stem": "以下代码中，构造函数被调用的次数是1次。\nclass Test {\n1\npublic:\n2\nTest() { cout << \"T \"; }\n3\n};\n4\n5\nint main() {\n6\nTest a;\n7\nTest b = a;\n8\n}\n9",
+   "answer": null,
+   "analysis": "错。Test a;调用一次构造函数，Test b = a;调用的是拷贝构造函数，构造函数共被调用2次。"
+  },
+  {
+   "n": 2,
+   "stem": "面向对象编程中，封装是指将数据和操作数据的方法绑定在一起，并对外隐藏实现细节。",
+   "answer": null,
+   "analysis": "对。封装就是把数据和操作数据的方法绑定在一起，并对外隐藏实现细节。"
+  },
+  {
+   "n": 3,
+   "stem": "以下代码能够正确统计二叉树中叶子结点的数量。\nint countLeaf(TreeNode* root) {\n1\nif (!root) return 0;\n2\nif (!root->left && !root->right) return 1;\n3\nreturn countLeaf(root->left) + countLeaf(root->right);\n4\n}\n5",
+   "answer": null,
+   "analysis": "对。空树返回0；无左右孩子的节点返回1；否则递归统计左右子树叶子数之和，逻辑正确。"
+  },
+  {
+   "n": 4,
+   "stem": "广度优先遍历二叉树可用栈来实现。",
+   "answer": null,
+   "analysis": "错。广度优先遍历用队列实现；栈用于深度优先遍历。"
+  },
+  {
+   "n": 5,
+   "stem": "函数调用管理可用栈来管理。",
+   "answer": null,
+   "analysis": "对。函数调用时用栈保存返回地址、局部变量和参数，返回时出栈，这是栈的经典应用。"
+  },
+  {
+   "n": 6,
+   "stem": "在二叉排序树（BST）中，若某结点的左子树为空，则该结点一定是整棵树中的最小值结点。",
+   "answer": null,
+   "analysis": "错。反例：根为2、右孩子5（无左子树），节点5左子树为空，但整棵树的最小值是2不是5。"
+  },
+  {
+   "n": 7,
+   "stem": "下面的函数能正确判断一棵树是不是二叉排序树（左边的数字要比当前数字小，右边的数字要比当前数字\n大）。\nbool isBST(TreeNode* root, int minVal, int maxVal) {\n1\nif (!root) return true;\n2\nif (root->val <= minVal || root->val >= maxVal)\n3\nreturn false;\n4\nreturn isBST(root->left, minVal, root->val) &&\n5\nisBST(root->right, root->val, maxVal);\n6\n}\n7\n第 9 页 / 共 13 页",
+   "answer": null,
+   "analysis": "对。isBST用(minVal, maxVal)区间约束递归判断每个节点，既检查左小右大，又保证全局有序，能正确判断BST。"
+  },
+  {
+   "n": 8,
+   "stem": "格雷编码相邻两个编码之间必须有多位不同，以避免数据传输错误。",
+   "answer": null,
+   "analysis": "错。格雷码只要求相邻两个编码恰好一位不同，而不是必须有多位不同。"
+  },
+  {
+   "n": 9,
+   "stem": "小杨在玩一个闯关游戏，从第 1 关走到第 4 关。每一关的体力消耗如下（下标表示关卡编号）：cost = [\n0, 3, 5, 2, 4 ] ，其中 cost[i] 表示到达第 i 关需要消耗的体力，cost[0]=0 表示在开始状态，体力消耗为\n0。小杨每次可以从当前关卡 前进 1 步或 2 步。按照上述规则，从第 1 关到第 4 关所需消耗的最小体力为 7。",
+   "answer": null,
+   "analysis": "错。按dp递推（到达每关的最小体力）：dp1=3、dp2=8、dp3=5、dp4=min(5+4, 8+4)=9，最小体力为9，不是7。"
+  },
+  {
+   "n": 10,
+   "stem": "假定只有一个根节点的树的深度为1，则一棵有  个节点的完全二叉树，则树的深度为\n。",
+   "answer": null,
+   "analysis": "对。n个节点的完全二叉树深度（根深度为1）为⌊log₂n⌋+1。（题干公式以真题原件为准）"
+  }
+ ],
+ "programming": [
+  {
+   "n": 1,
+   "name": "路径覆盖",
+   "desc": "给定一棵有  个结点的有根树 ，结点依次以\n编号，根结点编号为 。方便起见，编号为  的结点称为结\n点 。\n初始时  中的结点均为白色。你需要将  中的若干个结点染为黑色，使得所有叶子到根的路径上至少有一个黑色结\n点。将结点  染为黑色需要代价 ，你需要在满足以上条件的情况下，最小化染色代价之和。\n叶子是指  中没有子结点的结点。"
+  },
+  {
+   "n": 2,
+   "name": "道具商店",
+   "desc": "道具商店里有  件道具可供挑选。第  件道具可为玩家提升\n点攻击力，需要  枚金币才能购买，每件道具只能购\n买一次。现在你有  枚金币，请问你最多可以提升多少点攻击力？\n第 11 页 / 共 13 页"
+  }
+ ]
+}

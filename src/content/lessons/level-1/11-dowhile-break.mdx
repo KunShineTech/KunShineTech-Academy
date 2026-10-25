@@ -1,0 +1,84 @@
+---
+title: "do-while、break 与 continue"
+level: 1
+order: 11
+duration: 120
+unit: "循环结构"
+difficulty: 进阶
+goals:
+  - "理解 do-while 先执行后判断的特点"
+  - "会用 break 结束循环、用 continue 跳过本轮"
+  - "能写两层循环嵌套输出简单的图形"
+---
+
+import Check from '../../../components/Check.astro';
+import Task from '../../../components/Task.astro';
+import Reveal from '../../../components/Reveal.astro';
+
+
+## 1. do-while：先斩后奏的循环
+ while 循环「先问再做」，可能一次都不执行；`do-while` 相反——**先执行一次，再判断条件**，所以它的循环体**至少执行一次**。这就像先尝一口汤再问「要不要再加一勺」。
+
+```cpp
+int i = 1;
+do {
+    cout << i << '\n';
+    i++;
+} while (i <= 10);   // 注意结尾有分号
+```
+
+场景记忆：菜单至少要显示一次、密码至少要询问一次，都适合 do-while。别忘条件后的分号，这是新手易漏点。
+
+## 2. break 与 continue：循环的两个开关
+- **`break`**：立即结束**所在的那一层**循环，直接跳出。
+- **`continue`**：跳过本轮剩余的语句，直接进入下一轮。
+
+```cpp
+for (int i = 1; i <= 10; i++) {
+    if (i == 5) break;       // 数到 5 就停，输出 1 2 3 4
+    cout << i << ' ';
+}
+```
+
+```cpp
+for (int i = 1; i <= 10; i++) {
+    if (i % 2 == 0) continue;  // 偶数跳过，输出所有奇数
+    cout << i << ' ';
+}
+```
+
+> 教学提醒：break 只跳出**一层**。在两层循环里，它只终止内层，外层继续转。
+
+## 3. 循环嵌套：行与列的分工
+循环里再放循环，就像课表里「星期」套着「节次」：外层循环走一行，内层循环把这一行填满。输出一个 n 行 n 列的星号方阵：
+
+```cpp
+int n;
+cin >> n;
+for (int i = 1; i <= n; i++) {        // 外层：负责第几行
+    for (int j = 1; j <= n; j++) {    // 内层：负责一行里的第几个
+        cout << '*';
+    }
+    cout << '\n';                     // 一行打完才换行
+}
+```
+
+分析执行次数：外层每转一圈，内层完整转 n 圈，总共输出 n×n 个星号。当 n 为 3 时就是三行「`***`」。
+
+## 4. 例题解析
+**问题**：读入 n，输出 n 行、每行 n 个星号的正方形。
+
+**思路**：外层循环管「换几次行」，内层循环管「每行印几个星号」，内层结束后单独输出一次换行。
+
+<Check question="do-while 循环与 while 循环的关键区别是？" options={['do-while 至少执行一次循环体','while 至少执行一次循环体','两者没有任何区别','do-while 不能写条件']} answer={0} explanation="do-while 先执行后判断，循环体至少跑一次；while 先判断，条件一开始就为假时一次都不执行。" />
+<Check question="continue 语句的作用是？" options={['结束整个循环','跳过本轮剩余语句，进入下一轮','跳出两层循环','暂停程序运行']} answer={1} explanation="continue 只跳过本轮还没执行的语句，循环本身继续。" />
+<Check question="在两层嵌套循环中执行 break，会？" options={['跳出所有循环','只跳出所在的最内层循环','没有任何作用','跳到外层循环开头']} answer={1} explanation="break 只终止它所在的那一层循环，外层循环照常继续。" />
+
+<Task title="星号方阵" input="一个正整数 n（`1 ≤ n ≤ 20`）" output="n 行，每行 n 个星号" sampleIn="3" sampleOut="***\n***\n***">读入 n，输出 n 行 n 列的星号方阵。先想清楚：外层和内层循环各自负责什么？换行语句应该放在哪一层里？</Task>
+<Reveal label="查看参考程序与思路"><pre><code>{`#include <iostream>\nusing namespace std;\nint main(){\n    int n;\n    cin >> n;\n    for (int i = 1; i <= n; i++) {\n        for (int j = 1; j <= n; j++) {\n            cout << '*';\n        }\n        cout << '\\n';\n    }\n    return 0;\n}`}</code></pre>思路：外层 i 管行，内层 j 管列；内层把一行星号印完，再输出换行。n=3 时输出三行 ***，与样例一致。挑战：改成每行星号个数等于行数，输出三角形。</Reveal>
+
+## 5. 课后巩固
+1. 各写一个生活例子，说明「适合 do-while」「适合 break」「适合 continue」的场景。
+2. 画表格：n 为 4 时，写出两层循环中 i、j 的全部取值，数清共输出几个星号。
+3. 编程：读入 n，输出 1 到 n，但跳过所有 3 的倍数（用 continue）。
+4. 挑战：读入 n，输出每行星号数等于行数的直角三角形（内层条件改为 j 小于等于 i）。

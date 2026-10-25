@@ -1,0 +1,242 @@
+{
+ "session": "2024-03",
+ "level": 3,
+ "file": "GESP 2024年03月认证C++ 3级真题.pdf",
+ "legacy": false,
+ "choiceCount": 15,
+ "judgeCount": 10,
+ "progCount": 2,
+ "choiceAnswers": "DCCBCCACCCDABCC",
+ "judgeAnswers": "",
+ "choice": [
+  {
+   "n": 1,
+   "stem": "整数-5的16位补码表示是(\n)。",
+   "options": [
+    "1005",
+    "1006",
+    "FFFA",
+    "FFFB"
+   ],
+   "answer": 3
+  },
+  {
+   "n": 2,
+   "stem": "如果16位短整数-2 的二进制是\"FFFE\"，则短整数-4 的十六进制是(\n)。",
+   "options": [
+    "FF04",
+    "FFFA",
+    "FFFC",
+    "FFFH"
+   ],
+   "answer": 2
+  },
+  {
+   "n": 3,
+   "stem": "下面C++代码执行后的输出是(\n)。\nint main()\n1\n{\n2\ncout << (3|16) << endl;\n3\n4\ncout << endl;\n5\nreturn 0;\n6\n}\n7",
+   "options": [
+    "3",
+    "16",
+    "19",
+    "48"
+   ],
+   "answer": 2
+  },
+  {
+   "n": 4,
+   "stem": "定义整数int x=-5 ，则执行C++代码cout << (x == (x<<1>>1)) 输出是（    ）。",
+   "options": [
+    "0",
+    "1",
+    "-5",
+    "5"
+   ],
+   "answer": 1
+  },
+  {
+   "n": 5,
+   "stem": "已知字符'0' 的ASCII编码的十进制表示为48，则执行下面C++代码后，输出是（\n）。\nint main()\n1\n{\n2\nstring s=\"316\";\n3\nint n=s.length();\n4\nint x=0;\n5\nfor(int i = 0; i < n; i++)\n6\nx += s[i];\n7\ncout << x  << endl;\n8\n9\ncout << endl;\n10\nreturn 0;\n11\n}\n12\n13",
+   "options": [
+    "10",
+    "58",
+    "154",
+    "316"
+   ],
+   "answer": 2
+  },
+  {
+   "n": 6,
+   "stem": "下面C++代码执行后数组中大于0的数的特征是（    ）。\nint main()\n1\n{\n2\nint a[20],i;\n3\nfor(i = 0; i < 20; i++)\n4\na[i] = i+1;\n5\n6\nfor(int i = 0; i < 20; i++)\n7\nif((a[i]%2)&&(a[i]%3))\n8\na[i] = 0;\n9\n10\nfor(i = 0; i < 20; i++)\n11\nif(a[i])\n12\ncout << a[i] << \" \";\n13\n14\n15\ncout << endl;\n16\nreturn 0;\n17\n}\n18",
+   "options": [
+    "2的倍数",
+    "3的倍数",
+    "能被2或3整除的数",
+    "能被2和3同时整除的数"
+   ],
+   "answer": 2
+  },
+  {
+   "n": 7,
+   "stem": "执行下面C++代码后输出的第一个数是（    ）。\nint main()\n1\n{\n2\nint a[20],i;\n3\nfor(i = 0; i < 20; i++)\n4\na[i] = i+1;\n5\n6\nfor( ; i > 0; i--)\n7\ncout << a[i-1] << \" \";\n8\n9\ncout << endl;\n10\nreturn 0;\n11\n}\n12",
+   "options": [
+    "20",
+    "19",
+    "1",
+    "不确定"
+   ],
+   "answer": 0
+  },
+  {
+   "n": 8,
+   "stem": "在下列代码的横线处填写（  ），可以使得输出是GESP IS INTERESTING 。\nint main()\n1\n{\n2\nstring str=\"gEsP is Interesting\";\n3\nint x = str.length();\n4\n5\nfor(int i = 0; i < x; i++)\n6\nif ((str[i]>='a') && (str[i]<='z'))\n7\n________________________;\n8\ncout << str << endl;\n9\n10\ncout << endl;\n11\nreturn 0;\n12\n}\n13",
+   "options": [
+    "str[i]+='a'-'A'",
+    "str[i]+=20",
+    "str[i]+='A'-'a'",
+    "无法实现"
+   ],
+   "answer": 2
+  },
+  {
+   "n": 9,
+   "stem": "假设英文句子由若干词构成。下面C++代码统计输出的词数是（    ）。\nint main()\n1\n{\n2\nstring str=\"gEsP is  Interesting  !\";\n3\nint x = str.length();\n4\nint nwords = 0;\n5\n6\nfor(int i = 0; i < x; i++)\n7\nif (str[i]==' '){\n8\nnwords++;\n9\nwhile(str[++i]==' ') ;\n10\n}\n11\ncout << nwords << endl;\n12\n13\ncout << endl;\n14\nreturn 0;\n15\n}\n16",
+   "options": [
+    "1",
+    "2",
+    "3",
+    "4"
+   ],
+   "answer": 2
+  },
+  {
+   "n": 10,
+   "stem": "C++的字符变量的码值是整数，下面字面量形式的字符码值最大的是（    ）。",
+   "options": [
+    "100",
+    "075",
+    "0x70",
+    "0x60"
+   ],
+   "answer": 2
+  },
+  {
+   "n": 11,
+   "stem": "下面C++程序执行的结果是（    ）。\nint main()\n1\n{\n2\nint a[20],i;\n3\nint cnt=0;\n4\nfor(i = 0; i < 20; i++)\n5\na[i] = i+1;\n6\n7\n8\nfor( ; i > 1; i--)\n9\nif((a[i-1]+a[i-2])%3)\n10\ncnt++;\n11\ncout << cnt << endl;\n12\n13\ncout << endl;\n14\nreturn 0;\n15\n}\n16",
+   "options": [
+    "5",
+    "6",
+    "10",
+    "12"
+   ],
+   "answer": 3
+  },
+  {
+   "n": 12,
+   "stem": "定义字符数组char str[20] = {'G', 'E', 'S', 'P'}; ，则str 的字符串长度为（  ）。",
+   "options": [
+    "4",
+    "5",
+    "19",
+    "20"
+   ],
+   "answer": 0
+  },
+  {
+   "n": 13,
+   "stem": "定义整型变量int a=3, b=16 ，则a|b 的值和a+b 的关系是（    ）。",
+   "options": [
+    "大于",
+    "等于",
+    "小于",
+    "等于或小于"
+   ],
+   "answer": 1
+  },
+  {
+   "n": 14,
+   "stem": "小杨的父母最近刚刚给他买了一块华为手表，他说手表上跑的是鸿蒙，这个鸿蒙是（  ）。",
+   "options": [
+    "小程序",
+    "计时器",
+    "操作系统",
+    "神话人物"
+   ],
+   "answer": 2
+  },
+  {
+   "n": 15,
+   "stem": "中国计算机学会（CCF）在2024年1月27日的颁奖典礼上颁布了王选奖，王选先生的重大贡献是（  ）。",
+   "options": [
+    "制造自动驾驶汽车",
+    "创立培训学校",
+    "发明汉字激光照排系统",
+    "成立方正公司"
+   ],
+   "answer": 2
+  }
+ ],
+ "judge": [
+  {
+   "n": 1,
+   "stem": "任意整数a 的二进制反码与补码都有1位不同。 (\n)",
+   "answer": null
+  },
+  {
+   "n": 2,
+   "stem": "对整型变量int a = 3 ，执行C++代码a<<2 将把2输出到a 中。(\n)",
+   "answer": null
+  },
+  {
+   "n": 3,
+   "stem": "下面C++代码可以计算1到100的累加和，采用的是穷举法。\nint main()\n1\n{\n2\nint i,sum=0;\n3\nfor(int i = 1; i <= 100 ; i++)\n4\nsum += i;\n5\ncout << sum  << endl;\n6\n7\ncout << endl;\n8\nreturn 0;\n9\n}\n10",
+   "answer": null
+  },
+  {
+   "n": 4,
+   "stem": "一个int 类型变量a ，执行操作(a<<2>>2) 后的值一定是a 。（ ）",
+   "answer": null
+  },
+  {
+   "n": 5,
+   "stem": "在C++语言中，(010<<1) 执行结果是100 。（ ）",
+   "answer": null
+  },
+  {
+   "n": 6,
+   "stem": "执行下面C++代码后将输出2 。（  ）\nint main()\n1\n{\n2\nstring str=\"gEsP is Interesting\";\n3\nint x = str.find(\"s\");\n4\n5\ncout << x << endl;\n6\n7\ncout << endl;\n8\nreturn 0;\n9\n}\n10",
+   "answer": null
+  },
+  {
+   "n": 7,
+   "stem": "在C++语言中，字符数组被定义时，它的大小可以调整。（  ）",
+   "answer": null
+  },
+  {
+   "n": 8,
+   "stem": "对定义的数组int a[7]={2,0,2,4,3,1,6} ，可以用简单循环就找到其中最小的整数。（  ）",
+   "answer": null
+  },
+  {
+   "n": 9,
+   "stem": "小杨今年春节回奶奶家了，奶奶家的数字电视要设置ip地址并接入到WIFI盒子才能收看节目，那这个WIFI盒\n子具有路由器的功能。（  ）",
+   "answer": null
+  },
+  {
+   "n": 10,
+   "stem": "任何一个for 循环都可以转化为等价的while 循环（  ）。",
+   "answer": null
+  }
+ ],
+ "programming": [
+  {
+   "n": 1,
+   "name": "字母求和",
+   "desc": ""
+  },
+  {
+   "n": 2,
+   "name": "完全平方数",
+   "desc": ""
+  }
+ ]
+}

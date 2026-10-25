@@ -1,0 +1,66 @@
+---
+title: "字符与字符数组"
+level: 3
+order: 6
+duration: 120
+unit: "字符与字符串"
+difficulty: 基础
+goals:
+  - "复习 char 类型、字符比较与 ASCII 顺序"
+  - "掌握大小写转换的 ±32 方法与 toupper/tolower"
+  - "掌握字符数组的定义、初始化与遍历"
+---
+
+import Check from '../../../components/Check.astro';
+import Task from '../../../components/Task.astro';
+import Reveal from '../../../components/Reveal.astro';
+
+
+## 1. 从字典排序理解字符比较
+查字典时「apple」排在「banana」前面，因为第一个字母 a 在 b 前面。C++ 比较字符也是看**字典序**，本质是比较 ASCII 编码的大小：`'A' < 'B'` 为真，`'a' < 'b'` 为真，但 `'Z' < 'a'` 也为真（因为大写字母 65~90，小写字母 97~122，**所有大写字母都小于所有小写字母**）。
+
+字符可以参与运算：`'a' - 'A'` 等于 32，`'7' - '0'` 等于 7。这些技巧在密码题里经常出现。
+
+## 2. 大小写转换：两种武器
+方法一（背公式）：已知是小写字母时，`char(c - 32)` 转大写；已知是大写字母时，`char(c + 32)` 转小写。依据是同一字母大小写相差 32。
+
+方法二（更稳妥）：用 cctype 库函数 `toupper(c)` 和 `tolower(c)`。它们的好处是：不是字母的字符原样返回，不用先判断。
+
+```cpp
+#include <iostream>
+#include <cctype>
+using namespace std;
+int main() {
+    char c = 'g';
+    cout << char(c - 32) << '\n';      // G
+    cout << char(toupper('m')) << '\n'; // M
+    cout << char(tolower('Q')) << '\n'; // q
+    cout << ('a' < 'z') << '\n';        // 1（真）
+}
+```
+
+## 3. 字符数组：一串字符的格子
+字符数组就是「每格存一个字符」的数组，用法和普通数组几乎一样，但常与字符串打交道：
+
+```cpp
+char s[10] = {'h', 'i'};   // 前两个是 h、i，其余自动为 '\0'
+char t[] = "hello";        // 字符串字面量初始化，编译器自动补上结尾符 '\0'
+for (int i = 0; t[i] != '\0'; i++)   // 遇到结尾标志就停
+    cout << t[i];
+```
+
+注意 `'\0'` 是值为 0 的「字符串结束标志」，它不是字符 0。用 `t[i] != '\0'` 作为循环条件，是遍历字符数组的经典写法。
+
+<Check question="下列哪个表达式的值为真（1）？" options={['Z 小于 a','z 小于 A','a 小于 A','A 小于 a 且 a 小于 z']} answer={0} explanation="大写字母编码 65~90，小写字母 97~122，因此所有大写字母都小于所有小写字母；而 Z(90) 小于 a(97)。" />
+
+<Check question="char t[] = 'hello'; 以「不等于结尾符」为条件遍历时，循环体一共执行几次？" options={['6 次','5 次','4 次','不确定']} answer={1} explanation="hello 有 5 个字符，i=5 时遇到结尾符循环结束，所以循环体执行 5 次。" />
+
+<Task title="大小写互换" input="一行仅由英文字母组成的字符串（长度不超过 100）" output="每个字母大小写互换后的字符串" sampleIn="aBcDe" sampleOut="AbCdE">逐字符遍历：小写转大写、大写转小写。可以用 ±32，也可以直接调用 toupper / tolower。</Task>
+<Reveal label="查看参考程序与思路"><pre><code>{`#include <iostream>\n#include <cctype>\nusing namespace std;\nint main(){\n    char s[105];\n    cin>>s;\n    for(int i=0;s[i]!='\\0';i++){\n        if(s[i]>='a'&&s[i]<='z') cout<<char(s[i]-32);\n        else if(s[i]>='A'&&s[i]<='Z') cout<<char(s[i]+32);\n        else cout<<s[i];\n    }\n    cout<<'\\n';\n}`}</code></pre>用范围判断保证只对字母做 ±32 运算，其余字符原样输出。样例 aBcDe 中 a→A、B→b、C→c、D→d、e→E，得 AbCdE。</Reveal>
+
+## 4. 课后巩固
+1. 不查表，说出 `'0'`、`'A'`、`'a'` 的 ASCII 值，并解释为什么 `'9' - '0'` 等于 9。
+2. 判断：`'9' > '1'` 是否为真？`'9' > 'A'` 是否为真？
+3. 编程：读入一行字母字符串，统计其中大写字母的个数。
+4. 比较两种大小写转换方法：±32 和 toupper/tolower 各有什么优缺点？
+5. 思考：为什么字符数组遍历常用 `s[i] != '\0'` 而不是固定次数？如果数组里没有 `'\0'` 会怎样？

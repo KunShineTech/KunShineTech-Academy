@@ -1,0 +1,67 @@
+---
+title: "ASCII编码与字符运算"
+level: 2
+order: 4
+duration: 120
+unit: "语言基础"
+difficulty: 基础
+goals:
+  - "记住空格32、0为48、A为65、a为97"
+  - "理解char与整数编码的关系"
+  - "解决字符分类与大小写转换问题"
+---
+
+import Check from '../../../components/Check.astro';
+import Task from '../../../components/Task.astro';
+import Reveal from '../../../components/Reveal.astro';
+
+
+## 1. 字符为什么能用数字表示？
+计算机最终存储的是二进制信息。ASCII是一种字符编码标准，定义了128个基本字符的编码。GESP二级明确要求识别四个常用值：
+
+| 字符 | 十进制ASCII |
+|---|---:|
+| 空格 | 32 |
+| `'0'` | 48 |
+| `'A'` | 65 |
+| `'a'` | 97 |
+
+英文字母编码连续：`'A'`到`'Z'`对应65—90，`'a'`到`'z'`对应97—122，数字字符`'0'`到`'9'`对应48—57。
+
+## 2. 关键程序元素
+```cpp
+#include <iostream>
+using namespace std;
+int main(){
+    char c='A';
+    cout<<int(c)<<'\n';       // 65
+    cout<<char(65)<<'\n';     // A
+    cout<<int('7'-'0')<<'\n'; // 7
+}
+```
+
+**数学原理：** 大写与小写英文字符的ASCII编码相差32，因此 `char(c-'a'+'A')` 可以把已知的小写英文字母转换为对应大写字母。注意这不是所有语言文字的通用转换法。
+
+## 3. 例题：单个小写字母转大写
+**输入**：一个小写字母。**输出**：对应的大写字母。
+
+算法：输入字符 `c` → 计算 `c-'a'+'A'` → 转为字符输出。
+
+```cpp
+#include <iostream>
+using namespace std;
+int main(){
+    char c; cin>>c;
+    cout<<char(c-'a'+'A')<<'\n';
+}
+```
+
+**边界测试**：`a→A`、`z→Z`；若输入不是小写字母，这个转换公式不保证得到期望结果。
+
+<Check question="字符 '9' 与整数 9 是否相同？" options={['完全相同','不同，字符编码为57','字符编码为9','无法比较']} answer={1} explanation="字符'9'的ASCII是57；整数9是数值9。'9'-'0'才得到整数9。" />
+
+<Task title="数字字符转整数" input="一个字符 c，保证 '0'≤c≤'9'" output="该数字的整数值" sampleIn="8" sampleOut="8">不能直接把 `char` 当整数输出。尝试 `c-'0'`，解释减法为什么有效。</Task>
+<Reveal label="查看参考答案"><pre><code>{`#include <iostream>\nusing namespace std;\nint main(){char c;cin>>c;cout<<c-'0'<<'\\n';}`}</code></pre></Reveal>
+
+## 4. 课后挑战
+输入一个英文字符：若为小写则转大写，若为大写则转小写，其余原样输出。先写三分支，再思考为什么不能对任意字符直接加32。

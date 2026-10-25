@@ -1,0 +1,12 @@
+---
+import Base from '../layouts/Base.astro';
+import { navGroups } from '../data/programs';
+import { levels } from '../data/levels';
+import { getCollection } from 'astro:content';
+const lessons = await getCollection('lessons');
+const lessonCount = lessons.length;
+const minuteCount = lessons.reduce((s, x) => s + x.data.duration, 0);
+const programCount = navGroups.reduce((s, g) => s + g.children.length, 0);
+---
+<Base title="KunShineTech Academy" description="KunShineTech Academy 课程体系：GESP C++ 等级认证、CSP-J/S 备考、多语言程序设计、机器学习、软件工程与软件架构。"><div class="container"><section class="hero"><div class="eyebrow">KUNSHINETECH ACADEMY · 2026</div><h1>一套课程体系，从编程入门到软件架构。</h1><p>KunShineTech Academy 按学习路径组织课程：GESP C++ 等级认证一至八级已全线开通；CSP 竞赛备考、程序设计（Python / C++ / Java / Go / Rust / 前端等）、机器学习、软件工程与软件架构各方向正在建设中，将逐步上线。</p><div class="stats"><div class="stat"><b>{navGroups.length}</b> 个课程方向</div><div class="stat"><b>{programCount}</b> 个课程板块</div><div class="stat"><b>{levels.length}</b> 个 GESP 级别</div><div class="stat"><b>{lessonCount}</b> 个主题单元</div><div class="stat"><b>{minuteCount}</b> 分钟建议授课</div></div></section>
+{navGroups.map(g=><><h2 class="section-title" id={g.nav}>{g.nav}</h2><div class="level-cards">{g.children.map(p=><a class="level-card" href={p.href}><span class="num">{p.code}{p.status === 'building' && ' · 建设中'}</span><h3>{p.title}</h3><p>{p.tagline}{p.intro}</p><span class="meta">{p.audience} · {p.status === 'available' ? '进入课程 →' : '查看规划 →'}</span></a>)}</div></>)}</div></Base>

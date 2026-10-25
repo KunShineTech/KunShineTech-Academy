@@ -1,0 +1,242 @@
+{
+ "session": "2026-03",
+ "level": 6,
+ "file": "GESP 2026年03月认证C++ 6级真题.pdf",
+ "legacy": false,
+ "choiceCount": 15,
+ "judgeCount": 10,
+ "progCount": 2,
+ "choiceAnswers": "ABCADBACDBBBCCA",
+ "judgeAnswers": "",
+ "choice": [
+  {
+   "n": 1,
+   "stem": "下列关于 C++ 中类的描述，正确的是（ ）。",
+   "options": [
+    "如果类没有用户声明的构造函数，那么编译器会隐式声明一个默认构造函数",
+    "类的析构函数可以被重载，一个类可以有多个析构函数",
+    "类中的所有成员都必须声明为 public",
+    "类和结构体在 C++ 中没有区别，包括默认访问权限也相同"
+   ],
+   "answer": 0
+  },
+  {
+   "n": 2,
+   "stem": "下列代码中，s1->draw(); 和 s2->draw(); 输出不同结果的主要原因是（ ）。\n第 1 页 / 共 12 页\nclass Shape {\n1\npublic:\n2\nvirtual void draw() {\n3\ncout << \"绘制图形\" << endl;\n4\n}\n5\n6\nvirtual ~Shape() {}\n7\n};\n8\n9\nclass Circle : public Shape {\n10\npublic:\n11\nvoid draw() override {\n12\ncout << \"绘制圆形\" << endl;\n13\n}\n14\n};\n15\n16\nclass Rectangle : public Shape {\n17\npublic:\n18\nvoid draw() override {\n19\ncout << \"绘制矩形\" << endl;\n20\n}\n21\n};\n22\n23\nint main() {\n24\nShape* s1 = new Circle();\n25\nShape* s2 = new Rectangle();\n26\n27\ns1->draw();\n28\ns2->draw();\n29\n30\ndelete s1;\n31\ndelete s2;\n32\nreturn 0;\n33\n}\n34",
+   "options": [
+    "draw() 是普通成员函数",
+    "Shape 中的 draw() 被声明为虚函数",
+    "Circle 和 Rectangle 中使用了 public 继承",
+    "指针变量名不同"
+   ],
+   "answer": 1
+  },
+  {
+   "n": 3,
+   "stem": "下面的代码在 main() 中有一行会导致编译错误，请找出来。\nclass Pet {\n1\npublic:\n2\nPet(string n, int a) : name(n), age(a) {}\n3\nstring getName()  { return name; }\n4\nvoid   birthday() { age++; }\n5\nprivate:\n6\nstring name;\n7\nint    age;\n8\n};\n9\n10\nint main() {\n11\nPet cat(\"奶茶\", 2);\n12\ncout << cat.getName();    // ①\n13\ncat.birthday();           // ②\n14\ncat.name = \"大橘\";         // ③\n15\ncout << cat.getName();    // ④\n16\n}\n17",
+   "options": [
+    "第 ① 行 第 2 页 / 共 12 页",
+    "第 ② 行",
+    "第 ③ 行",
+    "第 ④ 行"
+   ],
+   "answer": 2
+  },
+  {
+   "n": 4,
+   "stem": "游乐园的过山车每次限坐 4 人，用循环队列管理排队（容量 MAX=5 ，空一格判满）。下面代码执行后，循\n环队列是否已满？rear 的值是多少？\nconst int MAX = 5;\n1\nint queue[MAX];\n2\nint front = 0, rear = 0;\n3\n4\n// 入队\n5\nvoid enqueue(int x) {\n6\nqueue[rear] = x;\n7\nrear = (rear + 1) % MAX;\n8\n}\n9\n// 出队\n10\nvoid dequeue() {\n11\nfront = (front + 1) % MAX;\n12\n}\n13\n14\nint main() {\n15\nenqueue(1); enqueue(2); enqueue(3); enqueue(4);\n16\ndequeue(); dequeue();\n17\nenqueue(5); enqueue(6);\n18\n}\n19",
+   "options": [
+    "已满，rear = 1",
+    "未满，rear = 1",
+    "已满，rear = 2",
+    "未满，rear = 4"
+   ],
+   "answer": 0
+  },
+  {
+   "n": 5,
+   "stem": "在以下计算机系统应用场景中，最适合使用循环队列的是（   ）。",
+   "options": [
+    "函数调用过程中，保存局部变量和返回地址",
+    "表达式求值中的运算符优先级处理",
+    "操作系统中的进程优先级调度（高优先级先执行）",
+    "生产者和消费者问题中的共享缓冲区"
+   ],
+   "answer": 3
+  },
+  {
+   "n": 6,
+   "stem": "在二叉搜索树（BST）中，若中序遍历的序列为{1, 2, 3, 4, 5}，且先序遍历的第一个序列元素为3，则下列说\n法正确的是（ ）。",
+   "options": [
+    "该树一定是一棵完全二叉树。",
+    "元素4和5不可能是兄弟节点。",
+    "元素1所在节点的深度可能大于3（根节点深度为1）。",
+    "元素2一定是元素1的父节点。"
+   ],
+   "answer": 1
+  },
+  {
+   "n": 7,
+   "stem": "某二叉树共有10个结点，记为A~J，已知它的先序遍历序列为：A B D H I E C F J G，中序遍历序列为：H D\nI B E A F J C G，则该二叉树的后序遍历序列是（ ）。",
+   "options": [
+    "H I D E B J F G C A",
+    "H I D B E J F G C A",
+    "I H D E B J F G C A 第 3 页 / 共 12 页",
+    "H I D E B F J G C A"
+   ],
+   "answer": 0
+  },
+  {
+   "n": 8,
+   "stem": "下列关于树的遍历的说法中，正确的一项是（ ）。",
+   "options": [
+    "对任意一棵树进行深度优先遍历，所得序列一定唯一。",
+    "已知一棵二叉树的先序遍历和后序遍历序列，可以唯一确定这棵二叉树。",
+    "已知一棵二叉树的先序遍历和中序遍历序列，可以唯一确定这棵二叉树。",
+    "已知一棵二叉树的先序遍历序列，可以唯一确定这棵二叉树。"
+   ],
+   "answer": 2
+  },
+  {
+   "n": 9,
+   "stem": "有6 个字符，它们出现的次数分别为：{2, 3, 3, 4, 6, 8} ，现在用哈夫曼编码为这些字符编码，最小\n加权路径长度WPL（每个字符的出现次数它的编码长度，再把每个字符结果加起来）的值为（ ）。",
+   "options": [
+    "58",
+    "60",
+    "62",
+    "64"
+   ],
+   "answer": 3
+  },
+  {
+   "n": 10,
+   "stem": "对  个不同符号的符号进行哈夫曼编码。若生成的哈夫曼树共有\n个结点，则  的值是（）。",
+   "options": [
+    "60",
+    "58",
+    "57",
+    "56"
+   ],
+   "answer": 1
+  },
+  {
+   "n": 11,
+   "stem": "关于格雷编码（Gray Code），下列说法正确的是（ ）。",
+   "options": [
+    "格雷编码中，编码位数越多，相邻编码之间变化的位数也越多",
+    "格雷编码中，相邻两个编码的二进制位恰好有一位不同",
+    "格雷编码就是把普通二进制编码按位取反后得到的结果",
+    "格雷编码不能用于数字电路和状态转换的设计中"
+   ],
+   "answer": 1
+  },
+  {
+   "n": 12,
+   "stem": "给定一棵二叉树，采用广度优先搜索 (BFS) 算法，返回右视图所有节点的值。其中右视图定义为：二叉树\n的右视图是从树的右侧看过去时可见的节点集合，即右视图中的每个节点都是某一层中最右侧的节点。\n第 4 页 / 共 12 页\nstruct TreeNode {\n1\nint val;\n2\nTreeNode* left;\n3\nTreeNode* right;\n4\nTreeNode(int x): val(x), left(nullptr), right(nullptr) {}\n5\n};\n6\n7\nvector<int> rightSideView(TreeNode* root) {\n8\nunordered_map<int, int> rightmostValueAtDepth;\n9\nint max_depth = -1;\n10\n11\nqueue<TreeNode*> nodeQueue;\n12\nqueue<int> depthQueue;\n13\nnodeQueue.push(root);\n14\ndepthQueue.push(0);\n15\n16\nwhile (!nodeQueue.empty()) {\n17\nTreeNode* node = nodeQueue.front(); nodeQueue.pop();\n18\nint depth = depthQueue.front(); depthQueue.pop();\n19\n20\nif (node != NULL) {\n21\nmax_depth = max(max_depth, depth);\n22\n23\nrightmostValueAtDepth[depth] = node->val;\n24\n25\nnodeQueue.push(node->left);\n26\nnodeQueue.push(node->right);\n27\n28\ndepthQueue.push(________);\n29\ndepthQueue.push(________);\n30\n}\n31\n}\n32\n33\nvector<int> rightView;\n34\nfor (int depth = 0; ________; ++depth) {\n35\nrightView.push_back(rightmostValueAtDepth[depth]);\n36\n}\n37\nreturn rightView;\n38\n};\n39",
+   "options": [
+    "depth 1 depth 2 depth < max_depth 3",
+    "depth + 1 1 depth + 1 2 depth <= max_depth 3",
+    "depth + 1 1 depth + 1 2 depth < max_depth 3",
+    "depth 1 depth 2 depth <= max_depth 3 第 5 页 / 共 12 页"
+   ],
+   "answer": 1
+  },
+  {
+   "n": 13,
+   "stem": "下列关于树的深度优先搜索（DFS）的说法中，正确的是（ ）。",
+   "options": [
+    "对树进行 DFS 时，一定是按层从上到下依次访问结点",
+    "对任意一棵树进行 DFS，得到的遍历序列唯一",
+    "对一棵树进行 DFS 时，常借助递归或栈实现",
+    "DFS 只能用于二叉树，不能用于普通树"
+   ],
+   "answer": 2
+  },
+  {
+   "n": 14,
+   "stem": "小朋友们去邻里拜年，每个家里有不同数量的糖果。规则是：不能连续进入两个相邻的房子（即不能同时\n取相邻两家的糖果）。目标是拿到最多糖果。以下是代码实现，请补全横线。\nint visit(vector<int>& nums) {\n1\nif (nums.empty()) {\n2\nreturn 0;\n3\n}\n4\nint size = nums.size();\n5\nif (size == 1) {\n6\nreturn nums[0];\n7\n}\n8\nvector<int> dp = vector<int>(size, 0);\n9\ndp[0] = nums[0];\n10\ndp[1] = max(nums[0], nums[1]);\n11\n12\nfor (int i = 2; i < size; i++) {\n13\ndp[i] = ______;  // 在此处填写代码\n14\n}\n15\n16\nreturn dp[size - 1];\n17\n}\n18",
+   "options": [
+    "dp[i] = dp[i - 1] + nums[i];",
+    "dp[i] = max(dp[i - 1], dp[i - 2] * nums[i]);",
+    "dp[i] = max(dp[i - 1], dp[i - 2] + nums[i]);",
+    "dp[i] = dp[i - 2] + nums[i];"
+   ],
+   "answer": 2
+  },
+  {
+   "n": 15,
+   "stem": "元宵节晚上，小朋友沿着一条发光石板路前进，每次可向前走 1 块或 2 块石板。动态规划定义如下：\ndp[i] = dp[i - 1] + dp[i - 2] ，下面关于 dp[i] 的含义最合适的是（ ）。",
+   "options": [
+    "走到第 i 块石板的不同走法数量",
+    "走到第 i 块石板时，已经走过的石板总数",
+    "从第 i 块石板走回起点的最少步数",
+    "从第 i 块石板走回起点的最大步数"
+   ],
+   "answer": 0
+  }
+ ],
+ "judge": [
+  {
+   "n": 1,
+   "stem": "下面定义了一个表示二维坐标点的类 Point ， 并提供了一个带参数的构造函数，但第 ② 行 Point b; 会\n调用编译器自动生成的默认构造函数，将b.x 和 b.y 被初始化为 0.0，程序可以正常编译运行。\n第 6 页 / 共 12 页\nclass Point {\n1\npublic:\n2\ndouble x, y;\n3\nPoint(double px, double py) : x(px), y(py) {}\n4\nvoid print() {\n5\ncout << \"(\" << x << \", \" << y << \")\";\n6\n}\n7\n};\n8\n9\nint main() {\n10\nPoint a(3.0, 4.0);   // ①\n11\nPoint b;             // ②\n12\na.print();\n13\n}\n14",
+   "answer": null
+  },
+  {
+   "n": 2,
+   "stem": "C++ 中的继承支持单继承和多继承，但子类无法直接访问父类的私有成员。",
+   "answer": null
+  },
+  {
+   "n": 3,
+   "stem": "对如下结构的树，执行travel 函数，输出结果是  1 2 3 4 5 。\n1\n1\n/ \\\n2\n2   3\n3\n/ \\\n4\n4   5\n5\nstruct Node {\n1\nint val;\n2\nNode *left, *right;\n3\nNode(int v) : val(v), left(nullptr), right(nullptr) {}\n4\n};\n5\n6\nvoid travel(Node* root) {\n7\nif (!root) return;\n8\nstack<Node*> s;\n9\ns.push(root);\n10\n11\nwhile (!s.empty()) {\n12\nNode* cur = s.top(); s.pop();\n13\ncout << cur->val << \" \";\n14\n15\nif (cur->right) s.push(cur->right);\n16\nif (cur->left)  s.push(cur->left);\n17\n}\n18\n}\n19",
+   "answer": null
+  },
+  {
+   "n": 4,
+   "stem": "若所有字符出现频率相同，则哈夫曼编码一定会得到完全二叉树。",
+   "answer": null
+  },
+  {
+   "n": 5,
+   "stem": "哈夫曼编码是一种变长的前缀编码，在解码时不需要额外的分隔符就能唯一还原，这是因为在哈夫曼树中，\n任何一个字符的叶子结点都不会成为另一个字符结点的祖先。",
+   "answer": null
+  },
+  {
+   "n": 6,
+   "stem": "在 C++ 中使用一维数组 vector<int> tree 存储按层序遍历的完全二叉树时，若根节点存储在\ntree[0] ，则对于任意非空节点 tree[i] ，其右孩子（如果存在）必然位于 tree[2 * i + 2] 。",
+   "answer": null
+  },
+  {
+   "n": 7,
+   "stem": "在 C++ 中使用栈来非递归地实现二叉树的前序遍历时，为了保证遍历顺序正确，在处理完当前结点后，应\n该先将该结点的左孩子压入栈中，然后再将右孩子压入栈中。",
+   "answer": null
+  },
+  {
+   "n": 8,
+   "stem": "设二叉树共有  个结点，函数 preorderTraversal 以下代码的时间复杂度为\n，空间复杂度为\n。\n第 7 页 / 共 12 页\nstruct TreeNode {\n1\nint val;\n2\nTreeNode* left;\n3\nTreeNode* right;\n4\nTreeNode(int x): val(x), left(nullptr), right(nullptr) {}\n5\n};\n6\n7\nvoid preorder(TreeNode *root, vector<int> &res) {\n8\nif (root == nullptr) {\n9\nreturn;\n10\n}\n11\nres.push_back(root->val);\n12\npreorder(root->left, res);\n13\npreorder(root->right, res);\n14\n}\n15\n16\nvector<int> preorderTraversal(TreeNode *root) {\n17\nvector<int> res;\n18\npreorder(root, res);\n19\nreturn res;\n20\n};\n21",
+   "answer": null
+  },
+  {
+   "n": 9,
+   "stem": "下列代码实现了一个0-1背包的一维动态规划代码，内层循环是经典的逆序写法。若将内层循环改成正序遍\n历（即 for (int j = w[i]; j <= W; j++) ），仍能得到正确答案。\nint main() {\n1\nint W = 5;\n2\nint w[] = {2, 3, 4};\n3\nint v[] = {10, 1, 1};\n4\nint n   = 3;\n5\nint dp[6] = {0};\n6\n7\nfor (int i = 0; i < n; i++) {\n8\nfor (int j = W; j >= w[i]; j--) {   // ← 逆序！\n9\ndp[j] = max(dp[j], dp[j - w[i]] + v[i]);\n10\n}\n11\n}\n12\ncout << dp[W];\n13\n}\n14",
+   "answer": null
+  },
+  {
+   "n": 10,
+   "stem": "在动态规划问题中，状态空间相同且没有重复计算的情况下，“状态转移方程+递推”与“递归+记忆化搜索”\n的时间复杂度通常相同。",
+   "answer": null
+  }
+ ],
+ "programming": [
+  {
+   "n": 1,
+   "name": "选数",
+   "desc": "给定两个包含  个整数的数组\n与\n。你需要指定若干下标\n（\n）\n使得以下条件成立：\n（\n）；\n（\n）。\n第 8 页 / 共 12 页\n你需要在满足以上条件的前提下最大化\n，也即最大化数组  对应下标的整数之和。"
+  },
+  {
+   "n": 2,
+   "name": "完全二叉树",
+   "desc": "给定一棵包含  个结点的有根二叉树，结点依次以\n编号，根结点编号为 。\n对于结点 ，其左儿子的编号记为 ，右儿子编号记为 。特别地，如果左儿子不存在则\n，如果右儿子不存在\n则\n。\n树中每个结点都对应一棵以其为根的子树。请你求出给定有根树的所有  棵子树中，有多少棵子树是完全二叉树。"
+  }
+ ]
+}

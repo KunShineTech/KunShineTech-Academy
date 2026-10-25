@@ -1,0 +1,262 @@
+{
+  "roadmap": [
+    {
+      "stage": "样式基础",
+      "focus": "掌握 CSS 的引入方式、选择器与层叠优先级，理解盒模型与继承。",
+      "topics": ["三种引入方式与优先级", "基本选择器与组合选择器", "层叠、继承、特异性与来源顺序", "盒模型：content/padding/border/margin", "box-sizing 与 margin 折叠", "display 属性与格式化上下文"]
+    },
+    {
+      "stage": "布局入门",
+      "focus": "从定位过渡到 Flex 布局，建立现代一维布局思维。",
+      "topics": ["position 五种值与文档流", "flex 容器属性与项目属性", "主轴与交叉轴的概念", "常见布局模式：居中、导航条、卡片", "gap 与 flex-wrap", "min-width:0 与溢出陷阱"]
+    },
+    {
+      "stage": "Grid 与响应式",
+      "focus": "用 Grid 处理二维布局，用媒体查询、流式与容器查询适配多端。",
+      "topics": ["grid 模板行列与命名区域", "fr 单位、minmax 与 repeat", "显式网格与隐式网格、auto-flow", "响应式单位：rem/em/vw/%", "移动优先的媒体查询", "容器查询与 contain"]
+    },
+    {
+      "stage": "视觉与动效",
+      "focus": "提升页面质感：颜色体系、流体排版、阴影圆角与过渡动画。",
+      "topics": ["颜色体系与 CSS 自定义属性", "字体、行高与垂直节奏", "clamp() 流体排版", "transition 与 animation、缓动函数", "transform 与合成层性能", "prefers-reduced-motion"]
+    },
+    {
+      "stage": "主题适配与工程化",
+      "focus": "掌握暗色模式、现代选择器与架构化组织，进入团队协作与工具链。",
+      "topics": ["prefers-color-scheme 与 color-scheme", "CSS 变量驱动的主题切换", ":is/:where/:not/:has 现代选择器", "BEM 与 ITCSS 等命名组织规范", "Sass/Less 与构建流程", "Tailwind 等 Utility-first 工具链的取舍"]
+    },
+    {
+      "stage": "综合实战与重构",
+      "focus": "完成一个响应式、可换肤、组件化的完整页面，并学会阅读与重构已有代码。",
+      "topics": ["设计稿到代码的还原流程", "组件化样式组织与层管理", "Lighthouse 样式性能审计", "暗色模式落地实战", "大型样式文件重构策略", "代码评审中的样式规范检查清单"]
+    }
+  ],
+  "modules": [
+    {
+      "name": "选择器与层叠优先级",
+      "summary": "CSS 的灵魂在于『层叠』：多个规则冲突时，浏览器按来源、重要性、特异性与书写顺序决定谁生效。理解这套规则，才能解释最常见的疑问——『我写的样式为什么不生效』。特异性的计算是可量化的：内联 > id > 类/属性/伪类 > 元素/伪元素，比较时按位进行而非简单相加。现代开发中应尽量保持低特异性、避免 !important，让层叠保持可预测。学会在 DevTools 的 Styles 面板阅读最终生效规则，是调试样式的核心技能。",
+      "points": [
+        "选择器特异性：内联 > id > 类/属性/伪类 > 元素/伪元素，按位比较",
+        "同特异性时，后写的规则覆盖先写的（来源顺序）",
+        "优先用类选择器，少用 id 选择器，因为 id 特异性过高、难以覆盖",
+        "避免用标签名选中一切（如 div p），深层组合会意外提高特异性",
+        "!important 会打破正常层叠并传染，应作为最后手段",
+        "继承只发生在部分属性（如 color、font-size），盒模型属性不继承",
+        "unset/revert/initial 三个关键字可分别恢复继承值、浏览器默认与初始值",
+        "浏览器默认样式表（user-agent styles）也是层叠来源之一",
+        "用 :where() 可写零特异性选择器，在组件库覆盖场景中非常有用"
+      ],
+      "tip": "遇到样式不生效，先在 DevTools 的 Styles 面板看哪条规则赢了、被谁覆盖。"
+    },
+    {
+      "name": "现代选择器",
+      "summary": "近年的选择器能力大幅增强，许多以前必须靠 JS 或额外 class 的场景现在纯 CSS 就能解决。:is() 与 :where() 用逗号列出多个匹配条件并压缩选择器长度，前者保持参数中最高特异性，后者恒为零。:not() 升级后支持复杂选择器列表。:has() 更是革命性的『父选择器』，可以基于后代状态反向选中祖先，实现『包含图片的卡片』『有错误提示的表单行』等样式。",
+      "points": [
+        ":is(h1, h2, h3) 一次性匹配多个选择器，减少重复书写",
+        ":where() 与 :is() 语法相同，但特异性恒为 0",
+        ":not() 现代语法支持复杂参数，如 :not(:first-child)",
+        ":has() 是父选择器，如 li:has(> a.active) 选中含激活链接的项",
+        "属性选择器 [data-state=open]、[href^=https] 等无需额外 class",
+        "子代 > 与后代（空格）选择器的区别直接影响匹配范围",
+        "相邻 + 与通用兄弟 ~ 选择器描述同级元素的相对关系",
+        "用 :focus-visible 代替 :focus 可以获得更符合键盘导航的聚焦环",
+        "现代选择器要查 Can I Use，:has() 需要较新的浏览器版本"
+      ],
+      "tip": "能用结构伪类（:first-child、:nth-child）表达的，就别往 HTML 里加装饰性 class。"
+    },
+    {
+      "name": "盒模型",
+      "summary": "每个元素在布局中都是一个矩形盒子，由内容区、内边距、边框、外边距四部分组成。盒模型是理解一切布局的基础，而 width 到底指哪一部分由 box-sizing 决定：content-box 下 width 只含内容，padding 和 border 会额外撑大盒子；border-box 下 width 包含到边框为止，更符合直觉。相邻的垂直外边距会发生折叠（取大值），这一行为常被误当作 bug。全局设置 border-box 已是现代项目的通行起点。",
+      "points": [
+        "标准盒模型 width 只含 content，加 padding/border 会撑大盒子",
+        "box-sizing: border-box 让 width 包含 padding 和 border，更直觉",
+        "margin 折叠：相邻垂直外边距会合并取大值，父子间也可能折叠",
+        "用 padding 撑开间距而不是 margin，可以避免部分折叠困扰",
+        "块级盒子独占一行，行内盒子随文本流动，img 等替换元素例外",
+        "全局设置 border-box 是现代项目的通行做法",
+        "width 设为百分数时参考的是包含块宽度，这是流体布局的基础",
+        "outline 不占用布局空间，调试定位时比 border 更方便",
+        "scroll-bar 宽度也会占用 border-box 内空间，可能引起横向抖动"
+      ],
+      "tip": "新项目第一件事：写 * { box-sizing: border-box; }。"
+    },
+    {
+      "name": "Flex 布局",
+      "summary": "Flex 是一维布局利器，擅长处理一行或一列的排列、对齐与分布，导航条、工具栏、卡片列表等场景用 Flex 往往几行代码就能搞定。它引入了主轴与交叉轴的概念，justify-content 管主轴对齐、align-items 管交叉轴对齐。flex 项目有三个关键属性：flex-grow（放大）、flex-shrink（收缩）、flex-basis（基准尺寸），简写 flex: 1 是最常用的等分技巧。Flex 的陷阱主要在溢出：默认 min-width 为 auto，内容过长时项目不会缩小，需要显式设置 min-width: 0。",
+      "points": [
+        "display: flex 激活弹性布局，直接子元素成为 flex 项目",
+        "主轴方向由 flex-direction 决定，justify-content 管主轴对齐",
+        "align-items 管交叉轴对齐，align-self 可单独调整某一项",
+        "flex: 1 是 flex-grow:1、flex-shrink:1、flex-basis:0% 的简写，等分剩余空间",
+        "flex-wrap 控制换行，配合 gap 设置项目间距（替代 margin  hack）",
+        "内容溢出时给项目设置 min-width: 0，否则收缩行为不生效",
+        "margin: auto 在 flex 中可吸收剩余空间，实现任意对齐",
+        "order 属性可在不改变 DOM 顺序的情况下调整视觉顺序",
+        "align-content 控制多行 flex 容器的行间对齐，单行时无效"
+      ],
+      "tip": "居中最简写法：display:flex; justify-content:center; align-items:center。"
+    },
+    {
+      "name": "Grid 布局",
+      "summary": "Grid 是二维布局系统，同时控制行与列，复杂页面骨架、图片墙、仪表盘这类二维结构用 Grid 比 Flex 更直接。fr 单位按比例分配剩余空间，repeat() 与 minmax() 让轨道定义简洁灵活，grid-template-areas 用命名区域直观描述布局。auto-fill 与 auto-fit 配合 minmax 可以实现不写任何媒体查询的自适应卡片墙。Grid 与 Flex 不是竞争关系：Grid 做宏观骨架，Flex 做组件内部，是现代布局的黄金组合。",
+      "points": [
+        "grid-template-columns/rows 定义行列，fr 单位按比例分配剩余空间",
+        "repeat(auto-fill, minmax(200px, 1fr)) 实现免断点自适应卡片墙",
+        "minmax(min, max) 约束轨道尺寸范围，auto-fit 会拉伸空轨道",
+        "grid-template-areas 用命名区域直观描述布局，媒体查询中只需重排区域名",
+        "gap 统一设置行列间距，取代 grid-row-gap/column-gap 旧写法",
+        "显式网格之外的元素进入隐式轨道，可用 grid-auto-rows 控制",
+        "grid-area 可让子元素显式跨行列或放置到命名区域",
+        "place-items 是 align-items 与 justify-items 的简写",
+        "Grid 对齐属性与 Flex 同源（justify/align 系列），学会一套两边通用"
+      ],
+      "tip": ""
+    },
+    {
+      "name": "层叠上下文与定位",
+      "summary": "position 让元素脱离或部分脱离文档流：relative 相对原位置偏移但仍占位，absolute 相对最近的定位祖先定位并脱离文档流，fixed 相对视口定位。z-index 控制堆叠顺序，但它只在定位元素之间有效，而且必须在同一层叠上下文内比较——这就是『z-index 9999 也不生效』的根源。opacity<1、transform、filter、will-change 等常见属性都会隐式创建新的层叠上下文。理解层叠上下文的三层结构（根上下文、兄弟比较、后代始终在上），才能驾驭弹层、遮罩与下拉菜单。",
+      "points": [
+        "relative 相对原位置偏移，仍占据原空间",
+        "absolute 相对最近的定位祖先（position 非 static）定位，脱离文档流",
+        "fixed 相对视口定位，不随滚动移动（注意移动端浏览器的视口伸缩）",
+        "sticky 在阈值内表现为 relative，滚动越过阈值后表现为 fixed",
+        "z-index 仅在定位元素（及 flex/grid 子项）间有效，且只在同一层叠上下文内比较",
+        "opacity<1、transform、filter、will-change、isolation:isolate 都会创建新的层叠上下文",
+        "层叠上下文的子元素永远盖不过其他兄弟上下文的后代，与 z-index 数值无关",
+        "弹窗/遮罩常见的解法是给弹窗与遮罩放在同一层级容器并整体置顶",
+        "用 DevTools 的 Layers 面板可视化层叠上下文结构"
+      ],
+      "tip": "调 z-index 前先问：这两个元素在同一个层叠上下文里吗？"
+    },
+    {
+      "name": "响应式与媒体查询",
+      "summary": "响应式设计让页面在手机、平板与桌面上都有良好体验，核心思路是移动优先：先写小屏样式，再用 min-width 媒体查询逐步增强。断点不应基于具体设备，而应基于内容『在哪开始变形』。除了视口媒体查询，容器查询（@container）让组件根据所在容器宽度自适应，把响应式从页面级推进到组件级。流式布局（百分比、max-width 容器）与响应式图片（srcset/sizes）是配套的另一半。",
+      "points": [
+        "媒体查询按视口宽度应用不同样式，min-width 从小到大是移动优先写法",
+        "断点应来自内容变形处而非设备型号，常见起点 640/768/1024px 仅供参考",
+        "流式布局用 % 与 vw 替代固定像素宽度，容器配 max-width 防过宽",
+        "rem 配合根字号缩放，媒体查询中调整 html font-size 可整体缩放",
+        "max-width: 100% 让图片不超过容器，配合 srcset 提供多尺寸图",
+        "@container 容器查询让组件按所在容器宽度自适应，先给容器 container-type: inline-size",
+        "clamp() 可以在流式与固定之间平滑过渡，很多场景能替代媒体查询",
+        "响应式设计的三层：流式网格、弹性媒体、媒体查询，缺一层都不算完整",
+        "在 DevTools 设备模拟器中拖拽宽度测试，比离散断点更能暴露问题"
+      ],
+      "tip": "在 DevTools 的设备模拟器中反复拖拽宽度测试断点。"
+    },
+    {
+      "name": "流体排版与 clamp",
+      "summary": "固定像素字号在不同屏幕上要么太小要么太大，流体排版让字号（乃至间距、栅格）随视口平滑缩放。clamp(min, 理想, max) 一行实现『有上下限的流式值』，例如 clamp(1rem, 0.6rem + 1vw, 1.25rem)。它的本质是线性插值：视口每增加 1px，值增加斜率个单位。掌握 vw + rem 的换算后，可以为整个排版系统（字号阶梯、行高、间距）建立统一的比例关系，这也是 Tailwind 等工具链的设计基础。",
+      "points": [
+        "clamp(min, 首选, max)：首选值随视口变化，但被上下限截断",
+        "首选值常写成 rem + vw 的混合，如 0.9rem + 0.5vw",
+        "vw 提供流动性，rem 提供与根字号联动的可访问性",
+        "为标题、正文、小字建立字号阶梯（如 1:1.25 或 1:1.333 比例）",
+        "line-height 用无单位数字（如 1.5）继承性更好",
+        "间距系统可用 clamp 或 spacing 变量保持节奏一致（4/8px 基准）",
+        "ch 单位（字符宽度）适合控制正文最大行长 45~75 字符",
+        "流体排版 ≠ 响应式排版的全部，极端屏幕仍需媒体查询兜底",
+        "用 calc() 可以做任意算术组合，配合变量实现主题化间距"
+      ],
+      "tip": ""
+    },
+    {
+      "name": "动画与过渡",
+      "summary": "transition 处理两个状态间的平滑变化，animation 处理多帧关键帧序列，适度动效能引导注意力、提升质感，过度则适得其反并拖慢页面。性能是动效的第一约束：transform 与 opacity 可以由 GPU 合成，而 width、top 等属性会触发布局重排。prefers-reduced-motion 媒体查询是动效的可访问性底线。缓动函数决定动画的『性格』，ease-out 适合入场、ease-in 适合离场。",
+      "points": [
+        "transition 需要状态触发（如 hover），animation 可自动播放",
+        "transform（位移、旋转、缩放）与 opacity 的性能优于布局属性",
+        "will-change 提前告知浏览器优化，但滥用会占用合成层内存",
+        "prefers-reduced-motion 媒体查询照顾对动效敏感的用户",
+        "缓动函数决定节奏，ease-out 适合入场，cubic-bezier 可自定义曲线",
+        "animation-fill-mode 控制动画前后的状态保持（forwards 停在末帧）",
+        "stagger 延迟（nth-child 配 animation-delay）实现列表依次入场",
+        "transition-behavior 与 @starting-style 可实现 display 切换时的过渡",
+        "动效时长一般 200~400ms，超过 1s 除非有特殊叙事目的"
+      ],
+      "tip": "动效原则：快、短、有意义，一般 200~400ms 为宜。"
+    },
+    {
+      "name": "暗色模式与主题适配",
+      "summary": "暗色模式已成系统级标配，CSS 提供了两层机制：media 查询 prefers-color-scheme 检测系统偏好，color-scheme 属性告诉浏览器渲染原生控件（滚动条、表单）时使用浅色还是深色配色。最佳实践是用 CSS 自定义属性（变量）承载全部颜色 token，切换主题只需改变变量的取值集合，甚至可以用属性选择器或类名让用户手动覆盖系统偏好。主题化设计要同时照顾对比度：暗色下纯黑纯白对比过强，常用 #121212 级别的灰底与降低饱和度的前景色。",
+      "points": [
+        "@media (prefers-color-scheme: dark) 检测用户的系统主题偏好",
+        "color-scheme: dark light 双写，让原生控件与页面配色一致",
+        "把颜色抽象为 CSS 变量（--bg、--text、--accent），主题切换只改变量值",
+        "用 html[data-theme=dark] 属性选择器实现手动覆盖系统偏好",
+        "暗色主题避免纯黑纯白，常用近灰底色降低眩光",
+        "暗色下彩色饱和度要适度降低，否则会产生视觉振动",
+        "阴影在暗色下几乎不可见，改用亮度差或边框分层",
+        "SVG 图标用 currentColor 跟随文字颜色，免维护深浅两套",
+        "用 CSS 变量 + calc() 可派生 hover、disabled 等状态色"
+      ],
+      "tip": "先定义语义化变量名（--color-surface、--color-text-primary），再给两套取值。"
+    },
+    {
+      "name": "预处理器与现代特性",
+      "summary": "Sass/Less 等预处理器提供变量、嵌套、混入等能力，帮助组织大型样式工程；而现代 CSS 原生的自定义属性、嵌套（CSS Nesting）、clamp、:has、容器查询正在覆盖预处理器的大部分价值。两者的变量本质不同：Sass 变量在编译期替换，CSS 自定义属性在运行时存在、可被 JS 读写，因此主题切换必须用它。新项目应优先评估原生能力，预处理器只在需要循环、函数等高级抽象时引入。",
+      "points": [
+        "Sass 变量编译期替换，CSS 自定义属性（--var）运行时存在，二者互补",
+        "嵌套让样式结构对应 HTML 结构，但别嵌套过深（建议不超过 3 层）",
+        "原生 CSS Nesting 已普及，简单嵌套无需再依赖预处理器",
+        "clamp(min, 理想, max) 一行实现流式字号与间距",
+        ":has() 父选择器与容器查询是近年来的重大突破",
+        "@layer 级联层让第三方样式、组件样式、工具类分层管理",
+        "@property 可注册带类型的自定义属性，配合动画实现平滑过渡",
+        "BEM 命名规范仍是团队协作的可靠约定",
+        "Sass 模块（@use/@forward）替代旧的 @import，避免全局污染"
+      ],
+      "tip": ""
+    },
+    {
+      "name": "CSS 架构与工具链",
+      "summary": "样式写多了之后，问题从『怎么实现』变成『怎么不互相打架』。BEM 用块-元素-修饰符的命名约定约束作用域；ITCSS 按通用层到工具层分层组织文件；OOCSS 分离结构与皮肤。Utility-first 的 Tailwind 则走了另一条路：直接放弃自定义 CSS，用预置的原子类拼界面，换来速度与一致性，代价是 class 冗长与设计系统绑定。没有银弹，但团队越大，越需要显式的架构约定与自动化的规范检查（stylelint）。",
+      "points": [
+        "BEM：.block__element--modifier 命名约定，天然避免特异性战争",
+        "ITCSS：Settings→Tools→Generic→Elements→Objects→Components→Utilities 分层引入",
+        "@layer 可在原生 CSS 中实现类似 ITCSS 的层叠管理",
+        "组件化组织：一个组件的样式与结构就近维护，而非按页面拆分",
+        "Tailwind 等 Utility-first 工具链用原子类拼样式，开发快、一致性强",
+        "Tailwind 的代价：class 列表冗长、设计被工具约束、团队需统一配置",
+        "CSS Modules 用构建工具把 class 局部化，是组件框架的常见方案",
+        "stylelint 自动化检查命名、禁用属性与顺序，把规范写进流水线",
+        "选择架构前先看团队规模与产品寿命，个人项目不必过度设计"
+      ],
+      "tip": ""
+    },
+    {
+      "name": "页面实战与样式重构",
+      "summary": "把选择器、布局、响应式、动效与主题化综合运用到真实页面中，并学会阅读与重构已有代码。实战中的取舍——兼容性、性能、可维护性——才是最宝贵的经验。重构的原则是先让行为可观测（截图对比、视觉回归），再渐进改造：先统一变量与盒模型，再替换布局方案，最后处理细节样式。一个超过 300 行的『面条样式文件』，正是练习分层与组件化的最好素材。",
+      "points": [
+        "先搭语义化 HTML，再规划布局方案（宏观 Grid、组件内 Flex）",
+        "抽取公共变量：颜色、字号、间距 token 保持全局统一",
+        "按组件而非按页面组织样式文件，配合 @layer 管理优先级",
+        "用 Lighthouse 检查样式引起的性能问题（未使用的 CSS、昂贵的选择器）",
+        "重构前先做视觉回归基线（截图对比），避免『修好了 A 弄坏了 B』",
+        "重构顺序：变量统一 → 盒模型统一 → 布局替换 → 细节打磨",
+        "用 PurgeCSS/构建分析找出未使用的样式并删除",
+        "评审清单：特异性是否失控、颜色是否走变量、断点是否移动优先",
+        "把常用模式（卡片、按钮、表单行）沉淀为可复用组件文档"
+      ],
+      "tip": ""
+    }
+  ],
+  "projects": [
+    "纯 Flex 实现导航条 + 卡片列表，含 hover 过渡效果与 gap 间距",
+    "用 Grid 做一个自适应图片墙（minmax + auto-fill，不写固定断点）",
+    "把一个桌面优先的页面重构为移动优先响应式版本，截图对比三端效果",
+    "写一个登录/注册卡片：边框阴影、CSS 变量深浅双主题切换、按钮动效",
+    "用 Sass 变量与嵌套重构一个超过 300 行的样式文件，划分 ITCSS 分层",
+    "用 Tailwind（CDN 版即可）快速还原一个落地页，并写一页使用心得：哪些场景爽、哪些场景别扭",
+    "用 :has() 与容器查询实现『含图片的卡片自动换版式』与组件级响应式"
+  ],
+  "pitfalls": [
+    "滥用 !important 和 id 选择器，导致样式难以维护与覆盖",
+    "忘记 box-sizing 与 margin 折叠，盒尺寸计算屡屡出错",
+    "用浮动做两列布局——现代项目请直接上 Flex 或 Grid",
+    "移动端忘记设置 meta viewport，或只用 max-width 做媒体查询",
+    "z-index: 9999 满天飞却不理解层叠上下文，越调越乱",
+    "flex/grid 子项内容溢出不换行，不知道要给 min-width: 0",
+    "给一切 transition all 或滥用 will-change，造成合成层内存浪费"
+  ]
+}

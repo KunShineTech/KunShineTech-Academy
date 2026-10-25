@@ -1,0 +1,73 @@
+---
+title: "八级总复习与模拟测评"
+level: 8
+order: 12
+duration: 120
+unit: "综合测评"
+difficulty: 进阶
+goals:
+  - "系统回顾八级全部考点（组合数学、倍增、图论、算法分析）"
+  - "完成两道模拟编程题并通过自测"
+  - "熟悉考试流程、题型分布与注意事项"
+---
+
+import Check from '../../../components/Check.astro';
+import Task from '../../../components/Task.astro';
+import Reveal from '../../../components/Reveal.astro';
+
+
+## 1. 考点串讲：八级知识地图
+八级是 GESP C++ 的**最高级别**，考纲共 8 条，逐条回顾：
+
+**① 计数原理**：分类用加法、类类独立；分步用乘法、缺一不可。先判断「或者」还是「并且」，再决定原理。
+
+**② 排列与组合**：先问「交换顺序算不算新方案」。A(n,m)=n!/(n−m)!，C(n,m)=n!/(m!(n−m)!)，记住对称性 C(n,m)=C(n,n−m)，程序中用「边乘边除」防溢出。
+
+**③ 杨辉三角**：首尾为 1，肩上相加；第 n 行第 k 个数就是 C(n,k)；行和为 2ⁿ；递推式是 DP 算组合数的标准写法。
+
+**④ 倍增法**：预处理 2 的幂大步，查询时把目标拆二进制。快速幂 O(log b) 是模板；树上倍增、ST 表是延伸。会算它的对数级复杂度。
+
+**⑤ 代数与平面几何**：一元一次方程移项变号；二元一次方程组用加减/代入消元（公式法先判 D=ad−bc≠0）；长方形、三角形、梯形、圆的面积公式熟练默写。
+
+**⑥ 图论综合**：MST 选边 n−1 条，Kruskal（排序+并查集，O(m log m)）与 Prim（围着点转，稠密图 O(n²)）互为补充；单源最短路 Dijkstra（不能负权，堆优化 O((n+m) log n)）；全源最短路 Floyd（三重循环 O(n³)，k 必须在最外层，允许负权）。
+
+**⑦ 时空效率分析**：大 O 只看增长趋势；1 秒≈10^8 次运算；会分析排序 O(n log n)、查找 O(log n)、遍历 O(n+m)、搜索 O(2ⁿ)、分治 O(n log n)、DP（状态数×转移代价）。
+
+**⑧ 算法优化**：先估复杂度再写代码；能公式不循环；前缀和与记忆化消灭重复计算；空间换时间、剪枝砍分支；数学知识（等差求和、组合公式、方程）常常是最优解。
+
+<Check question="八级图论部分，下列「问题 → 算法」的匹配正确的是？" options={['全源最短路 → Kruskal','连通所有点且代价最小 → 最小生成树','单源最短路 → Floyd','判环 → Dijkstra']} answer={1} explanation="「连通所有点、总权值最小」是 MST 的定义；全源最短路用 Floyd，单源用 Dijkstra，判环用并查集。" />
+<Check question="Floyd 算法三重循环中，中转点 k 应该放在哪一层？" options={['最外层','中间层','最内层','任意一层均可']} answer={0} explanation="k 放最外层才能保证 dist[i][k] 与 dist[k][j] 已完成「更早中转点」的递推，满足动态规划阶段顺序；放内层是经典错误。" />
+<Check question="下列优化手段中，属于「用数学知识辅助求解」的是？" options={['把数组开小一点省内存','用等差数列求和公式替代累加循环','给变量起更短的名字','把 int 换成 short']} answer={1} explanation="n(n+1)/2 公式把 O(n) 的循环变成 O(1)，是数学辅助求解的教科书案例；其余选项与算法复杂度无关。" />
+
+## 2. 模拟编程题一：局域网布线
+<Task title="局域网布线（测评题）" input="第一行两个整数 n、m（2≤n≤100，1≤m≤2000），表示机房数与可选网线数。接下来 m 行，每行三个整数 u、v、w，表示 u 与 v 机房之间铺设网线的费用为 w（1≤w≤1000）。所有机房必须互相连通" output="一个整数：连通所有机房的最小总费用；若无法连通，输出 -1" sampleIn="4 4
+1 2 1
+2 3 2
+3 4 3
+1 4 4" sampleOut="6">识别模型：连通所有点、代价最小 → 最小生成树。注意最后检查图是否连通。</Task>
+<Reveal label="查看参考程序与思路"><pre><code>{`#include <iostream>\n#include <vector>\n#include <algorithm>\nusing namespace std;\nint f[105];\nint find(int x){ return f[x]==x ? x : f[x]=find(f[x]); }\nstruct Edge{ int u, v, w; };\nbool cmp(Edge a, Edge b){ return a.w < b.w; }\nint main(){\n    int n, m;\n    cin>>n>>m;\n    vector<Edge> es(m);\n    for(int i=0;i<m;i++) cin>>es[i].u>>es[i].v>>es[i].w;\n    sort(es.begin(), es.end(), cmp);\n    for(int i=1;i<=n;i++) f[i]=i;\n    long long ans=0; int cnt=0;\n    for(int i=0;i<m;i++){\n        int fu=find(es[i].u), fv=find(es[i].v);\n        if(fu!=fv){ f[fu]=fv; ans+=es[i].w; cnt++; }\n    }\n    if(cnt==n-1) cout<<ans<<'\\n';\n    else cout<<-1<<'\\n';\n}`}</code></pre>样例：费用 1、2、3 的三条边依次选中，恰好连接 4 个机房（n−1=3 条），费用 4 的边被跳过，答案 6。本题是「生成树」类真题的标准形态：Kruskal 四步——读边、排序、并查集选边、判连通。易错点：忘判 -1、ans 忘开 long long、并查集未路径压缩。</Reveal>
+
+## 3. 模拟编程题二：末班车
+<Task title="末班车（测评题）" input="第一行两个整数 n、m（2≤n≤500，1≤m≤10^4），表示车站数与线路数。接下来 m 行，每行三个整数 u、v、w，表示从 u 站到 v 站有一条耗时为 w 的单向线路（1≤w≤1000）" output="一个整数：从 1 号站到 n 号站的最短耗时；若无法到达，输出 -1" sampleIn="5 5
+1 2 3
+2 3 2
+1 3 9
+3 4 1
+4 5 4" sampleOut="10">识别模型：固定起点、求最短耗时 → 单源最短路 Dijkstra。注意线路是单向的。</Task>
+<Reveal label="查看参考程序与思路"><pre><code>{`#include <iostream>\n#include <cstring>\nusing namespace std;\nconst int INF = 0x3f3f3f3f;\nint g[505][505], dist[505];\nbool vis[505];\nint main(){\n    int n, m;\n    cin>>n>>m;\n    memset(g, 0x3f, sizeof g);\n    for(int i=0;i<m;i++){\n        int u, v, w;\n        cin>>u>>v>>w;\n        g[u][v] = min(g[u][v], w);   // 单向边，重边取小\n    }\n    memset(dist, 0x3f, sizeof dist);\n    dist[1] = 0;\n    for(int t=1; t<=n; t++){\n        int u = 0;\n        for(int i=1; i<=n; i++)\n            if(!vis[i] && dist[i] < dist[u]) u = i;\n        vis[u] = true;\n        for(int v=1; v<=n; v++)\n            if(dist[u] + g[u][v] < dist[v])\n                dist[v] = dist[u] + g[u][v];\n    }\n    if(dist[n] >= INF) cout<<-1<<'\\n';\n    else cout<<dist[n]<<'\\n';\n}`}</code></pre>样例推演：1→3 直达 9，但 1→2→3 只需 3+2=5，继续 3→4→5 加 1+4，总耗时 10——松弛操作自动完成了「中转更优」的发现。本题是「末班车」类真题的标准形态。易错点：单向图只存 g[u][v]、忘判不可达输出 -1、INF 相加溢出（本题边权小无虞，边权大时要开 long long）。</Reveal>
+
+## 4. 考试须知
+1. **题型与分值**：八级认证为 15 道单选（每题 2 分）+ 10 道判断（每题 2 分）+ 2 道编程（每题 25 分），共 180 分钟。**知识题 50 分、编程题 50 分，两头都要抓**。
+2. **时间分配**：知识题控制在 60 分钟内完成并标记存疑项；编程题留足 70 分钟以上，先通读两道题再决定先后顺序。
+3. **模板默写**：考前确保 Kruskal（并查集）、Dijkstra、Floyd、快速幂、组合数递推能不看资料一次写对——八级编程题大概率是模板变体。
+4. **边界与自测**：提交前亲手输入样例核对输出；检查 n=1、不连通、不可达、答案为 0 等边界；确认数组大小、变量类型（long long）无误。
+5. **复杂度预案**：读题先扫数据范围，10^5 级别立刻排除 O(n²) 暴力；卡壳时回到「数学公式、预处理、剪枝」三件法宝。
+
+> 教学提醒：模拟测评请严格计时 120 分钟完成本课两道编程题，模拟真实考试节奏；时间到后无论是否完成都停笔，再对照讲解逐行复盘错因——超时完成的「会做」在考场上等于不会。
+
+## 5. 课后巩固
+1. 合上书，默写：加法原理与乘法原理的判别口诀、A(n,m) 与 C(n,m) 的公式及对称性。
+2. 默写：Kruskal 的完整流程（含并查集 find）与 Dijkstra 的松弛语句，各限时 5 分钟。
+3. 说出：Floyd 三重循环为什么 k 必须在最外层；Dijkstra 为什么不能处理负权边。
+4. 估算：n=m=10^4 时，Kruskal 与朴素 Dijkstra 各需多少次运算？是否在 1 秒内？
+5. 完成本课两道测评题，并各设计 3 组边界数据（含不连通/不可达情形）自测，记录到错题本。

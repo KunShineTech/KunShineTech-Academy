@@ -1,0 +1,267 @@
+{
+ "session": "2024-12",
+ "level": 2,
+ "file": "GESP 2024年12月认证C++ 2级真题.pdf",
+ "legacy": false,
+ "choiceCount": 15,
+ "judgeCount": 10,
+ "progCount": 2,
+ "choiceAnswers": "CADBDBCCDAADBDC",
+ "judgeAnswers": "",
+ "choice": [
+  {
+   "n": 1,
+   "stem": "2024年10月8日，诺贝尔物理学奖“意外地”颁给了两位计算机科学家约翰·霍普菲尔德（John J. Hopfield）和杰\n弗里·辛顿（Geoffrey E. Hinton）。这两位科学家的主要研究方向是（   ）。",
+   "options": [
+    "天体物理",
+    "流体力学",
+    "人工智能",
+    "量子理论"
+   ],
+   "answer": 2,
+   "analysis": "选 C（人工智能）。霍普菲尔德和辛顿是神经网络与人工智能方向的奠基性科学家。"
+  },
+  {
+   "n": 2,
+   "stem": "计算机系统中存储的基本单位用B来表示，它代表的是（  ），比如某个照片大小为3MB。",
+   "options": [
+    "Byte",
+    "Block",
+    "Bulk",
+    "Bit"
+   ],
+   "answer": 0,
+   "analysis": "选 A（Byte）。B 代表字节 Byte，1B = 8 bit；bit 是最小信息单位。"
+  },
+  {
+   "n": 3,
+   "stem": "C++语句cout << (3 + 3 % 3 * 2 - 1) 执行后输出的值是（ ）。",
+   "options": [
+    "-1",
+    "4",
+    "56",
+    "2"
+   ],
+   "answer": 3,
+   "analysis": "选 D（2）。按优先级先算 % 和 *：3 % 3 * 2 = 0，再算 3 + 0 - 1 = 2。"
+  },
+  {
+   "n": 4,
+   "stem": "下面C++代码执行后其输出是(\n)。\nfor (int i=0; i<10; i++)\n1\nprintf(\"%d\",i);\n2",
+   "options": [
+    "123456789",
+    "0123456789",
+    "12345678910",
+    "012345678910"
+   ],
+   "answer": 1,
+   "analysis": "选 B（0123456789）。i 从 0 循环到 9，依次输出各位数字。"
+  },
+  {
+   "n": 5,
+   "stem": "下面C++代码的相关说法中，正确的是(\n)。\nint tnt;\n1\nfor (int i=0; i<10; i++)\n2\ntnt += i;\n3\ncout << tnt;\n4",
+   "options": [
+    "上述代码执行后其输出相当于求1-10的和（包含10）",
+    "上述代码执行后其输出相当于求1-10的和（不包含10）",
+    "上述代码执行后其输出相当于求0-10的和（不包含10）",
+    "上述代码执行后将输出不确定的值"
+   ],
+   "answer": 3,
+   "analysis": "选 D。tnt 在函数体内未初始化，初值不确定，输出结果也不确定。"
+  },
+  {
+   "n": 6,
+   "stem": "下面C++代码执行后输出是（     ）。\nint i;\n1\n2\nfor (i=1; i<10; i++)\n3\nif (i % 2)\n4\ncontinue;\n5\nelse\n6\nbreak;\n7\n8\ncout << i;\n9",
+   "options": [
+    "1",
+    "2",
+    "9",
+    "10"
+   ],
+   "answer": 1,
+   "analysis": "选 B（2）。i=1 是奇数执行 continue，i=2 执行 break，循环结束输出 2。"
+  },
+  {
+   "n": 7,
+   "stem": "下面C++代码执行后的输出是（     ）。\nfor (i=0; i<10; i++){\n1\nif (i % 3)\n2\ncontinue;\n3\nprintf(\"0#\");\n4\n}\n5\nif(i>=10)\n6\nprintf(\"1#\");\n7",
+   "options": [
+    "0#0#0#0#0#0#0#1#",
+    "0#0#0#0#0#0#1#",
+    "0#0#0#0#1#",
+    "0#0#0#0#"
+   ],
+   "answer": 2,
+   "analysis": "选 C（0#0#0#0#1#）。i=0、3、6、9 时输出 0# 共 4 次，循环结束 i=10 再输出 1#。"
+  },
+  {
+   "n": 8,
+   "stem": "下面C++代码用于输出0-100之前（包含100）能被7整除但不能被3整除的数，横线处\n填入的代码是（\n不能\n）。\nfor (i=0; i<100; i++)\n1\nif(_____________)\n2\ncout << i << endl;\n3",
+   "options": [
+    "i % 7 == 0 && i % 3 != 0",
+    "!(i % 7) && i % 3 != 0",
+    "i % 7 && i % 3",
+    "i % 7 == 0 && !(i % 3 == 0)"
+   ],
+   "answer": 2,
+   "analysis": "选 C。i % 7 && i % 3 表示“既不能被 7 整除也不能被 3 整除”，与原意正好相反，不能填入。"
+  },
+  {
+   "n": 9,
+   "stem": "下面C++代码用于求正整数各位数字之和，横线处\n填入代码是（    ）。\n不应\nint tnt, N;\n1\nprintf(\"请输入正整数：\");\n2\ncin >> N;\n3\ntnt = 0;\n4\nwhile (N != 0){\n5\n________________\n6\nN /= 10;\n7\n}\n8\ncout <<tnt;\n9",
+   "options": [
+    "tnt = tnt + N % 10",
+    "tnt +=  N % 10",
+    "tnt =  N % 10 + tnt",
+    "tnt =  N % 10"
+   ],
+   "answer": 3,
+   "analysis": "选 D。求各位数字之和必须累加：tnt = tnt + N % 10 等；tnt = N % 10 会直接覆盖之前的和。"
+  },
+  {
+   "n": 10,
+   "stem": "下图的C++程序执行后的输出是（    ）。\nfor (i=0; i<5; i++)\n1\nfor (j=0; j<i; j++)\n2\ncout <<j;\n3",
+   "options": [
+    "0010120123",
+    "01012012301234",
+    "001012012301234",
+    "01012012301234012345"
+   ],
+   "answer": 0,
+   "analysis": "选 A（0010120123）。i=1~4、j=0~i-1 依次输出 j：0 01 012 0123，拼接即 0010120123。"
+  },
+  {
+   "n": 11,
+   "stem": "下面C++代码用于实现图示的九九乘法表。相关说法\n的是（  ） 。\n错误\n/*\n1\n1*1=1\n2\n1*2=2  2*2=4\n3\n1*3=3  2*3=6  3*3=9\n4\n1*4=4  2*4=8  3*4=12 4*4=16\n5\n1*5=5  2*5=10 3*5=15 4*5=20 5*5=25\n6\n1*6=6  2*6=12 3*6=18 4*6=24 5*6=30 6*6=36\n7\n1*7=7  2*7=14 3*7=21 4*7=28 5*7=35 6*7=42 7*7=49\n8\n1*8=8  2*8=16 3*8=24 4*8=32 5*8=40 6*8=48 7*8=56 8*8=64\n9\n1*9=9  2*9=18 3*9=27 4*9=36 5*9=45 6*9=54 7*9=63 8*9=72 9*9=81\n10\n*/\n11\n12\nfor (int Hang=1; Hang<10; Hang++){\n13\nfor (int Lie=1; Lie<Hang+1; Lie++){\n14\nif (Lie * Hang > 9)\n15\nprintf(\"%d*%d=%d \", Lie, Hang, Lie*Hang);\n16\nelse\n17\nprintf(\"%d*%d=%d  \", Lie, Hang, Lie*Hang);\n18\n// L2\n19\n}\n20\n21\nprintf(\"\\n\"); // L1\n22\n}\n23",
+   "options": [
+    "将L1注释的printf(\"\\n\") 移到L2注释所在行，效果相同",
+    "将L1注释的printf(\"\\n\") 修改为print(\"%c\", '\\n') 效果相同",
+    "将Lie * Hang > 9 修改为Lie * Hang >= 10 效果相同",
+    "将Lie * Hang > 9 修改为Hang * Lie > 9 效果相同"
+   ],
+   "answer": 0,
+   "analysis": "选 A。把 printf(\"\\n\") 移到内层循环里会导致每输出一项就换行，破坏九九乘法表的行结构，效果不同；其余修改均等价。"
+  },
+  {
+   "n": 12,
+   "stem": "在数学中N!表示N的阶乘，即1到N的乘积，如3!=1*2*3 。下面的C++用于求1-N的阶乘之和，如N为3，则\n是1!+2!+3! 。下面代码段补充选项后用于实现上述功能，\n实现阶乘和的选项是（    ）。\n其中不能\nint N;\n1\n2\ncin >> N;\n3\n4\nint tnt=0, nowNum = 1; //tnt保存求和之值，当前N的阶乘\n5\n6\nfor (int i=1; i < N + 1; i++){\n7\n______________ // 基于上一个计算出当前数的阶乘\n8\n______________ // 从1到i每个数阶乘之和\n9\n}\n10\n11\ncout << tnt;\n12",
+   "options": [
+    "nowNum *= i; 1 tnt += nowNum; 2",
+    "nowNum = nowNum * i; 1 tnt = tnt + nowNum; 2",
+    "nowNum *= i; 1 tnt = nowNum + tnt; 2",
+    "nowNum = nowNum + i; 1 tnt *= nowNum; 2"
+   ],
+   "answer": 3,
+   "analysis": "选 D。阶乘要累乘（nowNum *= i）、求和要累加（tnt += nowNum）；D 中 nowNum = nowNum + i 是累加、tnt *= nowNum 变成累乘，逻辑完全颠倒。"
+  },
+  {
+   "n": 13,
+   "stem": "下面C++代码用于输出N和M之间（可以包括N和M）的孪生素数。孪生素数是指间隔为2的两个数均为素\n数，如11和13分别是素数，且间隔为2。isPrime(N)用于判断N是否为素数的函数。为完成上述功能，横线处应填上的\n代码是（    ）。\nint N,M;\n1\n2\n//本题假设N小于M\n3\ncin >> N >> M;\n4\n5\nfor (int i = N; i < __________; i++)\n6\nif (isPrime(i) && isPrime(i + 2))\n7\nprintf(\"%d %d\\n\",i, i + 2);\n8",
+   "options": [
+    "M - 2",
+    "M - 1",
+    "M",
+    "M + 1"
+   ],
+   "answer": 1,
+   "analysis": "选 B（M - 1）。要保证 i 和 i+2 都不超过 M，即 i ≤ M-2，写成循环条件 i < M-1。"
+  },
+  {
+   "n": 14,
+   "stem": "下面C++代码实现输出如下图形，横线应填入的代码是（    ）。\n/*\n1\n高度:5\n2\n*\n3\n***\n4\n*****\n5\n*******\n6\n*********\n7\n*/\n8\n9\nint height;\n10\ncout << \"高度: \";\n11\n12\n//获取用户输入的高度\n13\ncin >> height;\n14\nfor (i=0; i<height; i++){\n15\n//打印每行前面的空格\n16\nfor (j = 0; j < _______________; j++)\n17\ncout << \" \";\n18\n//打印每行的星号\n19\nfor (k = 0; k < _______________; k++)\n20\ncout << \"*\";\n21\n//输出一行后，换行\n22\ncout << endl;\n23\n}\n24",
+   "options": [
+    "height - i 1 2 * i 2",
+    "height 1 2 * i 2",
+    "height - i 1 2 * i + 1 2",
+    "height - i - 1 1 2 * i + 1 2"
+   ],
+   "answer": 3,
+   "analysis": "选 D。第 i 行（从 0 计）前导空格为 height-i-1 个，星号为 2*i+1 个。"
+  },
+  {
+   "n": 15,
+   "stem": "下面C++代码执行后的输出是30，则横线处不能填入（    ）。\nint a=10,b=20,c=30;\n1\n2\ncout << _____________________ << endl;\n3\n4\ncout << endl;\n5",
+   "options": [
+    "max(max(a, b), c)",
+    "min(a+b, c)",
+    "sqrt(a+b+c)",
+    "(a+b+c)/2"
+   ],
+   "answer": 2,
+   "analysis": "选 C。代入验证：A、B、D 的结果都是 30，sqrt(60)≈7.74 不等于 30，故 C 不能填入。"
+  }
+ ],
+ "judge": [
+  {
+   "n": 1,
+   "stem": "在Windows的资源管理器中为已有文件A建立副本的操作是Ctrl+C，然后Ctrl+V。(  )",
+   "answer": null,
+   "analysis": "正确。Ctrl+C 复制、Ctrl+V 粘贴，可以在资源管理器中为文件建立副本。"
+  },
+  {
+   "n": 2,
+   "stem": "在C++代码中，假设N为正整数，则cout << (N - N / 10 * 10) 将获得N的个位数。(\n)",
+   "answer": null,
+   "analysis": "正确。N / 10 * 10 相当于把个位清零，N 减去它正好得到个位数。"
+  },
+  {
+   "n": 3,
+   "stem": "在C++语句cout << (10 <= N <= 12) 中，假设N为12，则其输出为1。(  )",
+   "answer": null,
+   "analysis": "正确。N=12 时 10 <= N 为 1，再 1 <= 12 仍为 1，输出 1。"
+  },
+  {
+   "n": 4,
+   "stem": "如果C++表达式int(sqrt(N))*int(sqrt(N)) == N 的值为True，则说明N为完全平方数，如4、9、25\n等。（  ）",
+   "answer": null,
+   "analysis": "正确。若 N 是完全平方数，则 int(sqrt(N)) 就是其平方根，平方后等于 N。"
+  },
+  {
+   "n": 5,
+   "stem": "下面C++代码执行后将输出2*3=6。 (  )\nint a = 2, b = 3;\n1\nprintf(\"%%a*%%b=%d\",a*b);\n2",
+   "answer": null,
+   "analysis": "错误。%% 输出百分号本身，实际输出“%a*%b=6”；想输出 2*3=6 应使用 %d 格式符。"
+  },
+  {
+   "n": 6,
+   "stem": "以下C++代码因为循环变量为将导致错误，即不能作为变量名称，不符合C++变量命名规范。（  ）\nfor (int _ = 0; _ < 10; _++)\n1\ncontinue;\n2",
+   "answer": null,
+   "analysis": "错误。下划线 _ 是合法标识符，可以作变量名，代码不会报错。"
+  },
+  {
+   "n": 7,
+   "stem": "下面C++代码执行后因为有break，将输出0。（  ）\nint i;\n1\nfor (i = 0; i < 10; i++){\n2\ncontinue;\n3\nbreak;\n4\n}\n5\ncout << i;\n6",
+   "answer": null,
+   "analysis": "错误。continue 在 break 之前，break 执行不到；循环正常结束 i=10，输出 10 而不是 0。"
+  },
+  {
+   "n": 8,
+   "stem": "下面的C++代码执行后将输出18行“OK”。（  ）\nint i,j;\n1\nfor (i = 8; i > 2; i-=2)\n2\nfor (j =0; j < i; j++)\n3\nprintf(\"OK\\n\");\n4",
+   "answer": null,
+   "analysis": "正确。外层 i=8、6、4 各执行一轮，内层共输出 8+6+4=18 行“OK”。"
+  },
+  {
+   "n": 9,
+   "stem": "将下面C++代码中的i = 1 调整为i = 0 的输出结果相同。（  ）\nint i;\n1\nint cnt = 0;\n2\nfor (i = 1; i < 5; i++)\n3\nif(i%2) cnt += 1;\n4\ncout << cnt;\n5",
+   "answer": null,
+   "analysis": "正确。i=0 不影响奇偶判断的结果，两种写法输出相同。"
+  },
+  {
+   "n": 10,
+   "stem": "下面两段C++代码都是用于求1-10的和，其运行结果相同。通常说来，for循环都可以用while循环实现。（\n）\nint tnt;\n1\nint i;\n2\n3\ntnt = 0;\n4\nfor (i = 1; i < 10 + 1; i++)\n5\ntnt += i;\n6\ncout << tnt << endl;\n7\nint tnt;\n1\nint i;\n2\n3\ntnt = 0;\n4\ni = 1;\n5\nwhile (i <= 10){\n6\ntnt += i;\n7\ni += 1;\n8\n}\n9\ncout << tnt << endl;\n10",
+   "answer": null,
+   "analysis": "正确。两段代码都计算 1 到 10 的和，结果相同；一般说来 for 循环都可以用 while 循环实现。"
+  }
+ ],
+ "programming": [
+  {
+   "n": 1,
+   "name": "寻找数字",
+   "desc": ""
+  },
+  {
+   "n": 2,
+   "name": "数位和",
+   "desc": ""
+  }
+ ]
+}

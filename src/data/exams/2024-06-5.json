@@ -1,0 +1,267 @@
+{
+ "session": "2024-06",
+ "level": 5,
+ "file": "GESP 2024年06月认证C++ 5级真题.pdf",
+ "legacy": false,
+ "choiceCount": 15,
+ "judgeCount": 10,
+ "progCount": 2,
+ "choiceAnswers": "CBBCCDADDACACDC",
+ "judgeAnswers": "",
+ "choice": [
+  {
+   "n": 1,
+   "stem": "下面C++代码用于求斐波那契数列，该数列第1、2项为1，以后各项均是前两项之和。函数fibo()属于(  )。\nint fibo(int n) {\n1\nif (n <= 0)\n2\nreturn 0;\n3\nif (n == 1 || n == 2)\n4\nreturn 1;\n5\n6\nint a = 1，b = 1, next;\n7\nfor (int i = 3; i <= n; i++) {\n8\nnext = a + b;\n9\na = b;\n10\nb = next;\n11\n}\n12\nreturn next;\n13\n}\n14",
+   "options": [
+    "枚举算法",
+    "贪心算法",
+    "迭代算法",
+    "递归算法"
+   ],
+   "answer": 2,
+   "analysis": "答案C（迭代算法）。代码用循环从第 3 项起逐项更新 a、b 递推求解，是迭代（递推）实现，不是递归。"
+  },
+  {
+   "n": 2,
+   "stem": "下面C++代码用于将输入金额换成最少币种组合方案，其实现算法是(  )。\n#include <iostream>\n1\nusing namespace std;\n2\n3\n#define N_COINS 7\n4\nint coins[N_COINS] = {100, 50, 20, 10, 5, 2, 1}; //货币面值，单位相同\n5\nint coins_used[N_COINS];\n6\n7\nvoid find_coins(int money) {\n8\nfor (int i = 0; i < N_COINS; i++) {\n9\ncoins_used[i] = money / coins[i];\n10\nmoney = money % coins[i];\n11\n}\n12\nreturn;\n13\n}\n14\nint main() {\n15\nint money;\n16\ncin >> money;   //输入要换算的金额\n17\n18\nfind_coins(money);\n19\nfor (int i = 0; i < N_COINS; i++)\n20\ncout << coins_used[i] << endl;\n21\n22\nreturn 0;\n23\n}\n24",
+   "options": [
+    "枚举算法",
+    "贪心算法",
+    "迭代算法",
+    "递归算法"
+   ],
+   "answer": 1,
+   "analysis": "答案B（贪心算法）。从大到小每种面值尽量多取，是贪心找零的典型实现。"
+  },
+  {
+   "n": 3,
+   "stem": "小杨采用如下双链表结构保存他喜欢的歌曲列表：\nstruct dl_node {\n1\nstring song;\n2\ndl_node* next;\n3\ndl_node* prev;\n4\n};\n5\n小杨想在头指针为head 的双链表中查找他喜欢的某首歌曲，采用如下查询函数，该操作的时间复杂度为（  ）。\ndl_node* search(dl_node* head, string my_song) {\n1\ndl_node* temp = head;\n2\nwhile (temp != nullptr) {\n3\nif (temp->song == my_song)\n4\nreturn temp;\n5\ntemp = temp->next;\n6\n}\n7\nreturn nullptr;\n8\n}\n9",
+   "options": [
+    "",
+    "",
+    "",
+    ""
+   ],
+   "answer": 1,
+   "analysis": "答案为 O(N)（选项 B）。链表查找只能从头逐个遍历比较，平均扫描约一半节点。（题干公式与选项以真题原件为准）"
+  },
+  {
+   "n": 4,
+   "stem": "小杨想在如上题所述的双向链表中加入一首新歌曲。为了能快速找到该歌曲，他将其作为链表的第一首歌\n曲，则下面横线上应填入的代码为（  ）。\nvoid insert(dl_node *head, string my_song) {\n1\np = new dl_node;\n2\np->song = my_song;\n3\np->prev = nullptr;\n4\np->next = head;\n5\n6\nif (head != nullptr) {\n7\n________________________________  // 在此处填入代码\n8\n}\n9\nhead = p;\n10\n}\n11",
+   "options": [
+    "head->next->prev = p;",
+    "head->next = p;",
+    "head->prev = p;",
+    "触发异常，不能对空指针进行操作。"
+   ],
+   "answer": 2,
+   "analysis": "答案C。新节点插到表头时，应让原头节点的 prev 指向新节点，即 head->prev = p；之后再更新 head = p。"
+  },
+  {
+   "n": 5,
+   "stem": "下面是根据欧几里得算法编写的函数，它计算的是与的（  ）。\nint gcd(int a, int b) {\n1\nwhile (b != 0) {\n2\nint temp = b;\n3\nb = a % b;\n4\na = temp;\n5\n}\n6\nreturn a;\n7\n}\n8",
+   "options": [
+    "最小公倍数",
+    "最大公共质因子",
+    "最大公约数",
+    "最小公共质因子"
+   ],
+   "answer": 2,
+   "analysis": "答案C。辗转相除法求的是最大公约数（GCD）。"
+  },
+  {
+   "n": 6,
+   "stem": "欧几里得算法还可以写成如下形式:\nint gcd(int a, int b) {\n1\nreturn b == 0 ? a : gcd(b, a % b);\n2\n}\n3\n下面有关说法，错误的是（  ）。",
+   "options": [
+    "本题的gcd() 实现为递归方式。",
+    "本题的gcd() 代码量少，更容易理解其辗转相除的思想。",
+    "当较大时，本题的gcd() 实现会多次调用自身，需要较多额外的辅助空间。",
+    "当较大时，相比上题中的gcd() 的实现，本题的gcd() 执行效率更高。"
+   ],
+   "answer": 3,
+   "analysis": "答案D。递归版与迭代版时间效率相当，递归还要消耗栈空间，「递归执行效率更高」错误；A、B、C 的说法正确。"
+  },
+  {
+   "n": 7,
+   "stem": "下述代码实现素数表的线性筛法，筛选出所有小于等于的素数，则横线上应填的代码是(  )。\nvector<int> linear_sieve(int n) {\n1\nvector<bool> is_prime(n + 1, true);\n2\nvector<int> primes;\n3\nis_prime[0] = is_prime[1] = 0; //0和1两个数特殊处理\n4\nfor (int i = 2; i <= n; ++i) {\n5\nif (is_prime[i]) {\n6\nprimes.push_back(i);\n7\n}\n8\n________________________________ {    // 在此处填入代码\n9\nis_prime[i * primes[j]] = 0;\n10\nif (i % primes[j] == 0)\n11\nbreak;\n12\n}\n13\n}\n14\nreturn primes;\n15\n}\n16",
+   "options": [
+    "for (int j = 0;  j < primes.size() && i * primes[j] <= n;  j++)",
+    "for (int j = 0;  j <= sqrt(n) && i * primes[j] <= n;  j++)",
+    "for (int j = 0;  j <= n;  j++)",
+    "for (int j = 1;  j <= sqrt(n);  j++)"
+   ],
+   "answer": 0,
+   "analysis": "答案A。内层遍历当前已筛出的素数表，并保证 i*primes[j] 不超过 n，j 从 0 开始。"
+  },
+  {
+   "n": 8,
+   "stem": "上题代码的时间复杂度是（  ）。",
+   "options": [
+    "",
+    "",
+    "",
+    ""
+   ],
+   "answer": 3,
+   "analysis": "答案为 O(N)（选项 D）。线性筛保证每个合数只被最小质因子筛一次，总复杂度为线性 O(N)。（题干公式与选项以真题原件为准）"
+  },
+  {
+   "n": 9,
+   "stem": "为了正确实现快速排序，下面横线上的代码应为（  ）。\nvoid qsort(vector<int>& arr, int left, int right) {\n1\nint i, j, mid;\n2\nint pivot;\n3\n4\ni = left;\n5\nj = right;\n6\nmid = (left + right) / 2; // 计算中间元素的索引\n7\npivot = arr[mid]; // 选择中间元素作为基准值\n8\n9\ndo {\n10\nwhile (arr[i] < pivot) i++;\n11\nwhile (arr[j] > pivot) j--;\n12\nif (i <= j) {\n13\nswap(arr[i], arr[j]); // 交换两个元素\n14\ni++; j--;\n15\n}\n16\n} ________________________________; // 在此处填入代码\n17\nif (left < j) qsort(arr, left, j);   // 对左子数组进行快速排序\n18\nif (i < right) qsort(arr, i, right); // 对右子数组进行快速排序\n19\n}\n20",
+   "options": [
+    "while (i <= mid)",
+    "while (i < mid)",
+    "while (i < j)",
+    "while (i <= j)"
+   ],
+   "answer": 3,
+   "analysis": "答案D。do-while 的继续条件应为 i<=j：只要左右指针未交错就继续交换；退出循环后 i>j，区间自然分好。"
+  },
+  {
+   "n": 10,
+   "stem": "关于分治算法，以下哪个说法正确？",
+   "options": [
+    "分治算法将问题分成子问题，然后分别解决子问题，最后合并结果。",
+    "归并排序不是分治算法的应用。",
+    "分治算法通常用于解决小规模问题。",
+    "分治算法的时间复杂度总是优于 。"
+   ],
+   "answer": 0,
+   "analysis": "答案A。分治即「分解子问题、分别解决、合并结果」；归并排序和快速排序都是分治的典型应用。"
+  },
+  {
+   "n": 11,
+   "stem": "根据下述二分查找法，在排好序的数组1，3，6，9，17，31，39，52，61，79，81，90，96 中查找数值\n82，和82比较的数组元素分别是（  ）。\nint binary_search(vector<int>& nums, int target) {\n1\nint left = 0;\n2\nint right = nums.size() - 1;\n3\nwhile (left <= right) {\n4\nint mid = (left + right) / 2;\n5\nif (nums[mid] == target) {\n6\nreturn mid;\n7\n} else if (nums[mid] < target) {\n8\nleft = mid + 1;\n9\n} else {\n10\nright = mid - 1;\n11\n}\n12\n}\n13\nreturn -1; // 如果找不到目标元素，返回-1\n14\n}\n15",
+   "options": [
+    "52, 61, 81, 90",
+    "52, 79, 90, 81",
+    "39, 79, 90, 81",
+    "39, 79, 90"
+   ],
+   "answer": 2,
+   "analysis": "答案C。依次与 39（右移）、79（右移）、90（左移）、81（右移）比较，区间为空返回 -1，比较序列为 39,79,90,81。"
+  },
+  {
+   "n": 12,
+   "stem": "要实现一个高精度减法函数，则下面代码中加划线应该填写的代码为（  ）。\n//假设a和b均为正数，且a表示的数比b大\n1\nvector<int> minus(vector<int> a, vector<int> b) {\n2\nvector<int> c；\n3\nint len1 = a.size();\n4\nint len2 = b.size();\n5\nint i, t;\n6\n7\nfor (i = 0; i < len2; i++) {\n8\nif (a[i] < b[i]) {  //借位\n9\n_____________   // 在此处填入代码\n10\na[i] += 10;\n11\n}\n12\nt = a[i] - b[i];\n13\nc.push_back(t);\n14\n}\n15\nfor (; i < len1; i++)\n16\nc.push_back(a[i]);\n17\n18\nlen3 = c.size();\n19\nwhile (c[len3 - 1] == 0) {//去除前导0\n20\nc.pop_back();\n21\nlen3--;\n22\n}\n23\nreturn c;\n24\n}\n25",
+   "options": [
+    "a[i + 1]--;",
+    "a[i]--;",
+    "b[i + 1]--;",
+    "b[i]--;"
+   ],
+   "answer": 0,
+   "analysis": "答案A。本位不够减时要向高位借 1，即 a[i+1]--，然后本位加 10 再减。"
+  },
+  {
+   "n": 13,
+   "stem": "设和是两个长度为的有序数组，现将和合并成一个有序数组，归并排序算法在最坏情况下至少要做\n（  ）次比较。",
+   "options": [
+    "",
+    "",
+    "",
+    ""
+   ],
+   "answer": 2,
+   "analysis": "答案为 2n-1 次比较（选项 C）。最坏情况是两数组大小交错，前 2n-2 个元素各比较一次，最后一个直接放入，共 2n-1 次。（题干公式与选项以真题原件为准）"
+  },
+  {
+   "n": 14,
+   "stem": "给定如下函数：\nint fun(int n) {\n1\nif (n == 1) return 1;\n2\nif (n == 2) return 2;\n3\nreturn fun(n - 2) - fun(n - 1);\n4\n}\n5\n时，函数返回值为（  ）。\n则当",
+   "options": [
+    "0",
+    "1",
+    "21",
+    "-11"
+   ],
+   "answer": 3,
+   "analysis": "答案D（-11）。由 f(n)=f(n-2)-f(n-1)，f(1)=1、f(2)=2 依次推出 -1、3、-4、7、-11，即 f(7)=-11。"
+  },
+  {
+   "n": 15,
+   "stem": "给定如下函数（函数功能同上题，增加输出打印）：\nint fun(int n) {\n1\ncout << n << \" \";\n2\nif (n == 1) return 1;\n3\nif (n == 2) return 2;\n4\nreturn fun(n - 2) - fun(n - 1);\n5\n}\n6\n时，屏幕上输出序列为（  ）。\n则当",
+   "options": [
+    "4 3 2 1",
+    "1 2 3 4",
+    "4 2 3 1 2",
+    "4 2 3 2 1"
+   ],
+   "answer": 2,
+   "analysis": "答案C（4 2 3 1 2）。调用 fun(4) 先输出 4，再递归 fun(2) 输出 2、fun(3) 输出 3，fun(3) 内部又输出 1、2，故输出序列为 4 2 3 1 2。"
+  }
+ ],
+ "judge": [
+  {
+   "n": 1,
+   "stem": "如果将双向链表的最后一个结点的下一项指针指向第一个结点，第一个结点的前一项指针指向最后一个结\n点，则该双向链表构成循环链表。",
+   "answer": null,
+   "analysis": "对。尾结点的 next 指向头结点、头结点的 prev 指向尾结点，首尾相接即构成（双向）循环链表。"
+  },
+  {
+   "n": 2,
+   "stem": "数组和链表都是线性表，链表的优点是插入删除不需要移动元素，并且能随机查找。",
+   "answer": null,
+   "analysis": "错。链表插入删除不需移动元素是对的，但链表不能随机查找，只能顺序访问。"
+  },
+  {
+   "n": 3,
+   "stem": "链表的存储空间物理上可以连续，也可以不连续。",
+   "answer": null,
+   "analysis": "对。链表的逻辑相邻不要求物理相邻，节点可以分散存放在内存各处。"
+  },
+  {
+   "n": 4,
+   "stem": "找出自然数n以内的所有质数，常用算法有埃拉托斯特尼（埃氏）筛法和线性筛法，其中埃氏筛法效率更\n高。",
+   "answer": null,
+   "analysis": "错。线性筛每个合数只筛一次，效率更高；埃氏筛会对同一个合数重复标记。"
+  },
+  {
+   "n": 5,
+   "stem": "唯一分解定理表明任何一个大于1的整数都可以唯一地表示为一系列质数的乘积，即质因数分解是唯一的。",
+   "answer": null,
+   "analysis": "对。这正是唯一分解定理（算术基本定理）的内容。"
+  },
+  {
+   "n": 6,
+   "stem": "贪心算法通过每一步选择局部最优解来获得全局最优解，但并不一定能找到最优解。",
+   "answer": null,
+   "analysis": "对。贪心只保证每步局部最优，不一定找到全局最优解，需问题本身具备贪心选择性质。"
+  },
+  {
+   "n": 7,
+   "stem": "归并排序和快速排序都采用递归实现，也都是不稳定排序。（  ）",
+   "answer": null,
+   "analysis": "错。归并排序是稳定排序（相等元素相对次序不变），快速排序才是不稳定排序。"
+  },
+  {
+   "n": 8,
+   "stem": "插入排序有时比快速排序时间复杂度更低。",
+   "answer": null,
+   "analysis": "对。数据基本有序时插入排序约为 O(N)，快排 pivot 选不好会退化为 O(N²)，所以「有时更低」成立。"
+  },
+  {
+   "n": 9,
+   "stem": "在进行全国人口普查时，将其分解为对每个省市县乡来进行普查和统计。这是典型的分治策略。",
+   "answer": null,
+   "analysis": "对。人口普查按行政区域分解、各自统计再逐级汇总，符合分治「分解—求解—合并」的模式。"
+  },
+  {
+   "n": 10,
+   "stem": "在下面C++代码中，由于删除了变量ptr ，因此ptr 所对应的数据也随之删除，故执行下述代码时，将报\n错。\nint* ptr = new int(10);\n1\ncout << *ptr << endl;\n2\ndelete ptr;\n3\ncout << ptr << endl;\n4",
+   "answer": null,
+   "analysis": "错。delete 只释放所指内存，ptr 变成悬垂指针但输出它并不报错（只输出地址值）；危险的是再次解引用 *ptr。"
+  }
+ ],
+ "programming": [
+  {
+   "n": 1,
+   "name": "黑白格",
+   "desc": ""
+  },
+  {
+   "n": 2,
+   "name": "小杨的幸运数字",
+   "desc": ""
+  }
+ ]
+}

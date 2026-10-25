@@ -1,0 +1,267 @@
+{
+ "session": "2026-06",
+ "level": 4,
+ "file": "GESP 2026年06月认证C++ 4级真题.pdf",
+ "legacy": false,
+ "choiceCount": 15,
+ "judgeCount": 10,
+ "progCount": 2,
+ "choiceAnswers": "BBCCBCBCCBCBCCA",
+ "judgeAnswers": "",
+ "choice": [
+  {
+   "n": 1,
+   "stem": "小杨正在编写一个“数字交换器”程序，他希望通过函数交换两个变量的值。请问运行以下代码后，屏幕上输\n出的是（  ）。\nvoid exchange(int *a, int &b) {\n1\nint t = *a;\n2\n*a = b;\n3\nb = t;\n4\n}\n5\nint main() {\n6\nint x = 100, y = 200;\n7\nexchange(&x, y);\n8\ncout << x << \" \" << y;\n9\nreturn 0;\n10\n}\n11",
+   "options": [
+    "100 200",
+    "200 100",
+    "200 200",
+    "编译错误"
+   ],
+   "answer": 1,
+   "analysis": "正确答案 B。exchange 中 a 是指针、b 是引用，两种传参都直接作用于 x、y，交换后 x=200、y=100，输出 \"200 100\"。"
+  },
+  {
+   "n": 2,
+   "stem": "下面程序想通过函数计算三门课总分，横线处应填入的是（  ）。\nint sumScore(int a, int b, int c) {\n1\nreturn a + b + c;\n2\n}\n3\nint main() {\n4\nint chinese = 88, math = 95, english = 90;\n5\nint total = __________;\n6\ncout << total;\n7\nreturn 0;\n8\n}\n9",
+   "options": [
+    "sumScore",
+    "sumScore(chinese, math, english)",
+    "sumScore(int chinese, int math, int english)",
+    "sumScore(a, b, c)"
+   ],
+   "answer": 1,
+   "analysis": "正确答案 B。函数调用写函数名加实参列表：sumScore(chinese, math, english)；写形参类型或形参名都不对。"
+  },
+  {
+   "n": 3,
+   "stem": "下面程序输出结果是（  ）。\n1 / 10\nint addOne(int x) {\n1\nreturn x + 1;\n2\n}\n3\nint main() {\n4\nint a = 6;\n5\ncout << addOne(a) + addOne(3);\n6\nreturn 0;\n7\n}\n8",
+   "options": [
+    "9",
+    "10",
+    "11",
+    "12"
+   ],
+   "answer": 2,
+   "analysis": "正确答案 C。addOne(a)=7，addOne(3)=4，7+4=11。"
+  },
+  {
+   "n": 4,
+   "stem": "关于下面程序，说法正确的是（  ）。\nvoid show() {\n1\nint stars = 5;\n2\n}\n3\nint main() {\n4\ncout << stars;\n5\nreturn 0;\n6\n}\n7",
+   "options": [
+    "程序输出 5",
+    "程序可以通过编译，但输出随机值",
+    "程序不能通过编译，因为 stars 只在 show 函数中有效",
+    "程序不能通过编译，因为 cout 不能输出变量"
+   ],
+   "answer": 2,
+   "analysis": "正确答案 C。stars 是 show 函数的局部变量，只在 show 内可见，main 直接使用会编译错误。这是作用域规则的基本考查。"
+  },
+  {
+   "n": 5,
+   "stem": "小杨在调试一个“等级提升”系统，代码逻辑如下，执行后 *p 的值是（  ）。\nint lv = 5, next_lv = 6;\n1\nint *p = &lv;\n2\n*p = *p + 1;\n3\np = &next_lv;\n4",
+   "options": [
+    "5",
+    "6",
+    "lv 的地址",
+    "next_lv 的地址"
+   ],
+   "answer": 1,
+   "analysis": "正确答案 B。*p = *p + 1 使 lv=6，随后 p 改指向 next_lv，此时 *p 即 next_lv 的值 6。注意区分“指针指向谁”与“所指变量的值”。"
+  },
+  {
+   "n": 6,
+   "stem": "小杨正在开发一款名为“星际网格”的游戏，他用二维数组 int map[5][4]; 来表示地图。已知 int 占\n字节，如果 map 的内存地址是 0x2000 ，则表达式 &map + 1 的地址值是（  ）。",
+   "options": [
+    "0x204c",
+    "0x205c",
+    "0x2050",
+    "0x2058"
+   ],
+   "answer": 2,
+   "analysis": "正确答案 C。&map 的类型是“指向含 4 个 int 的 5 行数组的指针”，+1 跳过整个二维数组 5×4×4=80 字节（0x50），0x2000+0x50=0x2050。数组指针加 1 跳整个数组，是易错点。"
+  },
+  {
+   "n": 7,
+   "stem": "执行完下面代码后，变量 val 的值是（  ）。\n2 / 10\nint data[] = {10, 20, 30, 40, 50};\n1\nint *ptr = data + 2;\n2\nint val = *(ptr - 1) + *(ptr + 1);\n3",
+   "options": [
+    "50",
+    "60",
+    "70",
+    "80"
+   ],
+   "answer": 1,
+   "analysis": "正确答案 B。ptr 指向 data[2]，*(ptr-1)=20，*(ptr+1)=40，val=60。"
+  },
+  {
+   "n": 8,
+   "stem": "某班  个小组、每组  名同学的分数存入下面的二维数组 score ，则 score[1][2] 的值是（  ）。\nint score[3][4] = {\n1\n{80, 81, 82, 83},\n2\n{90, 91, 92, 93},\n3\n{70, 71, 72, 73}\n4\n};\n5",
+   "options": [
+    "81",
+    "90",
+    "92",
+    "72"
+   ],
+   "answer": 2,
+   "analysis": "正确答案 C。score[1][2] 是第 2 行第 3 列，值为 92。二维数组下标从 0 开始。"
+  },
+  {
+   "n": 9,
+   "stem": "小杨定义了一个结构体 Hero 来表示游戏角色，下面哪种初始化方式会由于语法错误导致编译失败？（\n）。\nstruct Hero {\n1\nstring name;\n2\nint hp;\n3\n};\n4",
+   "options": [
+    "Hero h = {\"Arthur\", 100};",
+    "Hero h; 1 h.name = \"Arthur\"; 2 h.hp = 100; 3",
+    "Hero h = new Hero{\"Arthur\", 100};",
+    "Hero *p = new Hero{\"Arthur\", 100};"
+   ],
+   "answer": 2,
+   "analysis": "正确答案 C。new 返回指针，Hero h = new Hero{...}; 把指针赋给对象，类型不匹配，编译失败；D 用 Hero* 接收则是合法的。"
+  },
+  {
+   "n": 10,
+   "stem": "下面程序输出结果是（  ）。\nstruct Book {\n1\nstring title;\n2\nint pages;\n3\n};\n4\nint main() {\n5\nBook books[2] = {{\"Math\", 120}, {\"Science\", 150}};\n6\ncout << books[1].title;\n7\nreturn 0;\n8\n}\n9",
+   "options": [
+    "Math",
+    "Science 3 / 10",
+    "120",
+    "150"
+   ],
+   "answer": 1,
+   "analysis": "正确答案 B。books[1].title 是第二个元素的 title 字符串 \"Science\"。"
+  },
+  {
+   "n": 11,
+   "stem": "小杨在对“能量晶石”按亮度进行排序。如果两块晶石亮度相同，他希望保持它们在原始序列中的相对顺\n序。下列关于排序算法稳定性的说法，错误的是（  ）。",
+   "options": [
+    "冒泡排序是稳定的，因为只有在左边比右边大时才交换。",
+    "插入排序是稳定的，因为它将元素插入到相等元素的右侧。",
+    "选择排序是稳定的，因为它每次选出最小元素放在前面。",
+    "稳定性是指排序后相等元素的相对位置不发生改变。"
+   ],
+   "answer": 2,
+   "analysis": "正确答案 C（错误项）。选择排序不稳定：把本轮最小元交换到前面时可能跨过与它相等的元素，破坏相对顺序；A、B、D 的说法都正确。"
+  },
+  {
+   "n": 12,
+   "stem": "小杨的机器人正在能量踏板上跳跃，踏板编号为\n。跳到第  块踏板的方案数满足递推式\n，则运行以下代码计算 jump(5) 的结果是（  ）。\n。若\nint jump(int n) {\n1\nif (n <= 2)\n2\nreturn n;\n3\nint a = 1, b = 2, c = 0;\n4\nfor (int i = 3; i <= n; i++) {\n5\nc = a + b;\n6\na = b;\n7\nb = c;\n8\n}\n9\nreturn c;\n10\n}\n11",
+   "options": [
+    "5",
+    "8",
+    "13",
+    "21"
+   ],
+   "answer": 1,
+   "analysis": "正确答案 B。jump(5) 即斐波那契第 5 项：i=3 得 3，i=4 得 5，i=5 得 8，返回 8。"
+  },
+  {
+   "n": 13,
+   "stem": "在“模拟实验室”程序中，为了防止除以  导致崩溃，小杨使用了异常处理机制。执行以下代码将输出（\n）。\ntry {\n1\nint x = 10, y = 0;\n2\nif (y == 0) throw \"Zero Error\";\n3\ncout << x / y;\n4\n} catch (int e) {\n5\ncout << \"Error Code: \" << e;\n6\n} catch (const char* msg) {\n7\ncout << \"Caught: \" << msg;\n8\n}\n9",
+   "options": [
+    "0",
+    "Error Code: 0",
+    "Caught: Zero Error",
+    "程序直接崩溃"
+   ],
+   "answer": 2,
+   "analysis": "正确答案 C。抛出的是字符串字面量（const char*），匹配第二个 catch，输出 \"Caught: Zero Error\"。"
+  },
+  {
+   "n": 14,
+   "stem": "下面代码使用某种排序算法，将数组中的元素按从小到大排序。这段代码使用的排序算法是（  ）。\n4 / 10\nvoid mystery_sort(double arr[], int n) {\n1\nfor (int i = 0; i < n - 1; i++) {\n2\nint minPos = i;\n3\nfor (int j = i + 1; j < n; j++) {\n4\nif (arr[j] < arr[minPos]) {\n5\nminPos = j;\n6\n}\n7\n}\n8\ndouble temp = arr[i];\n9\narr[i] = arr[minPos];\n10\narr[minPos] = temp;\n11\n}\n12\n}\n13",
+   "options": [
+    "冒泡排序",
+    "插入排序",
+    "选择排序",
+    "非典型排序"
+   ],
+   "answer": 2,
+   "analysis": "正确答案 C。每轮在未排序区间找最小值下标 minPos 再交换到 i 处，是标准的选择排序。"
+  },
+  {
+   "n": 15,
+   "stem": "小杨正在读取“冒险日志”文件 quest.txt 。若文件内容为 Level 10 ，执行以下程序后输出为（  ）。\nifstream fin(\"quest.txt\");\n1\nstring s;\n2\nint v;\n3\nfin >> s >> v;\n4\ncout << s.length() * v;\n5",
+   "options": [
+    "50",
+    "15",
+    "70",
+    "5"
+   ],
+   "answer": 0,
+   "analysis": "正确答案 A。fin>>s 读 \"Level\"、fin>>v 读 10，s.length()=5，5×10=50。"
+  }
+ ],
+ "judge": [
+  {
+   "n": 1,
+   "stem": "运行以下程序后，变量 a 的值最终会变为 20 。\nvoid modify(int *p) {\n1\n*p = *p + 10;\n2\n}\n3\nint main() {\n4\nint a = 10;\n5\nmodify(&a);\n6\nreturn 0;\n7\n}\n8",
+   "answer": null,
+   "analysis": "正确。modify 通过指针使 *p += 10，a 由 10 变为 20。"
+  },
+  {
+   "n": 2,
+   "stem": "在 C++ 中，引用一旦初始化并绑定到某个变量后，可以通过赋值语句将其重新绑定到另一个变量。",
+   "answer": null,
+   "analysis": "错误。引用一旦绑定就不能再绑定其他变量，对它赋值只是修改所引用变量的值，不是重新绑定。"
+  },
+  {
+   "n": 3,
+   "stem": "下面程序可以正确计算并输出  名学生的平均成绩。\n5 / 10\nstruct Student {\n1\nint id;\n2\nint score;\n3\n};\n4\n5\nint main() {\n6\nStudent students[3] = {\n7\n{1, 90},\n8\n{2, 80},\n9\n{3, 100}\n10\n};\n11\n12\nint sum = 0;\n13\nfor (int i = 0; i < 3; i++) {\n14\nsum += students[i].score;\n15\n}\n16\ndouble average = sum / 3.0;\n17\ncout << average << endl;\n18\nreturn 0;\n19\n}\n20",
+   "answer": null,
+   "analysis": "正确。用数组循环累加 90+80+100=270，除以 3.0 得 90.0，正确输出平均分。"
+  },
+  {
+   "n": 4,
+   "stem": "选择排序算法在寻找每一轮最小值时，如果遇到相等的元素不进行交换，则选择排序是一种稳定的排序算\n法。",
+   "answer": null,
+   "analysis": "错误。选择排序即使相等时不交换下标，最终仍要与区间首元素交换位置，跨距离交换照样可能改变相等元素的相对顺序，仍是不稳定排序。"
+  },
+  {
+   "n": 5,
+   "stem": "如果使用带 flag 的冒泡排序，且待排序数组一开始就是有序的，那么算法只需一轮扫描即可结束，时间\n复杂度为\n。",
+   "answer": null,
+   "analysis": "正确。带 flag 的冒泡排序在数组已有序时，第一轮扫描没有任何交换即可判定有序并退出，只需 O(n)。"
+  },
+  {
+   "n": 6,
+   "stem": "在 C++ 中定义二维数组并初始化时，可以省略第一维，但不能省略第二维。因此 int a[][2] = {{1, 2},\n{3, 4}}; 是合法的，而 int a[][] = {{1, 2}, {3, 4}}; 是不合法的。",
+   "answer": null,
+   "analysis": "正确。初始化时可省略第一维（由初始化列表推断行数），但第二维不能省略；int a[][2] 合法、int a[][] 非法。"
+  },
+  {
+   "n": 7,
+   "stem": "下面代码的时间复杂度是\n。\nint cnt = 0;\n1\nfor (int i = 1; i <= n; i++) {\n2\nfor (int j = 1; j <= i; j++) {\n3\ncnt++;\n4\n}\n5\n}\n6",
+   "answer": null,
+   "analysis": "错误。内层循环 j 从 1 到 i，循环体共执行 1+2+…+n = n(n+1)/2 次，时间复杂度是 O(n²)，与题述复杂度不符。（题干公式以真题原件为准）"
+  },
+  {
+   "n": 8,
+   "stem": "假设文件 output.txt 能正常打开，下面代码通过 rdbuf 将 cout 的输出重定向到了文件中。\nofstream fout(\"output.txt\");\n1\nstreambuf* old_buf = cout.rdbuf();\n2\ncout.rdbuf(fout.rdbuf());\n3\ncout << \"GESP Exam\";\n4\ncout.rdbuf(old_buf);\n5",
+   "answer": null,
+   "analysis": "正确。rdbuf 交换后 cout 绑定到文件流的缓冲区，\"GESP Exam\" 被写入 output.txt，恢复后不影响后续输出。"
+  },
+  {
+   "n": 9,
+   "stem": "小杨想通过下面程序给饭卡充值，程序会输出 70 。\nvoid recharge(int money) {\n1\nmoney += 20;\n2\n}\n3\nint main() {\n4\nint card = 50;\n5\nrecharge(card);\n6\ncout << card;\n7\nreturn 0;\n8\n}\n9",
+   "answer": null,
+   "analysis": "错误。recharge 是值传递，card 不会被修改，输出仍是 50 而不是 70。"
+  },
+  {
+   "n": 10,
+   "stem": "下面代码可以通过编译。\n6 / 10\nint a[5];\n1\na++;\n2",
+   "answer": null,
+   "analysis": "错误。数组名是常量指针，a++ 试图修改它的值，编译不能通过。"
+  }
+ ],
+ "programming": [
+  {
+   "n": 1,
+   "name": "扫雷",
+   "desc": "小杨同学正在游玩经典游戏「扫雷」，他想自己生成一个「扫雷」的地图。\n小杨同学希望生成的地图大小为  行\n列，一共\n个区块。\n区块行号为\n，列号为\n。\n其中一些区块为雷区，其它区块不为雷区。\n小杨同学指定了  个区块为雷区，而其它区块均不为雷区。小杨同学希望你帮忙计算非雷区的区块，每个区块与多\n少个雷区相邻？\n我们定义区块相邻，当且仅当两个区块至少有一个公共顶点（也就是说对于不在地图边缘的区块，周围  个区块均\n与其相邻）。"
+  },
+  {
+   "n": 2,
+   "name": "身高体重指数",
+   "desc": "一个人的身高体重指数（BMI）等于其体重（千克为单位）除以其身高（米为单位）的平方。\n例如，一个体重为\n，身高为\n的人的身高体重指数为\n。\n现在有  个小朋友，第  个小朋友的编号为 ，体重为\n，身高为\n。\n请按照身高体重指数从高到低为小朋友们排序，数据保证不存在两个小朋友的身高体重指数完全相同。输出排序后\n小朋友的编号。"
+  }
+ ]
+}

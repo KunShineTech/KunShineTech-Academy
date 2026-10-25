@@ -1,0 +1,90 @@
+---
+title: "双向链表与循环链表"
+level: 5
+order: 4
+duration: 120
+unit: "链表"
+difficulty: 进阶
+goals:
+  - "理解双向链表的结构与插入删除操作"
+  - "理解循环链表的连接方式与判空条件"
+  - "能区分单链表、双向链表、循环链表的适用场景"
+---
+
+import Check from '../../../components/Check.astro';
+import Task from '../../../components/Task.astro';
+import Reveal from '../../../components/Reveal.astro';
+
+
+## 1. 单链表的「单程」遗憾
+上一课的单链表只朝一个方向拉手，于是有个尴尬：知道节点 q，想找它的**前一个**节点，只能从头再数一遍。这就像在单向隧道里，走过出口想回退，只能绕全城一圈。**双向链表**给每个节点加了一根「朝后的手指」prev，既能前进又能后退。
+
+## 2. 双向链表：prev 与 next 两手都要硬
+节点结构多一个指针：
+
+```cpp
+struct Node {
+    int data;
+    Node* prev, *next;
+};
+```
+
+在 p 与 p->next 之间插入 q，要改**四根**指针：
+
+```cpp
+q->prev = p;            // q 的前手指拉 p
+q->next = p->next;      // q 的后手指拉 p 原来的后继
+p->next->prev = q;      // 原后继的前手指改拉 q
+p->next = q;            // p 的后手指改拉 q
+```
+
+**口诀：先把自己安顿好（prev、next），再通知两边改拉我。**
+
+删除节点 q 则改两根指针、释放内存：
+
+```cpp
+q->prev->next = q->next;   // 前驱跳过 q 指向后继
+q->next->prev = q->prev;   // 后继跳过 q 指向前驱
+delete q;
+```
+
+> 教学提醒：双向链表操作指针多、顺序更容易错，强烈建议先画三个节点的「方框—箭头图」，在图上用红笔改箭头，确认无误后再翻译成代码。先图后码是本课纪律。
+
+<Check question="在双向链表节点 p 与 p->next 之间插入节点 q，需要修改几个指针？" options={['1 个','2 个','4 个','不用改指针']} answer={2} explanation="q 的 prev、next 两根，加上 p 的 next 和原后继的 prev，共 4 根指针都要改。少改一根链就会断。" />
+
+## 3. 循环链表：首尾相连的队伍
+**循环链表**把最后一个节点的 next 指回头节点，队伍首尾相接，像围成一圈做游戏的人：从任意一个人出发沿 next 走，最终一定能转回起点。
+
+```cpp
+Node* tail = ...;              // 建完链后拿到尾节点
+tail->next = head;             // 连成环
+```
+
+两个易错点：
+1. **判空/终止条件变了**：单链表用 `p != nullptr` 判到头；循环链表常用 `p != head`（绕一圈回到头就停）。
+2. 若用循环链表模拟「报数出局」类游戏，注意只剩一人时的特判。
+
+循环链表还可升级为**双向循环链表**：prev 也成环，正向反向都能无限转。
+
+## 4. 三种链表怎么选？
+| 类型 | 找后继 | 找前驱 | 典型场景 |
+|------|--------|--------|----------|
+| 单链表 | O(1) | O(n) | 只向前处理，如栈式扫描 |
+| 双向链表 | O(1) | O(1) | 需要来回移动，如浏览器前进/后退 |
+| 循环链表 | O(1)（绕圈） | 视类型 | 轮转调度、约瑟夫问题 |
+
+<Check question="用链表模拟「一圈人报数，报到 3 的人出局」，直到只剩一人，选哪种结构最自然？" options={['单链表','双向循环链表','静态数组','string']} answer={1} explanation="报数沿 next 转圈，出局要删节点且要知道前驱——循环结构提供转圈，双向结构提供 O(1) 找前驱，配合最顺手。" />
+
+## 5. 实战：双向链表的建立与逆序输出
+双向链表最大的甜头之一是**倒着遍历**不用递归也不用栈：从尾节点沿 prev 一路后退即可。
+
+<Task title="建双向链表并逆序输出" input="第一行一个正整数 n（n≤100），第二行 n 个整数" output="把这 n 个数逆序输出，空格分隔（用双向链表实现）" sampleIn="4
+1 2 3 4" sampleOut="4 3 2 1">尾插法建表，建的同时让每个新节点的 prev 指向队尾。记录尾节点 tail，然后从 tail 沿 prev 一路输出到头节点之后。</Task>
+<Reveal label="查看参考程序与思路"><pre><code>{`#include <iostream>\nusing namespace std;\nstruct Node {\n    int data;\n    Node* prev, *next;\n};\nint main(){\n    int n; cin>>n;\n    Node* head = new Node{0, nullptr, nullptr};\n    Node* tail = head;\n    for(int i=0;i<n;i++){\n        int x; cin>>x;\n        tail->next = new Node{x, tail, nullptr};\n        tail = tail->next;\n    }\n    bool first = true;\n    for(Node* p = tail; p != head; p = p->prev){\n        if(!first) cout<<' ';\n        cout<<p->data;\n        first = false;\n    }\n    cout<<'\\n';\n}`}</code></pre>建表时 `new Node{x, tail, nullptr}`：data 为 x，prev 指向旧队尾 tail，next 为空；然后 tail 前进。这样每个节点都记得前面是谁。输出从 tail 出发沿 prev 后退到 head 为止，天然逆序，无需翻转操作。若改用单链表，逆序必须额外写反转（下节综合题会练）——这就是双向链表的价值。</Reveal>
+
+## 6. 课后巩固
+1. 概念题：画出含 3 个节点的双向链表结构图，标出全部 prev、next 箭头。
+2. 概念题：写出双向链表删除节点 q 的两行核心代码，并解释为什么要改两个方向的指针。
+3. 编程题：读 n 个数建**单**链表，利用「prev 思路」的替代方案——头插法（每次都插到 head 后面）——直接建成逆序链表并输出。
+4. 编程题：用循环链表模拟 n 个人报数，报到 m 的人出局，输出最后剩下的人的编号（n,m≤100）。
+5. 思考题：双向链表每个节点多一个指针，付出了什么代价？什么情况下你觉得这个代价值得？

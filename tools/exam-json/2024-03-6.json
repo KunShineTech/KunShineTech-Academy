@@ -1,0 +1,242 @@
+{
+ "session": "2024-03",
+ "level": 6,
+ "file": "GESP 2024年03月认证C++ 6级真题.pdf",
+ "legacy": false,
+ "choiceCount": 15,
+ "judgeCount": 10,
+ "progCount": 2,
+ "choiceAnswers": "ADADBBCCDBAACCA",
+ "judgeAnswers": "",
+ "choice": [
+  {
+   "n": 1,
+   "stem": "在构建哈夫曼树时，每次应该选择（ ）合并。",
+   "options": [
+    "最小权值的节点",
+    "最大权值的节点",
+    "随机节点",
+    "深度最深的节点"
+   ],
+   "answer": 0
+  },
+  {
+   "n": 2,
+   "stem": "面向对象的编程思想主要包括以下哪些原则（ ）？",
+   "options": [
+    "贪心、动态规划、回溯",
+    "并发、并行、异步",
+    "递归、循环、分治",
+    "封装、继承、多态"
+   ],
+   "answer": 3
+  },
+  {
+   "n": 3,
+   "stem": "在队列中，元素的添加和删除是按照（ ）原则进行的。",
+   "options": [
+    "先进先出",
+    "先进后出",
+    "最小值先出",
+    "随机进出"
+   ],
+   "answer": 0
+  },
+  {
+   "n": 4,
+   "stem": "给定一个简单的类定义如下，（ ）语句在类的外部正确地创建了一个 Circle 对象并调用了 getArea 函\n数？\nclass Circle {\n1\nprivate:\n2\ndouble radius;\n3\npublic:\n4\nCircle(double r) : radius(r) {}\n5\ndouble getArea() {\n6\nreturn 3.14 * radius * radius;\n7\n}\n8\n};\n9",
+   "options": [
+    "Circle c = Circle(5.0); c.getArea(c);",
+    "Circle c(5.0); getArea(c);",
+    "Circle c = new Circle(5.0); c.getArea();",
+    "Circle c(5.0); c.getArea();"
+   ],
+   "answer": 3
+  },
+  {
+   "n": 5,
+   "stem": "以下代码希望能在一棵二叉排序树中搜索特定的值，请在横线处填入（ ），使其能正确实现相应功能。\nTreeNode* search(TreeNode* root, int target) {\n1\nif (root == NULL || root->val == target) {\n2\nreturn root;\n3\n}\n4\nif (_______________) {\n5\nreturn search(root->left, target);\n6\n} else {\n7\nreturn search(root->right, target);\n8\n}\n9\n}\n10",
+   "options": [
+    "target < root->left",
+    "target < root->val",
+    "target > root->val",
+    "target > root->left"
+   ],
+   "answer": 1
+  },
+  {
+   "n": 6,
+   "stem": "3 位格雷编码的正确顺序是（ ）。",
+   "options": [
+    "000, 001, 010, 011, 100, 101, 110, 111",
+    "000, 001, 011, 010, 110, 111, 101, 100",
+    "000, 010, 001, 011, 100, 110, 101, 111",
+    "000, 010, 110, 100, 111, 101, 011, 001"
+   ],
+   "answer": 1
+  },
+  {
+   "n": 7,
+   "stem": "以下动态规划算法的含义与目的是（ ）。\nint function(vector<int>& nums) {\n1\nint n = nums.size();\n2\nif (n == 0)\n3\nreturn 0;\n4\nif (n == 1)\n5\nreturn nums[0];\n6\nvector<int> dp(n, 0);\n7\ndp[0] = nums[0];\n8\ndp[1] = max(nums[0], nums[1]);\n9\nfor (int i = 2; i < n; ++i) {\n10\ndp[i] = max(dp[i - 1], nums[i] + dp[i - 2]);\n11\n}\n12\nreturn dp[n - 1];\n13\n}\n14",
+   "options": [
+    "计算数组 nums 中的所有元素的和",
+    "计算数组 nums 中相邻元素的最大和",
+    "计算数组 nums 中不相邻元素的最大和",
+    "计算数组 nums 中的最小元素"
+   ],
+   "answer": 2
+  },
+  {
+   "n": 8,
+   "stem": "阅读以下广度优先搜索的代码：\nvoid bfs(TreeNode* root) {\n1\nif (root == NULL) {\n2\nreturn;\n3\n}\n4\nqueue<TreeNode*> q;\n5\nq.push(root);\n6\nwhile (!q.empty()) {\n7\nTreeNode* current = q.front();\n8\nq.pop();\n9\ncout << current->val << \" \";\n10\nif (current->left) {\n11\nq.push(current->left);\n12\n}\n13\nif (current->right) {\n14\nq.push(current->right);\n15\n}\n16\n}\n17\n}\n18\n使用以上算法遍历以下这棵树，可能的输出是（ ）。\n1\n1\n/ \\\n2\n2   3\n3\n/ \\   \\\n4\n8   9   6\n5\n/ \\   \\\n6\n4   5   7\n7\n/ \\\n8\n10 11\n9",
+   "options": [
+    "1 2 8 9 4 5 3 6 7 10 11",
+    "1 2 3 4 5 6 7 8 9 10 11",
+    "1 2 3 8 9 6 4 5 7 10 11",
+    "1 2 3 8 9 4 5 6 7 10 11"
+   ],
+   "answer": 2
+  },
+  {
+   "n": 9,
+   "stem": "给定一个空栈，执行以下操作序列：\n操作序列：push(1), push(2), push(3), pop(), pop(), push(4), push(5), pop()\n最终栈中的元素是（ ）。",
+   "options": [
+    "1, 2",
+    "1, 4, 5",
+    "1, 2, 5",
+    "1, 4"
+   ],
+   "answer": 3
+  },
+  {
+   "n": 10,
+   "stem": "一个有 124 个叶子节点的完全二叉树，最多有（ ）个结点。",
+   "options": [
+    "247",
+    "248",
+    "249",
+    "250"
+   ],
+   "answer": 1
+  },
+  {
+   "n": 11,
+   "stem": "在求解最优化问题时，动态规划常常涉及到两个重要性质，即最优子结构和（ ）。",
+   "options": [
+    "重叠子问题",
+    "分治法",
+    "贪心策略",
+    "回溯算法"
+   ],
+   "answer": 0
+  },
+  {
+   "n": 12,
+   "stem": "若一棵二叉树的先序遍历为：A, B, D, E, C, F、中序遍历为：D, B, E, A, F, C，它的后序遍历为（ ）。",
+   "options": [
+    "D, E, B, F, C, A",
+    "E, D, B, F, C, A",
+    "D, E, B, C, F, A",
+    "E, D, B, C, F, A"
+   ],
+   "answer": 0
+  },
+  {
+   "n": 13,
+   "stem": "线性筛法与埃氏筛法相比的优势是（ ）。",
+   "options": [
+    "更容易实现",
+    "更节省内存",
+    "更快速",
+    "更准确"
+   ],
+   "answer": 2
+  },
+  {
+   "n": 14,
+   "stem": "以下代码使用了辗转相除法求解最大公因数，请在横线处填入（ ），使其能正确实现相应功能。\nint gcd(int a, int b) {\n1\nwhile (b != 0) {\n2\n______________________\n3\n}\n4\nreturn a;\n5\n}\n6",
+   "options": [
+    "int temp = b; b = a / b; a = temp;",
+    "int temp = a; a = b / a; b = temp;",
+    "int temp = b; b = a % b; a = temp;",
+    "b = a % b; a = b;"
+   ],
+   "answer": 2
+  },
+  {
+   "n": 15,
+   "stem": "下面的代码片段用于反转单链表，请进行（ ）修改，使其能正确实现相应功能。\nListNode* reverseLinkedList(ListNode* head) {\n1\nListNode* prev = nullptr;\n2\nListNode* current = head;\n3\nwhile (current != nullptr) {\n4\nListNode* next = current->next;\n5\ncurrent->next = next;\n6\nprev = current;\n7\ncurrent = next;\n8\n}\n9\nreturn prev;\n10\n}\n11",
+   "options": [
+    "current->next = next; 应该改为 current->next = prev;",
+    "ListNode* next = current->next; 应该改为 ListNode* next = prev->next;",
+    "current != nullptr 应该改为 current->next != nullptr",
+    "ListNode* prev = nullptr; 应该改为 ListNode* prev = head;"
+   ],
+   "answer": 0
+  }
+ ],
+ "judge": [
+  {
+   "n": 1,
+   "stem": "哈夫曼树是一种二叉树。",
+   "answer": null
+  },
+  {
+   "n": 2,
+   "stem": "在动态规划中，状态转移方程的作用是定义状态之间的关系。",
+   "answer": null
+  },
+  {
+   "n": 3,
+   "stem": "继承是将已有类的属性和方法引入新类的过程。",
+   "answer": null
+  },
+  {
+   "n": 4,
+   "stem": "完全二叉树的任意一层都可以不满。",
+   "answer": null
+  },
+  {
+   "n": 5,
+   "stem": "删除单向链表中的节点，只需知道待删除节点的地址即可，无需访问前一个节点。",
+   "answer": null
+  },
+  {
+   "n": 6,
+   "stem": "在宽度优先搜索中，通常使用队列来辅助实现。",
+   "answer": null
+  },
+  {
+   "n": 7,
+   "stem": "哈夫曼编码的主要应用领域是有损数据压缩。",
+   "answer": null
+  },
+  {
+   "n": 8,
+   "stem": "二叉搜索树的查找操作的时间复杂度是\n。",
+   "answer": null
+  },
+  {
+   "n": 9,
+   "stem": "栈的基本操作包括入栈（push）和出栈（pop）。",
+   "answer": null
+  },
+  {
+   "n": 10,
+   "stem": "使用哈夫曼编码对一些字符进行编码，如果两个字符的频率差异最大，则它们的编码可能出现相同的前\n缀。",
+   "answer": null
+  }
+ ],
+ "programming": [
+  {
+   "n": 1,
+   "name": "游戏",
+   "desc": ""
+  },
+  {
+   "n": 2,
+   "name": "好斗的牛",
+   "desc": "你有\n个牛棚，从左到右一字排开。你希望把\n头牛安置到牛棚里。麻烦的是，你的牛很好斗，如果他们附近有\n其他的牛，他们就会不安分地去挑事。其中，第  头牛的攻击范围是\n，这意味着，如果他的左边\n个牛棚或\n右边  个牛棚里有其他牛，他就会去挑事。\n你想留下连续的一段牛棚，并把其他牛棚都卖掉。请问你最少需要留下多少牛棚，才能保证至少存在一种方案能够\n把所有的\n头牛都安置进剩余的牛棚里，且没有牛会挑事？"
+  }
+ ]
+}

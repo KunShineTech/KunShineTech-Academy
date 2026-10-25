@@ -1,0 +1,234 @@
+{
+  "roadmap": [
+    {
+      "stage": "语法与 DOM 操作",
+      "focus": "掌握 JavaScript 核心语法、动态类型与浏览器 DOM 操作，让网页动起来。",
+      "topics": ["let/const 与基本类型", "函数与作用域", "数组与对象", "DOM 查询与修改", "事件监听"]
+    },
+    {
+      "stage": "原型、闭包与 this",
+      "focus": "理解 JavaScript 独有的原型继承、闭包与 this 绑定机制，读懂语言的本质。",
+      "topics": ["原型链", "闭包", "this 四种绑定", "作用域与提升", "箭头函数"]
+    },
+    {
+      "stage": "ES6+ 现代特性",
+      "focus": "熟练使用解构、展开、class、模块与可选链等现代语法，跟上当代开发风格。",
+      "topics": ["解构与展开", "class 语法糖", "ES Modules", "可选链 ?. 与空值合并 ??", "Promise 基础"]
+    },
+    {
+      "stage": "异步编程与事件循环",
+      "focus": "攻克 Promise、async/await 与事件循环机制，这是 JavaScript 最核心的进阶关卡。",
+      "topics": ["回调与回调地狱", "Promise 三态", "async/await", "事件循环与微任务", "fetch API"]
+    },
+    {
+      "stage": "浏览器 API、Node.js 与实战",
+      "focus": "综合运用浏览器 API 与 Node.js，完成由页面交互到全栈小应用的实战项目。",
+      "topics": ["存储 API", "Node.js 基础", "npm 包管理", "Express 入门", "综合项目"]
+    },
+    {
+      "stage": "工程化与发布",
+      "focus": "掌握错误处理、调试工具与前端构建流程，让代码达到可协作、可上线的质量。",
+      "topics": ["try/catch 与全局兜底", "DevTools 调试", "正则与日期处理", "Vite 构建流程", "性能优化基础"]
+    }
+  ],
+  "modules": [
+    {
+      "name": "核心语法与动态类型",
+      "summary": "JavaScript 是弱类型动态语言：变量类型在运行中自由变化，语法借鉴了 C 家族。为什么重要：语法是进入前端的第一道门，也是所有框架的底层语言。怎么学：在浏览器控制台里逐行试验，感受「写一句、看一句」的反馈速度。",
+      "points": [
+        "let 声明变量、const 声明常量，淘汰旧的 var",
+        "七种基本类型：undefined、null、boolean、number、string、symbol、bigint",
+        "其余都是对象：数组、函数、普通对象皆对象",
+        "相等比较用 ===（严格相等），== 会做隐式类型转换",
+        "模板字符串 `你好 ${name}` 支持多行与插值",
+        "typeof 与 instanceof 判断类型的适用场景",
+        "number 即双精度浮点，0.1+0.2!==0.3，大数用 bigint",
+        "隐式转换规则多，NaN 不等于任何值包括自身，用 Number.isNaN 判断"
+      ],
+      "tip": "永远用 === 和 !==，把 == 从肌肉记忆里删除。"
+    },
+    {
+      "name": "原型与闭包",
+      "summary": "原型是 JavaScript 的继承机制：对象通过原型链共享方法与属性；闭包是函数记住其定义时作用域的能力。为什么重要：原型是面试高频与库源码的钥匙，闭包贯穿整个前端开发。怎么学：用对象字面量与 Object.create 亲手搭一条原型链，再用计数器亲手造一个闭包。",
+      "points": [
+        "每个对象都有隐藏的原型引用，属性查找沿原型链向上",
+        "__proto__ 指向实例的原型，prototype 是构造函数的属性，二者别混淆",
+        "闭包：内层函数捕获外层函数的变量，外层返回后变量依然存活",
+        "闭包经典应用：计数器、私有变量、事件回调记忆状态",
+        "循环中 var + 定时器打印经典题，let 为何能修复",
+        "ES6 class 是原型继承的语法糖，底层仍是原型链",
+        "Object.create 以指定对象为原型创建新对象",
+        "静态方法 static 与实例方法在原型链上的位置不同"
+      ],
+      "tip": "看不懂一段代码时先问「这个函数的闭包捕获了什么」，答案常常水落石出。"
+    },
+    {
+      "name": "this 与函数机制",
+      "summary": "this 的值取决于函数的调用方式而非定义位置：默认、隐式、显式与 new 四种绑定规则。为什么重要：this 指向错误是初学者最常见的困惑来源，也是面试必考。怎么学：记住「this 看谁调用」，用 call/apply/bind 亲手改变指向验证规则。",
+      "points": [
+        "独立调用 this 指向 undefined（严格模式）或全局对象",
+        "方法调用 this 指向调用它的对象：obj.fn() 中 this 是 obj",
+        "call/apply 显式指定 this，bind 返回永久绑定的新函数",
+        "箭头函数没有自己的 this，继承定义处的外层 this",
+        "new 绑定：构造函数中 this 指向新创建的对象",
+        "事件回调中的 this 常被改写，箭头函数是救星",
+        "严格模式 'use strict' 改变默认绑定并禁用部分危险语法",
+        "函数也是对象：length、name 属性与 arguments 对象"
+      ],
+      "tip": "回调函数里需要外层 this 时，箭头函数几乎总是正确选择。"
+    },
+    {
+      "name": "数组、对象与常用方法",
+      "summary": "数组的 map/filter/reduce 是函数式操作三件套，对象字面量与解构让数据组织极其灵活。为什么重要：数据处理是前端日常，写 UI 之前先学会处理数据。怎么学：把 for 循环全部改写成数组高阶方法，直到形成条件反射。",
+      "points": [
+        "map 变换、filter 过滤、reduce 聚合是最常用的三个方法",
+        "find、some、every、includes 覆盖常见查询需求",
+        "解构赋值 const {name, age} = student 快速取字段",
+        "展开运算符 ... 用于拷贝与合并数组、对象",
+        "对象浅拷贝的坑：嵌套对象仍共享引用，深拷贝用 structuredClone",
+        "Object.keys/values/entries 遍历对象的三种姿势",
+        "sort 默认按字符串字典序排序，数字排序必须传比较函数",
+        "Array.from 与扩展运算符把类数组对象转为真数组"
+      ],
+      "tip": "判断用哪个方法的口诀：一对一变换用 map，挑一部分用 filter，聚合成一个值用 reduce。"
+    },
+    {
+      "name": "DOM 操作与事件",
+      "summary": "DOM 是网页的结构化表示，JavaScript 通过 document 查询、修改节点并响应事件，这是「前端」二字的本义。为什么重要：一切页面交互的基础，框架底层做的也是这些事。怎么学：从 querySelector 取元素、textContent 改文字、addEventListener 绑事件三步开始。",
+      "points": [
+        "querySelector/querySelectorAll 用 CSS 选择器取元素",
+        "textContent 改文本、innerHTML 改结构、classList 操作样式类",
+        "createElement 与 append 动态增删节点",
+        "addEventListener 绑定事件，回调接收 event 对象",
+        "事件冒泡与捕获，stopPropagation 阻止扩散",
+        "事件委托：在父元素上统一监听子元素事件，性能好且支持动态子节点",
+        "dataset 读取 data-* 自定义属性传递数据",
+        "preventDefault 阻止表单提交与链接跳转的默认行为"
+      ],
+      "tip": "能用事件委托就不用一堆子元素监听，列表项动态增删时尤其如此。"
+    },
+    {
+      "name": "ES6+ 现代语法",
+      "summary": "ES2015 之后的每年版本持续引入新特性：let/const、箭头函数、class、解构、Promise、模块等已成为默认写法。为什么重要：读文档、看开源代码都建立在这些语法上。怎么学：以 ES2022 为目标，把旧教程里的 var 和全局脚本写法逐步替换。",
+      "points": [
+        "默认参数、剩余参数 ...rest 与展开 ...spread",
+        "箭头函数：写法简洁且无自己的 this",
+        "class 定义类：constructor、extends、super",
+        "ES Modules：import/export 替代旧的 CommonJS 与全局脚本",
+        "可选链 ?. 与空值合并 ?? 安全访问嵌套属性",
+        "Promise.all/allSettled/race 并发处理多个异步任务",
+        "Array.at() 支持负数索引，Object.hasOwn 取代 hasOwnProperty",
+        "顶层 await 与私有字段 #private 是新时代特性"
+      ],
+      "tip": "学习资料看到 var 和旧的模块写法时主动「翻译」成 ES6+ 版本。"
+    },
+    {
+      "name": "异步编程与事件循环",
+      "summary": "JavaScript 单线程运行，靠事件循环调度异步任务：Promise 表状态，async/await 写同步风格。为什么重要：网络请求、定时器、用户事件全部异步，不懂事件循环就无法真正理解前端。怎么学：画图理解调用栈、微任务与宏任务的执行顺序，再动手验证。",
+      "points": [
+        "回调函数是异步的基本形式，多层嵌套形成回调地狱",
+        "Promise 三态：pending、fulfilled、rejected，then/catch 链式处理",
+        "async/await 是 Promise 的语法糖，await 会暂停所在 async 函数",
+        "事件循环：同步代码 → 清空微任务（Promise）→ 取一个宏任务（setTimeout）→ 循环",
+        "fetch 发起网络请求返回 Promise，响应需 .json() 再解析一次",
+        "Promise.all 任一失败即失败，allSettled 等待全部结束",
+        "Promise 链式调用的返回值会包装为新的 Promise 向后传递",
+        "async 函数永远返回 Promise，return 值会被自动包装"
+      ],
+      "tip": "遇到奇怪的执行顺序题，按「同步 → 微任务 → 宏任务」三层排队推演，一推一个准。"
+    },
+    {
+      "name": "浏览器 API 与存储",
+      "summary": "浏览器提供 DOM、定时器、fetch、localStorage、Canvas、Geolocation 等丰富 API，前端的能力边界由它们决定。为什么重要：做页面不只是改文字，还包括存数据、发请求、画图形。怎么学：按「请求-存储-渲染」主线串联常用 API。",
+      "points": [
+        "localStorage/sessionStorage 持久化键值数据，容量约 5MB",
+        "fetch + async/await 获取接口数据并渲染",
+        "setTimeout/setInterval 定时任务，注意返回的 id 用于取消",
+        "history 与 location 实现前端路由跳转",
+        "Canvas 绘制图形与简单动画",
+        "IntersectionObserver 实现懒加载等视口检测",
+        "IndexedDB 存储结构化大数据，API 较底层可借助封装库",
+        "navigator.clipboard 与 File API 访问剪贴板与本地文件"
+      ],
+      "tip": "动手做「待办清单持久化」：刷新不丢数据的那一刻，会真切理解 localStorage 的价值。"
+    },
+    {
+      "name": "正则、日期与 JSON",
+      "summary": "RegExp 处理文本模式，Date 处理时间，JSON 负责数据交换，三者是数据处理的瑞士军刀。为什么重要：表单校验、日志解析、数据序列化处处用到它们。怎么学：用正则做表单校验、用 Date 做倒计时、用 JSON.stringify/parse 完成本地存储序列化。",
+      "points": [
+        "正则字面量 /abc/g 与 RegExp 构造器，test/match/replace 三大用法",
+        "常用模式：\\d+ 数字、\\w+ 单词字符、[] 字符集、* + ? 量词",
+        "分组捕获 (\\d{4})-(\\d{2}) 提取年月日",
+        "replace 配合回调函数做复杂替换",
+        "Date 的构造、getFullYear 系列方法与时间戳互转",
+        "toLocaleString 本地化格式化输出",
+        "JSON.stringify 的 replacer 与缩进参数，JSON.parse 的 reviver",
+        "JSON 不支持函数与 undefined，循环引用会抛错"
+      ],
+      "tip": "正则写复杂了先画状态图；日期计算用时间戳毫秒数做加减最不容易错。"
+    },
+    {
+      "name": "错误处理与调试",
+      "summary": "JavaScript 错误处理靠 try/catch 与 Promise 的 catch 链，调试靠浏览器 DevTools 的断点体系。为什么重要：异步代码的错误极易静默丢失，调试能力是区分熟练度的重要标志。怎么学：故意制造各类错误，观察控制台与断点中的行为。",
+      "points": [
+        "Error 类型体系：TypeError、ReferenceError、RangeError 等",
+        "try/catch/finally 捕获同步错误，throw 抛出自定义错误",
+        "async 函数的错误进入 rejected Promise，用 try/catch 或 .catch 兜住",
+        "unhandledrejection 事件捕获漏网的 Promise 错误",
+        "window.onerror 与 addEventListener('error') 的全局兜底",
+        "DevTools Sources 断点、条件断点、watch 表达式与调用栈",
+        "console 全家桶：log/warn/error/table/group/time",
+        "sourcemap 让压缩代码的报错映射回源码"
+      ],
+      "tip": "给所有 await 配 try/catch 或统一收口；漏 catch 的 Promise 是线上报错黑洞。"
+    },
+    {
+      "name": "Node.js 与 npm",
+      "summary": "Node.js 把 JavaScript 带到浏览器之外：写后端服务、命令行工具与前端构建工具；npm 是世界最大的包管理生态。为什么重要：现代前端开发离不开 Node 与 npm，全栈也由它打通。怎么学：装 LTS 版本，用 npm init 起步，写一个简单 HTTP 服务并发布脚本到 npm。",
+      "points": [
+        "Node.js 是 V8 + 系统 API 的运行时，单线程事件驱动",
+        "npm init、npm install、package.json 与 node_modules、锁文件",
+        "npm scripts 定义构建命令，npx 免安装执行包",
+        "Express 快速搭建 Web 服务：路由与中间件",
+        "fs 模块读写文件，path 处理路径，process 读取环境变量",
+        "CommonJS 的 require 与 ESM 的 import 在 Node 中的共存",
+        "package.json 的 dependencies 与 devDependencies 之分",
+        "语义化版本 ^ 与 ~ 前缀的升级范围"
+      ],
+      "tip": "node_modules 不要手动改、不要提交 Git；依赖变更只改 package.json 和锁文件。"
+    },
+    {
+      "name": "前端工程化与性能优化",
+      "summary": "Vite、esbuild 等工具负责打包转译，ESLint 与 Prettier 统一质量与风格，渲染性能优化让页面快起来。为什么重要：现代前端早已不是写几个 HTML 文件，工程化是团队协作的门票。怎么学：用 Vite 初始化一个项目，配置 lint 与格式化，再用 Lighthouse 审计并优化一个页面。",
+      "points": [
+        "Vite：开发期原生 ESM 秒开，构建期 Rollup 打包",
+        "esbuild/SWC 用原生语言实现极速转译与压缩",
+        "ESLint 静态检查发现低级错误与风格问题，Prettier 统一格式化",
+        "Git 提交钩子 husky + lint-staged 拦截问题代码",
+        "渲染流水线：DOM 树 + CSSOM 树 → 渲染树 → 布局 → 绘制 → 合成",
+        "减少重排重绘：批量修改 DOM、transform/opacity 走合成层",
+        "资源优化：图片懒加载、代码分割、Tree Shaking、CDN",
+        "Lighthouse 性能审计指标：LCP、FID/INP、CLS"
+      ],
+      "tip": "新项目直接 Vite 起步并一次配齐 ESLint + Prettier + lint-staged，之后的每一天都受益。"
+    }
+  ],
+  "projects": [
+    "交互式计数器与待办清单：DOM 操作 + 事件 + localStorage 持久化，前端入门三部曲",
+    "贪吃蛇小游戏：Canvas 绘制、键盘事件与 requestAnimationFrame 游戏循环",
+    "天气查询应用：fetch 调用公开 API，async/await 处理加载、成功与失败三种状态",
+    "Markdown 笔记应用：多标签页、增删改查与本地存储，综合运用数组方法与模块化",
+    "Node.js 聊天室后端：Express + WebSocket 实现实时消息广播，体验全栈开发",
+    "表单校验组件：正则校验邮箱、手机号与密码强度，附完整的错误提示与无障碍支持",
+    "Vite 工程化个人主页：ESLint + Prettier 配置齐全，Lighthouse 评分 90+ 并写优化报告"
+  ],
+  "pitfalls": [
+    "以为 JavaScript 的数组越界会报错：a[100] 返回 undefined 而非抛异常，逻辑错误悄悄溜过",
+    "用 == 比较导致 '5' == 5 为 true 这类隐式转换陷阱，严格相等 === 才是默认选择",
+    "var 的变量提升与函数作用域带来意外共享，循环里配定时器的经典面试题就是它的罪证",
+    "this 指向想当然：回调被改写指向后报错，记住「谁调用指向谁」，必要时用箭头函数固化",
+    "忘记 await 或处理 Promise 失败：拿到的是 Promise 对象而非数据，或 unhandled rejection 静默断链",
+    "sort 不传比较函数：默认按字符串字典序排序，[10, 9, 1].sort() 会得到 [1, 10, 9]",
+    "JSON.parse 不可信字符串不包 try/catch：接口返回异常内容直接 throw，页面白屏"
+  ]
+}

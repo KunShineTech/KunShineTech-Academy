@@ -1,0 +1,267 @@
+{
+ "session": "2024-06",
+ "level": 6,
+ "file": "GESP 2024年06月认证C++ 6级真题.pdf",
+ "legacy": false,
+ "choiceCount": 15,
+ "judgeCount": 10,
+ "progCount": 2,
+ "choiceAnswers": "DBABBAACAAADCAC",
+ "judgeAnswers": "",
+ "choice": [
+  {
+   "n": 1,
+   "stem": "面向对象的编程思想主要包括（  ）原则。",
+   "options": [
+    "贪心、动态规划、回溯",
+    "并发、并行、异步",
+    "递归、循环、分治",
+    "封装、继承、多态"
+   ],
+   "answer": 3,
+   "analysis": "选D。面向对象三大原则是封装、继承、多态。"
+  },
+  {
+   "n": 2,
+   "stem": "运行下列代码，屏幕上输出（  ）。\n#include <iostream>\n1\nusing namespace std;\n2\n3\nclass my_class {\n4\npublic:\n5\nstatic int count;\n6\nmy_class() {\n7\ncount++;\n8\n}\n9\n~my_class() {\n10\ncount--;\n11\n}\n12\nstatic void print_count() {\n13\ncout  << count << \" \";\n14\n}\n15\n};\n16\nint my_class::count = 0;\n17\nint main() {\n18\nmy_class obj1;\n19\nmy_class::print_count();\n20\nmy_class obj2;\n21\nobj2.print_count();\n22\nmy_class obj3;\n23\nobj3.print_count();\n24\nreturn 0;\n25\n}\n26",
+   "options": [
+    "1 1 1",
+    "1 2 3",
+    "1 1 2",
+    "1 2 2"
+   ],
+   "answer": 1,
+   "analysis": "选B（1 2 3）。count是静态成员被所有对象共享：构造obj1后打印1，构造obj2后打印2，构造obj3后打印3。"
+  },
+  {
+   "n": 3,
+   "stem": "运行下列代码，屏幕上输出（  ）。\n#include <iostream>\n1\nusing namespace std;\n2\n3\nclass shape {\n4\nprotected:\n5\nint width, height;\n6\npublic:\n7\nshape(int a = 0, int b = 0) {\n8\nwidth = a;\n9\nheight = b;\n10\n}\n11\nvirtual int area() {\n12\ncout << \"parent class area: \" <<endl;\n13\nreturn 0;\n14\n}\n15\n};\n16\n17\nclass rectangle: public shape {\n18\npublic:\n19\nrectangle(int a = 0, int b = 0) : shape(a, b) { }\n20\n21\nint area () {\n22\ncout << \"rectangle area: \";\n23\nreturn (width * height);\n24\n}\n25\n};\n26\n27\nclass triangle: public shape {\n28\npublic:\n29\ntriangle(int a = 0, int b = 0) : shape(a, b) { }\n30\n31\nint area () {\n32\ncout << \"triangle area: \";\n33\nreturn (width * height / 2);\n34\n}\n35\n};\n36\n37\nint main() {\n38\nshape *pshape;\n39\nrectangle rec(10, 7);\n40\ntriangle  tri(10, 5);\n41\n42\npshape = &rec;\n43\npshape->area();\n44\n45\npshape = &tri;\n46\npshape->area();\n47\nreturn 0;\n48\n}\n49",
+   "options": [
+    "rectangle area: triangle area:",
+    "parent class area: parent class area:",
+    "运行时报错",
+    "编译时报错"
+   ],
+   "answer": 0,
+   "analysis": "选A。area是虚函数，基类指针分别指向rectangle和triangle时发生动态绑定，依次输出rectangle area: 和triangle area:。"
+  },
+  {
+   "n": 4,
+   "stem": "向一个栈顶为hs的链式栈中插入一个指针为s的结点时，应执行（  ）。",
+   "options": [
+    "hs->next = s;",
+    "s->next = hs; hs = s;",
+    "s->next = hs->next; hs->next = s;",
+    "s->next = hs; hs = hs->next;"
+   ],
+   "answer": 1,
+   "analysis": "选B。链式栈在栈顶（头）插入：先把s的next指向原栈顶hs，再令hs指向新节点s。"
+  },
+  {
+   "n": 5,
+   "stem": "在栈数据结构中，元素的添加和删除是按照什么原则进行的？",
+   "options": [
+    "先进先出",
+    "先进后出",
+    "最小值先出",
+    "随机顺序"
+   ],
+   "answer": 1,
+   "analysis": "选B（先进后出）。栈在同一端（栈顶）插入和删除，后入栈的元素先出栈。"
+  },
+  {
+   "n": 6,
+   "stem": "要实现将一个输入的十进制正整数转化为二进制表示，下面横线上应填入的代码为（  ）。\n#include <iostream>\n1\nusing namespace std;\n2\n3\nstack<int> ten2bin(int n) {\n4\nstack<int> st;\n5\nint r, m;\n6\n7\nr = n % 2;\n8\nm = n / 2;\n9\nst.push(r);\n10\n11\nwhile (m != 1) {\n12\nr = m % 2;\n13\nst.push(r);\n14\nm = m / 2;\n15\n}\n16\nst.push(m);\n17\nreturn st;\n18\n}\n19\n20\nint main() {\n21\nint n;\n22\ncin >> n;\n23\nstack<int> bin;\n24\nbin = ten2bin(n);\n25\nwhile (!bin.empty()) {\n26\n_____________________ // 在此处填入代码\n27\n}\n28\nreturn 0;\n29\n}\n30",
+   "options": [
+    "cout << bin.top();  bin.pop();",
+    "bin.pop(); cout << bin.top();",
+    "cout << bin.back();  bin.pop();",
+    "cout << bin.front();  bin.pop();"
+   ],
+   "answer": 0,
+   "analysis": "选A。输出二进制应取栈顶打印后立即弹栈：cout << bin.top(); bin.pop();（栈没有front/back成员）。"
+  },
+  {
+   "n": 7,
+   "stem": "下面定义了一个循环队列的类，请补全判断队列是否满的函数，横向上应填写（  ）。\n#include <iostream>\n1\n2\nusing namespace std;\n3\n4\nclass circular_queue {\n5\nprivate:\n6\nint *arr; // 数组用于存储队列元素\n7\nint capacity; // 队列容量\n8\nint front; // 队头指针\n9\nint rear; // 队尾指针\n10\n11\npublic:\n12\ncircular_queue(int size) {\n13\ncapacity = size + 1; // 为了避免队列满时与队列空时指针相等的情况，多预留一个空间\n14\narr = new int[capacity];\n15\nfront = 0;\n16\nrear = 0;\n17\n}\n18\n19\n~circular_queue() {\n20\ndelete[] arr;\n21\n}\n22\n23\nbool is_empty() {\n24\nreturn front == rear;\n25\n}\n26\n27\nbool is_full() {\n28\n________________ // 在此处填入代码\n29\n}\n30\n31\nvoid en_queue(int data) {\n32\nif (is_full()) {\n33\ncout << \"队列已满，无法入队！\" << endl;\n34\nreturn -1;\n35\n}\n36\narr[rear] = data;\n37\nrear = (rear + 1) % capacity;\n38\nreturn 1;\n39\n}\n40\n41\nint de_queue() {\n42\nif (is_empty()) {\n43\ncout << \"队列为空，无法出队！\" << endl;\n44\nreturn -1; // 出队失败，返回一个特殊值\n45\n}\n46\nint data = arr[front];\n47\nfront = (front + 1) % capacity;\n48\nreturn data;\n49\n}\n50\n};\n51",
+   "options": [
+    "return (rear + 1) % capacity == front;",
+    "return rear % capacity == front;",
+    "return rear == front;",
+    "return (rear + 1) == front;"
+   ],
+   "answer": 0,
+   "analysis": "选A。牺牲一个存储单元的循环队列判满条件是(rear+1)%capacity==front；rear==front表示队空。"
+  },
+  {
+   "n": 8,
+   "stem": "对“classmycls”使用哈夫曼（Huffman）编码，最少需要（  ）比特。",
+   "options": [
+    "10",
+    "20",
+    "25",
+    "30"
+   ],
+   "answer": 2,
+   "analysis": "选C（25比特）。字符频次s:3、c:2、l:2、a/m/y各1，哈夫曼合并代价2+3+4+6+10=25，即最少25比特。"
+  },
+  {
+   "n": 9,
+   "stem": "二叉树的（  ）第一个访问的节点是根节点。",
+   "options": [
+    "先序遍历",
+    "中序遍历",
+    "后序遍历",
+    "以上都是"
+   ],
+   "answer": 0,
+   "analysis": "选A（先序遍历）。先序遍历第一个访问的节点是根节点，中序第一个访问的是最左节点，后序最后才访问根。"
+  },
+  {
+   "n": 10,
+   "stem": "一棵5层的满二叉树中节点数为（  ）。",
+   "options": [
+    "31",
+    "32",
+    "33",
+    "16"
+   ],
+   "answer": 0,
+   "analysis": "选A（31）。5层满二叉树结点数为2^5-1=31（易错：2^5=32是第5层的结点数）。"
+  },
+  {
+   "n": 11,
+   "stem": "在求解最优化问题时，动态规划常常涉及到两个重要性质，即最优子结构和(  )。",
+   "options": [
+    "重叠子问题",
+    "分治法",
+    "贪心策略",
+    "回溯算法"
+   ],
+   "answer": 0,
+   "analysis": "选A。动态规划的两大性质是最优子结构和重叠子问题。"
+  },
+  {
+   "n": 12,
+   "stem": "青蛙每次能跳1或2步，下面代码计算青蛙跳到第n步台阶有多少种不同跳法。则下列说法，错误的是(  )。\nint jump_recur(int n) {\n1\nif (n == 1) return 1;\n2\nif (n == 2) return 2;\n3\nreturn jump_recur(n - 1) + jump_recur(n - 2);\n4\n}\n5\n6\nint jump_dp(int n) {\n7\nvector<int> dp(n + 1); // 创建一个动态规划数组，用于保存已计算的值\n8\n// 初始化前两个数\n9\ndp[1] = 1;\n10\ndp[2] = 2;\n11\n// 从第三个数开始计算斐波那契数列\n12\nfor (int i = 3; i <= n; ++i) {\n13\ndp[i] = dp[i - 1] + dp[i - 2];\n14\n}\n15\nreturn dp[n];\n16\n}\n17",
+   "options": [
+    "函数jump_recur()采用递归方式。",
+    "函数jump_dp()采用动态规划方法。",
+    "当n较大时，函数jump_recur()存在大量重复计算，执行效率低。",
+    "函数jump_recur()代码量小，执行效率高。"
+   ],
+   "answer": 3,
+   "analysis": "选D。错误的是jump_recur()代码量小，执行效率高：递归实现存在大量重复计算，n较大时效率远低于动态规划数组递推的jump_dp()。"
+  },
+  {
+   "n": 13,
+   "stem": "阅读以下二叉树的广度优先搜索代码:\n#include <iostream>\n1\n#include <queue>\n2\n3\nusing namespace std;\n4\n5\n// 二叉树节点的定义\n6\nstruct TreeNode {\n7\nint val;\n8\nTreeNode* left;\n9\nTreeNode* right;\n10\nTreeNode(int x) : val(x), left(nullptr), right(nullptr) {}\n11\n};\n12\n13\n// 宽度优先搜索（BFS）迭代实现\n14\nTreeNode* bfs(TreeNode* root, int a) {\n15\nif (root == nullptr) return nullptr;\n16\n17\nqueue<TreeNode*> q;\n18\nq.push(root);\n19\n20\nwhile (!q.empty()) {\n21\nTreeNode* node = q.front();\n22\nq.pop();\n23\n24\nif (node->val == a)\n25\nreturn node;\n26\n27\ncout << node->val << \" \"; // 先访问当前节点\n28\n29\nif (node->left) q.push(node->left); // 将左子节点入队\n30\nif (node->right) q.push(node->right); // 将右子节点入队\n31\n}\n32\nreturn nullptr;\n33\n}\n34\n时，可能的输出是(  )。\n使用以上算法，在以下这棵树搜索数值",
+   "options": [
+    "5 2 -4 3 17 9",
+    "-4 2 3 5 9 17",
+    "5 2 17 -4 3 9",
+    "以上都不对"
+   ],
+   "answer": 2,
+   "analysis": "选C。BFS按层访问该树：根5，第二层2、17，第三层-4、3、9，输出5 2 17 -4 3 9。"
+  },
+  {
+   "n": 14,
+   "stem": "同上题中的二叉树，阅读以下二叉树的深度优先搜索代码:\n#include <iostream>\n1\n#include <stack>\n2\n3\nusing namespace std;\n4\n5\n// 非递归深度优先搜索（DFS）\n6\nTreeNode* dfs(TreeNode* root, int a) {\n7\nif (root == nullptr) return nullptr;\n8\n9\nstack<TreeNode*> stk;\n10\nstk.push(root);\n11\n12\nwhile (!stk.empty()) {\n13\nTreeNode* node = stk.top();\n14\nstk.pop();\n15\nif (node->val == a)\n16\nreturn node;\n17\n18\ncout << node->val << \" \"; // 访问当前节点\n19\n20\nif (node->right) stk.push(node->right); // 先压入右子节点\n21\nif (node->left) stk.push(node->left); // 再压入左子节点\n22\n}\n23\nreturn nullptr;\n24\n}\n25\n时，可能的输出是(  )。\n使用以上算法，在二叉树搜索数值",
+   "options": [
+    "5 2 -4 3 17 9",
+    "-4 2 3 5 9 17",
+    "5 2 17 -4 3 9",
+    "以上都不对"
+   ],
+   "answer": 0,
+   "analysis": "选A。DFS先压右再压左，出栈访问顺序为5 2 -4 3 17 9，即先序遍历序列。"
+  },
+  {
+   "n": 15,
+   "stem": "在上题的树中搜索数值时，采用深度优先搜索一共比较的节点数为（  ）。",
+   "options": [
+    "2",
+    "3",
+    "4",
+    "5"
+   ],
+   "answer": 2,
+   "analysis": "选C。DFS搜索3的路径为5→2→-4→3，共比较4个节点。"
+  }
+ ],
+ "judge": [
+  {
+   "n": 1,
+   "stem": "哈夫曼编码本质上是一种贪心策略。",
+   "answer": null,
+   "analysis": "对。哈夫曼编码每次都贪心地选择权值最小的两个节点合并，是贪心策略的典型应用。"
+  },
+  {
+   "n": 2,
+   "stem": "创建一个对象时，会自动调用该对象所属类的构造函数。如果没有定义构造函数，编译器会自动生成一个默\n认的构造函数。",
+   "answer": null,
+   "analysis": "对。创建对象时自动调用构造函数；类没有定义构造函数时编译器会自动生成默认构造函数。"
+  },
+  {
+   "n": 3,
+   "stem": "定义一个类时，必须手动定义一个析构函数，用于释放对象所占用的资源。",
+   "answer": null,
+   "analysis": "错。析构函数可以不手动定义，编译器会自动生成默认析构函数；仅在需要释放资源（如delete动态内存）时才需自定义。"
+  },
+  {
+   "n": 4,
+   "stem": "C++中类内部可以嵌套定义类。",
+   "answer": null,
+   "analysis": "对。C++允许在类内部嵌套定义类，称为嵌套类（内部类）。"
+  },
+  {
+   "n": 5,
+   "stem": "000, 001, 011, 010, 110, 111, 101, 100是一组格雷码。",
+   "answer": null,
+   "analysis": "对。000,001,011,010,110,111,101,100是标准的3位反射格雷码，相邻（含首尾）均只差一位。"
+  },
+  {
+   "n": 6,
+   "stem": "n个节点的双向循环链表，在其中查找某个节点的平均时间复杂度是\n。",
+   "answer": null,
+   "analysis": "错。n个节点的双向循环链表没有随机访问能力，按值查找平均需要O(n)；题干给出的复杂度公式与事实不符（题干公式以真题原件为准）。"
+  },
+  {
+   "n": 7,
+   "stem": "完全二叉树可以用数组存储数据。",
+   "answer": null,
+   "analysis": "对。完全二叉树节点按层序编号后可用数组连续存储，节点i的孩子下标为2i和2i+1（从1计数）。"
+  },
+  {
+   "n": 8,
+   "stem": "在C++中，静态成员函数只能访问静态成员变量。",
+   "answer": null,
+   "analysis": "对。静态成员函数没有this指针，只能直接访问静态成员变量和静态成员函数，要访问非静态成员必须通过对象参数间接进行。"
+  },
+  {
+   "n": 9,
+   "stem": "在深度优先搜索中，通常使用队列来辅助实现。",
+   "answer": null,
+   "analysis": "错。深度优先搜索通常用栈（或递归）辅助实现；队列是广度优先搜索的辅助结构。"
+  },
+  {
+   "n": 10,
+   "stem": "对0-1背包问题，贪心算法一定能获得最优解。",
+   "answer": null,
+   "analysis": "错。0-1背包问题中按单位价值贪心不一定得到最优解（部分背包才可以），需要用动态规划求解。"
+  }
+ ],
+ "programming": [
+  {
+   "n": 1,
+   "name": "计算得分",
+   "desc": ""
+  },
+  {
+   "n": 2,
+   "name": "二叉树",
+   "desc": ""
+  }
+ ]
+}

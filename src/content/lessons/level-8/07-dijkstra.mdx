@@ -1,0 +1,91 @@
+---
+title: "单源最短路：Dijkstra 算法"
+level: 8
+order: 7
+duration: 120
+unit: "图论算法"
+difficulty: 进阶
+goals:
+  - "理解单源最短路问题的定义与松弛操作"
+  - "掌握 Dijkstra 算法的贪心流程与代码实现"
+  - "知道 Dijkstra 不能处理负权边及堆优化的意义"
+---
+
+import Check from '../../../components/Check.astro';
+import Task from '../../../components/Task.astro';
+import Reveal from '../../../components/Reveal.astro';
+
+
+## 1. 末班车问题
+晚自习结束，你要从学校（1 号点）赶到地铁站（n 号点），校园里有若干条步行通道，走每条都要花时间。怎么走最快？
+
+这就是**单源最短路径**问题：给定一张带权图和一个起点 s，求 s 到所有其他点的最短距离。注意生活经验里「最短路」还有另一层含义——道路长度，算法对两者一视同仁，边权是时间、距离还是费用，代码都一样。
+
+## 2. Dijkstra 的思想：贪心地「确定」最近点
+Dijkstra 的核心是一个朴素而精妙的观察：
+
+**从 s 出发，当前距离最小的那个点，它的最短距离已经被「钉死」了**——因为任何绕路都要先走到一个更远的点，不可能更优。
+
+算法流程（朴素版）：
+
+1. 初始化：dist[s] = 0，其余 dist 为 ∞（用一个大数如 0x3f3f3f3f），所有点标记为「未确定」。
+2. 从未确定的点中选出 dist 最小的点 u，标记为已确定。
+3. **松弛**：用 u 更新它所有邻接点 v：若 dist[u] + w(u,v) 比 dist[v] 小，就更新 dist[v]。
+4. 重复 2、3，直到所有点确定。
+
+第 3 步的「松弛」是整个最短路的灵魂：**检查经过 u 中转能否让 v 更近**。
+
+## 3. 代码实现（朴素版）
+邻接矩阵存图，适合 n 较小的稠密图：
+
+```cpp
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+const int INF = 0x3f3f3f3f;
+int g[505][505], dist[505];
+bool vis[505];
+int n, m;
+
+void dijkstra(int s) {
+    memset(dist, 0x3f, sizeof dist);
+    dist[s] = 0;
+    for (int t = 1; t <= n; t++) {
+        int u = 0;                        // 找未确定点中 dist 最小的
+        for (int i = 1; i <= n; i++)
+            if (!vis[i] && dist[i] < dist[u]) u = i;
+        vis[u] = true;                    // 钉死 u
+        for (int v = 1; v <= n; v++)      // 用 u 松弛邻居
+            if (g[u][v] < INF && dist[u] + g[u][v] < dist[v])
+                dist[v] = dist[u] + g[u][v];
+    }
+}
+```
+
+复杂度：外层 n 轮，每轮扫一遍找最小值 O(n)、松弛 O(n)，总计 **O(n²)**。
+
+## 4. 堆优化与负权边之谜
+n 很大（10^5 级别）时 O(n²) 吃不消。瓶颈在于「找最小值」——用小根堆（`priority_queue` 加反向比较）把找最小降到 O(log n)，总复杂度降到 **O((n+m) log n)**，这是竞赛标准写法。
+
+但 Dijkstra 有一条铁律：**不能处理负权边！** 反例很简单：s→a 权 2，s→b 权 3，a→b 权 −3。Dijkstra 会先把 a 钉死为 2，但 b 经 a 中转其实只要 −1，而 a 已被标记，永远失去更新机会——贪心成立的前提被负权破坏了。遇到负权边要请出 Bellman-Ford 或 SPFA（了解即可）。
+
+> 教学提醒：INF 的取值有讲究。0x3f3f3f3f 约为 10^9，相加两次不会溢出 int（2×10^9 以内），且 memset 一个字节 0x3f 就能整体填充。若边权较大、距离可能超 int，要改 long long 并换更大的 INF，否则「INF + w < dist」的比较会因溢出而出错。
+
+<Check question="Dijkstra 每轮循环中，被选为「确定」的点是？" options={['编号最小的点','未确定点中 dist 最小的点','边数最多的点','任意一个未访问点']} answer={1} explanation="贪心核心：当前距离最小的点，其最短距离已被钉死，无需再变。" />
+<Check question="松弛操作 dist[u] + w(u,v) < dist[v] 的含义是？" options={['u 到 v 没有路','经过 u 中转能让 v 更近，更新它','v 已经访问过','图中有负环']} answer={1} explanation="松弛就是尝试用「s→u→v」的路径改进 v 的当前最优估计，是所有最短路算法的核心动作。" />
+<Check question="关于 Dijkstra 的适用条件，正确的是？" options={['只能用于有向图','可以处理负权边','要求边权非负','只能用于无权图']} answer={2} explanation="Dijkstra 的有向/无向图都适用，但贪心成立依赖边权非负；负权边会让已确定的点错过更优更新。" />
+
+<Task title="末班车（最短耗时）" input="第一行两个整数 n、m（2≤n≤500，1≤m≤10^4），表示站点数与通道数。接下来 m 行，每行三个整数 u、v、w，表示 u 到 v 有一条耗时为 w 的通道（1≤u,v≤n，1≤w≤1000，通道单向）" output="一个整数：从 1 号站到 n 号站的最短耗时；若无法到达，输出 -1" sampleIn="4 4
+1 2 2
+2 3 1
+1 3 4
+3 4 2" sampleOut="5">单源最短路模板题。提示：dist[1]=0，Dijkstra 结束后看 dist[n]；注意本题为单向边。</Task>
+<Reveal label="查看参考程序与思路"><pre><code>{`#include <iostream>\n#include <cstring>\nusing namespace std;\nconst int INF = 0x3f3f3f3f;\nint g[505][505], dist[505];\nbool vis[505];\nint main(){\n    int n, m;\n    cin>>n>>m;\n    memset(g, 0x3f, sizeof g);\n    for(int i=0;i<m;i++){\n        int u, v, w;\n        cin>>u>>v>>w;\n        g[u][v] = min(g[u][v], w);  // 单向边，只存 g[u][v]\n    }\n    memset(dist, 0x3f, sizeof dist);\n    dist[1] = 0;\n    for(int t=1; t<=n; t++){\n        int u = 0;\n        for(int i=1; i<=n; i++)\n            if(!vis[i] && dist[i] < dist[u]) u = i;\n        vis[u] = true;\n        for(int v=1; v<=n; v++)\n            if(dist[u] + g[u][v] < dist[v])\n                dist[v] = dist[u] + g[u][v];\n    }\n    if(dist[n] >= INF) cout<<-1<<'\\n';\n    else cout<<dist[n]<<'\\n';\n}`}</code></pre>样例中：dist 初始化为 INF，dist[1]=0。第一轮确定 1 号点，松弛得 dist[2]=2、dist[3]=4；第二轮确定 2 号点，经 2→3（1）把 dist[3] 改进为 3；第三轮确定 3 号点，得 dist[4]=5。答案是 5。三个细节：重边取 min、单向边只存一个方向、dist[n] 仍为 INF 说明不可达输出 -1。</Reveal>
+
+## 5. 课后巩固
+1. 概念：用自己的话解释「松弛」操作，并说明 Dijkstra 为什么每轮能钉死一个点。
+2. 计算：手工执行 Dijkstra，求本课样例中 1 号点到每个点的 dist 变化过程。
+3. 编程：把本课代码改为处理**双向边**（无向图），并用新样例自测。
+4. 思考：构造一个含负权边的三节点反例，说明 Dijkstra 会在哪里出错。
+5. 拓展：查阅堆优化 Dijkstra 的写法（pair 放进 priority_queue），估算 n=10^5、m=10^6 时两种实现的运行时间差。

@@ -1,0 +1,98 @@
+---
+title: "结构体与二维数组"
+level: 4
+order: 2
+duration: 120
+unit: "结构体与二维数组"
+difficulty: 基础
+goals:
+  - "掌握结构体的定义与成员访问方法"
+  - "掌握二维数组的定义、初始化与遍历"
+  - "会组合使用结构体数组与二维数组处理表格数据"
+---
+
+import Check from '../../../components/Check.astro';
+import Task from '../../../components/Task.astro';
+import Reveal from '../../../components/Reveal.astro';
+
+
+## 1. 学生档案卡：为什么需要结构体
+班里要登记学生信息：姓名、语文成绩、数学成绩。如果只用普通变量，得写成 name1、c1、m1、name2、c2、m2……人和成绩对得乱七八糟，像把档案卡的碎片撒了一地。
+
+**结构体**就是把属于同一个人的若干数据**装订成一张完整的档案卡**：
+
+```cpp
+#include <string>
+struct Student {
+    string name;   // 成员：姓名
+    int chinese;   // 成员：语文成绩
+    int math;      // 成员：数学成绩
+};                 // 注意：这里的分号不能丢！
+```
+
+## 2. 结构体的使用：定义、赋值与访问
+定义好「卡片的样式」后，就可以批量造卡片了。访问卡片上的某一项，用**点号 `.`**：
+
+```cpp
+Student a;                   // 造一张卡片
+a.name = "小明";             // 填写姓名栏
+a.chinese = 90;
+a.math = 95;
+cout << a.name << " 总分 " << a.chinese + a.math << '\n';
+
+Student b = {"小红", 88, 92};  // 定义时按顺序初始化
+Student s[50];                 // 一沓卡片：结构体数组
+s[0].math = 100;               // 第 0 张卡片的数学栏
+```
+
+> 教学提醒：结构体定义右括号后的分号是初学者最高频的编译错误，报错信息往往是「expected ; before...」，看到它先检查结构体的分号。
+
+## 3. 教室座位表：二维数组
+三级的一维数组像一排储物柜，**二维数组**则像教室里的座位表：有行有列。声明时写两个大小：
+
+```cpp
+int g[3][4];              // 3 行 4 列，共 12 个格子
+int h[2][3] = {{1,2,3},   // 第 0 行
+               {4,5,6}};  // 第 1 行
+
+g[1][2] = 90;   // 第 1 行第 2 列（行、列下标都从 0 开始）
+```
+
+口诀：**「先行后列」，访问写 `g[i][j]`，i 是行号，j 是列号。** 三维及更多维数组同理，只是再多加几对方括号，如 `int cube[3][4][5];`。
+
+## 4. 二维数组的遍历：双重循环
+给整张座位表读入数据，用「外层走行、内层走列」的双重循环，这是固定套路：
+
+```cpp
+int g[105][105], n, m;
+cin >> n >> m;                       // 先读行数和列数
+for (int i = 0; i < n; i++)
+    for (int j = 0; j < m; j++)
+        cin >> g[i][j];              // 逐行逐列读入
+
+for (int i = 0; i < n; i++) {
+    int rowsum = 0;
+    for (int j = 0; j < m; j++)
+        rowsum += g[i][j];           // 累加第 i 行
+    cout << rowsum << '\n';
+}
+```
+
+<Check question="已知 Student s; 结构体中有 int age; 成员，访问 age 的正确写法是？" options={['s.age','s->age','age(s)','Student.age']} answer={0} explanation="普通结构体变量用点号访问成员：s.age。箭头 -> 用于指针指向的结构体，本题 s 不是指针。" />
+
+<Check question="int a[3][4]; 数组 a 一共有多少个元素？" options={['7','12','16','不确定']} answer={1} explanation="3 行 4 列共 3×4=12 个元素，必须全部占用内存，即使你没用到。" />
+
+<Check question="二维数组 g[i][j] 中，i 和 j 通常分别表示？" options={['列和行','行和列','都是行号','都是列号']} answer={1} explanation="习惯上 i 表示行号、j 表示列号，读入输出都是按行进行，外层循环控制 i。" />
+
+<Task title="学生成绩单" input="第一行一个正整数 n（n≤100），接下来 n 行，每行一个姓名（不含空格）、语文成绩、数学成绩" output="每人一行，输出姓名和总分（姓名与总分之间一个空格）" sampleIn="2
+Alice 80 90
+Bob 70 85" sampleOut="Alice 170
+Bob 155">定义一个包含 name、chinese、math 三个成员的结构体，再开结构体数组存放 n 名学生，遍历输出 name 与两科之和。</Task>
+<Reveal label="查看参考程序与思路"><pre><code>{`#include <iostream>\n#include <string>\nusing namespace std;\nstruct Student{\n    string name;\n    int c, m;\n};\nint main(){\n    int n;\n    cin>>n;\n    Student s[105];\n    for(int i=0;i<n;i++){\n        cin>>s[i].name>>s[i].c>>s[i].m;\n    }\n    for(int i=0;i<n;i++){\n        cout<<s[i].name<<' '<<s[i].c+s[i].m<<'\\n';\n    }\n}`}</code></pre>结构体数组 s[105] 相当于一沓装订好的档案卡，s[i] 是第 i 张，s[i].name 是这张卡片的姓名栏。先循环读满，再循环输出，两遍遍历互不干扰。</Reveal>
+
+## 5. 课后巩固
+1. 画出 int g[3][4] 的座位表图，标出 g[2][1] 在哪一行哪一列。
+2. 概念题：结构体和普通变量数组相比，最大的好处是什么？
+3. 编程：读入一个 3×3 的矩阵，输出主对角线（左上到右下）元素之和。
+4. 编程：读入 n 名学生的姓名和出生月份，输出所有 6 月出生的学生姓名。
+5. 思考：三维数组可以比喻成什么生活场景？尝试写出 int box[2][3][4] 的总元素个数。

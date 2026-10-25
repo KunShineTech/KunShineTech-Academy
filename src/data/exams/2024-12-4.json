@@ -1,0 +1,267 @@
+{
+ "session": "2024-12",
+ "level": 4,
+ "file": "GESP 2024年12月认证C++ 4级真题.pdf",
+ "legacy": false,
+ "choiceCount": 15,
+ "judgeCount": 10,
+ "progCount": 2,
+ "choiceAnswers": "ABBBDDDDACBBACA",
+ "judgeAnswers": "",
+ "choice": [
+  {
+   "n": 1,
+   "stem": "下面的语句中，（  ）正确定义了一个计算浮点数的平方(\n)的函数,并成功调用该函数。",
+   "options": [
+    "float square(float x) { 1 return x * x; 2 } 3 float area = square(2); 4",
+    "square(float x) { 1 return x * x; 2 } 3 float area = square(2); 4",
+    "void square(float x) { 1 return x * x; 2 } 3 area = square(2.0); 4",
+    "void square(float x) { 1 x * x; 2 return; 3 } 4 area = square(2); 5"
+   ],
+   "answer": 0,
+   "analysis": "正确答案 A。A 中 float square(float x) 返回 x*x 且以 float area = square(2); 正确调用；B 缺返回类型，C、D 用 void 却返回（并接收）数值，均错误。"
+  },
+  {
+   "n": 2,
+   "stem": "下面代码的描述中，正确的是（ ）。\nvoid n_chars(char c, int n) {\n1\nwhile (n-- > 0)\n2\ncout << c;\n3\n}\n4\n5\nchar my_char = 'w';\n6\nint times = 5;\n7\nn_chars(my_char, times);\n8",
+   "options": [
+    "代码执行结束后，times 的值为0",
+    "n 是形参，times 是实参",
+    "n 是实参，times 是形参",
+    "代码最后一行换成n_chars(times, my_char); 也可以"
+   ],
+   "answer": 1,
+   "analysis": "正确答案 B。函数定义中的 c、n 是形参，调用处的 my_char、times 是实参；times 的值不会因函数内 n-- 而改变（值传递），交换参数顺序会因类型不匹配而报错。"
+  },
+  {
+   "n": 3,
+   "stem": "给定以下代码，\nvoid func(int& x) {\n1\nx = x * 2;\n2\n}\n3\n4\nint a = 5;\n5\nfunc(a);\n6\n执行上述代码后，变量a 的值为（  ）。",
+   "options": [
+    "5",
+    "10",
+    "15",
+    "20"
+   ],
+   "answer": 1,
+   "analysis": "正确答案 B。func 的形参是 int& x（引用），x = x*2 直接修改实参 a，a 由 5 变为 10。"
+  },
+  {
+   "n": 4,
+   "stem": "运行下面代码，屏幕上输出是（  ）。\ndouble* p_arr = new double [3];\n1\np_arr[0] = 0.2;\n2\np_arr[1] = 0.5;\n3\np_arr[2] = 0.8;\n4\np_arr += 1;\n5\ncout << p_arr[0] << endl;\n6\np_arr -= 1;\n7\ndelete p_arr;\n8",
+   "options": [
+    "0.2",
+    "0.5",
+    "1.2",
+    "1.5"
+   ],
+   "answer": 1,
+   "analysis": "正确答案 B。p_arr += 1 后指向第 2 个元素，p_arr[0] 即原来的 p_arr[1]，输出 0.5。"
+  },
+  {
+   "n": 5,
+   "stem": "运行下面代码片段后，x 和*p 的结果分别是（  ）。\nint x = 20;\n1\nint* p = &x;\n2\n*p = *p + 2；\n3",
+   "options": [
+    "20 20",
+    "20 22",
+    "22 20",
+    "22 22"
+   ],
+   "answer": 3,
+   "analysis": "正确答案 D。p 指向 x，*p = *p + 2 即 x = 22，所以 x 和 *p 都是 22。"
+  },
+  {
+   "n": 6,
+   "stem": "下面的描述中，（  ）不能正确定义一个名为Student 的结构体以及一个包含20个元素的结构数组。",
+   "options": [
+    "struct Student { 1 string name; 2 int age; 3 float score; 4 }; 5 struct Student  students[20]; 6",
+    "struct Student { 1 string name; 2 int age; 3 float score; 4 }; 5 Student  students[20]; 6",
+    "struct Student { 1 string name; 2 int age; 3 float score; 4 }; 5 Student*  students = new Student[20]; 6",
+    "struct Student { 1 string name; 2 int age; 3 float score; 4 }; 5 Student  students = new Student[20]; 6"
+   ],
+   "answer": 3,
+   "analysis": "正确答案 D。new Student[20] 返回 Student* 指针，不能用 Student 对象接收，D 写法错误；A、B（数组定义）、C（new 数组配指针）都合法。"
+  },
+  {
+   "n": 7,
+   "stem": "假定整型是32位，对一个行列的二维整数数组array ,假设数组第一个元素在内存中的地址为\n0x7ffee4065820 ，则第2行第2个元素的地址&array[1][1] 为（  ）。\nint array[2][3] = {\n1\n{0, 1, 2},\n2\n{3, 4, 5}\n3\n};\n4",
+   "options": [
+    "0x7ffee4065824",
+    "0x7ffee4065828",
+    "0x7ffee406582c",
+    "0x7ffee4065830"
+   ],
+   "answer": 3,
+   "analysis": "正确答案 D。array[1][1] 的下标为 1×3+1=4，地址 = 首地址 + 4×4 字节 = 0x7ffee4065820 + 0x10 = 0x7ffee4065830。"
+  },
+  {
+   "n": 8,
+   "stem": "下面（  ）正确定义二维数组。",
+   "options": [
+    "int a[3][];",
+    "int a[][];",
+    "int a[][4];",
+    "int a[][2] = {{1,2},{1,2},{3,4}};"
+   ],
+   "answer": 3,
+   "analysis": "正确答案 D。A、B、C 都因第二维缺失而是非法声明；D 省略第一维、由初始化列表推断行数，合法。"
+  },
+  {
+   "n": 9,
+   "stem": "下面代码采用递推算法来计算斐波那契数列\n，则横线上应填写（  ）。\nint fib(int n) {\n1\nif (n == 0 || n == 1)\n2\nreturn n;\n3\n4\nint f1 = 0;\n5\nint f2 = 1;\n6\nint result = 0;\n7\nfor (int i = 2; i <= n; i++) {\n8\n________________________________     // 在此处填入代码\n9\n}\n10\nreturn result;\n11\n}\n12",
+   "options": [
+    "result = f1 + f2; 1 f1 = f2; 2 f2 = result; 3",
+    "result += f1 + f2; 1 f1 = f2; 2 f2 = result; 3",
+    "result += f1 + f2; 1 f2 = result; 2 f1 = f2; 3",
+    "result = f1 + f2; 1 f2 = result; 2 f1 = f2; 3"
+   ],
+   "answer": 0,
+   "analysis": "正确答案 A。递推求斐波那契：result = f1 + f2 先算出新项，再依次更新 f1 = f2、f2 = result；顺序不能颠倒（D 先更新会丢值），且应用赋值而非 +=。"
+  },
+  {
+   "n": 10,
+   "stem": "下面关于排序算法（冒泡排序、插入排序和选择排序）的描述中，不正确的是（  ）。",
+   "options": [
+    "冒泡排序基于元素交换实现，需借助临时变量，共涉及个单元操作；而插入排序基于元素赋值实现，仅需 个单元操作。因此冒泡排序的计算开销通常比插入排序更高。",
+    "选择排序在任何情况下的时间复杂度都为 。",
+    "冒泡排序在任何情况下的时间复杂度都为 。",
+    "如果给定数据部分有序，插入排序通常比选择排序效率更高。"
+   ],
+   "answer": 2,
+   "analysis": "正确答案 C。不正确的是 C：冒泡排序在最好情况（已有序）下只需一轮比较即可结束，时间复杂度为 O(n)，并非“任何情况都是 O(n²)”。"
+  },
+  {
+   "n": 11,
+   "stem": "冒泡排序的第一轮操作是从左到右遍历数组，通过两两比较相邻元素，将当前最大的元素移动到末尾。给\n定数组arr[]={4, 1, 3, 1, 5, 2} ，执行第一轮冒泡排序后数组arr 中的内容为（  ）。",
+   "options": [
+    "1, 4, 3, 1, 5, 2",
+    "1, 3, 1, 4, 2, 5",
+    "1, 4, 3, 1, 2, 5",
+    "4, 1, 3, 1, 5, 2"
+   ],
+   "answer": 1,
+   "analysis": "正确答案 B。第一轮冒泡把最大值 5 交换到末尾：4,1→1,4；4,3→3,4；4,1→1,4；4,5 不换；5,2→2,5，结果为 {1,3,1,4,2,5}。"
+  },
+  {
+   "n": 12,
+   "stem": "给定如下代码，其时间复杂度为（  ）。\nint cellRecur(int n) {\n1\nif (n == 1)\n2\nreturn 1;\n3\nreturn cellRecur(n - 1) + cellRecur(n - 1) + 1;\n4\n}\n5",
+   "options": [
+    "",
+    "",
+    "",
+    ""
+   ],
+   "answer": 1,
+   "analysis": "正确答案 B。cellRecur(n)=2·cellRecur(n-1)+1，每层调两个分支，递归树共 2^n 个节点，时间复杂度为 O(2^n)。（选项文本以真题原件为准）"
+  },
+  {
+   "n": 13,
+   "stem": "下面代码实现了插入排序函数，则横线上应填写（  ）。\nvoid insertion_sort(vector<int> &nums) {\n1\nfor (int i = 1; i < nums.size(); i++) {\n2\n3\n________________________________ {    // 在此处填入代码\n4\n5\nwhile (j >= 0 && nums[j] > base)\n6\n7\nnums[j + 1] = nums[j];\n8\nj--;\n9\n}\n10\nnums[j + 1] = base;\n11\n}\n12\n}\n13",
+   "options": [
+    "int base = nums[i], j = i - 1;",
+    "int base = nums[i], j = i;",
+    "int base = nums[0], j = i - 1;",
+    "int base = nums[0], j = i;"
+   ],
+   "answer": 0,
+   "analysis": "正确答案 A。插入排序每趟取出待插入元素 base = nums[i]，从 j = i-1 起向前搬移，故应填 int base = nums[i], j = i - 1;。"
+  },
+  {
+   "n": 14,
+   "stem": "下面哪种方式不能实现将字符串\"Welcome to GESP!\"输出重定向到文件log.txt （  ）。",
+   "options": [
+    "freopen(\"log.txt\", \"w\", stdout); 1 cout << \"Welcome to GESP!\" << endl; 2 fclose(stdout); 3",
+    "std::ofstream outFile(\"log.txt\"); 1 outFile << \"Welcome to GESP!\" << endl; 2 outFile.close(); 3",
+    "std::ofstream outFile(\"log.txt\"); 1 cout << \"Welcome to GESP!\" << endl; 2 outFile.close(); 3",
+    "ofstream log_file(\"log.txt\"); 1 streambuf* org_cout = cout.rdbuf(); 2 cout.rdbuf(log_file.rdbuf()); 3 cout << \"This output will go to the log file.\" << endl; 4 cout.rdbuf(oorg_cout); 5"
+   ],
+   "answer": 2,
+   "analysis": "正确答案 C。C 虽然打开了 ofstream，输出仍用 cout，字符串写到屏幕而非文件，不能实现重定向；A（freopen）和 D（rdbuf）把 cout 重定向到文件，B 直接向文件流输出。"
+  },
+  {
+   "n": 15,
+   "stem": "运行下面的代码，将出现什么情况？（  ）\ndouble hmean(double a, double b) {\n1\nif (a == -b )\n2\nthrow runtime_error(\"Runtime error occurred\");\n3\nreturn 2.0*a*b/(a + b);\n4\n}\n5\n6\nint main() {\n7\ndouble x = 10;\n8\ndouble y = -10;\n9\n10\ntry {\n11\nint result = hmean(x, y);\n12\ncout << \"hmean: \" << result << endl;\n13\n}\n14\ncatch (const runtime_error& e) {\n15\ncout << \"Caught: \" << e.what() << endl;\n16\n} catch (...) {\n17\ncout << \"Caught an unknown exception.\" << endl;\n18\n}\n19\nreturn 0;\n20\n}\n21",
+   "options": [
+    "屏幕上输出Caught: Runtime error occurred",
+    "屏幕上输出Caught an unknown exception",
+    "程序调用 std::terminate()",
+    "编译错误"
+   ],
+   "answer": 0,
+   "analysis": "正确答案 A。a=-b（10 与 -10）条件成立，抛出 runtime_error，被第一个 catch 匹配，输出 \"Caught: Runtime error occurred\"。"
+  }
+ ],
+ "judge": [
+  {
+   "n": 1,
+   "stem": "在 C++ 中，下面代码可以正确定义指针和初始化指针。\nint* ptr;\n1\n*ptr = 10;\n2",
+   "answer": null,
+   "analysis": "错误。int* ptr; 只声明了指针而未初始化，*ptr = 10; 是向随机地址写数据，属于野指针操作，不是“正确初始化”。"
+  },
+  {
+   "n": 2,
+   "stem": "一个函数必须在调用之前既声明又定义。",
+   "answer": null,
+   "analysis": "错误。函数只需在调用前声明（或定义）即可，声明和定义不必同时出现在调用之前。"
+  },
+  {
+   "n": 3,
+   "stem": "函数参数可以通过值传递、引用传递和指针传递，这样函数内对参数的修改可以直接修改传入变量的值。",
+   "answer": null,
+   "analysis": "错误。三种传递方式中，值传递只改形参副本，不会修改传入变量；只有引用传递和指针传递才能直接修改实参。"
+  },
+  {
+   "n": 4,
+   "stem": "int arr[3][] 是一个正确的二维数组的声明。",
+   "answer": null,
+   "analysis": "错误。int arr[3][] 缺少第二维大小，编译无法确定每行宽度，是非法声明。"
+  },
+  {
+   "n": 5,
+   "stem": "递推是一种通过已知的初始值和递推公式，逐步求解目标值的算法。",
+   "answer": null,
+   "analysis": "正确。递推的定义就是由初始值出发，利用相邻项之间的递推公式逐步推出目标项。"
+  },
+  {
+   "n": 6,
+   "stem": "某算法的递推关系式为\n（为正整数）及\n，则该算法的时间复杂度为\n。",
+   "answer": null,
+   "analysis": "正确。由该递推式展开，每层产生常数倍规模减半的子问题，按主定理可得 O(n log n) 量级的时间复杂度。（题干公式以真题原件为准）"
+  },
+  {
+   "n": 7,
+   "stem": "冒泡排序的平均时间复杂度为\n，但最优情况下为\n。",
+   "answer": null,
+   "analysis": "正确。冒泡排序平均和最坏为 O(n²)，若数组已有序且带提前退出优化，一轮扫描即可完成，最好情况为 O(n)。"
+  },
+  {
+   "n": 8,
+   "stem": "冒泡排序和插入排序都是稳定的排序算法。",
+   "answer": null,
+   "analysis": "正确。冒泡排序只在逆序时交换相等元素不交换、插入排序把相等元素插到同值元素之后，二者都不改变相等元素的相对顺序，都是稳定排序。"
+  },
+  {
+   "n": 9,
+   "stem": "选择排序是稳定的排序算法。",
+   "answer": null,
+   "analysis": "错误。选择排序不稳定：把选出的最小元与前面元素交换时，可能跨过与它相等的元素，改变相对顺序。"
+  },
+  {
+   "n": 10,
+   "stem": "在 C++语言中，如果一个函数可能抛出异常，那么一定要在try 子句里调用这个函数。",
+   "answer": null,
+   "analysis": "错误。可能抛异常的函数不一定要在 try 中调用，只是异常抛出后若没有 catch 匹配，会传播直至终止程序。"
+  }
+ ],
+ "programming": [
+  {
+   "n": 1,
+   "name": "Recamán",
+   "desc": "小杨最近发现了有趣的 Recamán 数列，这个数列是这样生成的：\n数列的第一项\n是 ；\n如果\n是正整数并且没有在数列中出现过，那么数列的第  项\n为\n，否则为\n。\n小杨想知道 Recamán 数列的前  项从小到大排序后的结果。手动计算非常困难，小杨希望你能帮他解决这个问题。"
+  },
+  {
+   "n": 2,
+   "name": "字符排序",
+   "desc": ""
+  }
+ ]
+}

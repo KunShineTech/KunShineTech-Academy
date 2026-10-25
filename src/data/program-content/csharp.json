@@ -1,0 +1,234 @@
+{
+  "roadmap": [
+    {
+      "stage": "C# 语法与 .NET 基础",
+      "focus": "熟悉 C# 的现代语法、强类型系统与 .NET 运行时，写出第一个控制台与面向对象程序。",
+      "topics": ["类型系统与 var", "字符串与内插", "数组与集合初识", "值类型与引用类型", "dotnet CLI 全家桶"]
+    },
+    {
+      "stage": "面向对象与属性",
+      "focus": "掌握类、属性、接口与委托，理解 C# 用属性封装字段的惯用方式。",
+      "topics": ["类与属性", "接口与默认实现", "继承与多态", "委托与事件", "record 与模式匹配"]
+    },
+    {
+      "stage": "LINQ 与集合",
+      "focus": "用 LINQ 以声明式方式查询集合，告别手写循环，大幅提升数据处理代码的表达力。",
+      "topics": ["IEnumerable 与迭代", "LINQ 查询语法", "方法语法", "匿名类型与投影", "常用泛型集合"]
+    },
+    {
+      "stage": "异步与并发",
+      "focus": "掌握 async/await 异步编程模型、并发集合与并行库，编写高吞吐 IO 程序。",
+      "topics": ["Task 与 async/await", "并发集合", "Parallel 并行库", "取消令牌", "Channel 消息传递"]
+    },
+    {
+      "stage": "Web 开发与数据访问",
+      "focus": "进入 ASP.NET Core 与 EF Core，构建 Web API 并访问数据库，完成端到端项目。",
+      "topics": ["minimal API 与路由", "依赖注入三生命周期", "EF Core 与迁移", "配置与日志", "健康检查与中间件"]
+    },
+    {
+      "stage": "工程化、诊断与发布",
+      "focus": "掌握测试体系、性能诊断工具与发布流程，让应用达到可上线质量。",
+      "topics": ["xUnit 单元测试", "BenchmarkDotNet 基准测试", "dotnet-counters 诊断", "发布与容器化", "CI 流水线"]
+    }
+  ],
+  "modules": [
+    {
+      "name": "类型系统与属性",
+      "summary": "C# 是强类型语言，属性（Property）用简洁语法封装字段，配合 init、required 等修饰符能精确表达数据约束。为什么重要：属性是 C# 最鲜明的语言特色，.NET 库中几乎所有数据对象都用它建模。怎么学：为每个字段写属性，体会 get/set 背后的封装思想，并逐步引入 record 与模式匹配。",
+      "points": [
+        "自动属性 public string Name { get; set; } 一行完成封装",
+        "init 访问器让属性只能在初始化时赋值，适合不可变数据",
+        "值类型（int、struct）按位拷贝，引用类型（class）拷贝引用",
+        "可空引用类型 string? 与编译期空检查，大幅减少 NullReferenceException",
+        "var 是编译期类型推断，C# 仍是强类型语言",
+        "record 类型专为不可变数据设计，自带值相等性比较",
+        "required 成员强制对象初始化时必须赋值（C# 11）",
+        "模式匹配 is、switch 表达式让类型判断与解构优雅合一"
+      ],
+      "tip": "新项目默认开启可空引用类型，让编译器帮你挡住空指针问题。"
+    },
+    {
+      "name": ".NET 运行时与工具链",
+      "summary": ".NET 是跨平台托管运行时，dotnet CLI 一条命令即可完成创建、构建、运行、测试与发布。为什么重要：理解运行时、SDK 与目标框架的关系才能管好项目依赖与部署形态。怎么学：用 dotnet new console 起步，逐步尝试类库、测试与 Web 项目模板。",
+      "points": [
+        "dotnet new / build / run / publish / test 的完整命令流",
+        "SDK 与 Runtime 的区别：开发机装 SDK，服务器只装 Runtime",
+        "NuGet 是 .NET 的包管理器，dotnet add package 一键加依赖",
+        "跨平台：同一份代码可跑在 Windows、Linux 与 macOS（含 ARM）",
+        "csproj 项目文件采用 SDK 风格，简洁可读",
+        "IL 中间语言与 JIT 编译，.NET 7+ 支持 Native AOT 发布",
+        "全局工具 dotnet tool 安装 ef、benchmark 等命令行扩展",
+        "global.json 锁定 SDK 版本，保证团队环境一致"
+      ],
+      "tip": "把常用 dotnet 命令写成自己的速查表，比记住 IDE 按钮更可靠。"
+    },
+    {
+      "name": "LINQ 查询",
+      "summary": "LINQ 用 Where、Select、GroupBy 等方法以声明式方式处理集合，查询表达式与 SQL 神似。为什么重要：它是 C# 数据处理的标准方式，也是读写 EF Core 查询的基础。怎么学：把手写的 for 循环逐一改写成 LINQ，对比可读性与执行时机。",
+      "points": [
+        "IEnumerable<T> 是所有可迭代集合的统一接口",
+        "方法语法 nums.Where(x => x > 0).OrderBy(x => x) 最常用",
+        "查询语法 from x in nums where x > 0 select x 适合复杂查询",
+        "Select 投影变换、GroupBy 分组、Aggregate 聚合",
+        "延迟执行：LINQ 定义查询计划，遍历时才真正执行",
+        "匿名类型与对象初始化器配合 LINQ 输出自定义形状",
+        "FirstOrDefault、SingleOrDefault 与 First 的区别在于查不到时的行为",
+        "IQueryable 面向数据库的查询可翻译为 SQL，IEnumerable 则在内存执行"
+      ],
+      "tip": "注意 LINQ 的延迟执行特性，调试时先 ToList() 固化结果，避免看错时机。"
+    },
+    {
+      "name": "异步编程 async/await",
+      "summary": "C# 的 async/await 让异步代码写得像同步代码，编译器把函数状态机化而不阻塞线程。为什么重要：Web 服务的吞吐能力几乎由异步 IO 决定，一处阻塞可能拖垮整条链路。怎么学：从异步读写文件、异步 HTTP 请求入手，理解 Task 的语义与取消机制。",
+      "points": [
+        "async 修饰方法，await 等待 Task 完成，不占用线程空等",
+        "返回值 Task / Task<T> / ValueTask 的适用差异",
+        "ConfigureAwait(false) 在库代码中避免上下文切换开销",
+        "Task.WhenAll 并发等待多个任务，Task.WhenAny 取最先完成者",
+        "async void 仅用于事件处理程序，普通代码应返回 Task",
+        "CancellationToken 传递取消请求，支持优雅中止与超时",
+        "IAsyncEnumerable<T> 与 await foreach 处理异步流式数据",
+        "Task.Run 把 CPU 密集工作移出线程池，但不要用它包 IO"
+      ],
+      "tip": "全程异步：一个 async 方法调用了同步阻塞 API，整条链路的吞吐优势就没了。"
+    },
+    {
+      "name": "委托、事件与函数式风格",
+      "summary": "委托是类型安全的函数指针，事件是基于委托的发布订阅机制，Action 与 Func 简化了常用签名。为什么重要：事件驱动是桌面与 UI 编程的根基，LINQ 的 lambda 也建立在委托之上。怎么学：用按钮点击事件理解发布订阅，再手写一个自己的事件。",
+      "points": [
+        "delegate 定义方法签名，Action<T> 与 Func<T,R> 覆盖绝大多数场景",
+        "lambda 表达式是委托的简洁写法",
+        "event 关键字对外只暴露订阅与退订，保证封装性",
+        "多播委托：一个事件可挂多个处理器，执行顺序即订阅顺序",
+        "闭包捕获外部变量，注意循环变量共享的经典陷阱",
+        "方法组转换：直接写方法名即可隐式转为委托",
+        "事件处理器的参数约定 (sender, e)，读 .NET 库源码时处处可见",
+        "弱事件模式防止事件订阅造成的内存泄漏（进阶）"
+      ],
+      "tip": "记住事件处理器的参数约定 (sender, e)，读 .NET 库源码时会处处遇到。"
+    },
+    {
+      "name": "异常处理与调试",
+      "summary": "C# 异常体系以 Exception 为根，try/catch/finally 结构之外还有 when 过滤器这一特色语法。为什么重要：健壮应用必须区分可恢复错误与程序缺陷，调试能力决定排障效率。怎么学：学会只捕获能处理的异常，熟练使用断点、即时窗口与异步调用栈。",
+      "points": [
+        "捕获具体异常类型优先，catch (Exception) 放最后兜底",
+        "异常过滤器 when 子句按条件捕获，免去 catch 内再判断",
+        "finally 与 using：资源释放的首选是 using 声明",
+        "自定义异常继承 Exception，命名以 Exception 结尾",
+        "throw 与 throw ex 的区别：后者会重置堆栈信息",
+        "调试工具：断点、即时窗口、并行堆栈与异步调用栈",
+        "Environment.FailFast 与 Process 级异常的区别",
+        "全局异常处理：AppDomain.UnhandledException 与 ASP.NET 的异常中间件"
+      ],
+      "tip": "空 catch 是万恶之源：至少记录日志，否则程序「静默失败」极难排查。"
+    },
+    {
+      "name": "集合框架",
+      "summary": "List、Dictionary、HashSet、Queue、Stack 等泛型集合覆盖绝大多数场景，它们是强类型的、开箱即用。为什么重要：选择正确的集合是程序性能与正确性的前提，并发场景还有专门的线程安全集合。怎么学：以 List 和 Dictionary 为主力，按场景逐步引入其他集合。",
+      "points": [
+        "List<T> 动态数组：Add、Remove、Insert、索引访问",
+        "Dictionary<TKey,TValue> 哈希字典：接近 O(1) 的查找",
+        "HashSet<T> 去重与交并差集合运算",
+        "Queue<T> / Stack<T> 先进先出与后进先出",
+        "TryGetValue 模式避免 KeyNotFoundException",
+        "SortedDictionary 与 SortedSet 基于红黑树，按键有序",
+        "ImmutableArray 等不可变集合在多线程共享时免去加锁",
+        "Span<T> 与 Memory<T> 提供无分配的内存视图，高性能场景的进阶武器"
+      ],
+      "tip": "遍历字典用 TryGetValue，别先 ContainsKey 再取值，那是两次哈希。"
+    },
+    {
+      "name": "ASP.NET Core 与 EF Core",
+      "summary": "ASP.NET Core 是跨平台 Web 框架，依赖注入内建；EF Core 是对象关系映射，用 LINQ 操作数据库。为什么重要：这是 C# 通往企业级后端开发的主干道，也是 .NET 生态最活跃的领域。怎么学：先用 minimal API 写三个接口，再加 EF Core 完成增删改查，最后补配置、日志与迁移。",
+      "points": [
+        "Program.cs 是入口：注册服务、配置中间件、映射端点",
+        "依赖注入内建容器：Singleton/Scoped/Transient 三种生命周期",
+        "minimal API：app.MapGet/MapPost 一行定义路由，Results 辅助返回",
+        "EF Core：DbContext 管理实体，LINQ 查询自动翻译为 SQL",
+        "Code First 迁移：dotnet ef migrations add 管理表结构演进",
+        "配置与日志：appsettings.json + ILogger 是标配",
+        "中间件管道顺序决定请求处理行为，Use/Map/Run 的分工要清楚",
+        "健康检查、OpenAPI/Swagger 文档让服务可运维可对接"
+      ],
+      "tip": "先让一个最小 API 跑通，再逐层加数据库与分层结构，别一上来照搬复杂模板。"
+    },
+    {
+      "name": "并发集合与并行编程",
+      "summary": "除了 async/await，.NET 还提供 lock、Monitor、ConcurrentDictionary 等并发原语与 Parallel 并行库。为什么重要：CPU 密集任务与并行批处理是异步模型之外的重要补充。怎么学：从 Parallel.ForEach 并行处理集合开始，理解何时需要锁与并发集合。",
+      "points": [
+        "lock 语句基于 Monitor，保护临界区最简单的手段",
+        "ConcurrentDictionary、ConcurrentQueue 等无锁并发容器",
+        "Parallel.For / ForEach 数据并行，自动分区调度线程池",
+        "PLINQ 的 AsParallel() 一行让 LINQ 查询并行化",
+        "Interlocked 原子操作实现无锁计数",
+        "SemaphoreSlim 控制并发访问数量，常用于限流",
+        "Channel<T> 实现生产者消费者模式，契合 async/await",
+        "不可变数据与消息传递能从设计上减少共享状态"
+      ],
+      "tip": "能并发集合就不自己加锁；能消息传递就不共享状态，这两条能避开大多数并发 bug。"
+    },
+    {
+      "name": "序列化、IO 与配置",
+      "summary": "System.Text.Json 是高性能 JSON 序列化器，Stream 抽象贯穿文件与网络 IO，Options 模式统一管理配置。为什么重要：几乎所有服务都要读写配置、交换 JSON 数据，这套设施是日常高频工具。怎么学：给 Web API 的请求响应加上 JSON 序列化，用 Options 模式注入强类型配置。",
+      "points": [
+        "System.Text.Json 的 JsonSerializer.Serialize/Deserialize",
+        "JsonPropertyName 等特性控制序列化字段名与忽略",
+        "Stream、MemoryStream、FileStream 的读写与 using 释放",
+        "StreamReader/StreamWriter 按字符读写文本流",
+        "Options 模式：IOptions<T> 注入强类型配置对象",
+        "多环境配置 appsettings.{Environment}.json 与优先级",
+        "用户机密 Secret Manager 管理开发期敏感配置",
+        "XmlSerializer 与 protobuf-net 应对其他序列化协议"
+      ],
+      "tip": "配置一律走 Options 模式强类型化，别再到处 Configuration[\"Key\"] 字符串硬编码。"
+    },
+    {
+      "name": "性能分析与诊断",
+      "summary": "BenchmarkDotNet 让微基准测试严谨可靠，dotnet-counters、dotnet-dump 与 Visual Studio 诊断工具覆盖运行期分析。为什么重要：性能优化必须基于测量，主观感觉在 JIT 面前经常出错。怎么学：给 LINQ 与手写循环各写一个 Benchmark，看数据说话。",
+      "points": [
+        "BenchmarkDotNet 的 [Benchmark] 特性与自动生成报告",
+        "基准测试要防 JIT 预热与死代码消除，工具自动处理",
+        "dotnet-counters 实时监控 GC、线程池与异常计数",
+        "dotnet-dump 采集并离线分析生产环境内存",
+        "Visual Studio 诊断工具：CPU 使用率、内存分配快照",
+        "GC 分代（0/1/2）与大对象堆对性能的影响",
+        "池化与 ArrayPool<T> 减少 GC 压力",
+        "Span<T>、stackalloc 与 Struct 化避免堆分配"
+      ],
+      "tip": "先用 BenchmarkDotNet 测，再谈优化——「感觉更快」在 .NET 里是最不可靠的指标。"
+    },
+    {
+      "name": "测试、规范与发布",
+      "summary": "xUnit 是社区主流的测试框架，.editorconfig 与代码分析器统一规范，dotnet publish 与容器化完成最后一公里交付。为什么重要：测试让重构有信心，规范让团队协作顺畅，发布能力让代码真正跑起来服务用户。怎么学：给每个练习项目补单元测试，把一个 Web 应用发布为自包含文件并尝试 docker 打包。",
+      "points": [
+        "xUnit：[Fact] 与 [Theory] 参数化测试，IClassFixture 共享上下文",
+        "AAA 结构：Arrange 准备、Act 执行、Assert 断言三段分明",
+        "Moq / NSubstitute 模拟框架隔离外部依赖",
+        "集成测试 WebApplicationFactory 启动内存中 TestServer",
+        "XML 文档注释 /// 自动生成 API 文档",
+        ".editorconfig 统一团队风格，代码分析器 CA 规则分级启用",
+        "dotnet publish 的框架依赖与自包含两种发布模式",
+        "多阶段 Dockerfile 构建 .NET 应用镜像"
+      ],
+      "tip": "写测试不是负担：先写失败的测试再实现功能，能让你对需求理解得更透彻。"
+    }
+  ],
+  "projects": [
+    "学生成绩管理控制台程序：练习类、属性、集合与文件读写，理解值类型与引用类型",
+    "单词频率统计器：读取文本，用 LINQ 统计词频并输出 Top N，体验声明式查询",
+    "异步下载工具：并发下载多个文件并显示进度条，掌握 Task、WhenAll 与取消令牌",
+    "图书管理 Web API：用 ASP.NET Core + EF Core 完成图书的增删改查与搜索接口，Swagger 在线调试",
+    "并发日志分析器：Parallel 并行处理大日志文件，BenchmarkDotNet 对比并行与串行吞吐量",
+    "个人记账应用：WPF 或 Blazor 前端 + 数据库后端，综合运用事件、LINQ、异步与单元测试",
+    "可发布的待办服务：minimal API + SQLite + Docker 镜像，体验从 dotnet new 到容器运行的全链路"
+  ],
+  "pitfalls": [
+    "在 async 方法里调用 .Result 或 .Wait() 造成死锁或线程阻塞，全程 await 才是正道",
+    "误以为 LINQ 查询立即执行：延迟执行导致副作用时机与预期不符，必要时用 ToList() 固化结果",
+    "滥用可空类型却不检查 null，或到处空 catch 吞掉异常，让错误无声消失",
+    "在 Dictionary 上先 ContainsKey 再取值：双重哈希浪费且非原子，应直接用 TryGetValue",
+    "把值类型当引用类型用：struct 拷贝语义导致意外修改不生效，数据对象优先用 class 或 record",
+    "在 Parallel.For 中修改共享变量产生竞态：用 Interlocked、ConcurrentBag 或 Parallel.For 的局部聚合",
+    "以为发布到服务器装个 Runtime 就行：自包含发布、框架版本与运行时补丁策略要在部署前定好"
+  ]
+}

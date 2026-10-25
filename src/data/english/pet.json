@@ -1,0 +1,651 @@
+{
+  "sections": {
+    "words": {
+      "title": "核心单词表",
+      "intro": "按主题单元背诵，每天一个单元，结合例句记忆更高效。",
+      "units": [
+        {
+          "name": "科技与生活",
+          "words": [
+            { "w": "technology", "pos": "n.", "cn": "科技；技术", "eg": "Technology makes our daily life more convenient." },
+            { "w": "device", "pos": "n.", "cn": "设备；装置", "eg": "A smartphone is a useful device for studying." },
+            { "w": "screen", "pos": "n.", "cn": "屏幕", "eg": "Don't look at the screen for too long." },
+            { "w": "digital", "pos": "adj.", "cn": "数字的；数码的", "eg": "Many students read digital books on tablets." },
+            { "w": "online", "pos": "adj./adv.", "cn": "在线的；在线地", "eg": "We had an online class yesterday evening." },
+            { "w": "download", "pos": "v.", "cn": "下载", "eg": "You can download the song from this website." },
+            { "w": "upload", "pos": "v.", "cn": "上传", "eg": "Please upload your homework before Friday." },
+            { "w": "password", "pos": "n.", "cn": "密码", "eg": "Never tell anyone your password." },
+            { "w": "software", "pos": "n.", "cn": "软件", "eg": "This software can help us learn English." },
+            { "w": "keyboard", "pos": "n.", "cn": "键盘", "eg": "She types quickly on the keyboard." },
+            { "w": "printer", "pos": "n.", "cn": "打印机", "eg": "The printer in our classroom is broken." },
+            { "w": "smartphone", "pos": "n.", "cn": "智能手机", "eg": "He uses his smartphone to take photos." },
+            { "w": "laptop", "pos": "n.", "cn": "笔记本电脑", "eg": "I take my laptop with me when I travel." },
+            { "w": "internet", "pos": "n.", "cn": "互联网", "eg": "We can find lots of information on the internet." },
+            { "w": "message", "pos": "n.", "cn": "信息；消息", "eg": "I sent a message to my best friend." },
+            { "w": "invent", "pos": "v.", "cn": "发明；创造", "eg": "Who invented the telephone?" },
+            { "w": "electronic", "pos": "adj.", "cn": "电子的", "eg": "My father bought an electronic dictionary for me." },
+            { "w": "wireless", "pos": "adj.", "cn": "无线的", "eg": "The hotel offers free wireless internet." },
+            { "w": "update", "pos": "v./n.", "cn": "更新；升级", "eg": "Remember to update the app every month." },
+            { "w": "invention", "pos": "n.", "cn": "发明物；发明", "eg": "The washing machine is a great invention." }
+          ]
+        },
+        {
+          "name": "环境与自然",
+          "words": [
+            { "w": "environment", "pos": "n.", "cn": "环境", "eg": "We should protect the environment." },
+            { "w": "pollution", "pos": "n.", "cn": "污染", "eg": "Air pollution is a serious problem in big cities." },
+            { "w": "recycle", "pos": "v.", "cn": "回收利用", "eg": "We recycle paper and bottles at school." },
+            { "w": "rubbish", "pos": "n.", "cn": "垃圾", "eg": "Please put the rubbish into the bin." },
+            { "w": "waste", "pos": "n./v.", "cn": "浪费；废弃物", "eg": "Don't waste water or electricity." },
+            { "w": "plastic", "pos": "n./adj.", "cn": "塑料（的）", "eg": "Many rivers are full of plastic bags." },
+            { "w": "energy", "pos": "n.", "cn": "能源；能量", "eg": "Solar energy is clean and free." },
+            { "w": "protect", "pos": "v.", "cn": "保护", "eg": "We must protect wild animals." },
+            { "w": "nature", "pos": "n.", "cn": "自然", "eg": "I love walking in nature at the weekend." },
+            { "w": "forest", "pos": "n.", "cn": "森林", "eg": "Many animals live in the forest." },
+            { "w": "ocean", "pos": "n.", "cn": "海洋", "eg": "The ocean covers most of the earth." },
+            { "w": "climate", "pos": "n.", "cn": "气候", "eg": "The climate here is warm and wet." },
+            { "w": "reduce", "pos": "v.", "cn": "减少", "eg": "We should reduce the use of cars." },
+            { "w": "reuse", "pos": "v.", "cn": "再次使用；重复利用", "eg": "You can reuse old bottles to plant flowers." },
+            { "w": "endangered", "pos": "adj.", "cn": "濒临灭绝的", "eg": "The panda is an endangered animal." },
+            { "w": "species", "pos": "n.", "cn": "物种", "eg": "Some species of birds are disappearing." },
+            { "w": "global", "pos": "adj.", "cn": "全球的", "eg": "Global warming changes the weather." },
+            { "w": "temperature", "pos": "n.", "cn": "温度", "eg": "The temperature drops in winter." },
+            { "w": "disappear", "pos": "v.", "cn": "消失", "eg": "Many old buildings may disappear one day." },
+            { "w": "natural", "pos": "adj.", "cn": "自然的；天然的", "eg": "Fresh air and clean water are natural gifts." }
+          ]
+        },
+        {
+          "name": "健康与运动",
+          "words": [
+            { "w": "healthy", "pos": "adj.", "cn": "健康的", "eg": "Eating fruit and vegetables keeps us healthy." },
+            { "w": "exercise", "pos": "n./v.", "cn": "锻炼；运动", "eg": "He does exercise every morning." },
+            { "w": "fitness", "pos": "n.", "cn": "健康；体能", "eg": "Running is good for our fitness." },
+            { "w": "diet", "pos": "n.", "cn": "饮食；节食", "eg": "A balanced diet is important for teenagers." },
+            { "w": "habit", "pos": "n.", "cn": "习惯", "eg": "Brushing teeth twice a day is a good habit." },
+            { "w": "energy", "pos": "n.", "cn": "精力；能量", "eg": "Sleeping well gives me more energy." },
+            { "w": "medicine", "pos": "n.", "cn": "药；医学", "eg": "Take the medicine three times a day." },
+            { "w": "fever", "pos": "n.", "cn": "发烧", "eg": "She stayed at home because of a high fever." },
+            { "w": "cough", "pos": "n./v.", "cn": "咳嗽", "eg": "He coughed all night and felt tired." },
+            { "w": "headache", "pos": "n.", "cn": "头痛", "eg": "I have a bad headache today." },
+            { "w": "muscle", "pos": "n.", "cn": "肌肉", "eg": "Swimming helps build strong muscles." },
+            { "w": "training", "pos": "n.", "cn": "训练", "eg": "The team has training every Tuesday." },
+            { "w": "match", "pos": "n.", "cn": "比赛", "eg": "Our school won the football match." },
+            { "w": "coach", "pos": "n.", "cn": "教练", "eg": "The coach teaches us how to swim." },
+            { "w": "stretch", "pos": "v.", "cn": "伸展", "eg": "Stretch your arms before running." },
+            { "w": "injured", "pos": "adj.", "cn": "受伤的", "eg": "The injured player left the field." },
+            { "w": "relax", "pos": "v.", "cn": "放松", "eg": "Listening to music helps me relax." },
+            { "w": "sleep", "pos": "n./v.", "cn": "睡眠；睡觉", "eg": "Teenagers need about eight hours of sleep." },
+            { "w": "balanced", "pos": "adj.", "cn": "均衡的", "eg": "We should have three balanced meals a day." },
+            { "w": "lifestyle", "pos": "n.", "cn": "生活方式", "eg": "A healthy lifestyle makes us strong." }
+          ]
+        },
+        {
+          "name": "教育与学习",
+          "words": [
+            { "w": "subject", "pos": "n.", "cn": "学科；科目", "eg": "English is my favourite subject." },
+            { "w": "knowledge", "pos": "n.", "cn": "知识", "eg": "Reading is a good way to gain knowledge." },
+            { "w": "skill", "pos": "n.", "cn": "技能", "eg": "Writing is an important skill for students." },
+            { "w": "homework", "pos": "n.", "cn": "家庭作业", "eg": "I finished my homework before dinner." },
+            { "w": "exam", "pos": "n.", "cn": "考试", "eg": "We have an English exam next week." },
+            { "w": "grade", "pos": "n.", "cn": "成绩；年级", "eg": "She got good grades this term." },
+            { "w": "mark", "pos": "n.", "cn": "分数；记号", "eg": "He got full marks in the maths test." },
+            { "w": "lesson", "pos": "n.", "cn": "课；课程", "eg": "The first lesson starts at eight." },
+            { "w": "course", "pos": "n.", "cn": "课程", "eg": "She took a painting course in summer." },
+            { "w": "textbook", "pos": "n.", "cn": "教科书", "eg": "Open your textbooks to page ten." },
+            { "w": "notebook", "pos": "n.", "cn": "笔记本", "eg": "Write the new words in your notebook." },
+            { "w": "dictionary", "pos": "n.", "cn": "词典", "eg": "Look up the word in the dictionary." },
+            { "w": "library", "pos": "n.", "cn": "图书馆", "eg": "I often read in the school library." },
+            { "w": "practice", "pos": "n./v.", "cn": "练习", "eg": "Practice speaking English every day." },
+            { "w": "review", "pos": "v./n.", "cn": "复习；回顾", "eg": "Review the words before the exam." },
+            { "w": "memorize", "pos": "v.", "cn": "记住；背诵", "eg": "It is easier to memorize words with pictures." },
+            { "w": "improve", "pos": "v.", "cn": "提高；改善", "eg": "Listening to songs improves my English." },
+            { "w": "concentrate", "pos": "v.", "cn": "集中注意力", "eg": "Turn off the phone and concentrate on your study." },
+            { "w": "grammar", "pos": "n.", "cn": "语法", "eg": "English grammar is not as hard as you think." },
+            { "w": "pronunciation", "pos": "n.", "cn": "发音", "eg": "Her pronunciation is very good." }
+          ]
+        },
+        {
+          "name": "旅行与交通",
+          "words": [
+            { "w": "journey", "pos": "n.", "cn": "旅程", "eg": "The journey to the mountains took three hours." },
+            { "w": "trip", "pos": "n.", "cn": "旅行；出行", "eg": "We had a school trip to the museum." },
+            { "w": "ticket", "pos": "n.", "cn": "票", "eg": "I bought a ticket for the train online." },
+            { "w": "passport", "pos": "n.", "cn": "护照", "eg": "You need a passport to travel abroad." },
+            { "w": "luggage", "pos": "n.", "cn": "行李", "eg": "His luggage was too heavy to carry." },
+            { "w": "suitcase", "pos": "n.", "cn": "手提箱", "eg": "She packed her clothes in a small suitcase." },
+            { "w": "airport", "pos": "n.", "cn": "机场", "eg": "We arrived at the airport two hours early." },
+            { "w": "flight", "pos": "n.", "cn": "航班；飞行", "eg": "Our flight was delayed because of the rain." },
+            { "w": "platform", "pos": "n.", "cn": "站台；月台", "eg": "The train to Beijing leaves from Platform 2." },
+            { "w": "direction", "pos": "n.", "cn": "方向", "eg": "Can you tell me the direction to the station?" },
+            { "w": "guide", "pos": "n.", "cn": "导游；指南", "eg": "The guide showed us around the old town." },
+            { "w": "hotel", "pos": "n.", "cn": "旅馆；酒店", "eg": "We stayed in a small hotel near the beach." },
+            { "w": "campsite", "pos": "n.", "cn": "营地", "eg": "We put up our tents at the campsite." },
+            { "w": "abroad", "pos": "adv.", "cn": "在国外；到国外", "eg": "He wants to study abroad in the future." },
+            { "w": "foreign", "pos": "adj.", "cn": "外国的", "eg": "She can speak three foreign languages." },
+            { "w": "souvenir", "pos": "n.", "cn": "纪念品", "eg": "I bought some souvenirs for my friends." },
+            { "w": "sightseeing", "pos": "n.", "cn": "观光；游览", "eg": "We went sightseeing in London yesterday." },
+            { "w": "passenger", "pos": "n.", "cn": "乘客", "eg": "The bus was full of passengers." },
+            { "w": "traffic", "pos": "n.", "cn": "交通", "eg": "The traffic is heavy during rush hour." },
+            { "w": "reserve", "pos": "v.", "cn": "预订", "eg": "You should reserve your seat in advance." }
+          ]
+        },
+        {
+          "name": "文化与传统",
+          "words": [
+            { "w": "culture", "pos": "n.", "cn": "文化", "eg": "Chinese food is part of our culture." },
+            { "w": "tradition", "pos": "n.", "cn": "传统", "eg": "Eating dumplings is a Chinese tradition." },
+            { "w": "festival", "pos": "n.", "cn": "节日", "eg": "The Spring Festival is the most important festival in China." },
+            { "w": "celebrate", "pos": "v.", "cn": "庆祝", "eg": "We celebrate the Mid-Autumn Festival with mooncakes." },
+            { "w": "custom", "pos": "n.", "cn": "习俗", "eg": "It is a local custom to drink tea in the morning." },
+            { "w": "history", "pos": "n.", "cn": "历史", "eg": "Beijing has a long history." },
+            { "w": "museum", "pos": "n.", "cn": "博物馆", "eg": "The museum is free for students." },
+            { "w": "concert", "pos": "n.", "cn": "音乐会", "eg": "We went to a pop concert last night." },
+            { "w": "theatre", "pos": "n.", "cn": "剧院；戏剧", "eg": "I saw a play at the theatre." },
+            { "w": "painting", "pos": "n.", "cn": "绘画；油画", "eg": "This painting is more than 200 years old." },
+            { "w": "statue", "pos": "n.", "cn": "雕像", "eg": "There is a statue in the centre of the square." },
+            { "w": "ancient", "pos": "adj.", "cn": "古代的", "eg": "The Great Wall is an ancient building." },
+            { "w": "modern", "pos": "adj.", "cn": "现代的", "eg": "Shanghai is a modern city." },
+            { "w": "costume", "pos": "n.", "cn": "服装；戏服", "eg": "People wear special costumes at the carnival." },
+            { "w": "parade", "pos": "n.", "cn": "游行；检阅", "eg": "There was a big parade on National Day." },
+            { "w": "fireworks", "pos": "n.", "cn": "烟花", "eg": "We watched fireworks on New Year's Eve." },
+            { "w": "lantern", "pos": "n.", "cn": "灯笼", "eg": "Children carry lanterns at the festival." },
+            { "w": "folk", "pos": "adj.", "cn": "民间的", "eg": "I like Chinese folk music." },
+            { "w": "decorate", "pos": "v.", "cn": "装饰", "eg": "We decorate our house with flowers." },
+            { "w": "ancestor", "pos": "n.", "cn": "祖先", "eg": "Chinese people remember their ancestors at Qingming." }
+          ]
+        },
+        {
+          "name": "媒体与网络",
+          "words": [
+            { "w": "media", "pos": "n.", "cn": "媒体", "eg": "Social media is popular among teenagers." },
+            { "w": "news", "pos": "n.", "cn": "新闻", "eg": "I watch the news with my parents every evening." },
+            { "w": "newspaper", "pos": "n.", "cn": "报纸", "eg": "My grandfather reads a newspaper after breakfast." },
+            { "w": "magazine", "pos": "n.", "cn": "杂志", "eg": "This magazine has many beautiful photos." },
+            { "w": "article", "pos": "n.", "cn": "文章", "eg": "She wrote an article about school life." },
+            { "w": "reporter", "pos": "n.", "cn": "记者", "eg": "The reporter asked the students some questions." },
+            { "w": "interview", "pos": "n./v.", "cn": "采访；面试", "eg": "The TV station interviewed our head teacher." },
+            { "w": "advertisement", "pos": "n.", "cn": "广告", "eg": "There are too many advertisements on this page." },
+            { "w": "programme", "pos": "n.", "cn": "节目；程序", "eg": "This TV programme is very interesting." },
+            { "w": "channel", "pos": "n.", "cn": "频道；渠道", "eg": "Which channel is the cartoon on?" },
+            { "w": "blog", "pos": "n.", "cn": "博客", "eg": "He writes a blog about his travels." },
+            { "w": "comment", "pos": "n./v.", "cn": "评论", "eg": "Please leave a comment under my photo." },
+            { "w": "share", "pos": "v.", "cn": "分享", "eg": "She shared the good news with her classmates." },
+            { "w": "search", "pos": "v./n.", "cn": "搜索；查找", "eg": "You can search for the answer on the internet." },
+            { "w": "information", "pos": "n.", "cn": "信息；资料", "eg": "You can find more information on our website." },
+            { "w": "website", "pos": "n.", "cn": "网站", "eg": "Our school website is updated every week." },
+            { "w": "post", "pos": "v./n.", "cn": "发布；帖子", "eg": "He posted a funny video online." },
+            { "w": "trend", "pos": "n.", "cn": "趋势；潮流", "eg": "Short videos are a new trend among young people." },
+            { "w": "audience", "pos": "n.", "cn": "观众；听众", "eg": "The audience laughed at the funny show." },
+            { "w": "celebrity", "pos": "n.", "cn": "名人", "eg": "The young celebrity has millions of fans." }
+          ]
+        },
+        {
+          "name": "情感与人际",
+          "words": [
+            { "w": "feeling", "pos": "n.", "cn": "感觉；感受", "eg": "I have a good feeling about the exam." },
+            { "w": "excited", "pos": "adj.", "cn": "兴奋的", "eg": "The children were excited about the trip." },
+            { "w": "nervous", "pos": "adj.", "cn": "紧张的", "eg": "I felt nervous before speaking in public." },
+            { "w": "surprised", "pos": "adj.", "cn": "惊讶的", "eg": "She was surprised to see her old friend." },
+            { "w": "bored", "pos": "adj.", "cn": "感到无聊的", "eg": "He was bored with the long speech." },
+            { "w": "proud", "pos": "adj.", "cn": "自豪的", "eg": "My parents are proud of me." },
+            { "w": "worried", "pos": "adj.", "cn": "担心的", "eg": "She is worried about her sick dog." },
+            { "w": "friendship", "pos": "n.", "cn": "友谊", "eg": "Our friendship has lasted for ten years." },
+            { "w": "relationship", "pos": "n.", "cn": "关系", "eg": "A good relationship needs honesty." },
+            { "w": "trust", "pos": "v./n.", "cn": "信任", "eg": "Good friends trust each other." },
+            { "w": "respect", "pos": "v./n.", "cn": "尊重", "eg": "We should respect our teachers and parents." },
+            { "w": "polite", "pos": "adj.", "cn": "有礼貌的", "eg": "It is polite to say thank you." },
+            { "w": "honest", "pos": "adj.", "cn": "诚实的", "eg": "An honest person never tells lies." },
+            { "w": "support", "pos": "v./n.", "cn": "支持", "eg": "My friends supported me when I was sad." },
+            { "w": "argue", "pos": "v.", "cn": "争吵；争论", "eg": "The two boys argued about the game." },
+            { "w": "apologize", "pos": "v.", "cn": "道歉", "eg": "You should apologize for being late." },
+            { "w": "forgive", "pos": "v.", "cn": "原谅", "eg": "She forgave me for breaking her pen." },
+            { "w": "comfort", "pos": "v./n.", "cn": "安慰；舒适", "eg": "My mother comforted me when I cried." },
+            { "w": "cheerful", "pos": "adj.", "cn": "快乐的；开朗的", "eg": "Our teacher is always cheerful." },
+            { "w": "lonely", "pos": "adj.", "cn": "孤独的", "eg": "The old man often feels lonely." }
+          ]
+        },
+        {
+          "name": "城市与乡村",
+          "words": [
+            { "w": "city", "pos": "n.", "cn": "城市", "eg": "Shanghai is a big city in China." },
+            { "w": "town", "pos": "n.", "cn": "城镇", "eg": "There is a small town near the lake." },
+            { "w": "village", "pos": "n.", "cn": "村庄", "eg": "My grandparents live in a quiet village." },
+            { "w": "countryside", "pos": "n.", "cn": "乡村；乡下", "eg": "The air in the countryside is fresh." },
+            { "w": "square", "pos": "n.", "cn": "广场", "eg": "People dance in the square in the evening." },
+            { "w": "market", "pos": "n.", "cn": "市场", "eg": "My mother buys vegetables at the market." },
+            { "w": "building", "pos": "n.", "cn": "建筑物；大楼", "eg": "That tall building has thirty floors." },
+            { "w": "bridge", "pos": "n.", "cn": "桥", "eg": "There is an old bridge over the river." },
+            { "w": "tower", "pos": "n.", "cn": "塔", "eg": "The tower is the symbol of the city." },
+            { "w": "crowded", "pos": "adj.", "cn": "拥挤的", "eg": "The bus is always crowded in the morning." },
+            { "w": "quiet", "pos": "adj.", "cn": "安静的", "eg": "The streets are quiet at night." },
+            { "w": "peaceful", "pos": "adj.", "cn": "宁静的；和平的", "eg": "Life in the village is slow and peaceful." },
+            { "w": "farm", "pos": "n.", "cn": "农场", "eg": "There are many cows on the farm." },
+            { "w": "field", "pos": "n.", "cn": "田地；田野", "eg": "The farmers are working in the fields." },
+            { "w": "crop", "pos": "n.", "cn": "庄稼；作物", "eg": "Rice is the main crop in the south." },
+            { "w": "fresh", "pos": "adj.", "cn": "新鲜的", "eg": "The vegetables from the farm are fresh." },
+            { "w": "local", "pos": "adj.", "cn": "当地的", "eg": "We bought some local food at the market." },
+            { "w": "pollute", "pos": "v.", "cn": "污染", "eg": "Factories must not pollute the river." },
+            { "w": "neighbourhood", "pos": "n.", "cn": "街区；社区", "eg": "Our neighbourhood is clean and safe." },
+            { "w": "subway", "pos": "n.", "cn": "地铁", "eg": "I take the subway to school every day." }
+          ]
+        },
+        {
+          "name": "工作与职业",
+          "words": [
+            { "w": "job", "pos": "n.", "cn": "工作；职业", "eg": "Her dream job is to be a doctor." },
+            { "w": "career", "pos": "n.", "cn": "事业；职业生涯", "eg": "He wants a career in science." },
+            { "w": "worker", "pos": "n.", "cn": "工人；工作者", "eg": "The workers build houses." },
+            { "w": "manager", "pos": "n.", "cn": "经理", "eg": "The manager of the shop is very kind." },
+            { "w": "office", "pos": "n.", "cn": "办公室", "eg": "My father works in an office." },
+            { "w": "company", "pos": "n.", "cn": "公司", "eg": "She works for a big computer company." },
+            { "w": "factory", "pos": "n.", "cn": "工厂", "eg": "His father works in a car factory." },
+            { "w": "engineer", "pos": "n.", "cn": "工程师", "eg": "The engineer designed the new bridge." },
+            { "w": "scientist", "pos": "n.", "cn": "科学家", "eg": "The scientist works in a lab." },
+            { "w": "artist", "pos": "n.", "cn": "艺术家", "eg": "The artist is famous for his paintings." },
+            { "w": "nurse", "pos": "n.", "cn": "护士", "eg": "The nurse takes care of patients." },
+            { "w": "policeman", "pos": "n.", "cn": "警察", "eg": "The policeman helped the old lady cross the road." },
+            { "w": "pilot", "pos": "n.", "cn": "飞行员", "eg": "The pilot flew the plane to Paris." },
+            { "w": "farmer", "pos": "n.", "cn": "农民", "eg": "The farmer gets up early every day." },
+            { "w": "dentist", "pos": "n.", "cn": "牙医", "eg": "I visit the dentist twice a year." },
+            { "w": "salary", "pos": "n.", "cn": "薪水", "eg": "Teachers should get a good salary." },
+            { "w": "volunteer", "pos": "n./v.", "cn": "志愿者；自愿做", "eg": "She works as a volunteer in the library." },
+            { "w": "part-time", "pos": "adj.", "cn": "兼职的", "eg": "He has a part-time job in a shop." },
+            { "w": "experience", "pos": "n.", "cn": "经验；经历", "eg": "Working as a volunteer gives you useful experience." },
+            { "w": "achievement", "pos": "n.", "cn": "成就", "eg": "Passing PET is a great achievement." }
+          ]
+        }
+      ]
+    },
+    "phrases": {
+      "title": "必备短语",
+      "groups": [
+        {
+          "name": "观点表达",
+          "items": [
+            { "en": "in my opinion", "cn": "在我看来" },
+            { "en": "in my view", "cn": "依我之见" },
+            { "en": "as far as I'm concerned", "cn": "就我而言" },
+            { "en": "from my point of view", "cn": "从我的角度来看" },
+            { "en": "it seems to me that...", "cn": "在我看来……" },
+            { "en": "to be honest", "cn": "说实话" },
+            { "en": "personally", "cn": "就我个人而言" },
+            { "en": "I agree with you", "cn": "我同意你的看法" },
+            { "en": "I don't think that...", "cn": "我认为……不……" },
+            { "en": "in fact", "cn": "事实上" },
+            { "en": "that's a good point", "cn": "说得有道理" },
+            { "en": "I'm afraid I disagree", "cn": "恐怕我不能同意" }
+          ]
+        },
+        {
+          "name": "建议与请求",
+          "items": [
+            { "en": "why don't you...?", "cn": "你为什么不……？" },
+            { "en": "you should...", "cn": "你应该……" },
+            { "en": "you'd better...", "cn": "你最好……" },
+            { "en": "how about...?", "cn": "……怎么样？" },
+            { "en": "let's...", "cn": "让我们……吧" },
+            { "en": "could you please...?", "cn": "请你……好吗？" },
+            { "en": "would you mind...?", "cn": "你介意……吗？" },
+            { "en": "I suggest that...", "cn": "我建议……" },
+            { "en": "it would be a good idea to...", "cn": "……是个好主意" },
+            { "en": "can I...?", "cn": "我可以……吗？" },
+            { "en": "shall we...?", "cn": "我们……好吗？" },
+            { "en": "please remember to...", "cn": "请记得……" }
+          ]
+        },
+        {
+          "name": "计划与安排",
+          "items": [
+            { "en": "be going to", "cn": "打算；将要" },
+            { "en": "plan to do", "cn": "计划做某事" },
+            { "en": "would like to", "cn": "想要……" },
+            { "en": "look forward to", "cn": "期待……" },
+            { "en": "make an appointment", "cn": "预约" },
+            { "en": "put off", "cn": "推迟" },
+            { "en": "take place", "cn": "发生；举行" },
+            { "en": "in advance", "cn": "提前" },
+            { "en": "on time", "cn": "准时" },
+            { "en": "at the weekend", "cn": "在周末" },
+            { "en": "during the holiday", "cn": "在假期期间" },
+            { "en": "as soon as possible", "cn": "尽快" }
+          ]
+        },
+        {
+          "name": "比较与对比",
+          "items": [
+            { "en": "on the one hand... on the other hand...", "cn": "一方面……另一方面……" },
+            { "en": "in contrast", "cn": "相比之下" },
+            { "en": "compared with", "cn": "与……相比" },
+            { "en": "while", "cn": "而；然而" },
+            { "en": "however", "cn": "然而" },
+            { "en": "unlike", "cn": "不像；与……不同" },
+            { "en": "similar to", "cn": "与……相似" },
+            { "en": "be different from", "cn": "与……不同" },
+            { "en": "the same as", "cn": "与……一样" },
+            { "en": "instead of", "cn": "代替；而不是" },
+            { "en": "both... and...", "cn": "两者都……" },
+            { "en": "on the contrary", "cn": "恰恰相反" }
+          ]
+        },
+        {
+          "name": "原因与结果",
+          "items": [
+            { "en": "because of", "cn": "因为；由于" },
+            { "en": "thanks to", "cn": "多亏；由于" },
+            { "en": "as a result", "cn": "结果；因此" },
+            { "en": "so that", "cn": "以便；所以" },
+            { "en": "in order to", "cn": "为了……" },
+            { "en": "that's why", "cn": "这就是为什么……" },
+            { "en": "due to", "cn": "由于" },
+            { "en": "therefore", "cn": "因此" },
+            { "en": "lead to", "cn": "导致" },
+            { "en": "so... that...", "cn": "如此……以至于……" },
+            { "en": "since", "cn": "既然；由于" },
+            { "en": "as", "cn": "因为；随着" }
+          ]
+        },
+        {
+          "name": "时间与顺序",
+          "items": [
+            { "en": "first of all", "cn": "首先" },
+            { "en": "then", "cn": "然后" },
+            { "en": "next", "cn": "接下来" },
+            { "en": "after that", "cn": "在那之后" },
+            { "en": "finally", "cn": "最后" },
+            { "en": "at first", "cn": "起初" },
+            { "en": "in the end", "cn": "最终" },
+            { "en": "meanwhile", "cn": "与此同时" },
+            { "en": "before long", "cn": "不久以后" },
+            { "en": "soon after", "cn": "不久之后" },
+            { "en": "at the same time", "cn": "同时" },
+            { "en": "by the time", "cn": "到……的时候" }
+          ]
+        },
+        {
+          "name": "书信与邮件用语",
+          "items": [
+            { "en": "dear...", "cn": "亲爱的……（称呼）" },
+            { "en": "best wishes", "cn": "祝好（结尾祝福语）" },
+            { "en": "yours sincerely", "cn": "你真诚的（正式结尾）" },
+            { "en": "I'm writing to...", "cn": "我写信是为了……" },
+            { "en": "thank you for...", "cn": "感谢你……" },
+            { "en": "looking forward to hearing from you", "cn": "期待你的回复" },
+            { "en": "please reply soon", "cn": "请尽快回复" },
+            { "en": "take care", "cn": "保重" },
+            { "en": "with love", "cn": "爱你的（亲密结尾）" },
+            { "en": "hope to hear from you soon", "cn": "希望很快收到你的来信" },
+            { "en": "see you soon", "cn": "期待很快见到你" },
+            { "en": "give my regards to...", "cn": "代我向……问好" }
+          ]
+        },
+        {
+          "name": "讨论与互动",
+          "items": [
+            { "en": "what do you think of...?", "cn": "你觉得……怎么样？" },
+            { "en": "do you agree with...?", "cn": "你同意……吗？" },
+            { "en": "I see your point", "cn": "我明白你的意思" },
+            { "en": "I'm not sure about that", "cn": "对此我不太确定" },
+            { "en": "exactly", "cn": "正是如此" },
+            { "en": "actually", "cn": "其实；实际上" },
+            { "en": "by the way", "cn": "顺便说一下" },
+            { "en": "sorry to interrupt", "cn": "抱歉打断一下" },
+            { "en": "let's move on", "cn": "我们继续下一个话题吧" },
+            { "en": "to sum up", "cn": "总而言之" },
+            { "en": "in other words", "cn": "换句话说" },
+            { "en": "for example", "cn": "例如" }
+          ]
+        },
+        {
+          "name": "描述与评价",
+          "items": [
+            { "en": "be famous for", "cn": "因……而著名" },
+            { "en": "be known as", "cn": "被称为……" },
+            { "en": "be interested in", "cn": "对……感兴趣" },
+            { "en": "be good at", "cn": "擅长……" },
+            { "en": "be full of", "cn": "充满……" },
+            { "en": "be proud of", "cn": "为……感到骄傲" },
+            { "en": "be worried about", "cn": "担心……" },
+            { "en": "be satisfied with", "cn": "对……满意" },
+            { "en": "it is said that...", "cn": "据说……" },
+            { "en": "such as", "cn": "比如" },
+            { "en": "and so on", "cn": "等等" },
+            { "en": "in general", "cn": "总的来说" }
+          ]
+        },
+        {
+          "name": "连接与过渡",
+          "items": [
+            { "en": "firstly", "cn": "第一；首先" },
+            { "en": "secondly", "cn": "第二；其次" },
+            { "en": "thirdly", "cn": "第三" },
+            { "en": "moreover", "cn": "而且；此外" },
+            { "en": "furthermore", "cn": "此外；而且" },
+            { "en": "in addition", "cn": "另外" },
+            { "en": "besides", "cn": "除此之外" },
+            { "en": "what's more", "cn": "而且；更重要的是" },
+            { "en": "in conclusion", "cn": "总之；最后" },
+            { "en": "all in all", "cn": "总而言之" },
+            { "en": "for instance", "cn": "举例来说" },
+            { "en": "on the whole", "cn": "总体来看" }
+          ]
+        }
+      ]
+    },
+    "grammar": {
+      "title": "语法精讲",
+      "points": [
+        {
+          "title": "一般过去时与不规则动词",
+          "star": true,
+          "explain": "一般过去时表示过去某个时间发生的动作或存在的状态，常和 yesterday、last week、two days ago 等过去时间状语连用。规则动词直接加 -ed，如 play→played；不规则动词要单独记忆，如 go→went、eat→ate、see→saw。口诀：见到过去时间词，动词立刻变过去式。否定句和疑问句要请助动词 did 来帮忙，did 一出现，动词就打回原形，如 Did you go...? 而不是 Did you went...。",
+          "examples": [
+            { "en": "She went to Beijing last year.", "cn": "她去年去了北京。" },
+            { "en": "We visited the museum two days ago.", "cn": "两天前我们参观了博物馆。" },
+            { "en": "Did you see the film yesterday?", "cn": "你昨天看那部电影了吗？" }
+          ],
+          "tip": "有了 did 就不能再用过去式：Did you went 是错的，要说 Did you go。"
+        },
+        {
+          "title": "一般将来时（will / be going to）",
+          "star": true,
+          "explain": "一般将来时表示将来要发生的动作或打算。will 表示临时决定或预测，be going to 表示事先计划好的打算或有迹象的推测。比如看到天黑了说 It's going to rain（有迹象要下雨），朋友敲门你说 I'll open the door（临时决定）。将来时不会单枪匹马：will 后动词用原形；be going to 中 be 要跟着主语变化，I am、you/we/they are、he/she/it is。",
+          "examples": [
+            { "en": "I will help you with your homework.", "cn": "我会帮你做作业。" },
+            { "en": "We are going to visit grandma this weekend.", "cn": "这个周末我们打算去看奶奶。" },
+            { "en": "Look at the dark clouds. It's going to rain.", "cn": "看那乌云，要下雨了。" }
+          ],
+          "tip": "be going to 里的 be 不能忘：不能说 He going to，要说 He is going to。"
+        },
+        {
+          "title": "现在完成时",
+          "star": true,
+          "explain": "现在完成时表示过去发生的动作对现在有影响，或动作从过去持续到现在，公式是 have/has + 过去分词。常和 just（刚刚）、already（已经）、yet（还，用于否定和疑问）、ever（曾经）、never（从不）、since（自从）、for（持续）连用。口诀：have/has 后接分词，just already yet 常相伴。它强调「完成的结果」而不是「过去何时发生」，所以不能和 yesterday、last year 这类明确的过去时间连用。",
+          "examples": [
+            { "en": "I have just finished my homework.", "cn": "我刚做完作业。" },
+            { "en": "She has lived here for ten years.", "cn": "她在这里住了十年了。" },
+            { "en": "Have you ever been to London?", "cn": "你去过伦敦吗？" }
+          ],
+          "tip": "现在完成时不能接过去时间状语：不能说 I have seen him yesterday，要说 I saw him yesterday。"
+        },
+        {
+          "title": "比较级与最高级",
+          "star": true,
+          "explain": "两者比较用比较级，三者及以上比较用最高级。单音节词一般加 -er/-est（tall→taller→tallest）；以 e 结尾加 -r/-st；重读闭音节双写末尾字母（big→bigger→biggest）；辅音字母加 y 结尾变 y 为 i（happy→happier→happiest）；多音节词前加 more/most（more beautiful, most beautiful）。比较级常用 than，最高级前常加 the 和范围 in/of。口诀：两者之间用比较，than 来帮忙；三者以上最高级，the 字不能少。",
+          "examples": [
+            { "en": "My brother is taller than me.", "cn": "我哥哥比我高。" },
+            { "en": "This film is more interesting than that one.", "cn": "这部电影比那部更有意思。" },
+            { "en": "The Yangtze is the longest river in China.", "cn": "长江是中国最长的河流。" }
+          ],
+          "tip": "more 和 -er 不能叠用：错误 more taller，正确 taller 或 more tall 类多音节词才用 more。"
+        },
+        {
+          "title": "情态动词（must / might / could 等）",
+          "star": true,
+          "explain": "情态动词表示能力、许可、建议、推测等，常见的有 can、could、may、might、must、should、would。情态动词像「小跟班」，后面必须接动词原形，没有人称和数的变化：He can swims 是错的，要说 He can swim。must 表示「必须」，否定 mustn't 表示「禁止」，而「不必」要用 needn't 或 don't have to。might 和 could 表示不太确定的推测，语气比 may、can 弱。",
+          "examples": [
+            { "en": "You must finish your homework first.", "cn": "你必须先完成作业。" },
+            { "en": "It might rain later, so take an umbrella.", "cn": "一会儿可能下雨，带把伞吧。" },
+            { "en": "You mustn't smoke here.", "cn": "你不可以在这里吸烟。" }
+          ],
+          "tip": "mustn't 是「禁止」，不是「不必」；「不必」说 needn't，别搞混。"
+        },
+        {
+          "title": "动词不定式与动名词",
+          "star": true,
+          "explain": "动词不定式是 to + 动词原形，如 to learn；动名词是动词加 -ing 当名词用，如 swimming。有些动词后面喜欢接 to do，如 want、hope、decide、plan、agree、would like；有些动词后面习惯接 doing，如 enjoy、finish、practice、mind、keep、avoid。还有个别词两者都能接但意思不同，如 stop doing（停止做某事）和 stop to do（停下来去做另一件事）。口诀：享受练习完成用 doing，希望决定想要接 to do。",
+          "examples": [
+            { "en": "I want to learn English well.", "cn": "我想学好英语。" },
+            { "en": "She enjoys listening to music.", "cn": "她喜欢听音乐。" },
+            { "en": "We finished cleaning the classroom at five.", "cn": "我们五点打扫完了教室。" }
+          ],
+          "tip": "enjoy 后面不能用 to do：错误 enjoy to swim，正确 enjoy swimming。"
+        },
+        {
+          "title": "宾语从句",
+          "star": true,
+          "explain": "宾语从句就是在动词或介词后面接一个完整的句子当宾语，常由 that、if/whether 或特殊疑问词引导。that 引导陈述句，可省略；if/whether 引导一般疑问句，意思是「是否」；what、where、when、why、how 引导特殊疑问句。最重要的规则是语序：从句必须用陈述语序，即「引导词 + 主语 + 谓语」，不能说 Do you know where is he? 要说 Do you know where he is?。主句是过去时，从句一般也要用相应的过去时态。",
+          "examples": [
+            { "en": "I think that English is useful.", "cn": "我认为英语很有用。" },
+            { "en": "She asked me if I liked the book.", "cn": "她问我是否喜欢这本书。" },
+            { "en": "Do you know where he lives?", "cn": "你知道他住在哪里吗？" }
+          ],
+          "tip": "从句别用疑问语序：Where is he? 作宾语从句要说 where he is。"
+        },
+        {
+          "title": "定语从句（基础）",
+          "star": true,
+          "explain": "定语从句用来修饰前面的名词，让描述更具体。最常用的关系词是 who 和 which：who 指人，which 指物。比如 the girl who is singing（正在唱歌的女孩），the book which I bought yesterday（我昨天买的书）。关系词后面的从句缺什么成分就用它来补：先行词在从句中当主语或宾语。初中阶段先把 who 指人、which 指物记牢就够用了。",
+          "examples": [
+            { "en": "The girl who is wearing a red coat is my sister.", "cn": "穿红外套的女孩是我妹妹。" },
+            { "en": "This is the book which my teacher gave me.", "cn": "这就是老师给我的那本书。" },
+            { "en": "I like people who are honest and kind.", "cn": "我喜欢诚实善良的人。" }
+          ],
+          "tip": "指人别用 which、指物别用 who：the dog who 是错的，要说 the dog which。"
+        },
+        {
+          "title": "被动语态（基础）",
+          "star": true,
+          "explain": "被动语态表示主语是动作的承受者，公式是 be + 过去分词。什么时候用？当你不知道或不关心动作是谁做的，或者更关注动作本身时。比如 The bridge was built in 1990（桥 1990 年建成，谁建的不用提）。不同时态的被动语态靠变化 be 来实现：一般现在时 is/are done，一般过去时 was/were done，一般将来时 will be done。口诀：被动语态 be 加过分，be 随时态变身份。",
+          "examples": [
+            { "en": "English is spoken all over the world.", "cn": "全世界都说英语。" },
+            { "en": "The windows were cleaned this morning.", "cn": "窗户是今天早上擦的。" },
+            { "en": "The new school will be opened next year.", "cn": "新学校明年将启用。" }
+          ],
+          "tip": "被动语态别忘了 be：不能说 The book written by him，要说 The book was written by him。"
+        },
+        {
+          "title": "条件状语从句（if）",
+          "star": true,
+          "explain": "if 引导条件状语从句表示「如果……就……」，最常见的句型是主将从现：主句用一般将来时，if 从句用一般现在时表示将来。比如 If it rains tomorrow, we will stay at home. 可以把它想成「条件句里不许出现将来时」。注意 if 从句可以放句首（后面加逗号），也可以放句尾（不加逗号）。unless 等于 if not，表示「除非」。",
+          "examples": [
+            { "en": "If it rains tomorrow, we will stay at home.", "cn": "如果明天下雨，我们就待在家里。" },
+            { "en": "I will call you as soon as I arrive.", "cn": "我一到就给你打电话。" },
+            { "en": "Unless you hurry, you will miss the bus.", "cn": "除非你快点，否则会赶不上公交车。" }
+          ],
+          "tip": "主将从现别记反：If it will rain 是错的，要说 If it rains。"
+        },
+        {
+          "title": "过去进行时",
+          "star": true,
+          "explain": "过去进行时表示过去某一时刻或某段时间正在进行的动作，公式是 was/were + 动词 -ing。was 跟 I/he/she/it，were 跟 you/we/they。它常和 when/while 连用：长动作用过去进行时，短动作用一般过去时，比如 While I was doing my homework, the phone rang（一个长动作背景，一个短动作插入）。看到 at eight last night、at that time 这类「过去具体时刻」的信号词，就要想到过去进行时。",
+          "examples": [
+            { "en": "I was doing my homework at eight last night.", "cn": "昨晚八点我正在做作业。" },
+            { "en": "While she was cooking, the phone rang.", "cn": "她正在做饭时，电话响了。" },
+            { "en": "They were playing football when it started to rain.", "cn": "开始下雨时，他们正在踢足球。" }
+          ],
+          "tip": "when 后可接短动作（一般过去时），while 后接长动作（过去进行时），别混用。"
+        },
+        {
+          "title": "形容词与副词",
+          "star": true,
+          "explain": "形容词修饰名词，常放在名词前（a beautiful girl）或系动词后（The girl is beautiful）；副词修饰动词、形容词或整个句子，常放在动词后或句首（She sings beautifully）。形容词变副词的规律：多数加 -ly（quick→quickly）；辅音加 y 结尾变 y 为 i 加 -ly（happy→happily）；good 的副词是 well，这是「叛徒」，要单独记。口诀：形容词爱名词，副词爱动词，good 变 well 要牢记。",
+          "examples": [
+            { "en": "She is a careful driver.", "cn": "她是个细心的司机。" },
+            { "en": "She drives carefully.", "cn": "她开车很细心。" },
+            { "en": "He plays the piano very well.", "cn": "他钢琴弹得很好。" }
+          ],
+          "tip": "good 是形容词、well 是副词：不能说 He plays good，要说 He plays well。"
+        }
+      ]
+    },
+    "writing": {
+      "title": "写作指导",
+      "types": [
+        {
+          "name": "电子邮件",
+          "guide": "电子邮件是 PET 写作的必备题型，一般由三部分组成：开头点明写信目的（I'm writing to...），中间用 2~3 段展开具体内容，结尾表达期待或祝福（Looking forward to...）。注意语气要符合对象：给朋友的可以亲切随意，给老师或官方的要用礼貌用语。衔接词如 first、also、finally 能让文章更有条理。写完后检查称呼、结尾祝福语和标点是否齐全。",
+          "template": "Dear ____,\n\nThanks for your email. I'm writing to ____.\n\nFirst of all, ____. Also, ____. What's more, ____.\n\nWould you like to ____? Please let me know soon.\n\nBest wishes,\n____",
+          "sample": {
+            "title": "范文：邀请朋友参加活动",
+            "text": "Dear Tom,\n\nThanks for your email. I'm writing to invite you to our school music festival next Friday.\n\nThe festival will take place in the school hall from 6 p.m. to 8 p.m. First of all, our school band will play some popular songs. Also, there will be a singing competition between classes. What's more, the best singer will get a surprise gift.\n\nWould you like to come with me? I think it will be great fun, and you can meet my classmates too. Please let me know soon.\n\nBest wishes,\nLi Hua",
+            "notes": "结构完整，开头点明邀请目的，中间用 first of all、also、what's more 依次介绍活动内容，结尾提出请求并期待回复，衔接自然。"
+          }
+        },
+        {
+          "name": "故事续写",
+          "guide": "故事续写要先读懂给出的开头，抓住人物、时间、地点三个要素，然后顺着情节合理想象。故事要有起承转合：开头交代背景，中间设置一个小波折或意外，结尾解决问题并点明感受。多用过去时态（一般过去时和过去进行时交替），多用动作和心情描写让故事生动。结尾可以用一句话总结收获，如 I learned that...。",
+          "template": "It was ____ when ____. Suddenly, ____.\n\nAt first, I felt ____. Then I decided to ____. While I was ____, ____.\n\nLuckily, ____. In the end, ____.\n\nI felt very ____. I learned that ____.",
+          "sample": {
+            "title": "范文：雨中救人",
+            "text": "It was a rainy afternoon when I was walking home from school. Suddenly, I saw an old man fall down on the wet road.\n\nAt first, I felt nervous and didn't know what to do. Then I decided to help him. While I was running towards him, another student came to help too. We lifted the old man up carefully and held an umbrella for him.\n\nLuckily, the old man was not badly hurt. His home was nearby, so we walked him back together. In the end, he thanked us again and again with a big smile.\n\nI felt very proud. I learned that helping others makes us happy.",
+            "notes": "情节完整有波折：发现老人摔倒—紧张犹豫—决定帮忙—圆满解决。时态以一般过去时为主，穿插过去进行时对场景描写细腻。"
+          }
+        },
+        {
+          "name": "观点短文",
+          "guide": "观点短文就是围绕一个话题发表自己的看法，常用三段式：第一段用 in my opinion 亮明观点；第二段用 2~3 个理由支撑观点，每个理由配一个例子；第三段总结并升华。理由之间用 firstly、secondly、what's more 连接。表达观点要客观礼貌，可以用 I think、in my view、it seems to me that 等句型，避免过于绝对的说法。",
+          "template": "Nowadays, many people talk about ____. In my opinion, ____.\n\nFirstly, ____. For example, ____. Secondly, ____. What's more, ____.\n\nIn conclusion, ____. I believe that ____.",
+          "sample": {
+            "title": "范文：学生是否应该用手机",
+            "text": "Nowadays, many people talk about whether students should use mobile phones at school. In my opinion, students can use them, but only in a right way.\n\nFirstly, phones help us learn. For example, we can look up new words and watch English videos online. Secondly, phones make it easy to keep in touch with our parents. What's more, there are many useful apps that help us manage our time.\n\nHowever, spending too much time on games is bad for our eyes and study. So we should use phones wisely.\n\nIn conclusion, phones are useful tools. I believe that we can enjoy them if we use them properly.",
+            "notes": "采用「亮观点—摆理由—提注意事项—总结」的清晰结构，使用 firstly、secondly、what's more 等连接词，理由具体有例子支撑。"
+          }
+        },
+        {
+          "name": "活动报道",
+          "guide": "活动报道用第三人称客观记录一次活动，结构像一则新闻：第一段交代时间、地点、人物、事件（什么时候、谁、在哪里、做了什么）；第二段描述活动过程和精彩细节；第三段写活动反响和意义。时态主要用一般过去时，标题要简洁吸引人。常用句型有：A ... activity was held at...、Students took part in...、Everyone had a great time。",
+          "template": "A ____ activity was held at ____ on ____.\n\nDuring the activity, students ____. First, ____. Then, ____. The most exciting part was ____.\n\nEveryone had a great time. This activity not only ____ but also ____. It was really meaningful.",
+          "sample": {
+            "title": "范文：校园植树活动报道",
+            "text": "A tree-planting activity was held at our school playground last Saturday morning.\n\nDuring the activity, more than one hundred students took part. First, our teacher showed us how to plant a tree correctly. Then, we worked in groups of four. Some dug holes, some put the young trees in, and others watered them. The most exciting part was writing our wishes on small cards and hanging them on the trees.\n\nAt noon, we finished planting fifty trees. Everyone had a great time. This activity not only made our school more beautiful but also taught us to protect the environment. It was really meaningful.",
+            "notes": "第一段交代新闻要素，第二段按 first、then 顺序描述过程，结尾用 not only... but also 点出活动意义，符合报道文体。"
+          }
+        },
+        {
+          "name": "建议信",
+          "guide": "建议信通常针对对方的问题或请求给出意见，语气要真诚友善。开头先表达理解或关心（I'm sorry to hear that...）；中间用 you should、why don't you、it would be a good idea to 等句型提出 2~3 条具体建议，每条建议说明理由；结尾送上鼓励和祝福。建议要具体可行，比如「每天背十个单词」比「多努力」更实用。",
+          "template": "Dear ____,\n\nI'm sorry to hear that ____. Don't worry. Here is some advice for you.\n\nFirst of all, you should ____, because ____. Why don't you ____? It would be a good idea to ____. Besides, ____.\n\nI hope my advice can help you. I'm sure things will get better soon.\n\nBest wishes,\n____",
+          "sample": {
+            "title": "范文：给学习压力大朋友的建议信",
+            "text": "Dear Amy,\n\nI'm sorry to hear that you feel stressed about your exams. Don't worry. Here is some advice for you.\n\nFirst of all, you should make a study plan, because it helps you use time wisely. Why don't you take a short break after an hour's study? It would be a good idea to do some sports, such as running or playing badminton. Besides, talking to your parents or friends about your feelings is also helpful.\n\nRemember, health is more important than grades. I hope my advice can help you. I'm sure things will get better soon.\n\nBest wishes,\nLi Hua",
+            "notes": "先共情再建议，使用了 should、why don't you、it would be a good idea to 等多种提建议句型，建议具体且有理由，结尾鼓励温暖。"
+          }
+        },
+        {
+          "name": "海报/通知",
+          "guide": "海报和通知的目的是吸引大家参加活动，语言要简洁有力、重点突出。必备要素：标题（大字吸引人）、活动名称、时间、地点、活动内容、报名方式或联系人。多用短语和短句，适当用感叹号和号召力强的句子，如 Come and join us!、Don't miss it!。时间地点要具体明确，避免含糊。落款写上发布单位或组织者的名称。",
+          "template": "____!\n\nCome and join us!\n\nWhat: ____\nWhen: ____\nWhere: ____\n\nThere will be ____ and ____. You can also ____.\n\nIf you are interested, please ____.\n\nDon't miss it!\n____",
+          "sample": {
+            "title": "范文：英语角活动海报",
+            "text": "English Corner — Talk and Have Fun!\n\nCome and join us!\n\nWhat: English Corner — a place to practice speaking English\nWhen: 4:30 p.m. every Friday\nWhere: The school library, Room 201\n\nThere will be interesting topic talks and fun word games. You can also watch short English videos and sing English songs with us. Our foreign teacher Mr. Smith will be there too.\n\nIf you are interested, please sign up at the Students' Union office before Thursday.\n\nDon't miss it!\nThe Students' Union",
+            "notes": "标题醒目有号召力，时间地点用 what/when/where 分行列出清晰易读，内容具体，结尾用祈使句呼吁参与，符合海报文体。"
+          }
+        }
+      ]
+    },
+    "exam": {
+      "title": "备考指南",
+      "tips": [
+        "听力备考：每天听 15 分钟 PET 真题或慢速英语，先听大意再听细节，养成听前快速读题、圈出关键词的习惯。",
+        "口语备考：和搭档多练看图讨论和话题问答，回答尽量说满 2~3 句，善用 because、for example 扩展内容，别只答 yes 或 no。",
+        "阅读备考：限时做题，先看题目再回原文找答案；遇到生词别慌，通过上下文猜意思，把同义替换的考点整理到本子上。",
+        "写作备考：牢记邮件、故事、观点文三类常考模板，每周至少写两篇并请老师批改，重点检查动词时态和单复数。",
+        "时间分配：写作留出 5 分钟检查时间，阅读每篇控制在 10 分钟左右，先易后难，不要在一道题上卡太久。",
+        "常见失分点：第三人称单数漏加 s、过去时与现在完成时混用、there be 句型主谓不一致、拼写错误，写完务必回头逐项检查。",
+        "从 KET 到 PET 的过渡：PET 词汇量要求从约 1500 提升到 3500，建议提前 3~6 个月开始背 PET 核心词，并加长阅读和听力的输入量。",
+        "真题训练：考前一个月每周完成一套完整真题，严格计时并对照评分标准估分，把错题按题型归类分析原因。",
+        "考前状态：保证充足睡眠，带好准考证和文具，开考前深呼吸放松；记住 PET 考的是运用能力，遇到没见过的题也要大胆用已学过的表达去写、去说。"
+      ]
+    }
+  }
+}

@@ -1,0 +1,68 @@
+---
+title: "数组应用：统计、最值与查找"
+level: 3
+order: 4
+duration: 120
+unit: "一维数组"
+difficulty: 基础
+goals:
+  - "掌握求和、平均值、最大值最小值及其下标"
+  - "掌握分类计数（正数、偶数等个数统计）"
+  - "掌握顺序查找判断元素是否存在"
+---
+
+import Check from '../../../components/Check.astro';
+import Task from '../../../components/Task.astro';
+import Reveal from '../../../components/Reveal.astro';
+
+
+## 1. 从班级成绩单理解统计
+期末考试结束，老师拿到一叠成绩：算总分、找最高分和最低分、数及格人数、查某个分数有没有出现过——这四件事就是数组统计的四大基本功。把成绩存进数组后，所有操作都变成一句口诀：**设好初值，遍历一遍，逐个比较或累加**。
+
+## 2. 最值与下标：先假设第一个
+求最大值时，经典的「擂台法」：先让擂台主 `mx` 等于 `a[0]`，然后每个选手 `a[i]` 上台挑战，谁更大谁当新擂主。如果同时记录擂主的**下标** `pos`，赛后就能知道冠军坐在第几号位置。
+
+```cpp
+#include <iostream>
+using namespace std;
+int main() {
+    int a[5] = {7, 3, 9, 2, 9};
+    int mx = a[0], pos = 0;
+    for (int i = 1; i < 5; i++) {
+        if (a[i] > mx) { mx = a[i]; pos = i; }
+    }
+    cout << mx << ' ' << pos << '\n';  // 9 2
+}
+```
+
+> 教学提醒：循环从 `i = 1` 开始（0 号已经在擂台上了）。找最小值用 `a[i] < mn`，逻辑完全一样。
+
+## 3. 计数与查找
+**计数**：设置计数器 `cnt` 初值为 0，遍历中每遇到一个满足条件的元素就 `cnt++`。判断条件写在 if 里，想数什么就写什么。
+
+**查找**：想知道数组里有没有某个数 x？从头到尾比一遍——找到就输出「有」并可以立即结束；全部走完都没找到，输出「没有」。这个算法叫**顺序查找**。
+
+```cpp
+int cnt = 0;
+for (int i = 0; i < n; i++)
+    if (a[i] % 2 == 0) cnt++;   // 统计偶数个数
+
+bool found = false;
+for (int i = 0; i < n; i++)
+    if (a[i] == x) { found = true; break; }
+```
+
+<Check question="用擂台法求最大值时，擂台主 mx 的合理初始值是？" options={['0','a[0]','-1','n']} answer={1} explanation="把数组第一个元素当作初始擂主最稳妥；若数据全是负数，初始化为0就会出错。" />
+
+<Check question="要在数组中查找 x 是否存在，顺序查找最坏情况下要比较多少次？" options={['1 次','n 次','n/2 次','log n 次']} answer={1} explanation="最坏情况是 x 在最后一个位置或不存在，需要把 n 个元素都比完。" />
+
+<Task title="最大值与位置" input="第一行正整数 n（n≤100），第二行 n 个整数（保证互不相同）" output="两个数：最大值、最大值的下标（下标从 0 开始，空格分隔）" sampleIn="5
+7 3 9 2 8" sampleOut="9 2">用擂台法遍历数组，记录最大值和它第一次出现的下标。</Task>
+<Reveal label="查看参考程序与思路"><pre><code>{`#include <iostream>\nusing namespace std;\nint main(){\n    int n, a[105];\n    cin>>n;\n    for(int i=0;i<n;i++) cin>>a[i];\n    int mx=a[0], pos=0;\n    for(int i=1;i<n;i++){\n        if(a[i]>mx){ mx=a[i]; pos=i; }\n    }\n    cout<<mx<<' '<<pos<<'\\n';\n}`}</code></pre>擂台法：mx 与 pos 同步更新。遍历到 i=2 时 a[2]=9 超过 7，擂主换成 9 号位 2，之后无人能挑战成功。样例输出 9 2。</Reveal>
+
+## 4. 课后巩固
+1. 把擂台法改写成求**最小值**及下标，并说明改了哪两个符号。
+2. 编程：读入 n 个数，输出正数的个数（注意 0 既不是正数也不是负数）。
+3. 编程：读入 n 个数和整数 x，输出 x 在数组中**第一次出现**的下标；不存在则输出 -1。
+4. 求平均值时为什么要先累加成 int 或 long long 再除以 n？试试 `sum / n` 与 `1.0 * sum / n` 的差别。
+5. 思考：为什么记录「下标」往往比记录「值」更有用？举一个例子。

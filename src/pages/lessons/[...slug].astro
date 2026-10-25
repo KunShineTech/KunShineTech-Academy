@@ -1,0 +1,9 @@
+---
+import { getCollection } from 'astro:content';
+export async function getStaticPaths() {
+  const all = await getCollection('lessons');
+  return all.map((x) => ({ params: { slug: x.id.split('/')[1] } }));
+}
+const { slug } = Astro.params;
+return Astro.redirect(`/gesp/level/2/lessons/${slug}`);
+---

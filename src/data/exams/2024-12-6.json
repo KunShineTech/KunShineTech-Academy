@@ -1,0 +1,267 @@
+{
+ "session": "2024-12",
+ "level": 6,
+ "file": "GESP 2024年12月认证C++ 6级真题.pdf",
+ "legacy": false,
+ "choiceCount": 15,
+ "judgeCount": 10,
+ "progCount": 2,
+ "choiceAnswers": "DCCBBBACABBDCBC",
+ "judgeAnswers": "",
+ "choice": [
+  {
+   "n": 1,
+   "stem": "面向对象编程(OOP)是一种特殊的程序设计方法。下面(   )不是重要的OOP特性。",
+   "options": [
+    "抽象",
+    "封装",
+    "继承",
+    "模块化"
+   ],
+   "answer": 3,
+   "analysis": "选D。抽象、封装、继承（及多态）是OOP的重要特性；模块化是更一般的软件设计思想，不属于OOP特有特性。"
+  },
+  {
+   "n": 2,
+   "stem": "以下关于C++中类的说法，哪一项是正确的？",
+   "options": [
+    "类中定义的所有成员变量和成员函数默认是public 访问权限。",
+    "类的构造函数必须显式声明返回类型为void 。",
+    "在C++中，类的数据一般设置为私有，其公有成员函数提供访问私有数据的唯一途径。",
+    "同一个类的实例有各自的成员数据和成员函数。"
+   ],
+   "answer": 2,
+   "analysis": "选C。类的良好封装习惯是数据成员设为private，通过公有成员函数访问；class成员默认private（A错），构造函数无返回类型（B错），成员函数代码被所有实例共享（D错）。"
+  },
+  {
+   "n": 3,
+   "stem": "以下C++代码段中存在语法错误或逻辑错误，（  ）是正确的。\n#include <iostream>\n1\nusing namespace std;\n2\nclass MyClass {\n3\npublic:\n4\nMyClass() {\n5\ncout << \"Constructor called!\" << endl;\n6\n}\n7\nvoid display() {\n8\ncout << \"Display function called!\" << endl;\n9\n}\n10\n};\n11\nint main() {\n12\nMyClass* obj = NULL;\n13\nobj->display();\n14\nreturn 0;\n15\n}\n16",
+   "options": [
+    "NULL 在C++中无法用于指针初始化，应使用 nullptr 。",
+    "obj 的定义应该是 MyClass obj; 而不是指针类型。",
+    "obj->display() 语句存在空指针访问错误，obj 应该初始化为一个有效的对象。",
+    "obj->display() 语句会调用 display() 函数，但它没有输出任何内容。"
+   ],
+   "answer": 2,
+   "analysis": "选C。obj是NULL指针，obj->display()属于空指针访问，应先把obj初始化为有效对象；NULL可用于指针初始化（A错），定义成指针本身不是问题（B错）。"
+  },
+  {
+   "n": 4,
+   "stem": "阅读以下代码，下面哪一项是正确的？\nvoid processData() {\n1\nstack<int> s;\n2\nqueue<int> q;\n3\nfor (int i = 1; i <= 5; ++i) {\n4\ns.push(i);\n5\nq.push(i);\n6\n}\n7\nwhile (!s.empty()) {\n8\ncout << \"Stack pop: \" << s.top() << endl;\n9\ns.pop();\n10\n}\n11\nwhile (!q.empty()) {\n12\ncout << \"Queue pop: \" << q.front() << endl;\n13\nq.pop();\n14\n}\n15\n}\n16",
+   "options": [
+    "栈s 的输出顺序是 1 2 3 4 5 ，队列q 的输出顺序是 5 4 3 2 1 。",
+    "栈s 的输出顺序是 5 4 3 2 1 ，队列q 的输出顺序是 1 2 3 4 5 。",
+    "栈s 的输出顺序是 1 2 3 4 5 ，队列q 的输出顺序是 1 2 3 4 5 。",
+    "栈s 的输出顺序是 1 2 3 4 5 ，队列q 的输出顺序是 1 2 3 4 5 ，程序不会正常执行。"
+   ],
+   "answer": 1,
+   "analysis": "选B。栈后进先出，弹出顺序5 4 3 2 1；队列先进先出，弹出顺序1 2 3 4 5。"
+  },
+  {
+   "n": 5,
+   "stem": "个节点的双向循环链，在其中查找某个节点的平均时间复杂度是( )。",
+   "options": [
+    "",
+    "",
+    "",
+    ""
+   ],
+   "answer": 1,
+   "analysis": "选B（O(n)）。双向循环链表没有随机访问能力，查找只能逐个节点比较，平均时间复杂度为O(n)。"
+  },
+  {
+   "n": 6,
+   "stem": "以下关于树的说法，（  ）是正确的。",
+   "options": [
+    "在⼀棵⼆叉树中，叶⼦结点的度⼀定是2。",
+    "满⼆叉树中每⼀层的结点数等于 层数 。",
+    "在⼀棵树中，所有结点的度之和等于所有叶⼦结点的度之和。",
+    "⼀棵⼆叉树的先序遍历结果和中序遍历结果⼀定相同。 集 {A, B, C, D} 的出现频率如下表所示："
+   ],
+   "answer": 1,
+   "analysis": "选B。满二叉树从根算第1层时，第k层恰有2^(k-1)个结点，这是满二叉树的基本性质（A、C、D的说法均不成立）。"
+  },
+  {
+   "n": 7,
+   "stem": "已知字符\n字符\n频率\nA\n8\nB\n3\nC\n1\nD\n6\n根据哈夫曼编码法，下面（   ）是正确的哈夫曼树。",
+   "options": [
+    "ABCD 1 / \\ 2 A   BCD 3 /  \\ 4 D   BC 5 / \\ 6 B   C 7",
+    "ABCD 1 / \\ 2 A   BCD 3 /  \\ 4 B   CD 5 / \\ 6 C   D 7",
+    "ABCD 1 / \\ 2 D   ABC 3 /  \\ 4 A   BC 5 / \\ 6 B   C 7",
+    "ABCD 1 / \\ 2 C   ABC 3 /  \\ 4 B   AD 5 / \\ 6 A   D 7"
+   ],
+   "answer": 0,
+   "analysis": "选A。按哈夫曼规则：先合并C(1)与B(3)得4，再与D(6)合并得10，最后与A(8)合并，树形与A图一致。"
+  },
+  {
+   "n": 8,
+   "stem": "上一题中各字符的哈夫曼编码是（  ）。",
+   "options": [
+    "A: 0, B: 10, C: 110, D: 111",
+    "A: 0, B: 10, C: 11, D: 10",
+    "A: 0, B: 101, C: 100, D: 11",
+    "A: 11, B: 10, C: 01, D: 00"
+   ],
+   "answer": 2,
+   "analysis": "选C。由哈夫曼树（允许左右0/1互换）可得A:0、D:11、B:101、C:100，与C选项一致。"
+  },
+  {
+   "n": 9,
+   "stem": "(  )是位格雷编码。",
+   "options": [
+    "000 001 011 010 110 111 101 100",
+    "000 001 010 011 100 101 110 111",
+    "000 001 100 101 011 010 111 110",
+    "000 010 001 011 100 110 101 111"
+   ],
+   "answer": 0,
+   "analysis": "选A。000 001 011 010 110 111 101 100相邻（含首尾）均只差一位，是格雷码；B是普通二进制序列。"
+  },
+  {
+   "n": 10,
+   "stem": "根据下面二叉树和给定的代码，\n#include <iostream>\n1\nusing namespace std;\n2\n3\nstruct TreeNode {\n4\nint val;\n5\nTreeNode* left;\n6\nTreeNode* right;\n7\nTreeNode(int x) : val(x), left(NULL), right(NULL) {}\n8\n};\n9\n10\nTreeNode* search(TreeNode* root, int val) {\n11\ncout << root->val << \" \";\n12\nif (root == NULL || root->val == val) return root;\n13\n14\nif (val < root->val)\n15\nreturn search(root->left, val);\n16\nelse\n17\nreturn search(root->right, val);\n18\n}\n19\n给定以下二叉搜索树，调用函数 search(root,7) 时，输出的结果是（  ）。\n5\n1\n/ \\\n2\n3   7\n3\n/ \\ / \\\n4\n2  4 6  8\n5",
+   "options": [
+    "",
+    "",
+    "",
+    ""
+   ],
+   "answer": 1,
+   "analysis": "选B。查找7：从根5出发，7大于5走右子树直接找到7，依次输出5 7。"
+  },
+  {
+   "n": 11,
+   "stem": "阅读以下二叉树的深度优先搜索算法，横线上应填写（   ）。\nvoid dfs(TreeNode* root) {\n1\nif (root == nullptr)\n2\nreturn;\n3\n4\nstack<TreeNode*> s;\n5\ns.push(root);\n6\nwhile (!s.empty()) {\n7\n———————————————————————— // 在此处填入代码\n8\ncout << node->value << \" \";\n9\n10\nif (node->right) s.push(node->right);\n11\nif (node->left) s.push(node->left);\n12\n}\n13\n}\n14",
+   "options": [
+    "TreeNode* node = s.top();",
+    "TreeNode* node = s.top();  s.pop();",
+    "TreeNode* node = s.front();",
+    "TreeNode* node = s.front();  s.pop();"
+   ],
+   "answer": 1,
+   "analysis": "选B。迭代DFS应取栈顶赋值给node后立即pop()：TreeNode* node = s.top(); s.pop(); 只取不弹会造成死循环。"
+  },
+  {
+   "n": 12,
+   "stem": "阅读以下二叉树的广度优先搜索的代码，横线上应填写（   ）。\n#include <queue>\n1\nvoid bfs(TreeNode* root) {\n2\nif (root == NULL) return;\n3\n4\nqueue<TreeNode*> q;\n5\nq.push(root);\n6\nwhile (!q.empty()) {\n7\n———————————————————————— // 在此处填入代码\n8\ncout << node->val << \" \";\n9\nif (node->left) {\n10\nq.push(node->left);\n11\n}\n12\nif (node->right) {\n13\nq.push(node->right);\n14\n}\n15\n}\n16\n}\n17",
+   "options": [
+    "TreeNode* node = q.top();",
+    "TreeNode* node = q.top();  q.pop();",
+    "TreeNode* node = q.front();",
+    "TreeNode* node = q.front();  q.pop();"
+   ],
+   "answer": 3,
+   "analysis": "选D。BFS用队列：先取队首front()赋给node，再pop()删除队首，然后访问并入队孩子。"
+  },
+  {
+   "n": 13,
+   "stem": "使用上题中的宽度优先搜索算法遍历以下这棵树，可能的输出是( )。\n1\n1\n/ \\\n2\n2   3\n3\n/ \\   \\\n4\n8  9    6\n5\n/ \\    \\\n6\n4  5    7\n7",
+   "options": [
+    "",
+    "",
+    "",
+    ""
+   ],
+   "answer": 2,
+   "analysis": "选C。BFS层序访问该树：1，然后2、3，然后8、9、6，最后4、5、7，即1 2 3 8 9 6 4 5 7。"
+  },
+  {
+   "n": 14,
+   "stem": "以下关于动态规划的描述，（  ）是正确的。",
+   "options": [
+    "动态规划适用于没有重叠子问题的优化问题。",
+    "动态规划要求问题具有最优子结构和无后效性。",
+    "动态规划通常通过递归来实现。",
+    "动态规划与贪心算法不同，贪心算法不适用于有重叠子问题的问题。"
+   ],
+   "answer": 1,
+   "analysis": "选B。动态规划要求问题具有最优子结构（最优解可由子问题最优解组成）和无后效性（状态确定后不受之后决策影响）。"
+  },
+  {
+   "n": 15,
+   "stem": "假设背包的最大容量\n，共有有个物品可供选择，4个物品的重量分别为\n，对应\n的价值分别为\n，则该0/1背包问题中，背包的最大价值为（  ）。",
+   "options": [
+    "70",
+    "90",
+    "100",
+    "120"
+   ],
+   "answer": 2,
+   "analysis": "选C（100）。按0-1背包dp表递推，容量8时选重量3和5的两件物品最优，最大价值40+60=100（题干具体数据以真题原件为准）。"
+  }
+ ],
+ "judge": [
+  {
+   "n": 1,
+   "stem": "构造函数是一种特殊的类成员函数，构造函数的名称和类名相同。但通过函数重载，可以创建多个同名的构\n造函数，条件是每个构造函数的参数列表不同。",
+   "answer": null,
+   "analysis": "对。构造函数与类同名，可通过参数列表不同实现重载，创建多个构造函数。"
+  },
+  {
+   "n": 2,
+   "stem": "类的静态成员函数既能访问类的静态数据成员，也能访问非静态数据成员。",
+   "answer": null,
+   "analysis": "错。静态成员函数没有this指针，不能直接访问非静态数据成员，只能直接访问静态成员。"
+  },
+  {
+   "n": 3,
+   "stem": "栈中元素的插入和删除操作都在栈的顶端进行，所以方便用单向链表实现。",
+   "answer": null,
+   "analysis": "对。栈只在栈顶插入和删除，用单向链表头插/头删即可O(1)完成，实现很方便。"
+  },
+  {
+   "n": 4,
+   "stem": "下面代码构建的树一定是完全二叉树：\nstruct TreeNode {\n1\nint value;\n2\nTreeNode* left;\n3\nTreeNode* right;\n4\n};\n5\n6\nTreeNode* buildCompleteBinaryTree() {\n7\nTreeNode* root = new TreeNode{1};\n8\nroot->left = new TreeNode{2};\n9\nroot->right = new TreeNode{3};\n10\nroot->left->left = new TreeNode{4};\n11\nroot->left->right = new TreeNode{5};\n12\nroot->right->left = new TreeNode{6};\n13\nreturn root;\n14\n}\n15",
+   "answer": null,
+   "analysis": "对。代码构造的节点1~6按层序占据连续位置，最后一层靠左填充，确为完全二叉树。"
+  },
+  {
+   "n": 5,
+   "stem": "在二叉排序树中，左子树所有节点的值都大于根节点的值，右子树所有节点的值都小于根节点的值。",
+   "answer": null,
+   "analysis": "错。说法正好相反：二叉排序树中左子树所有节点值小于根、右子树所有节点值大于根。"
+  },
+  {
+   "n": 6,
+   "stem": "在生成一个派生类的对象时，只调用派生类的构造函数。",
+   "answer": null,
+   "analysis": "错。构造派生类对象时先调用基类构造函数，再执行派生类构造函数体。"
+  },
+  {
+   "n": 7,
+   "stem": "下面的代码实现了二叉树的前序遍历，它通过递归方法访问每个节点并打印节点值。\nvoid preorder(TreeNode* root) {\n1\nif (root == NULL) return;\n2\ncout << root->val << \" \";\n3\npreorder(root->left);\n4\npreorder(root->right);\n5\n}\n6",
+   "answer": null,
+   "analysis": "对。代码先访问根、再递归左子树和右子树，是根—左—右的前序遍历。"
+  },
+  {
+   "n": 8,
+   "stem": "在⼆叉树中，宽度优先搜索算法（BFS）保证从起点到每个节点的访问路径是边数最少的路径（即最短路径）。",
+   "answer": null,
+   "analysis": "对。树（或无向无权图）中BFS按层扩展，首次到达某节点的路径就是边数最少的路径。"
+  },
+  {
+   "n": 9,
+   "stem": "在解决简单背包问题时，动态规划的状态转移⽅程如下：\ndp[i][w] = max(dp[i-1][w], dp[i-1][w - weights[i-1]] + values[i-1]);\n1\n该方程表示：在考虑第 i 个物品时，当前背包容量为 w ，如果不放物品 i ，则最大价值是 dp[i-1][w] ；如果\n放入物品 i ，则最大价值是 dp[i-1][w - weights[i-1]] + values[i-1] ，其中数组weights 和values 分\n别表示所有物品的重量和价值，数组下标从0 开始。",
+   "answer": null,
+   "analysis": "对。转移方程正确表达了不选第i件取dp[i-1][w]、选第i件取dp[i-1][w-weights[i-1]]+values[i-1]的两种决策取最大。"
+  },
+  {
+   "n": 10,
+   "stem": "栈中元素的插入和删除操作都在栈的顶端进行，所以方便用双向链表比单向链表更合适表实现。",
+   "answer": null,
+   "analysis": "错。栈顶操作只需单向next即可O(1)完成，双向链表增加prev指针并不更合适。"
+  }
+ ],
+ "programming": [
+  {
+   "n": 1,
+   "name": "树上游走",
+   "desc": ""
+  },
+  {
+   "n": 2,
+   "name": "运送物资",
+   "desc": ""
+  }
+ ]
+}

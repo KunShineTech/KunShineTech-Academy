@@ -1,0 +1,267 @@
+{
+ "session": "2025-09",
+ "level": 3,
+ "file": "GESP 2025年09月认证C++ 3级真题.pdf",
+ "legacy": false,
+ "choiceCount": 15,
+ "judgeCount": 10,
+ "progCount": 2,
+ "choiceAnswers": "CCDBBBBDACDCDCD",
+ "judgeAnswers": "",
+ "choice": [
+  {
+   "n": 1,
+   "stem": "执行以下C++代码后，c 的数值是（ ）。\nint a = 10, b = 3;\n1\ndouble c = a / b;\n2",
+   "options": [
+    "3.33333",
+    "3.333",
+    "3.0",
+    "3.3"
+   ],
+   "answer": 2,
+   "analysis": "答案 C（3.0）。a/b 是整数除法，10/3=3，再赋给 double 得 3.0；想得到 3.33… 需先把操作数转成 double。"
+  },
+  {
+   "n": 2,
+   "stem": "下列C++表达式的结果为 true 的是（ ）。",
+   "options": [
+    "(5 <= 5) && (7 < 5)",
+    "!(10 > 5)",
+    "(10 != 10) || (5 >= 3)",
+    "(5 == 3) && (4 > 2)"
+   ],
+   "answer": 2,
+   "analysis": "答案 C。A 中 7<5 为假；B 中 !(10>5)=false；D 中 5==3 为假；C 中 10!=10 为假但 5>=3 为真，|| 结果为 true。"
+  },
+  {
+   "n": 3,
+   "stem": "以下关于C++数组的说法，错误的是（ ）。",
+   "options": [
+    "数组的下标通常从 0 开始。",
+    "int arr[5]; 声明了一个包含5个整数的数组。",
+    "数组的大小必须在编译时确定，不能使用变量定义大小。",
+    "可以通过 arr[5] 来访问 int arr[5]; 数组的最后一个元素。"
+   ],
+   "answer": 3,
+   "analysis": "答案 D。int arr[5] 的合法下标是 0~4，arr[5] 越界；A、B、C 的说法均正确。"
+  },
+  {
+   "n": 4,
+   "stem": "执行以下C++代码后，变量 sum 的值是（ ）。\nint sum = 0;\n1\nfor (int i = 1; i <= 5; i += 2) {\n2\nsum += i;\n3\nint sum=0;\n4\n}\n5",
+   "options": [
+    "6",
+    "9",
+    "15",
+    "死循环"
+   ],
+   "answer": 1,
+   "analysis": "答案 B（9）。i 取 1、3、5，sum=1+3+5=9；循环体内虽又声明了同名 int sum，但它在其声明点之后才屏蔽外层变量，不影响累加。"
+  },
+  {
+   "n": 5,
+   "stem": "要正确定义一个返回两个整数中较大值的函数 max ，应该使用（ ）。",
+   "options": [
+    "void max(int a, int b) { return a > b ? a : b; }",
+    "int max(int a, int b) { if (a > b) return a; else return b; }",
+    "int max(a, b) { if (a > b) return a; else return b; }",
+    "void max(a, b) { cout << (a > b ? a : b); }"
+   ],
+   "answer": 1,
+   "analysis": "答案 B。函数要返回较大值，返回类型应为 int 且形参要写类型；A 返回类型是 void，C 参数缺类型，D 用 cout 代替返回值且类型错误。"
+  },
+  {
+   "n": 6,
+   "stem": "执行以下C++代码后，数组 arr 的内容是（ ）。\nint arr[4] = {1, 2, 3};\n1\narr[3] = arr[0] + arr[2];\n2",
+   "options": [
+    "{1, 2, 3, 3}",
+    "{1, 2, 3, 4}",
+    "{1, 2, 3, 5}",
+    "{1, 2, 3, 6}"
+   ],
+   "answer": 1,
+   "analysis": "答案 B（{1, 2, 3, 4}）。arr[3] 默认初始化为 0，再赋值为 arr[0]+arr[2]=1+3=4。"
+  },
+  {
+   "n": 7,
+   "stem": "以下关于C++函数的描述，正确的是（ ）。",
+   "options": [
+    "函数必须要有参数。",
+    "函数通过 return 语句只能返回一个值。但是可以通过很多间接的方式返回多个值。",
+    "main 函数可以被其他函数调用。",
+    "函数的定义可以直接嵌套，即一个函数内部可以真正定义另一个函数。"
+   ],
+   "answer": 1,
+   "analysis": "答案 B。函数可以没有参数；可通过引用参数、全局变量等方式间接返回多个值；main 是程序入口不能被调用，函数也不能嵌套定义。"
+  },
+  {
+   "n": 8,
+   "stem": "以下C++代码 count++ 执行的次数是（ ）。\nint i = 10;\n1\nint count=0;\n2\nwhile (i > 0) {\n3\ni -= 3;\n4\ncontinue;\n5\ncount++;\n6\n}\n7",
+   "options": [
+    "2",
+    "3",
+    "4",
+    "0"
+   ],
+   "answer": 3,
+   "analysis": "答案 D（0）。continue 跳过了 count++，循环体内只有 i-=3 生效，count 始终是 0。"
+  },
+  {
+   "n": 9,
+   "stem": "以下C++代码段的输出是（ ）。\nfor (int i = 0; i < 4; i++) {\n1\nfor (int j = 0; j <= i; j++) {\n2\ncout << j;\n3\n}\n4\ncout << \"#\";\n5\n}\n6",
+   "options": [
+    "0#01#012#0123#",
+    "1#12#123#1234#",
+    "0#1#2#3#",
+    "0#01#012#01243#"
+   ],
+   "answer": 0,
+   "analysis": "答案 A（0#01#012#0123#）。外层 i=0~3，内层 j 输出 0~i，每行结束输出 #。"
+  },
+  {
+   "n": 10,
+   "stem": "以下关于C++变量作用域的说法，错误的是（ ）。",
+   "options": [
+    "在 for 循环语句中声明的变量，其作用域仅限于该循环体内。",
+    "在函数内部声明的变量（局部变量），仅在函数内部有效。",
+    "在所有函数外部声明的变量，在整个程序中都有效。",
+    "不同函数中的局部变量可以同名，它们代表不同的内存单元"
+   ],
+   "answer": 2,
+   "analysis": "答案 C。全局变量从声明处起才有效，并非「整个程序都有效」——声明之前的代码无法访问它，故 C 错误。"
+  },
+  {
+   "n": 11,
+   "stem": "关于以下代码的说法正确的是（ ）。\nint reversed = 0;\n1\nwhile (x != 0) {\n2\nint digit = x % 10;\n3\nx /= 10;\n4\nreversed = reversed * 10 + digit;\n5\n}\n6",
+   "options": [
+    "能够反转任何位数的整数",
+    "能够反转的最大位数正整数是 2147483647",
+    "能够反转的最大位数正整数是 2147483648",
+    "能够反转的最大位数正整数是 1463847412"
+   ],
+   "answer": 3,
+   "analysis": "答案 D。反转可能溢出：2147483647 反转为 8463847412 超出 int；能反转的最大正整数是 1463847412（反转为 2147483641）。"
+  },
+  {
+   "n": 12,
+   "stem": "以下C++代码试图查找数组中的最大值，划线处应填入（ ）。\n#include <iostream>\n1\nusing namespace std;\n2\nint findMax(int arr[], int size) {\n3\nint maxVal = ________; // 划线处\n4\nfor (int i = 1; i < size; i++) {\n5\nif (arr[i] > maxVal) {\n6\nmaxVal = arr[i];\n7\n}\n8\n}\n9\nreturn maxVal;\n10\n}\n11",
+   "options": [
+    "0",
+    "arr[-1]",
+    "arr[0]",
+    "size"
+   ],
+   "answer": 2,
+   "analysis": "答案 C。maxVal 应初始化为 arr[0]，从第 2 个元素开始打擂台；初值取 0 在全负数组中会出错，arr[-1] 越界。"
+  },
+  {
+   "n": 13,
+   "stem": "以下关于C++函数的说法，正确的是（ ）。",
+   "options": [
+    "函数参数传递只有值传递一种方式。",
+    "函数的形参在函数调用结束后依然占用内存空间",
+    "没有返回值的函数必须声明为 void 类型，且不能包含 return 语句",
+    "C++11 及之后标准要求函数必须显式声明返回类型，不允许默认返回 int"
+   ],
+   "answer": 3,
+   "analysis": "答案 D。C++11 起必须显式写出返回类型（不允许默认 int）；形参调用结束后释放，void 函数也可写不带值的 return。"
+  },
+  {
+   "n": 14,
+   "stem": "以下C++代码中存在几处错误（ ）。\n#include <iostream>\n1\nusing namespace std;\n2\nint main() {\n3\nconst int SIZE = 5;\n4\nint arr[SIZE];\n5\nfor (int i = 0; i <= SIZE; i++) {\n6\narr[i] = i * 2;\n7\n}\n8\ncout << arr[SIZE] << endl;\n9\nreturn 0;\n10\n}\n11",
+   "options": [
+    "0处",
+    "1处",
+    "2处",
+    "3处"
+   ],
+   "answer": 2,
+   "analysis": "答案 C（2 处）。for 循环写成 i<=SIZE 越界（应 i<SIZE），以及 cout<<arr[SIZE] 越界；用 const int 作数组长度本身合法。"
+  },
+  {
+   "n": 15,
+   "stem": "以下关于C++中 string 类和字符数组( char[] )的说法，错误的是（ ）。",
+   "options": [
+    "string 对象可以使用 = 进行赋值，而字符数组需要使用 strcpy 。",
+    "string 对象的长度可以使用 length() 成员函数获取，而字符数组需要使用 strlen() 函数。",
+    "string 对象在内存中是动态分配空间的，因此可以自动处理字符串长度的变化。",
+    "string 对象和字符数组都可以使用 == 运算符来直接比较两个字符串的内容是否相同。"
+   ],
+   "answer": 3,
+   "analysis": "答案 D。string 的 == 比较内容；字符数组名是地址，== 比较的是地址而非内容，必须用 strcmp。"
+  }
+ ],
+ "judge": [
+  {
+   "n": 1,
+   "stem": "表达式 sizeof('a') 的结果总是 1 ，因为 'a' 是一个字符。",
+   "answer": null,
+   "analysis": "错误。C++ 中字符常量的类型是 int，sizeof('a') 等于 sizeof(int)，通常为 4。"
+  },
+  {
+   "n": 2,
+   "stem": "在C++中，所有全局变量如果没有显式初始化，都会被自动初始化为0。",
+   "answer": null,
+   "analysis": "正确。全局（静态存储期）变量不显式初始化时自动置 0。"
+  },
+  {
+   "n": 3,
+   "stem": "do { ... } while (false); 循环体内的语句至少会被执行一次。",
+   "answer": null,
+   "analysis": "正确。do-while 先执行后判断，即使条件为 false，循环体也至少执行一次。"
+  },
+  {
+   "n": 4,
+   "stem": "在C++中，++i 是一个左值表达式，而 i++ 是一个右值表达式。",
+   "answer": null,
+   "analysis": "正确。++i 返回自增后的对象本身（左值），i++ 返回旧的副本（右值）。"
+  },
+  {
+   "n": 5,
+   "stem": "对于 enum Color { RED, GREEN, BLUE }; ，RED 的类型是 int",
+   "answer": null,
+   "analysis": "错误。RED 的类型是枚举类型 Color，不是 int（参与运算时才提升为整型）。"
+  },
+  {
+   "n": 6,
+   "stem": "#define SQUARE(x) x * x 是一个安全的宏定义，SQUARE(2+3) 会正确计算出 25 。",
+   "answer": null,
+   "analysis": "错误。宏只做文本替换：SQUARE(2+3) 展开为 2+3*2+3=11，不是 25；应写成 #define SQUARE(x) ((x)*(x))。"
+  },
+  {
+   "n": 7,
+   "stem": "在C++中，char 类型的取值范围总是 -128 到 127。",
+   "answer": null,
+   "analysis": "错误。char 是否有符号由实现决定，有的平台上 char 的取值范围是 0~255。"
+  },
+  {
+   "n": 8,
+   "stem": "表达式 a > b ? a : b = 10; 一定是合法的C++代码。",
+   "answer": null,
+   "analysis": "错误。条件运算符优先级高于赋值，表达式按 (a>b ? a : (b=10)) 解析；若 b 是 const 或类型不允许赋值则编译失败，不能说「一定合法」（题干细节以真题原件为准）。"
+  },
+  {
+   "n": 9,
+   "stem": "#include \"file.h\" 和 #include <file.h> 在编译器查找头文件时的搜索策略是完全相同的。",
+   "answer": null,
+   "analysis": "错误。\"file.h\" 先在当前目录查找再查系统目录，<file.h> 直接查系统目录，两者搜索策略不同。"
+  },
+  {
+   "n": 10,
+   "stem": "在同一个作用域内，extern 声明的变量可以多次定义。",
+   "answer": null,
+   "analysis": "错误。extern 只是声明，变量在整个程序中只能定义一次，重复定义会链接报错。"
+  }
+ ],
+ "programming": [
+  {
+   "n": 1,
+   "name": "数组清零",
+   "desc": "小 A 有一个由  个非负整数构成的数组\n。他会对数组  重复进行以下操作，直到数组  只包含\n。在一次操作中，小 A 会依次完成以下三个步骤：\n1. 在数组  中找到最大的整数，记其下标为 。如果有多个最大值，那么选择其中下标最大的。\n2. 从数组  所有不为零的整数中找到最小的整数\n。\n3. 将第一步找出的\n减去\n。\n例如，数组\n需要  次操作变成\n：\n小 A 想知道，对于给定的数组 ，需要多少次操作才能使得  中的整数全部变成 。可以证明， 中整数必然可以在\n有限次操作后全部变成 。你能帮他计算出答案吗？"
+  },
+  {
+   "n": 2,
+   "name": "日历制作",
+   "desc": "小 A 想制作 2025 年每个月的日历。他希望你能编写一个程序，按照格式输出给定月份的日历。\n具体来说，第一行需要输出 MON TUE WED THU FRI SAT SUN ，分别表示星期一到星期日。接下来若干行中依次输\n出这个月所包含的日期，日期的个位需要和对应星期几的缩写最后一个字母对齐。例如，2025 年 9 月 1 日是星期\n一，在输出九月的日历时，1 号的个位 1 就需要与星期一 MON 的最后一个字母 N 对齐。九月的日历输出效果如\n下：\nMON TUE WED THU FRI SAT SUN\n1\n1   2   3   4   5   6   7\n2\n8   9  10  11  12  13  14\n3\n15  16  17  18  19  20  21\n4\n22  23  24  25  26  27  28\n5\n29  30\n6\n你能帮助小 A 完成日历的制作吗？"
+  }
+ ]
+}

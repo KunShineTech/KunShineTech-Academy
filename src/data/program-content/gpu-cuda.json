@@ -1,0 +1,270 @@
+{
+  "roadmap": [
+    {
+      "stage": "GPU 体系结构",
+      "focus": "理解众核吞吐导向的设计哲学，和 CPU 的延迟导向思维拉开差距。",
+      "topics": [
+        "SM 与 CUDA 核心",
+        "warp 与调度",
+        "吞吐 vs 延迟",
+        "内存层次总览",
+        "计算能力与兼容性"
+      ]
+    },
+    {
+      "stage": "CUDA 编程模型",
+      "focus": "掌握线程层次与核函数编写，建立正确性与调试的基本功。",
+      "topics": [
+        "grid/block/thread 层次",
+        "核函数与启动配置",
+        "内存传输与统一内存",
+        "错误检查",
+        "事件计时"
+      ]
+    },
+    {
+      "stage": "内存与核函数优化",
+      "focus": "围绕全局/共享/寄存器内存做性能优化，理解合并访存与占用率。",
+      "topics": [
+        "合并访存（coalesced access）",
+        "共享内存与 bank conflict",
+        "寄存器压力与占用率",
+        "tiling 与向量化加载",
+        "warp 级原语"
+      ]
+    },
+    {
+      "stage": "Warp 调度与高级执行",
+      "focus": "深入 warp 调度、CUDA Graph 与多 GPU 协作，压榨现代 GPU 的执行效率。",
+      "topics": [
+        "warp 调度与分歧",
+        "warp specialization",
+        "CUDA Graph",
+        "多 GPU 与 P2P",
+        "MPS 与并发上下文"
+      ]
+    },
+    {
+      "stage": "高级主题与生态",
+      "focus": "学习流与并发，掌握 cuBLAS/cuDNN 与 Triton 算子开发。",
+      "topics": [
+        "CUDA stream",
+        "核函数并发与图",
+        "cuBLAS/cuDNN 调用",
+        "Triton 编程模型",
+        "PyTorch 自定义算子"
+      ]
+    },
+    {
+      "stage": "性能分析与调优",
+      "focus": "用 nsys/ncu 定位瓶颈，形成 profile 驱动的迭代调优流程。",
+      "topics": [
+        "nsys 时间线分析",
+        "ncu 指标解读",
+        "GPU roofline",
+        "计算 vs 带宽瓶颈判定",
+        "调优 checklist"
+      ]
+    }
+  ],
+  "modules": [
+    {
+      "name": "GPU 硬件体系结构",
+      "summary": "GPU 是吞吐机器：大量小核、超长流水、浅缓存。理解 SM、warp 调度与延迟隐藏机制，才能理解为什么 GPU 代码要「多线程喂饱机器」。与 CPU 的延迟导向设计哲学相反，GPU 的一切取舍都服务于「单位时间处理最多数据」。",
+      "points": [
+        "SM 的组成：CUDA 核心/特殊单元/共享内存",
+        "warp 的锁步执行与分支发散",
+        "延迟隐藏：靠线程数而非缓存",
+        "L1/L2 与全局内存的层次",
+        "计算能力（Compute Capability）的含义",
+        "Tensor Core 与矩阵加速单元",
+        "寄存器文件与 banked 结构",
+        "不同架构（Ampere/Hopper/Ada）的特性演进"
+      ],
+      "tip": "写 kernel 前先用 occupancy calculator 估算一下可驻留线程数。"
+    },
+    {
+      "name": "CUDA 编程模型",
+      "summary": "CUDA 用 grid-block-thread 三层组织线程，程序员显式指定并行度。掌握启动配置、内存传输与错误检查，是所有后续工作的地基。正确的调试习惯（检查每次启动错误、用 compute-sanitizer 查竞争）能省掉大量玄学时间。",
+      "points": [
+        "gridDim/blockDim 与线程索引计算",
+        "核函数声明与 __global__/__device__",
+        "cudaMemcpy 与统一内存（managed）",
+        "cudaGetLastError 检查习惯",
+        "cudaEvent 计时方法",
+        "block 的共享内存静态/动态分配",
+        "线程束与 block 的维度选择经验",
+        "compute-sanitizer 与 memcheck 工具"
+      ],
+      "tip": "每次 kernel 启动后立刻检查错误，能省掉 90% 的调试时间。"
+    },
+    {
+      "name": "内存层次",
+      "summary": "GPU 性能的第一决定因素是访存。全局内存要合并访问，共享内存要避开 bank conflict，寄存器要控制用量——每层内存都有自己的使用手册。理解 L2 分区与只读缓存的行为，常常能找到意想不到的免费性能。",
+      "points": [
+        "全局内存的合并访问条件",
+        "共享内存的 bank 与冲突",
+        "寄存器溢出到 local memory 的代价",
+        "__restrict__ 与只读缓存",
+        "纹理内存与常量内存的适用场景",
+        "L2 缓存的容量与分区",
+        "cp.async 异步拷贝（Ampere+）",
+        "内存对齐与向量化访存（float4）"
+      ],
+      "tip": ""
+    },
+    {
+      "name": "核函数优化",
+      "summary": "优化核函数的标准路径：先保证合并访存，再用 tiling 提升数据复用，最后权衡寄存器与占用率。每一步都用计时验证。现代技巧如向量化加载、异步拷贝与软件流水，能把 kernel 推向硬件极限的 90%。",
+      "points": [
+        "访存模式优先于算术优化",
+        "tiling 与共享内存复用",
+        "占用率、寄存器与 ILP 的三角权衡",
+        "循环展开与向量化加载",
+        "warp 归约（shuffle）技巧",
+        "double buffering 软件流水",
+        "指令混合与发射效率",
+        "低占用率高 ILP 的替代策略"
+      ],
+      "tip": "把每次优化写成 benchmark 表格，避免「感觉变快了」。"
+    },
+    {
+      "name": "Warp 调度与执行效率",
+      "summary": "warp 是 GPU 的调度单位：32 个线程锁步执行，遇到分支就串行化各自路径。理解分支发散的代价、warp 级原语（shuffle/vote）的通信能力，以及现代架构的 warp specialization 技术，是从「能跑」到「跑满」的分水岭。profile 中的 divergent branch 指标，是这类问题最直接的信号。",
+      "points": [
+        "warp 调度的发射与切换",
+        "分支发散（divergence）的代价计算",
+        "__shfl_sync 与 warp 内数据交换",
+        "__ballot/__any/__all 投票原语",
+        "warp 级归约的实现",
+        "独立线程调度（Volta+）的语义变化",
+        "warp specialization 的生产者-消费者模式",
+        "active mask 与收敛函数的正确使用"
+      ],
+      "tip": "遇到 warp 内需要通信的场景，先想 shuffle，别急着开共享内存。"
+    },
+    {
+      "name": "共享内存与 Bank Conflict 专项",
+      "summary": "共享内存是 SM 内的低延迟暂存，带宽以 bank 为单位并行提供：32 个 bank 同一周期各服务一个地址，冲突就要串行重放。布局数据时让 warp 内线程访问不同 bank，是 tiling kernel 的必修课。padding 与 swizzle 是两大经典化解手段。",
+      "points": [
+        "bank 的划分与冲突的成因",
+        "步长访问的冲突分析（stride 模式）",
+        "padding 消除冲突的代价",
+        "swizzle/xor 布局技巧",
+        "共享内存的广播与多播优化",
+        "动态共享内存的 extern 声明",
+        "共享内存与 L1 的统一配置",
+        "bank conflict 的检测（ncu 指标）"
+      ],
+      "tip": "共享内存冲突不会在正确性上出错，只会在性能上咬人——必须靠 profiler 指标发现。"
+    },
+    {
+      "name": "流、并发与 CUDA Graph",
+      "summary": "单流时代 CPU 与 GPU 互相等待。用 stream 重叠计算与传输、并发执行多个 kernel，是让硬件持续饱和的关键手段。而 CUDA Graph 把重复的执行序列固化为图，一次提交消除海量 CPU 启动开销，是推理与强化学习等场景的利器。",
+      "points": [
+        "stream 的语义与依赖",
+        "H2D/D2H 与计算的重叠",
+        "事件（event）同步",
+        "核函数并发执行的条件",
+        "CUDA Graph 的启动开销优化",
+        "graph 的捕获与实例化流程",
+        "条件节点与动态分支（图更新）",
+        "多流并发的资源竞争排查"
+      ],
+      "tip": ""
+    },
+    {
+      "name": "多 GPU 与进程协作",
+      "summary": "单卡内存装不下、单卡算力不够时，多 GPU 是必然路径：NVLink 提供高带宽 P2P，NCCL 负责集合通信，MPS 让多进程共享 SM。理解拓扑（哪些卡之间有 NVLink）与通信编排，是多卡性能的第一决定因素。动手前先画出机器拓扑图，通信路径的选择胜过多数参数调优。",
+      "points": [
+        "P2P 访问与 NVLink 拓扑查询",
+        "cudaMemcpyPeer 的带宽特性",
+        "NCCL 的集合通信封装",
+        "多卡 kernel 的并行启动",
+        "MPS 的上下文共享机制",
+        "统一内存的多卡页迁移",
+        "GPU 直通的虚拟化场景",
+        "多卡通信与计算的重叠编排"
+      ],
+      "tip": ""
+    },
+    {
+      "name": "高性能库生态",
+      "summary": "cuBLAS、cuDNN、cuFFT 是 NVIDIA 数十年优化的结晶。学会调用与读其文档，把精力放在自己的差异化算子上。了解这些库的内部策略（tiling、split-k、算法选择启发式），也是学习 kernel 优化的免费教材。",
+      "points": [
+        "cuBLAS 的 GEMM 调用与布局",
+        "cuDNN 的卷积与算子描述",
+        "库的版本与算子选择",
+        "与 PyTorch 的集成方式",
+        "什么时候该自己写 kernel",
+        "cuBLASLt 的启发式算法选择",
+        "库的错误处理与workspace 管理",
+        "自定义算子与库的混用策略"
+      ],
+      "tip": ""
+    },
+    {
+      "name": "Triton 与 Python 算子开发",
+      "summary": "Triton 用 Python 语法写 GPU kernel，编译器自动处理共享内存等细节。开发效率远超 CUDA，是当今 AI 算子开发的主流选择之一。理解其 tile 抽象与编译器启发式，能写出接近手写水平的 kernel，同时把迭代速度提升一个量级。",
+      "points": [
+        "Triton 的编程模型与 tile 抽象",
+        "tl.load/store 的掩码语义",
+        "编译器自动优化（向量化、流水）",
+        "调试与性能分析",
+        "Triton vs CUDA 的适用边界",
+        "autotune 的配置与搜索空间",
+        "与 PyTorch 的 torch.compile 集成",
+        "Triton 的已知性能陷阱"
+      ],
+      "tip": ""
+    },
+    {
+      "name": "性能分析工具",
+      "summary": "nsys 看时间线（谁在等谁），ncu 看 kernel 内部（瓶颈在哪条管线）。profile 驱动的调优让每次修改都有依据。现代 ncu 的源码级归因能直接定位到具体指令的 stall 原因，把调优从艺术变成工程。",
+      "points": [
+        "nsys 的 timeline 阅读",
+        "ncu 的 SOL 指标与 roofline",
+        "内存工作集与命中率分析",
+        "分支效率与发散统计",
+        "常见瓶颈模式速查",
+        "warp stall 原因的分类解读",
+        "源码级 profile（--set full）",
+        "远程 profile 与 CI 集成"
+      ],
+      "tip": ""
+    },
+    {
+      "name": "调试与数值稳定性",
+      "summary": "GPU 程序的 bug 分两类：内存错误（越界、竞争）与数值错误（精度、非确定归约顺序）。compute-sanitizer 解决前者，理解浮点结合律失效与非确定性来源解决后者。生产级算子必须同时通过两类考验。",
+      "points": [
+        "compute-sanitizer 的 memcheck/racecheck",
+        "越界访问的常见模式",
+        "浮点加法不满足结合律的影响",
+        "原子归约的非确定性来源",
+        "NaN/Inf 的污染与定位",
+        "f fast-math 的风险",
+        "单元测试的数值容差设计",
+        "确定性模式（IEEE 严格模式）"
+      ],
+      "tip": ""
+    }
+  ],
+  "projects": [
+    "实现矩阵乘法从 naive 到 tiling+共享内存的迭代优化，逐步逼近 cuBLAS 性能。",
+    "用 CUDA 实现 softmax/layernorm 算子并接入 PyTorch 做数值与性能验证。",
+    "用 Triton 实现融合算子（如 fused ReLU + scale），与 PyTorch eager 对比。",
+    "用 nsys 分析一个训练 step 的时间线，找出 CPU-GPU 同步点并优化。",
+    "对比手写 kernel、Triton、cuBLAS 在同一 GEMM 上的性能与开发成本。",
+    "实现 warp 级归约（shuffle 版）并与共享内存版对比性能。",
+    "用 CUDA Graph 固化一个重复执行的 kernel 序列，量化启动开销的消除效果。"
+  ],
+  "pitfalls": [
+    "用 CPU 串行思维写 kernel：一个线程干太多活，不利用海量并行。",
+    "忽视全局内存访存模式，非合并访存轻松吃掉十倍性能。",
+    "共享内存使用不当造成 bank conflict，tiling 反而更慢。",
+    "只看 kernel 执行时间，忽略 H2D/D2H 传输与同步开销。",
+    "盲目追求高占用率，不看寄存器压力与 ILP 的实际平衡。",
+    "用浮点原子加做归约，非确定性结果让单元测试随机失败。",
+    "kernel 启动次数过多，CPU 发射开销成为隐形瓶颈而不自知。"
+  ]
+}

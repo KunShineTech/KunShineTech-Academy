@@ -1,0 +1,652 @@
+{
+  "sections": {
+    "words": {
+      "title": "核心单词表",
+      "intro": "按主题单元学习，每天背一单元，先会读再会用，例句跟着读三遍。",
+      "units": [
+        {
+          "name": "动物与自然",
+          "words": [
+            { "w": "cat", "pos": "n.", "cn": "猫", "eg": "The cat is cute." },
+            { "w": "dog", "pos": "n.", "cn": "狗", "eg": "My dog likes running." },
+            { "w": "bird", "pos": "n.", "cn": "鸟", "eg": "A bird can fly." },
+            { "w": "fish", "pos": "n.", "cn": "鱼", "eg": "I have two fish at home." },
+            { "w": "rabbit", "pos": "n.", "cn": "兔子", "eg": "The rabbit has long ears." },
+            { "w": "monkey", "pos": "n.", "cn": "猴子", "eg": "The monkey likes bananas." },
+            { "w": "panda", "pos": "n.", "cn": "熊猫", "eg": "Pandas live in China." },
+            { "w": "elephant", "pos": "n.", "cn": "大象", "eg": "The elephant has a long nose." },
+            { "w": "tiger", "pos": "n.", "cn": "老虎", "eg": "A tiger is a big animal." },
+            { "w": "lion", "pos": "n.", "cn": "狮子", "eg": "The lion is strong." },
+            { "w": "bear", "pos": "n.", "cn": "熊", "eg": "The bear is brown." },
+            { "w": "duck", "pos": "n.", "cn": "鸭子", "eg": "The duck can swim." },
+            { "w": "horse", "pos": "n.", "cn": "马", "eg": "I ride a horse on the farm." },
+            { "w": "sheep", "pos": "n.", "cn": "绵羊", "eg": "The sheep is white." },
+            { "w": "snake", "pos": "n.", "cn": "蛇", "eg": "A snake has no legs." },
+            { "w": "tree", "pos": "n.", "cn": "树", "eg": "There is a tree in front of my house." },
+            { "w": "flower", "pos": "n.", "cn": "花", "eg": "The flowers are beautiful." },
+            { "w": "grass", "pos": "n.", "cn": "草", "eg": "The grass is green." },
+            { "w": "sun", "pos": "n.", "cn": "太阳", "eg": "The sun is big and hot." },
+            { "w": "moon", "pos": "n.", "cn": "月亮", "eg": "The moon is bright at night." }
+          ]
+        },
+        {
+          "name": "食物与饮料",
+          "words": [
+            { "w": "rice", "pos": "n.", "cn": "米饭", "eg": "I eat rice for lunch." },
+            { "w": "bread", "pos": "n.", "cn": "面包", "eg": "I have bread for breakfast." },
+            { "w": "milk", "pos": "n.", "cn": "牛奶", "eg": "I drink milk every morning." },
+            { "w": "water", "pos": "n.", "cn": "水", "eg": "Please drink more water." },
+            { "w": "juice", "pos": "n.", "cn": "果汁", "eg": "I like apple juice." },
+            { "w": "egg", "pos": "n.", "cn": "鸡蛋", "eg": "I eat an egg every day." },
+            { "w": "cake", "pos": "n.", "cn": "蛋糕", "eg": "Here is a birthday cake for you." },
+            { "w": "apple", "pos": "n.", "cn": "苹果", "eg": "The apple is red and sweet." },
+            { "w": "banana", "pos": "n.", "cn": "香蕉", "eg": "Monkeys like bananas." },
+            { "w": "orange", "pos": "n.", "cn": "橙子", "eg": "The orange is juicy." },
+            { "w": "chicken", "pos": "n.", "cn": "鸡肉", "eg": "We have chicken for dinner." },
+            { "w": "vegetable", "pos": "n.", "cn": "蔬菜", "eg": "Eat more vegetables, please." },
+            { "w": "fruit", "pos": "n.", "cn": "水果", "eg": "Fruit is good for us." },
+            { "w": "soup", "pos": "n.", "cn": "汤", "eg": "The soup is hot." },
+            { "w": "cheese", "pos": "n.", "cn": "奶酪", "eg": "I like bread with cheese." },
+            { "w": "tea", "pos": "n.", "cn": "茶", "eg": "My grandpa likes tea." },
+            { "w": "coffee", "pos": "n.", "cn": "咖啡", "eg": "My dad drinks coffee in the morning." },
+            { "w": "ice cream", "pos": "n.", "cn": "冰激凌", "eg": "I like ice cream in summer." },
+            { "w": "hamburger", "pos": "n.", "cn": "汉堡包", "eg": "I had a hamburger for lunch." },
+            { "w": "noodles", "pos": "n.", "cn": "面条", "eg": "I like beef noodles." }
+          ]
+        },
+        {
+          "name": "家庭与人物",
+          "words": [
+            { "w": "father", "pos": "n.", "cn": "父亲", "eg": "My father is tall." },
+            { "w": "mother", "pos": "n.", "cn": "母亲", "eg": "My mother is kind." },
+            { "w": "brother", "pos": "n.", "cn": "兄弟", "eg": "My brother is ten years old." },
+            { "w": "sister", "pos": "n.", "cn": "姐妹", "eg": "My sister likes dancing." },
+            { "w": "grandfather", "pos": "n.", "cn": "（外）祖父", "eg": "My grandfather lives with us." },
+            { "w": "grandmother", "pos": "n.", "cn": "（外）祖母", "eg": "My grandmother cooks well." },
+            { "w": "uncle", "pos": "n.", "cn": "叔叔；舅舅", "eg": "My uncle lives in Beijing." },
+            { "w": "aunt", "pos": "n.", "cn": "姑母；姨母", "eg": "My aunt is a teacher." },
+            { "w": "cousin", "pos": "n.", "cn": "堂（表）兄弟姐妹", "eg": "My cousin and I are the same age." },
+            { "w": "baby", "pos": "n.", "cn": "婴儿", "eg": "The baby is sleeping." },
+            { "w": "boy", "pos": "n.", "cn": "男孩", "eg": "The boy is my classmate." },
+            { "w": "girl", "pos": "n.", "cn": "女孩", "eg": "The girl in red is my sister." },
+            { "w": "man", "pos": "n.", "cn": "男人", "eg": "That man is my uncle." },
+            { "w": "woman", "pos": "n.", "cn": "女人", "eg": "The woman is our new teacher." },
+            { "w": "family", "pos": "n.", "cn": "家庭", "eg": "I have a happy family." },
+            { "w": "friend", "pos": "n.", "cn": "朋友", "eg": "She is my best friend." },
+            { "w": "people", "pos": "n.", "cn": "人们", "eg": "Many people like pandas." },
+            { "w": "kid", "pos": "n.", "cn": "小孩", "eg": "The kids are playing games." },
+            { "w": "parent", "pos": "n.", "cn": "父（母）亲", "eg": "My parents love me very much." },
+            { "w": "child", "pos": "n.", "cn": "孩子", "eg": "The child has a new toy." }
+          ]
+        },
+        {
+          "name": "学校与学习",
+          "words": [
+            { "w": "school", "pos": "n.", "cn": "学校", "eg": "I go to school by bus." },
+            { "w": "class", "pos": "n.", "cn": "班级；课", "eg": "We have four classes in the morning." },
+            { "w": "classroom", "pos": "n.", "cn": "教室", "eg": "Our classroom is clean and bright." },
+            { "w": "teacher", "pos": "n.", "cn": "教师", "eg": "Miss Li is my English teacher." },
+            { "w": "student", "pos": "n.", "cn": "学生", "eg": "I am a student." },
+            { "w": "book", "pos": "n.", "cn": "书", "eg": "I read a book every night." },
+            { "w": "pen", "pos": "n.", "cn": "钢笔", "eg": "This is my pen." },
+            { "w": "pencil", "pos": "n.", "cn": "铅笔", "eg": "I have a new pencil." },
+            { "w": "ruler", "pos": "n.", "cn": "尺子", "eg": "The ruler is on the desk." },
+            { "w": "eraser", "pos": "n.", "cn": "橡皮", "eg": "My eraser is white." },
+            { "w": "schoolbag", "pos": "n.", "cn": "书包", "eg": "My schoolbag is heavy." },
+            { "w": "desk", "pos": "n.", "cn": "课桌；书桌", "eg": "There are forty desks in the classroom." },
+            { "w": "chair", "pos": "n.", "cn": "椅子", "eg": "The chair is yellow." },
+            { "w": "lesson", "pos": "n.", "cn": "课；一节课", "eg": "Our English lesson is fun." },
+            { "w": "homework", "pos": "n.", "cn": "家庭作业", "eg": "I do my homework after dinner." },
+            { "w": "test", "pos": "n.", "cn": "测验；考试", "eg": "I have a test on Friday." },
+            { "w": "word", "pos": "n.", "cn": "单词", "eg": "This word is new for me." },
+            { "w": "letter", "pos": "n.", "cn": "字母；信", "eg": "I write a letter to my friend." },
+            { "w": "notebook", "pos": "n.", "cn": "笔记本", "eg": "Write it in your notebook." },
+            { "w": "dictionary", "pos": "n.", "cn": "词典", "eg": "I look up the word in the dictionary." }
+          ]
+        },
+        {
+          "name": "玩具与家居",
+          "words": [
+            { "w": "toy", "pos": "n.", "cn": "玩具", "eg": "This toy car is my favourite." },
+            { "w": "ball", "pos": "n.", "cn": "球", "eg": "Let's play ball in the park." },
+            { "w": "doll", "pos": "n.", "cn": "玩偶", "eg": "My sister has a beautiful doll." },
+            { "w": "kite", "pos": "n.", "cn": "风筝", "eg": "We fly a kite on Sunday." },
+            { "w": "game", "pos": "n.", "cn": "游戏", "eg": "This game is fun." },
+            { "w": "computer", "pos": "n.", "cn": "电脑", "eg": "I do my homework on the computer." },
+            { "w": "TV", "pos": "n.", "cn": "电视", "eg": "I watch TV on weekends." },
+            { "w": "phone", "pos": "n.", "cn": "电话", "eg": "My phone is on the table." },
+            { "w": "bed", "pos": "n.", "cn": "床", "eg": "I make my bed every morning." },
+            { "w": "table", "pos": "n.", "cn": "桌子", "eg": "The table is big." },
+            { "w": "sofa", "pos": "n.", "cn": "沙发", "eg": "The sofa is soft and comfortable." },
+            { "w": "door", "pos": "n.", "cn": "门", "eg": "Please close the door." },
+            { "w": "window", "pos": "n.", "cn": "窗户", "eg": "Open the window, please." },
+            { "w": "room", "pos": "n.", "cn": "房间", "eg": "My room is tidy." },
+            { "w": "house", "pos": "n.", "cn": "房子", "eg": "My house is near the school." },
+            { "w": "box", "pos": "n.", "cn": "盒子；箱子", "eg": "There is a box under the bed." },
+            { "w": "picture", "pos": "n.", "cn": "图画；照片", "eg": "There is a picture on the wall." },
+            { "w": "lamp", "pos": "n.", "cn": "台灯", "eg": "The lamp is on the desk." },
+            { "w": "cup", "pos": "n.", "cn": "杯子", "eg": "This cup is for you." },
+            { "w": "clock", "pos": "n.", "cn": "时钟", "eg": "The clock is on the wall." }
+          ]
+        },
+        {
+          "name": "颜色与衣物",
+          "words": [
+            { "w": "red", "pos": "adj.", "cn": "红色的", "eg": "The apple is red." },
+            { "w": "blue", "pos": "adj.", "cn": "蓝色的", "eg": "The sky is blue." },
+            { "w": "yellow", "pos": "adj.", "cn": "黄色的", "eg": "The sun is yellow." },
+            { "w": "green", "pos": "adj.", "cn": "绿色的", "eg": "The grass is green." },
+            { "w": "black", "pos": "adj.", "cn": "黑色的", "eg": "My cat is black." },
+            { "w": "white", "pos": "adj.", "cn": "白色的", "eg": "The snow is white." },
+            { "w": "pink", "pos": "adj.", "cn": "粉色的", "eg": "She likes pink dresses." },
+            { "w": "purple", "pos": "adj.", "cn": "紫色的", "eg": "The grapes are purple." },
+            { "w": "brown", "pos": "adj.", "cn": "棕色的", "eg": "The bear is brown." },
+            { "w": "grey", "pos": "adj.", "cn": "灰色的", "eg": "The sky is grey today." },
+            { "w": "clothes", "pos": "n.", "cn": "衣服", "eg": "I have many new clothes." },
+            { "w": "T-shirt", "pos": "n.", "cn": "T 恤衫", "eg": "I wear a T-shirt in summer." },
+            { "w": "shirt", "pos": "n.", "cn": "衬衫", "eg": "My father wears a white shirt." },
+            { "w": "dress", "pos": "n.", "cn": "连衣裙", "eg": "Her dress is beautiful." },
+            { "w": "skirt", "pos": "n.", "cn": "短裙", "eg": "She has a red skirt." },
+            { "w": "trousers", "pos": "n.", "cn": "裤子", "eg": "These trousers are long." },
+            { "w": "shoes", "pos": "n.", "cn": "鞋子", "eg": "My shoes are black." },
+            { "w": "socks", "pos": "n.", "cn": "袜子", "eg": "The socks are white." },
+            { "w": "coat", "pos": "n.", "cn": "外套", "eg": "I wear a coat on cold days." },
+            { "w": "jacket", "pos": "n.", "cn": "夹克衫", "eg": "This jacket is new." }
+          ]
+        },
+        {
+          "name": "天气与季节",
+          "words": [
+            { "w": "weather", "pos": "n.", "cn": "天气", "eg": "How is the weather today?" },
+            { "w": "sunny", "pos": "adj.", "cn": "晴朗的", "eg": "It is sunny today." },
+            { "w": "cloudy", "pos": "adj.", "cn": "多云的", "eg": "It is cloudy outside." },
+            { "w": "windy", "pos": "adj.", "cn": "多风的", "eg": "It is windy in spring." },
+            { "w": "rainy", "pos": "adj.", "cn": "下雨的", "eg": "It is a rainy day." },
+            { "w": "snowy", "pos": "adj.", "cn": "下雪的", "eg": "It is snowy in winter." },
+            { "w": "hot", "pos": "adj.", "cn": "热的", "eg": "Summer is hot." },
+            { "w": "cold", "pos": "adj.", "cn": "冷的", "eg": "Winter is cold." },
+            { "w": "warm", "pos": "adj.", "cn": "温暖的", "eg": "Spring is warm." },
+            { "w": "cool", "pos": "adj.", "cn": "凉爽的", "eg": "Autumn is cool." },
+            { "w": "spring", "pos": "n.", "cn": "春天", "eg": "I like spring best." },
+            { "w": "summer", "pos": "n.", "cn": "夏天", "eg": "We go swimming in summer." },
+            { "w": "autumn", "pos": "n.", "cn": "秋天", "eg": "Leaves turn yellow in autumn." },
+            { "w": "winter", "pos": "n.", "cn": "冬天", "eg": "It often snows in winter." },
+            { "w": "season", "pos": "n.", "cn": "季节", "eg": "There are four seasons in a year." },
+            { "w": "rain", "pos": "n.", "cn": "雨；下雨", "eg": "I like the rain." },
+            { "w": "snow", "pos": "n.", "cn": "雪；下雪", "eg": "The snow is white." },
+            { "w": "cloud", "pos": "n.", "cn": "云", "eg": "There are many clouds in the sky." },
+            { "w": "sky", "pos": "n.", "cn": "天空", "eg": "The sky is blue." },
+            { "w": "day", "pos": "n.", "cn": "天；白天", "eg": "What a nice day!" }
+          ]
+        },
+        {
+          "name": "运动与爱好",
+          "words": [
+            { "w": "sport", "pos": "n.", "cn": "运动", "eg": "I like sports very much." },
+            { "w": "football", "pos": "n.", "cn": "足球", "eg": "Let's play football after school." },
+            { "w": "basketball", "pos": "n.", "cn": "篮球", "eg": "He is good at basketball." },
+            { "w": "tennis", "pos": "n.", "cn": "网球", "eg": "I play tennis on Saturday." },
+            { "w": "table tennis", "pos": "n.", "cn": "乒乓球", "eg": "Table tennis is popular in China." },
+            { "w": "swimming", "pos": "n.", "cn": "游泳", "eg": "Swimming is my favourite sport." },
+            { "w": "running", "pos": "n.", "cn": "跑步", "eg": "Running is good for us." },
+            { "w": "jump", "pos": "v.", "cn": "跳", "eg": "The boy can jump high." },
+            { "w": "dance", "pos": "v.", "cn": "跳舞", "eg": "She can dance well." },
+            { "w": "sing", "pos": "v.", "cn": "唱歌", "eg": "I sing songs in the morning." },
+            { "w": "song", "pos": "n.", "cn": "歌曲", "eg": "This song is beautiful." },
+            { "w": "music", "pos": "n.", "cn": "音乐", "eg": "I like listening to music." },
+            { "w": "draw", "pos": "v.", "cn": "画画", "eg": "I like drawing animals." },
+            { "w": "read", "pos": "v.", "cn": "阅读", "eg": "I read stories every day." },
+            { "w": "ride", "pos": "v.", "cn": "骑", "eg": "I ride my bike to school." },
+            { "w": "bike", "pos": "n.", "cn": "自行车", "eg": "My bike is new." },
+            { "w": "hobby", "pos": "n.", "cn": "爱好", "eg": "My hobby is reading." },
+            { "w": "match", "pos": "n.", "cn": "比赛", "eg": "We won the football match." },
+            { "w": "team", "pos": "n.", "cn": "队；组", "eg": "Our team is the best." },
+            { "w": "park", "pos": "n.", "cn": "公园", "eg": "We fly kites in the park." }
+          ]
+        },
+        {
+          "name": "职业与场所",
+          "words": [
+            { "w": "doctor", "pos": "n.", "cn": "医生", "eg": "The doctor helps sick people." },
+            { "w": "nurse", "pos": "n.", "cn": "护士", "eg": "The nurse is very kind." },
+            { "w": "driver", "pos": "n.", "cn": "司机", "eg": "The driver drives a bus." },
+            { "w": "farmer", "pos": "n.", "cn": "农民", "eg": "The farmer works on a farm." },
+            { "w": "worker", "pos": "n.", "cn": "工人", "eg": "The worker works hard." },
+            { "w": "policeman", "pos": "n.", "cn": "警察", "eg": "The policeman helps us a lot." },
+            { "w": "cook", "pos": "n.", "cn": "厨师", "eg": "The cook makes nice food." },
+            { "w": "singer", "pos": "n.", "cn": "歌手", "eg": "The singer sings very well." },
+            { "w": "postman", "pos": "n.", "cn": "邮递员", "eg": "The postman brings letters every day." },
+            { "w": "dentist", "pos": "n.", "cn": "牙医", "eg": "I see the dentist twice a year." },
+            { "w": "hospital", "pos": "n.", "cn": "医院", "eg": "My mother works in a hospital." },
+            { "w": "station", "pos": "n.", "cn": "车站", "eg": "The station is near my home." },
+            { "w": "shop", "pos": "n.", "cn": "商店", "eg": "The shop opens at nine." },
+            { "w": "supermarket", "pos": "n.", "cn": "超市", "eg": "We buy food at the supermarket." },
+            { "w": "library", "pos": "n.", "cn": "图书馆", "eg": "I read books in the library." },
+            { "w": "zoo", "pos": "n.", "cn": "动物园", "eg": "We see pandas at the zoo." },
+            { "w": "restaurant", "pos": "n.", "cn": "餐馆", "eg": "The restaurant is very clean." },
+            { "w": "farm", "pos": "n.", "cn": "农场", "eg": "There are many cows on the farm." },
+            { "w": "cinema", "pos": "n.", "cn": "电影院", "eg": "We watch films at the cinema." },
+            { "w": "museum", "pos": "n.", "cn": "博物馆", "eg": "The museum is free on Mondays." }
+          ]
+        },
+        {
+          "name": "数字时间日常",
+          "words": [
+            { "w": "number", "pos": "n.", "cn": "数字", "eg": "My favourite number is seven." },
+            { "w": "time", "pos": "n.", "cn": "时间", "eg": "What time is it now?" },
+            { "w": "hour", "pos": "n.", "cn": "小时", "eg": "The film is two hours long." },
+            { "w": "minute", "pos": "n.", "cn": "分钟", "eg": "Wait a minute, please." },
+            { "w": "week", "pos": "n.", "cn": "星期；周", "eg": "There are seven days in a week." },
+            { "w": "Monday", "pos": "n.", "cn": "星期一", "eg": "We have English on Monday." },
+            { "w": "Sunday", "pos": "n.", "cn": "星期日", "eg": "I visit my grandma on Sunday." },
+            { "w": "month", "pos": "n.", "cn": "月", "eg": "There are twelve months in a year." },
+            { "w": "year", "pos": "n.", "cn": "年", "eg": "I am ten years old." },
+            { "w": "morning", "pos": "n.", "cn": "早上", "eg": "I get up at seven in the morning." },
+            { "w": "afternoon", "pos": "n.", "cn": "下午", "eg": "We play games in the afternoon." },
+            { "w": "evening", "pos": "n.", "cn": "晚上", "eg": "I do my homework in the evening." },
+            { "w": "night", "pos": "n.", "cn": "夜晚", "eg": "The stars are bright at night." },
+            { "w": "today", "pos": "n.", "cn": "今天", "eg": "Today is my birthday." },
+            { "w": "tomorrow", "pos": "n.", "cn": "明天", "eg": "We will go to the zoo tomorrow." },
+            { "w": "yesterday", "pos": "n.", "cn": "昨天", "eg": "I saw a film yesterday." },
+            { "w": "o'clock", "pos": "adv.", "cn": "……点钟", "eg": "School starts at eight o'clock." },
+            { "w": "half", "pos": "n.", "cn": "一半", "eg": "I get up at half past six." },
+            { "w": "weekend", "pos": "n.", "cn": "周末", "eg": "I play football at the weekend." },
+            { "w": "birthday", "pos": "n.", "cn": "生日", "eg": "Happy birthday to you!" }
+          ]
+        }
+      ]
+    },
+    "phrases": {
+      "title": "必备短语",
+      "intro": "按场景记忆短语，说句子时直接套用，口语写作都用得上。",
+      "groups": [
+        {
+          "name": "日常交际",
+          "items": [
+            { "en": "good morning", "cn": "早上好" },
+            { "en": "good afternoon", "cn": "下午好" },
+            { "en": "good evening", "cn": "晚上好" },
+            { "en": "good night", "cn": "晚安" },
+            { "en": "hello / hi", "cn": "你好" },
+            { "en": "goodbye / bye", "cn": "再见" },
+            { "en": "see you later", "cn": "待会儿见" },
+            { "en": "see you tomorrow", "cn": "明天见" },
+            { "en": "how are you?", "cn": "你好吗？" },
+            { "en": "I'm fine, thank you.", "cn": "我很好，谢谢。" },
+            { "en": "nice to meet you", "cn": "很高兴认识你" },
+            { "en": "thank you very much", "cn": "非常感谢" }
+          ]
+        },
+        {
+          "name": "自我介绍",
+          "items": [
+            { "en": "My name is…", "cn": "我的名字是……" },
+            { "en": "I'm … years old.", "cn": "我……岁了。" },
+            { "en": "I come from China.", "cn": "我来自中国。" },
+            { "en": "I live in Beijing.", "cn": "我住在北京。" },
+            { "en": "I am a student.", "cn": "我是一名学生。" },
+            { "en": "I like reading.", "cn": "我喜欢阅读。" },
+            { "en": "My favourite colour is blue.", "cn": "我最喜欢的颜色是蓝色。" },
+            { "en": "I have a happy family.", "cn": "我有一个幸福的家庭。" },
+            { "en": "There are three people in my family.", "cn": "我家有三口人。" },
+            { "en": "I go to school by bus.", "cn": "我乘公交车上学。" },
+            { "en": "My hobby is drawing.", "cn": "我的爱好是画画。" },
+            { "en": "This is my friend, Lily.", "cn": "这是我的朋友莉莉。" }
+          ]
+        },
+        {
+          "name": "课堂用语",
+          "items": [
+            { "en": "Open your books, please.", "cn": "请打开书。" },
+            { "en": "Close the door, please.", "cn": "请关门。" },
+            { "en": "Sit down, please.", "cn": "请坐。" },
+            { "en": "Stand up, please.", "cn": "请起立。" },
+            { "en": "Listen carefully, please.", "cn": "请认真听。" },
+            { "en": "Look at the blackboard.", "cn": "看黑板。" },
+            { "en": "Read after me.", "cn": "跟我读。" },
+            { "en": "Raise your hand.", "cn": "举手。" },
+            { "en": "Be quiet, please.", "cn": "请安静。" },
+            { "en": "Can I ask a question?", "cn": "我可以问个问题吗？" },
+            { "en": "Sorry, I don't know.", "cn": "对不起，我不知道。" },
+            { "en": "Can you say that again?", "cn": "你能再说一遍吗？" }
+          ]
+        },
+        {
+          "name": "家庭时光",
+          "items": [
+            { "en": "have breakfast", "cn": "吃早饭" },
+            { "en": "have lunch", "cn": "吃午饭" },
+            { "en": "have dinner", "cn": "吃晚饭" },
+            { "en": "get up", "cn": "起床" },
+            { "en": "go to bed", "cn": "上床睡觉" },
+            { "en": "go home", "cn": "回家" },
+            { "en": "do homework", "cn": "做作业" },
+            { "en": "watch TV", "cn": "看电视" },
+            { "en": "help my parents", "cn": "帮助父母" },
+            { "en": "clean the room", "cn": "打扫房间" },
+            { "en": "wash the dishes", "cn": "洗碗" },
+            { "en": "take a walk", "cn": "散步" }
+          ]
+        },
+        {
+          "name": "兴趣爱好",
+          "items": [
+            { "en": "play football", "cn": "踢足球" },
+            { "en": "play the piano", "cn": "弹钢琴" },
+            { "en": "listen to music", "cn": "听音乐" },
+            { "en": "read books", "cn": "读书" },
+            { "en": "draw pictures", "cn": "画画" },
+            { "en": "go swimming", "cn": "去游泳" },
+            { "en": "ride a bike", "cn": "骑自行车" },
+            { "en": "fly a kite", "cn": "放风筝" },
+            { "en": "play games", "cn": "玩游戏" },
+            { "en": "watch films", "cn": "看电影" },
+            { "en": "take photos", "cn": "拍照" },
+            { "en": "collect stamps", "cn": "集邮" }
+          ]
+        },
+        {
+          "name": "购物点餐",
+          "items": [
+            { "en": "Can I help you?", "cn": "我能帮你吗？" },
+            { "en": "I want a T-shirt.", "cn": "我想要一件 T 恤。" },
+            { "en": "How much is it?", "cn": "多少钱？" },
+            { "en": "It's too expensive.", "cn": "太贵了。" },
+            { "en": "Can I try it on?", "cn": "我能试穿吗？" },
+            { "en": "I'll take it.", "cn": "我买了。" },
+            { "en": "What would you like?", "cn": "你想要什么？" },
+            { "en": "I'd like some noodles.", "cn": "我想要一些面条。" },
+            { "en": "A glass of juice, please.", "cn": "请来一杯果汁。" },
+            { "en": "The bill, please.", "cn": "请结账。" },
+            { "en": "Here you are.", "cn": "给你。" },
+            { "en": "Can I pay by card?", "cn": "我能刷卡吗？" }
+          ]
+        },
+        {
+          "name": "问路与交通",
+          "items": [
+            { "en": "Excuse me.", "cn": "打扰一下。" },
+            { "en": "Where is the station?", "cn": "车站在哪里？" },
+            { "en": "Is it far from here?", "cn": "离这里远吗？" },
+            { "en": "Go straight on.", "cn": "一直往前走。" },
+            { "en": "Turn left.", "cn": "向左转。" },
+            { "en": "Turn right.", "cn": "向右转。" },
+            { "en": "It's on your right.", "cn": "在你的右边。" },
+            { "en": "across from", "cn": "在……对面" },
+            { "en": "next to", "cn": "紧挨着" },
+            { "en": "by bus", "cn": "乘公交车" },
+            { "en": "by bike", "cn": "骑自行车" },
+            { "en": "on foot", "cn": "步行" }
+          ]
+        },
+        {
+          "name": "天气季节",
+          "items": [
+            { "en": "What's the weather like today?", "cn": "今天天气怎么样？" },
+            { "en": "It's sunny.", "cn": "天气晴朗。" },
+            { "en": "It's raining.", "cn": "下雨了。" },
+            { "en": "It's snowing.", "cn": "下雪了。" },
+            { "en": "It's hot in summer.", "cn": "夏天很热。" },
+            { "en": "It's cold in winter.", "cn": "冬天很冷。" },
+            { "en": "Put on your coat.", "cn": "穿上你的外套。" },
+            { "en": "Take an umbrella.", "cn": "带上雨伞。" },
+            { "en": "What a fine day!", "cn": "多好的天气！" },
+            { "en": "What's your favourite season?", "cn": "你最喜欢哪个季节？" },
+            { "en": "My favourite season is spring.", "cn": "我最喜欢春天。" },
+            { "en": "It's getting cold.", "cn": "天气变冷了。" }
+          ]
+        },
+        {
+          "name": "电话与邀请",
+          "items": [
+            { "en": "Hello, this is Tom.", "cn": "你好，我是汤姆。" },
+            { "en": "May I speak to Lily?", "cn": "请莉莉接电话好吗？" },
+            { "en": "Hold on, please.", "cn": "请稍等。" },
+            { "en": "Who's speaking?", "cn": "请问你是哪位？" },
+            { "en": "Can I take a message?", "cn": "需要我转达吗？" },
+            { "en": "Would you like to come?", "cn": "你愿意来吗？" },
+            { "en": "I'd love to.", "cn": "我很乐意。" },
+            { "en": "Sorry, I can't.", "cn": "对不起，我不能。" },
+            { "en": "See you at six.", "cn": "六点见。" },
+            { "en": "Let's meet at the school gate.", "cn": "我们在校门口见。" },
+            { "en": "Do you want to play with me?", "cn": "你想和我一起玩吗？" },
+            { "en": "Welcome to my birthday party.", "cn": "欢迎来参加我的生日聚会。" }
+          ]
+        },
+        {
+          "name": "情感表达",
+          "items": [
+            { "en": "I'm happy.", "cn": "我很高兴。" },
+            { "en": "I'm sad.", "cn": "我很难过。" },
+            { "en": "I'm sorry.", "cn": "对不起。" },
+            { "en": "That's all right.", "cn": "没关系。" },
+            { "en": "I'm excited.", "cn": "我很兴奋。" },
+            { "en": "I'm tired.", "cn": "我很累。" },
+            { "en": "I'm hungry.", "cn": "我饿了。" },
+            { "en": "I'm thirsty.", "cn": "我渴了。" },
+            { "en": "I'm busy.", "cn": "我很忙。" },
+            { "en": "I like it very much.", "cn": "我非常喜欢它。" },
+            { "en": "It's great!", "cn": "太棒了！" },
+            { "en": "Well done!", "cn": "干得好！" }
+          ]
+        }
+      ]
+    },
+    "grammar": {
+      "title": "语法精讲",
+      "points": [
+        {
+          "title": "be 动词与人称搭配",
+          "star": true,
+          "explain": "be 动词有 am、is、are 三个'变身'。记住小口诀：'我用 am，你用 are，is 跟着他、她、它；复数名词全用 are。' 比如'我开心'是 I am happy，'她开心'是 She is happy，'他们开心'要用 They are happy。",
+          "examples": [
+            { "en": "I am a student.", "cn": "我是一名学生。" },
+            { "en": "She is my friend.", "cn": "她是我的朋友。" },
+            { "en": "They are in the classroom.", "cn": "他们在教室里。" }
+          ],
+          "tip": "最容易错的是 he/she/it 后面漏掉 is，写成 He tall 就错啦，一定要补上 is。"
+        },
+        {
+          "title": "名词单复数",
+          "star": true,
+          "explain": "一个东西用单数，两个以上要在名词后面加 s 或 es。口诀：'一般加 s；s、x、ch、sh 结尾加 es；辅音字母加 y 结尾，变 y 为 i 再加 es。' 比如 one book → two books，one box → two boxes。",
+          "examples": [
+            { "en": "I have two dogs.", "cn": "我有两只狗。" },
+            { "en": "There are three boxes.", "cn": "有三个盒子。" },
+            { "en": "She has many storybooks.", "cn": "她有许多故事书。" }
+          ],
+          "tip": "以元音字母加 y 结尾的词直接加 s，如 boys、days，不要把 y 变成 i。"
+        },
+        {
+          "title": "冠词 a / an / the",
+          "star": true,
+          "explain": "冠词就像名词的小帽子。a 用在以辅音音素开头的词前，an 用在以元音音素开头的词前，口诀：'元音开头 an 来陪，辅音开头 a 跟随。' the 是'特指帽子'，指特定的、双方都知道的那个，世上独一无二的东西也要戴 the，如 the sun。",
+          "examples": [
+            { "en": "I have an apple and a banana.", "cn": "我有一个苹果和一根香蕉。" },
+            { "en": "This is the book I like.", "cn": "这是我喜欢的那本书。" },
+            { "en": "The sun is big.", "cn": "太阳很大。" }
+          ],
+          "tip": "看的是读音开头而不是字母开头，如 an hour（h 不发音）、a university。"
+        },
+        {
+          "title": "形容词与位置",
+          "star": true,
+          "explain": "形容词是名词的'化妆师'，专门描述人和东西的样子。在英语里，化妆师站在名词前面，要说 a red apple，不能说 an apple red。多个形容词排队时，先大小后颜色，如 a big red bag。",
+          "examples": [
+            { "en": "She has a cute cat.", "cn": "她有一只可爱的猫。" },
+            { "en": "It is a tall tree.", "cn": "它是一棵高高的树。" },
+            { "en": "I like the blue sky.", "cn": "我喜欢蓝色的天空。" }
+          ],
+          "tip": "形容词前面用 a 还是 an，要看形容词的第一个读音，如 an old man，不要只看后面的名词。"
+        },
+        {
+          "title": "一般现在时",
+          "star": true,
+          "explain": "一般现在时表示'天天如此、总是这样'的事，常和 always、usually、every day 做朋友。主语是他/她/它时，动词要'穿上第三人称单数的小尾巴 s'，如 She likes…；其他人称用动词原形。",
+          "examples": [
+            { "en": "He plays football every day.", "cn": "他每天踢足球。" },
+            { "en": "They live in Beijing.", "cn": "他们住在北京。" },
+            { "en": "My mother cooks dinner at six.", "cn": "我妈妈六点做晚饭。" }
+          ],
+          "tip": "助动词 does 后面的动词要'脱掉尾巴'变回原形：Does he like…? 不能写成 Does he likes…?"
+        },
+        {
+          "title": "现在进行时",
+          "star": true,
+          "explain": "现在正在发生的事，要用 be + 动词 ing。口诀：'正在做的事，be 和 ing 手拉手。' be 要随人称变身：I am reading，she is reading，they are reading。动词加 ing 前先看看末尾：以不发音 e 结尾要去 e 再加 ing，如 make → making。",
+          "examples": [
+            { "en": "I am doing my homework now.", "cn": "我现在正在做作业。" },
+            { "en": "Look! The bird is flying.", "cn": "看！那只鸟正在飞。" },
+            { "en": "They are playing basketball.", "cn": "他们正在打篮球。" }
+          ],
+          "tip": "看到 now、look、listen 这些信号词，就该用现在进行时，千万别写成 play 原形。"
+        },
+        {
+          "title": "一般过去时（be 与规则动词）",
+          "star": true,
+          "explain": "说昨天和过去的事，动词要'时光倒流'。be 动词变成 was 或 were，口诀：'单数 was，复数 were，我用 was 你也行。' 规则动词一般在后面加 ed，如 play → played，like → liked。",
+          "examples": [
+            { "en": "I was at home yesterday.", "cn": "昨天我在家。" },
+            { "en": "They were happy last week.", "cn": "上周他们很开心。" },
+            { "en": "We visited the zoo last Sunday.", "cn": "上周日我们参观了动物园。" }
+          ],
+          "tip": "一般过去时的否定句和疑问句要请 did 帮忙，did 出现后动词变回原形：Did you go…? 不能写成 Did you went…?"
+        },
+        {
+          "title": "情态动词 can",
+          "star": true,
+          "explain": "can 表示'能、会'，是个热心肠的小帮手，后面的动词永远用原形，口诀：'can 后跟原形，谁也不能带尾巴。' 否定句在 can 后加 not（cannot / can't），疑问句把 can 提到句首。",
+          "examples": [
+            { "en": "I can swim.", "cn": "我会游泳。" },
+            { "en": "She can dance very well.", "cn": "她跳舞跳得很好。" },
+            { "en": "Can you ride a bike?", "cn": "你会骑自行车吗？" }
+          ],
+          "tip": "不要写成 can to swim 或 can swimming，can 后面只能接动词原形。"
+        },
+        {
+          "title": "祈使句与 let's",
+          "star": true,
+          "explain": "命令、请求、建议别人做某事时，用祈使句：动词直接站在句首当'排头兵'，如 Open the door，句首不用加主语 you。let's 是 let us 的缩写，意思是'让我们一起……'，后面同样接动词原形。",
+          "examples": [
+            { "en": "Open your books, please.", "cn": "请打开你们的书。" },
+            { "en": "Don't run in the classroom.", "cn": "不要在教室里跑。" },
+            { "en": "Let's play football after school.", "cn": "放学后我们一起踢足球吧。" }
+          ],
+          "tip": "祈使句的否定要在动词前加 Don't，如 Don't be late，不要把 not 放在动词后面。"
+        },
+        {
+          "title": "there be 句型",
+          "star": true,
+          "explain": "想说'某地有某物'，就用 there be 句型，口诀：'有某物，there be，单数 is 复数 are。' be 动词和谁靠得近就听谁的，这叫'就近原则'：There is a pen and two books…，但 There are two books and a pen…。",
+          "examples": [
+            { "en": "There is a cat under the chair.", "cn": "椅子下面有一只猫。" },
+            { "en": "There are thirty students in my class.", "cn": "我们班有三十名学生。" },
+            { "en": "There is a desk and two chairs in the room.", "cn": "房间里有一张桌子和两把椅子。" }
+          ],
+          "tip": "there be 不能和 have 混用，'教室里有四十张桌子'是 There are forty desks in the classroom，不能说 The classroom has forty desks。"
+        },
+        {
+          "title": "方位介词",
+          "star": true,
+          "explain": "方位介词是名词的'位置指示牌'。口诀：'里面 in，上面 on，下面 under 记心间；前面 in front of，后面 behind 别弄反；旁边 next to，中间 between。' 比如书在包里是 in the bag，书在桌上是 on the desk。",
+          "examples": [
+            { "en": "The ball is under the table.", "cn": "球在桌子下面。" },
+            { "en": "The library is next to the school.", "cn": "图书馆在学校旁边。" },
+            { "en": "There is a garden in front of the house.", "cn": "房子前面有一个花园。" }
+          ],
+          "tip": "in front of 和 in the front of 不一样：前者在物体外部的前面，后者在物体内部的前面，如司机坐在汽车前部是 in the front of the bus。"
+        },
+        {
+          "title": "疑问词与特殊疑问句",
+          "star": true,
+          "explain": "特殊疑问句由疑问词打头，像七个小侦探：who 问人，what 问事和物，where 问地点，when 问时间，why 问原因，how 问方式，how many 问数量。句子结构是'疑问词 + 一般疑问句'，口诀：'疑问词站排头，be 动词跟着走。'",
+          "examples": [
+            { "en": "Where is your schoolbag?", "cn": "你的书包在哪里？" },
+            { "en": "What do you do on Sundays?", "cn": "你星期天做什么？" },
+            { "en": "How many books do you have?", "cn": "你有多少本书？" }
+          ],
+          "tip": "用 how many 提问时，后面的名词要用复数：How many dogs? Two."
+        }
+      ]
+    },
+    "writing": {
+      "title": "写作指导",
+      "types": [
+        {
+          "name": "便条 / 留言",
+          "guide": "便条通常只有三要素：称呼（如 Dear Mum）、正文、署名。正文要用一两句话写清'什么事、什么时间、什么地点'，句子要短，时态以一般现在时和将来时（will）为主。称呼顶格写，署名和日期放在右下角。",
+          "template": "Dear _____,\nI am going to _____ this afternoon.\nI will be back at _____.\nPlease don't worry about me.\nSee you!\n_____",
+          "sample": {
+            "title": "范文：给妈妈的留言",
+            "text": "Dear Mum,\nI go to the library with Lily this afternoon.\nWe read books and do our homework there.\nI will be back at five o'clock.\nPlease don't worry about me.\nThere is some juice in the fridge.\nYou can have it after work.\nSee you later!\nTom",
+            "notes": "范文简单交代了去哪、和谁、几点回来，信息完整不啰嗦；用 will be back 表示'将回来'，符合 A2 水平，落款规范。"
+          }
+        },
+        {
+          "name": "邀请卡回复",
+          "guide": "收到邀请卡后，回复要先感谢对方，再写清自己是否参加。常用句：Thank you for your invitation. / I would love to come. 如果去不了，要说 Sorry, I can't，并简单说明原因。结尾用 I can't wait to see you! 表达期待。",
+          "template": "Dear _____,\nThank you for your invitation.\nI would love to come to your _____.\nThe party is on _____ at _____.\nI will bring _____ with me.\nI can't wait to see you!\nLove,\n_____",
+          "sample": {
+            "title": "范文：回复生日聚会邀请",
+            "text": "Dear Amy,\nThank you for your invitation.\nI would love to come to your birthday party.\nThe party is on Saturday at three o'clock.\nI will bring my new camera with me.\nWe can take many photos together.\nI also have a small gift for you.\nI can't wait to see you!\nLove,\nLily",
+            "notes": "回复先谢后答，聚会的时间和地点复述得很清楚；还主动写了'带相机、送礼物'，让内容更丰满，容易得高分。"
+          }
+        },
+        {
+          "name": "失物招领",
+          "guide": "寻物启事（LOST）要写清四件事：丢失的物品、时间地点、物品特征、联系方式。如果是招领启事（FOUND），则写捡到的东西和认领地点。结尾别忘了写 Thank you very much! 和署名。",
+          "template": "LOST\nI lost my _____ on _____.\nIt is _____ and _____.\nThere is _____ in it.\nIf you find it, please call me at _____.\nThank you very much!\n_____",
+          "sample": {
+            "title": "范文：寻物启事",
+            "text": "LOST\nI lost my blue schoolbag on the playground this morning.\nIt is big and new.\nThere are three books and a pencil box in it.\nMy name card is in the bag, too.\nIf you find it, please call me at 123456 or give it to Miss Li.\nThank you very much!\nWang Ming",
+            "notes": "范文把物品、时间地点、特征、联系方式写得明明白白；用 there be 句型描述包里有什么，句式多样，值得学习。"
+          }
+        },
+        {
+          "name": "日程介绍",
+          "guide": "介绍自己的一天时，按时间顺序写，常用 first、then、in the afternoon、after dinner 这些'路标词'带路。动词用一般现在时，注意第三人称单数。最后写一句感受，如 I am busy but happy!，让文章有头有尾。",
+          "template": "My Day\nI get up at _____ every morning.\nThen I _____ at _____.\nI have _____ at _____.\nIn the afternoon, I _____.\nAfter dinner, I _____.\nI go to bed at _____.\nThis is my day. I am happy every day!",
+          "sample": {
+            "title": "范文：我的一天",
+            "text": "My Day\nI get up at seven o'clock every morning.\nThen I have breakfast with my parents.\nI go to school at half past seven.\nWe have four classes in the morning and two in the afternoon.\nI play football with my friends after school.\nI do my homework before dinner.\nI go to bed at nine o'clock.\nThis is my day. I am busy but happy!",
+            "notes": "全文按时间顺序推进，路标词用得自然；at seven o'clock、half past seven 等时间表达反复出现，练得就是考点。"
+          }
+        },
+        {
+          "name": "人物介绍",
+          "guide": "介绍人物可以从五个方面写：姓名、年龄、外貌、性格、爱好。常用句：His / Her name is…，He / She is … years old，He / She likes…，He / She can…。外貌用 tall、short、long hair 等简单词即可，结尾写一句 I like my friend very much。",
+          "template": "My Friend\nI have a good friend.\nHis / Her name is _____.\nHe / She is _____ years old.\nHe / She is _____ and _____.\nHe / She likes _____ very much.\nHe / She can _____ well.\nWe often _____ together.\nI like my friend very much.",
+          "sample": {
+            "title": "范文：我的朋友",
+            "text": "My Friend\nI have a good friend.\nHer name is Lucy.\nShe is eleven years old.\nShe is tall and thin.\nShe has long hair and big eyes.\nShe is friendly and helpful.\nShe likes reading and dancing.\nShe can dance very well.\nWe often play together after school.\nI like my friend very much.",
+            "notes": "范文从年龄、外貌、性格、爱好层层展开，条理清楚；两个形容词连用（tall and thin）让描写更生动。"
+          }
+        },
+        {
+          "name": "看图写话",
+          "guide": "先整体观察图片：什么时间、什么地点、有什么人。再按从左到右、从近到远的顺序写。用现在进行时描述正在做的动作，用 there be 写场景，适当加一两个形容词让句子更生动。最后用 What a nice day! 这样的感叹句收尾。",
+          "template": "Look at the picture.\nIt is _____ today.\nThere are _____ in the park.\nThe _____ is / are _____.\nSome children are _____.\nA boy is _____ and a girl is _____.\nThey are very _____.\nWhat a nice day!",
+          "sample": {
+            "title": "范文：公园里的一天",
+            "text": "Look at the picture.\nIt is sunny today.\nThere are many people in the park.\nThe sky is blue and the grass is green.\nSome children are flying kites.\nA boy is riding a bike and a girl is reading under a tree.\nTwo old men are playing chess near the lake.\nThey are very happy.\nWhat a nice day!",
+            "notes": "范文先写天气和整体场景，再写近处的孩子和远处的大爷，顺序清楚；现在进行时贯穿全文，正是看图写话的核心得分点。"
+          }
+        }
+      ]
+    },
+    "exam": {
+      "title": "备考指南",
+      "tips": [
+        "听力备考：每天坚持听 15 分钟课文录音或 KET 真题听力，先听大意再逐句跟读；做题前先把题目选项快速读一遍，圈出关键词，听的时候抓住 who、where、what time 等信息。",
+        "口语备考：和家人、同学用英语进行简单对话练习，自我介绍要练到脱口而出；没听清问题时可以说 Sorry, can you say that again?，不要沉默。",
+        "阅读备考：每天做一篇 KET 真题阅读，先看题再读文章，划出与题目相关的句子；遇到生词不要慌，试着根据上下文猜意思。",
+        "写作备考：每周仿写 2~3 篇 Part 6 便条和 Part 7 看图写话，背熟常用句型；写完后检查第三人称单数、名词复数和人称代词这三个高频错误。",
+        "时间分配：KET 阅读与写作共 60 分钟，建议阅读约 40 分钟、写作约 20 分钟；每道大题做完立即填涂答题卡，不要留到最后。",
+        "写作卷面：大小写和标点要规范，句首字母大写、句末加句号；宁可写简单但正确的句子，也不要盲目写长难句。",
+        "常见失分点：he/she 不分、第三人称单数忘加 s、名词该复数没加 s、a 和 an 用错，写完务必回头检查这四类错误。",
+        "词汇短语：考前把 200 个核心单词和 120 个短语过一遍，重点记自己总拼错的词；短语比单词更好得分，作文里多用学过的短语。",
+        "考试心态：遇到不会的题先跳过并做标记，全部做完再回头思考；听力放音前深呼吸，集中注意力听第一句，第一题的答案通常出现得很早。"
+      ]
+    }
+  }
+}

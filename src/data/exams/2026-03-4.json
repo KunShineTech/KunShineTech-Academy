@@ -1,0 +1,267 @@
+{
+ "session": "2026-03",
+ "level": 4,
+ "file": "GESP 2026年03月认证C++ 4级真题.pdf",
+ "legacy": false,
+ "choiceCount": 15,
+ "judgeCount": 10,
+ "progCount": 2,
+ "choiceAnswers": "BBBBABBBBBBCBBA",
+ "judgeAnswers": "",
+ "choice": [
+  {
+   "n": 1,
+   "stem": "执行下面程序后，输出为（ ）。\nint f(int x = 2){\n1\nreturn x * 3;\n2\n}\n3\n4\nint main(){\n5\ncout << f() << \" \" << f(4);\n6\n}\n7",
+   "options": [
+    "2 12",
+    "6 12",
+    "6 4",
+    "12 6"
+   ],
+   "answer": 1,
+   "analysis": "正确答案 B。f() 使用默认参数 x=2，返回 6；f(4) 返回 12，输出 \"6 12\"。默认参数在调用缺省时生效。"
+  },
+  {
+   "n": 2,
+   "stem": "执行下面代码后，输出为（ ）。\nint main() {\n1\nint a = 5;\n2\nint* p = &a;\n3\nint** q = &p;\n4\n**q += 7;\n5\ncout << a << \" \" << *p;\n6\n}\n7",
+   "options": [
+    "5 5",
+    "12 12",
+    "12 5",
+    "5 12"
+   ],
+   "answer": 1,
+   "analysis": "正确答案 B。q 是指向指针的二级指针，**q 即 a，**q += 7 后 a=12，*p 也是 12。二级指针解引用是本题考点。"
+  },
+  {
+   "n": 3,
+   "stem": "已知：\nint a[3][4] = {\n1\n{1,2,3,4},\n2\n{5,6,7,8},\n3\n{9,10,11,12}\n4\n};\n5\nint (*p)[4] = a;\n6\n第 1 页 / 共 11 页\n则表达式 *(*(p + 2) + 1) 的值为（ ）。",
+   "options": [
+    "6",
+    "10",
+    "9",
+    "11"
+   ],
+   "answer": 1,
+   "analysis": "正确答案 B。p 是指向含 4 个 int 的数组指针，*(*(p+2)+1) 即 a[2][1]，值为 10。"
+  },
+  {
+   "n": 4,
+   "stem": "执行下面程序后，输出为（ ）。\nvoid fun(int a, int &b, int *c){\n1\na += 1;\n2\nb += 2;\n3\n*c += 3;\n4\n}\n5\n6\nint main(){\n7\nint x = 1, y = 1, z = 1;\n8\nfun(x, y, &z);\n9\ncout << x << \" \" << y << \" \" << z;\n10\n}\n11",
+   "options": [
+    "2 3 4",
+    "1 3 4",
+    "2 1 4",
+    "1 1 1"
+   ],
+   "answer": 1,
+   "analysis": "正确答案 B。a 值传递不变（x=1）；b 引用传递 +2（y=3）；c 指针传递 *c += 3（z=4）。输出 \"1 3 4\"。三种传参方式同题对比是经典考法。"
+  },
+  {
+   "n": 5,
+   "stem": "执行下面程序后输出为（ ）。\nint x = 3;\n1\nvoid f(int& x){\n2\nx += 2;\n3\n}\n4\nint main(){\n5\nint x = 10;\n6\nf(x);\n7\ncout << x << \" \" << ::x;\n8\n}\n9",
+   "options": [
+    "12 3",
+    "10 5",
+    "12 5",
+    "10 3"
+   ],
+   "answer": 0,
+   "analysis": "正确答案 A。f(x) 的形参引用的是 main 的局部 x：10+2=12；::x 是全局变量仍为 3。输出 \"12 3\"。"
+  },
+  {
+   "n": 6,
+   "stem": "下列关于结构体初始化的写法，正确的是（ ）。",
+   "options": [
+    "struct Point { int x, y; }; 1 2 Point p = (1,2); 3",
+    "struct Point { int x, y; }; 1 2 Point p = {1,2}; 3 2 / 1 1 第 页 共 页",
+    "struct Point { int x, y; }; 1 2 Point p = new Point(1,2); 3",
+    "struct Point { int x, y; }; 1 2 Point p = <1,2>; 3"
+   ],
+   "answer": 1,
+   "analysis": "正确答案 B。结构体聚合初始化用花括号 Point p = {1,2};；圆括号、new 赋给对象、尖括号写法均非法。"
+  },
+  {
+   "n": 7,
+   "stem": "执行下面代码后输出为（ ）。\nstruct S { int a; int b; };\n1\n2\nvoid g(S s){ s.a += 10; }\n3\nvoid h(S& s){ s.b += 10; }\n4\n5\nint main(){\n6\nS s{1,2};\n7\ng(s);\n8\nh(s);\n9\ncout << s.a << \" \" << s.b;\n10\n}\n11",
+   "options": [
+    "11 12",
+    "1 12",
+    "11 2",
+    "1 2"
+   ],
+   "answer": 1,
+   "analysis": "正确答案 B。g 按值传参，修改的是副本，s.a 仍为 1；h 按引用传参，s.b 变为 12。输出 \"1 12\"。"
+  },
+  {
+   "n": 8,
+   "stem": "关于递推算法的描述，正确的是（ ）。",
+   "options": [
+    "递推表现为函数自己调用自己",
+    "递推从已知初值出发，利用递推关系逐步推出后续结果",
+    "递推只能用于指数复杂度问题",
+    "递推一定需要回溯"
+   ],
+   "answer": 1,
+   "analysis": "正确答案 B。递推从已知初值出发，利用递推关系逐步推出后续结果；“自己调用自己”是递归，递推不需要回溯。"
+  },
+  {
+   "n": 9,
+   "stem": "执行 climb(6) 的返回值为（ ）。\nint climb(int n){\n1\nif(n <= 2) return n;\n2\nint a = 1, b = 2, c = 0;\n3\nfor(int i = 3; i <= n; i++){\n4\nc = a + b;\n5\na = b;\n6\nb = c;\n7\n}\n8\nreturn c;\n9\n}\n10",
+   "options": [
+    "8",
+    "13",
+    "5",
+    "10 第 3 页 / 共 11 页"
+   ],
+   "answer": 1,
+   "analysis": "正确答案 B。climb(6) 即斐波那契第 6 项：3、5、8、13 递推下去，返回 13。"
+  },
+  {
+   "n": 10,
+   "stem": "某排序算法对如下数据排序（按 score 升序），则下面关于该排序算法稳定性的描述中，说法正确的是（\n）。\n初始：(90,'A'), (90,'B'), (80,'C'), (90,'D')\n排序后：(80,'C'), (90,'A'), (90,'B'), (90,'D')",
+   "options": [
+    "不稳定，因为出现了相同分数",
+    "稳定，因为相同 score 的相对顺序保持为 A 在 B 前、B 在 D 前",
+    "不稳定，因为 C 跑到前面了",
+    "无法判断"
+   ],
+   "answer": 1,
+   "analysis": "正确答案 B。排序后 90 分的 A、B、D 前后顺序与排序前一致（A 在 B 前、B 在 D 前），相等元素相对顺序不变，是稳定排序。"
+  },
+  {
+   "n": 11,
+   "stem": "下面代码试图把数组按升序进行“插入排序”，横线处应填写（ ）。\nvoid ins(int a[], int n){\n1\nfor(int i = 1; i < n; i++){\n2\nint key = a[i];\n3\nint j = i-1;\n4\nwhile(j >= 0 && __________){\n5\na[j+1] = a[j];\n6\nj--;\n7\n}\n8\na[j+1] = key;\n9\n}\n10\n}\n11",
+   "options": [
+    "a[j] < key",
+    "a[j] > key",
+    "a[j+1] > key",
+    "a[j] == key"
+   ],
+   "answer": 1,
+   "analysis": "正确答案 B。插入排序升序搬移时，大于 key 的元素后移：while (j >= 0 && a[j] > key)，保证相等元素不移动（稳定性）。"
+  },
+  {
+   "n": 12,
+   "stem": "下列代码段的时间复杂度为（ ）。\nint cnt=0;\n1\nfor(int i=0; i<n; i++){\n2\nfor(int j=0; j<n; j++){\n3\nif( (i+j) % 3 == 0) cnt++;\n4\n}\n5\n}\n6",
+   "options": [
+    "",
+    "",
+    "",
+    ""
+   ],
+   "answer": 2,
+   "analysis": "正确答案 C。两层循环各执行 n 次，共 n² 次迭代，时间复杂度 O(n²)。（选项文本以真题原件为准）"
+  },
+  {
+   "n": 13,
+   "stem": "下面哪种方式不能实现将字符串 Welcome to 2026! 输出重定向到文件 log.txt （  ）。",
+   "options": [
+    "freopen(\"log.txt\", \"w\", stdout); 1 cout << \"Welcome to 2026!\" << endl; 2 fclose(stdout); 3 第 4 页 / 共 11 页",
+    "std::ofstream outFile(\"log.txt\"); 1 cout << \"Welcome to 2026!\" << endl; 2 outFile.close(); 3",
+    "ofstream log_file(\"log.txt\"); 1 streambuf* org_cout = cout.rdbuf(); 2 cout.rdbuf(log_file.rdbuf()); 3 cout << \"Welcome to 2026!\" << endl; 4 cout.rdbuf(org_cout); 5",
+    "std::ofstream outFile(\"log.txt\"); 1 outFile << \"Welcome to 2026!\" << endl; 2 outFile.close(); 3"
+   ],
+   "answer": 1,
+   "analysis": "正确答案 B。ofstream 打开 log.txt 后仍用 cout 输出，内容写到屏幕而不是文件，不能实现重定向；其余方式均可行。"
+  },
+  {
+   "n": 14,
+   "stem": "执行下面程序，输出结果是（ ）。\nint divi(int a,int b){\n1\nif(b==0) throw 0;\n2\nreturn a/b;\n3\n}\n4\n5\nint main(){\n6\ntry{\n7\ncout << divi(10,0);\n8\n}catch(const char* msg){\n9\ncout << \"A\";\n10\n}catch(int){\n11\ncout << \"B\";\n12\n}\n13\n}\n14",
+   "options": [
+    "A",
+    "B",
+    "程序崩溃",
+    "无输出"
+   ],
+   "answer": 1,
+   "analysis": "正确答案 B。divi(10,0) 抛出 int 类型 0，匹配 catch(int)（const char* 不匹配），输出 B。"
+  },
+  {
+   "n": 15,
+   "stem": "下列函数实现排行榜中单个元素的位置调整（类似插入排序的相邻搬移）。当某玩家分数增加，需将其向\n前移动时，while 循环的条件应为（ ）。\nstruct Player{ int score; };\n1\nvoid up(Player players[], int n, int idx){\n2\nPlayer cur = players[idx];\n3\nint i = idx;\n4\nwhile( ____________________ ){\n5\nplayers[i] = players[i-1];\n6\ni--;\n7\n}\n8\nplayers[i] = cur;\n9\n}\n10",
+   "options": [
+    "i > 0 && cur.score > players[i-1].score",
+    "i > 0 && cur.score < players[i-1].score",
+    "i < n-1 && cur.score > players[i+1].score 第 5 页 / 共 11 页",
+    "i < n-1 && cur.score < players[i+1].score"
+   ],
+   "answer": 0,
+   "analysis": "正确答案 A。分数增加需向前（下标减小方向）移动：while (i > 0 && cur.score > players[i-1].score)，同时满足不越界和顺序仍未正确两个条件。"
+  }
+ ],
+ "judge": [
+  {
+   "n": 1,
+   "stem": "下面代码执行结束时，变量 a 的值变成 15。\nvoid add10(int &x) { x += 10; }\n1\n2\nint main() {\n3\nint a = 5;\n4\nadd10(a);\n5\n}\n6",
+   "answer": null,
+   "analysis": "正确。add10 的参数是引用，x += 10 直接修改 a，a 由 5 变为 15。"
+  },
+  {
+   "n": 2,
+   "stem": "引用一旦绑定某个变量，就不能再绑定其他变量。（ ）",
+   "answer": null,
+   "analysis": "正确。引用一经初始化绑定到某个变量，在其整个生命周期内不能再改绑其他变量（类似指针常量）。"
+  },
+  {
+   "n": 3,
+   "stem": "执行下面代码，输出结果为 5 。\nint main() {\n1\nint a[2][3];\n2\ncout << &a[1][2] - &a[0][1] << endl;\n3\nreturn 0;\n4\n}\n5",
+   "answer": null,
+   "analysis": "错误。a[1][2] 与 a[0][1] 的下标差为 4-1=3，即相差 3 个 int，指针差为 3，不是 5。"
+  },
+  {
+   "n": 4,
+   "stem": "下面程序可以正常编译并输出 10 。\nint calc(int x, int y = 10);\n1\nint calc(int x) { return x * 2; }\n2\nint calc(int x, int y) { return x * y; }\n3\n4\nint main() {\n5\ncout << calc(5);\n6\n}\n7",
+   "answer": null,
+   "analysis": "错误。声明带默认参数的 calc(int,int=10) 与重载的 calc(int) 同时存在时，calc(5) 匹配产生二义性，无法编译通过。"
+  },
+  {
+   "n": 5,
+   "stem": "下面程序执行后输出 2010 。\nint x = 10;\n1\nvoid f() { int x = 20; cout << x; }\n2\n3\nint main() {\n4\nf();\n5\ncout << x;\n6\n}\n7",
+   "answer": null,
+   "analysis": "正确。f 内输出局部 x=20，main 输出全局 x=10，连起来是 2010。"
+  },
+  {
+   "n": 6,
+   "stem": "在 C++ 中，如果声明了一个指针变量但没有显式初始化，该指针会自动被初始化为 nullptr 。",
+   "answer": null,
+   "analysis": "错误。只有全局/静态指针会被零初始化；局部声明的指针变量若不初始化，其值是不确定的野地址，不会自动变为 nullptr。"
+  },
+  {
+   "n": 7,
+   "stem": "下面代码没有语法错误。\n第 6 页 / 共 11 页\nstruct GameCharacter {\n1\nstring name;\n2\nint level;\n3\nfloat position_x;\n4\nfloat position_y;\n5\n6\nstruct Equipment {\n7\nstring weapon;\n8\nint attack_bonus;\n9\nint defense_bonus;\n10\n} equipment;\n11\n12\nstruct Skill {\n13\nstring name;\n14\nint damage;\n15\n} skills[8];\n16\nint skill_count;\n17\n};\n18",
+   "answer": null,
+   "analysis": "正确。结构体中嵌套定义 Equipment、Skill 等结构体并作为成员使用，语法完全合法。"
+  },
+  {
+   "n": 8,
+   "stem": "下面程序能够把 Hello 写入 data.txt 文件中。\nofstream fout(\"data.txt\");\n1\ncout << \"Hello\";\n2\nfout.close();\n3",
+   "answer": null,
+   "analysis": "错误。打开的是文件流 fout，输出却用 cout，Hello 写到屏幕而非 data.txt 文件。"
+  },
+  {
+   "n": 9,
+   "stem": "由于选择排序和插入排序的时间复杂度均为\n，在任何实际场景下两者的性能表现几乎相同，可以互相\n替代。",
+   "answer": null,
+   "analysis": "错误。虽然两者平均复杂度同为 O(n²)，但插入排序在部分有序时接近 O(n)、常数更小，选择排序比较次数固定，实际表现不同，不能互相替代。"
+  },
+  {
+   "n": 10,
+   "stem": "下面用递推方式计算斐波那契数列第 n 项的程序，时间复杂度是\n。\nint fib(int n) {\n1\nif (n <= 1) return n;\n2\nint f0 = 0, f1 = 1, cur = 0;\n3\nfor (int i = 2; i <= n; i++) {\n4\ncur = f0 + f1;\n5\nf0 = f1;\n6\nf1 = cur;\n7\n}\n8\nreturn cur;\n9\n}\n10",
+   "answer": null,
+   "analysis": "错误。递推程序从第 2 项起逐项计算到第 n 项，共进行 n-1 轮循环、每轮 O(1)，时间复杂度为 O(n)，并非题干所给公式（题干公式以真题原件为准）。"
+  }
+ ],
+ "programming": [
+  {
+   "n": 1,
+   "name": "山之谷",
+   "desc": "现有一片山地，可以视为一个\n行\n列的网格图，第  行  列的海拔为\n。\n如果一个单元格的海拔不高于其所有相邻单元格（相邻包括上、下、左、右、左上、右上、左下、右下，最多  个\n方向）的海拔，则称该单元格为山谷。\n请你数一数该片山地中有多少山谷。\n7\n/\n1\n1\n第\n页\n共\n页"
+  },
+  {
+   "n": 2,
+   "name": "礼盒排序",
+   "desc": "商店推出了许多礼盒，每个礼盒中包含 k 件商品，每件商品都有一个价格。\n现在需要对这些礼盒进行排序，排序规则如下：\n1. 先按礼盒总价格从小到大排序；\n2. 如果总价格相同，按礼盒中最贵商品的价格从小到大排序；\n3. 如果仍然相同，按礼盒中最便宜商品的价格从小到大排序；\n4. 如果仍然相同，按礼盒编号从小到大排序。\n请输出排序后的礼盒编号。"
+  }
+ ]
+}

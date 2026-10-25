@@ -1,0 +1,78 @@
+---
+title: "if 分支结构"
+level: 1
+order: 8
+duration: 120
+unit: "分支结构"
+difficulty: 基础
+goals:
+  - "掌握 if 与 if-else 语句的写法"
+  - "会用关系表达式和逻辑表达式作条件"
+  - "能写简单的嵌套 if 解决分段问题"
+---
+
+import Check from '../../../components/Check.astro';
+import Task from '../../../components/Task.astro';
+import Reveal from '../../../components/Reveal.astro';
+
+
+## 1. 程序也需要看红绿灯
+走到路口，红灯停、绿灯行——程序也有这样的「路口」，叫**分支结构**。条件成立就走一条路，不成立就走另一条路。
+
+最简单的 `if` 语句：
+
+```cpp
+if (score >= 60) {
+    cout << "及格啦！" << '\n';
+}
+```
+
+规则：条件放在小括号里；条件为**真**（true 或非 0 的数）就执行大括号里的语句块，为假就跳过。
+
+## 2. if-else：二选一
+加个 `else`，两条路必选其一：
+
+```cpp
+if (x >= 0) {
+    cout << x << '\n';      // 非负：直接输出
+} else {
+    cout << -x << '\n';     // 负数：取反变正
+}
+```
+
+这段代码输出的正是 x 的**绝对值**。条件不限于一个比较，可以是任意逻辑表达式，比如「年龄在 6 到 12 岁之间」写作 `age >= 6 && age <= 12`。
+
+## 3. 嵌套 if：套娃式判断
+一个 if 的大括号里还能再放 if，这就是**嵌套**。常见的「成绩等级」问题：
+
+```cpp
+if (score >= 90) {
+    cout << "A" << '\n';
+} else {
+    if (score >= 60) {
+        cout << "B" << '\n';
+    } else {
+        cout << "C" << '\n';
+    }
+}
+```
+
+风格提示：内层只有一句时，`} else if (条件) {` 是更清爽的合并写法。else 总与**离它最近且尚未配对**的 if 结对，写嵌套时务必用大括号把层次标清楚。
+
+## 4. 例题解析
+**问题**：读入整数成绩 score（0 到 100），输出等级：90 及以上为 A，60 到 89 为 B，不足 60 为 C。
+
+**思路**：三个分段、两条分界线，用「if—else if—else」三段式正好覆盖所有情况，不会遗漏。
+
+<Check question="if 语句的条件为 0 时，会发生什么？" options={['执行语句块','跳过语句块','编译错误','进入死循环']} answer={1} explanation="条件为 0 表示假，语句块被跳过；只有真（或非 0）才执行。" />
+<Check question="嵌套 if 中，else 与哪个 if 配对？" options={['与第一个 if 配对','与最近的未配对 if 配对','与缩进最深的 if 配对','随机配对']} answer={1} explanation="规则是就近配对，与缩进无关；写嵌套时建议都加大括号避免看错。" />
+<Check question="读入 x 输出其绝对值，当 x 为 -8 时输出？" options={['8','-8','0','1']} answer={0} explanation="负数分支输出 -x，即 -(-8)=8。" />
+
+<Task title="成绩等级" input="一个整数 score（`0 ≤ score ≤ 100`）" output="等级 A、B 或 C" sampleIn="95" sampleOut="A">按标准输出等级：90 及以上 A，60 到 89 B，不足 60 C。先写出分段的条件，再翻译成 if-else if-else。</Task>
+<Reveal label="查看参考程序与思路"><pre><code>{`#include <iostream>\nusing namespace std;\nint main(){\n    int score;\n    cin >> score;\n    if (score >= 90)\n        cout << \"A\" << '\\n';\n    else if (score >= 60)\n        cout << \"B\" << '\\n';\n    else\n        cout << \"C\" << '\\n';\n    return 0;\n}`}</code></pre>思路：从高分段往低分段依次判断，第一个成立的条件决定输出。输入 95：95 ≥ 90 成立，输出 A，与样例一致；请再验证 75 输出 B、45 输出 C。</Reveal>
+
+## 5. 课后巩固
+1. 默写 if 和 if-else 的语法格式，并说明条件为假时各走哪条路。
+2. 写出三个生活例子，分别适合「只有 if」「if-else」「嵌套 if」。
+3. 编程：读入一个整数，是 7 的倍数输出 YES，否则输出 NO（提示：回想求余运算）。
+4. 挑战：读入三个整数，输出其中最大的一个（先比较前两个，再和第三个比）。

@@ -1,0 +1,242 @@
+{
+ "session": "2026-06",
+ "level": 5,
+ "file": "GESP 2026年06月认证C++ 5级真题.pdf",
+ "legacy": false,
+ "choiceCount": 15,
+ "judgeCount": 10,
+ "progCount": 2,
+ "choiceAnswers": "BCABABCCCBBBACA",
+ "judgeAnswers": "",
+ "choice": [
+  {
+   "n": 1,
+   "stem": "假设 head != nullptr ，下面是实现单向循环链表在头节点后插入新节点的代码，横线处应填入（  ）。\nstruct Node {\n1\nint val;\n2\nNode* next;\n3\n};\n4\n5\nvoid insertAfterHead(Node* head, int x) {\n6\nNode* newNode = new Node;\n7\nnewNode->val = x;\n8\n______________________ // 在此处填入代码\n9\n}\n10",
+   "options": [
+    "newNode->next = head; 1 head->next = newNode; 2",
+    "newNode->next = head->next; 1 head->next = newNode; 2",
+    "head->next = newNode; 1 newNode->next = head->next; 2",
+    "newNode->next = head->next; 1 head = newNode; 2"
+   ],
+   "answer": 1
+  },
+  {
+   "n": 2,
+   "stem": "下面代码遍历并输出一个循环单链表，其中 head 指向链表的第一个节点，横线处应填入的是（  ）。\n1 / 11\nstruct Node {\n1\nint val;\n2\nNode* next;\n3\n};\n4\n5\nvoid printList(Node* head) {\n6\nif (head == nullptr) return;\n7\nNode* p = head;\n8\n_______________________ // 在此处填入代码\n9\ncout << endl;\n10\n}\n11",
+   "options": [
+    "while (p != nullptr) { 1 cout << p->val << \" \"; 2 p = p->next; 3 } 4",
+    "while (p->next != nullptr) { 1 cout << p->val << \" \"; 2 p = p->next; 3 } 4",
+    "do { 1 cout << p->val << \" \"; 2 p = p->next; 3 } while (p != head); 4",
+    "for (; p; p = p->next) { 1 cout << p->val << \" \"; 2 } 3"
+   ],
+   "answer": 2
+  },
+  {
+   "n": 3,
+   "stem": "双链表结点定义如下，若要删除双链表中的中间结点（非首尾节点）p ，下面写法正确的是（  ）。\nstruct Node {\n1\nint val;\n2\nNode* prev;\n3\nNode* next;\n4\n};\n5",
+   "options": [
+    "p->prev->next = p->next; 1 p->next->prev = p->prev; 2 delete p; 3",
+    "p->next->prev = p->next; 1 p->prev->next = p->prev; 2 delete p; 3 2 / 11",
+    "p->prev = p->next; 1 p->next = p->prev; 2 delete p; 3",
+    "p->next->next = p->prev; 1 p->prev->prev = p->next; 2 delete p; 3"
+   ],
+   "answer": 0
+  },
+  {
+   "n": 4,
+   "stem": "使用如下欧几里得算法求 gcd(105, 45) 时，函数 gcd(a, b) 的递归调用序列正确的是（  ）。\nint gcd(int a, int b) {\n1\nreturn b == 0 ? a : gcd(b, a % b);\n2\n}\n3",
+   "options": [
+    "gcd(105, 45) -> gcd(45, 60) -> gcd(60, 15) -> gcd(15, 0)",
+    "gcd(105, 45) -> gcd(45, 15) -> gcd(15, 0)",
+    "gcd(105, 45) -> gcd(60, 45) -> gcd(15, 45)",
+    "gcd(105, 45) -> gcd(15, 45) -> gcd(15, 0)"
+   ],
+   "answer": 1
+  },
+  {
+   "n": 5,
+   "stem": "下面代码实现线性筛（欧拉筛），以筛选出  以内的所有素数。横线处的代码应为（  ）。\nvector<int> sieve(int n) {\n1\nvector<bool> is_prime(n + 1, true);\n2\nvector<int> primes;\n3\n4\nif (n >= 0) is_prime[0] = false;\n5\nif (n >= 1) is_prime[1] = false;\n6\n7\nfor (int i = 2; i <= n; ++i) {\n8\nif (is_prime[i]) {\n9\nprimes.push_back(i);\n10\n}\n11\nfor (int j = 0; j < primes.size() && i * primes[j] <= n; j++) {\n12\nis_prime[i * primes[j]] = false;\n13\nif (________________) break; // 在此处填入代码\n14\n}\n15\n}\n16\nreturn primes;\n17\n}\n18",
+   "options": [
+    "i % primes[j] == 0",
+    "primes[j] % i == 0",
+    "i % primes[j] != 0",
+    "i == primes[j]"
+   ],
+   "answer": 0
+  },
+  {
+   "n": 6,
+   "stem": "下面关于埃氏筛法的说法正确的是（  ）。",
+   "options": [
+    "每个合数只会被筛掉一次",
+    "从每个素数出发，把它的倍数标记为合数",
+    "只能判断一个数是不是偶数",
+    "不能求出素数表 3 / 11"
+   ],
+   "answer": 1
+  },
+  {
+   "n": 7,
+   "stem": "下面代码实现了计算\n的快速幂算法，该算法体现的编程思想是（  ）。\nlong long power(long long x, int n) {\n1\nif (n == 0) return 1;\n2\nlong long res = power(x, n / 2);\n3\nif (n % 2 == 0) return res * res;\n4\nelse return res * res * x;\n5\n}\n6",
+   "options": [
+    "枚举",
+    "贪心",
+    "分治",
+    "模拟"
+   ],
+   "answer": 2
+  },
+  {
+   "n": 8,
+   "stem": "下面代码用于统计 n 中因子 2 出现了多少次。若 n = 40 ，输出是（  ）。\nint n = 40;\n1\nint cnt = 0;\n2\nwhile (n % 2 == 0) {\n3\ncnt++;\n4\nn /= 2;\n5\n}\n6\ncout << cnt;\n7",
+   "options": [
+    "1",
+    "2",
+    "3",
+    "4"
+   ],
+   "answer": 2
+  },
+  {
+   "n": 9,
+   "stem": "在一个有序数组中查找第一个大于或等于 x 的元素位置，横线处应填写（  ）。\nint lowerBound(vector<int>& a, int x) {\n1\nint l = 0, r = a.size();\n2\nwhile (l < r) {\n3\nint mid = l + (r - l) / 2;\n4\nif (a[mid] >= x) ________________; // 在此处填入代码\n5\nelse l = mid + 1;\n6\n}\n7\nreturn l;\n8\n}\n9",
+   "options": [
+    "r = mid + 1",
+    "r = mid - 1",
+    "r = mid",
+    "l = mid"
+   ],
+   "answer": 2
+  },
+  {
+   "n": 10,
+   "stem": "有若干根木头，长度存于 wood 。每切一刀可以把一段木头分成两段。函数 check(wood, K, x) 返回：\n用不超过 K 刀，能否使所有木段长度都不超过 x 。下面代码使用二分答案查找最小可行的 x ，横线处应填（\n）。\n4 / 11\nint binary_cut(vector<int>& wood, int K) {\n1\nint l = 1;\n2\nint r = 0;\n3\n4\nfor (int len : wood) r = max(r, len);\n5\nwhile (l < r) {\n6\nint mid = l + (r - l) / 2;\n7\nif (check(wood, K, mid))\n8\n________________; // 在此处填入代码\n9\nelse l = mid + 1;\n10\n}\n11\nreturn l;\n12\n}\n13",
+   "options": [
+    "r = mid + 1",
+    "r = mid",
+    "l = mid",
+    "r = mid - 1"
+   ],
+   "answer": 1
+  },
+  {
+   "n": 11,
+   "stem": "下面代码段实现了快速排序的划分操作（以首元素为基准），横线处代码应填入（  ）。\nint partition(vector<int>& arr, int low, int high) {\n1\nint pivot = arr[low];\n2\nint i = low, j = high;\n3\nwhile (i < j) {\n4\nwhile (i < j && arr[j] >= pivot) j--;\n5\nwhile (i < j && arr[i] <= pivot) i++;\n6\nif (i < j) swap(arr[i], arr[j]);\n7\n}\n8\n________________; // 在此处填入代码\n9\nreturn i;\n10\n}\n11",
+   "options": [
+    "swap(arr[low], arr[high])",
+    "swap(arr[low], arr[i])",
+    "swap(arr[i], arr[high])",
+    "arr[i] = pivot"
+   ],
+   "answer": 1
+  },
+  {
+   "n": 12,
+   "stem": "下面哪句话最符合归并排序的思想？（  ）",
+   "options": [
+    "每次选择最小元素放到前面",
+    "将数组分成两半分别排序，再合并两个有序部分",
+    "相邻元素两两交换",
+    "从左到右把元素插入有序区 ）的数组进行归并排序的过程中，mergeArray 函数（合并两个有序子数组的操作）"
+   ],
+   "answer": 1
+  },
+  {
+   "n": 13,
+   "stem": "在对长度为 （\n被调用的次数是（  ）。\n5 / 11\nconst int MAXN = 100005;\n1\n2\nint a[MAXN];\n3\nint tempArr[MAXN];\n4\n5\nvoid mergeArray(int left, int mid, int right) {\n6\nint i = left;       // 左半部分起点\n7\nint j = mid + 1;    // 右半部分起点\n8\nint k = left;       // 临时数组下标\n9\n10\nwhile (i <= mid && j <= right) {\n11\nif (a[i] <= a[j]) {\n12\ntempArr[k++] = a[i++];\n13\n} else {\n14\ntempArr[k++] = a[j++];\n15\n}\n16\n}\n17\n18\nwhile (i <= mid) {\n19\ntempArr[k++] = a[i++];\n20\n}\n21\n22\nwhile (j <= right) {\n23\ntempArr[k++] = a[j++];\n24\n}\n25\n26\nfor (int p = left; p <= right; p++) {\n27\na[p] = tempArr[p];\n28\n}\n29\n}\n30\n31\nvoid mergeSort(int left, int right) {\n32\nif (left >= right) {\n33\nreturn;\n34\n}\n35\n36\nint mid = left + (right - left) / 2;\n37\n38\nmergeSort(left, mid);\n39\nmergeSort(mid + 1, right);\n40\n41\nmergeArray(left, mid, right);\n42\n}\n43",
+   "options": [
+    "",
+    "",
+    "",
+    ""
+   ],
+   "answer": 0
+  },
+  {
+   "n": 14,
+   "stem": "小杨在学校义卖会上负责打包“零食盲盒”。每个盲盒重量不同，快递盒最多承重 limit 克，每个快递盒最\n多装两个盲盒。为了尽量少用快递盒，他采用如下策略：\n（1）每次把最轻的盲盒和最重的盲盒尝试放在一起；\n（2）如果两者重量之和不超过 limit ，就一起装；\n（3）否则，只能让最重的盲盒单独装一盒。\n下面代码用于计算最少需要多少个快递盒，则横线处应填入的是（  ）。\n6 / 11\nint minBoxes(vector<int>& w, int limit) {\n1\nsort(w.begin(), w.end());\n2\n3\nint l = 0, r = w.size() - 1;\n4\nint boxes = 0;\n5\n6\nwhile (l <= r) {\n7\nif (w[l] + w[r] <= limit) {\n8\n__________; // 在此处填入代码\n9\n} else {\n10\nr--;\n11\n}\n12\nboxes++;\n13\n}\n14\n15\nreturn boxes;\n16\n}\n17",
+   "options": [
+    "l++;",
+    "r--;",
+    "l++; 1 r--; 2",
+    "boxes--;"
+   ],
+   "answer": 2
+  },
+  {
+   "n": 15,
+   "stem": "高精度减法中，假设两个高精度数按低位在前存储，且已经保证被减数不小于减数。下面处理借位逻辑代\n码中横线处应填入（  ）。\nif (a[i] < b[i]) {\n1\na[i + 1]--;\n2\n________________;\n3\n}\n4\nt = a[i] - b[i];\n5",
+   "options": [
+    "a[i] += 10",
+    "a[i] -= 10",
+    "b[i] += 10",
+    "a[i] = a[i+1] + 10"
+   ],
+   "answer": 0
+  }
+ ],
+ "judge": [
+  {
+   "n": 1,
+   "stem": "数组的存储空间在物理上通常是连续的，而链表的结点可以存储在不连续的内存空间中。",
+   "answer": null
+  },
+  {
+   "n": 2,
+   "stem": "带哨兵头尾节点的双向循环链表，在表头插入节点 p ，以下四步操作无论什么顺序执行结果都正确。\n① p->next = head->next;\n1\n② p->prev = head;\n2\n③ head->next->prev = p;\n3\n④ head->next = p;\n4",
+   "answer": null
+  },
+  {
+   "n": 3,
+   "stem": "对任意正整数 a 、b ，以下两种写法的 gcd 函数返回值完全相同。\n7 / 11\nint gcd1(int a, int b) {\n1\nreturn b ? gcd1(b, a % b) : a;\n2\n}\n3\n4\nint gcd2(int a, int b) {\n5\nwhile (b) {\n6\nint t = b;\n7\nb = a % b;\n8\na = t;\n9\n}\n10\nreturn a;\n11\n}\n12",
+   "answer": null
+  },
+  {
+   "n": 4,
+   "stem": "在归并排序的合并操作中，如下代码片段可以正确地将两个已排序的子数组 L 和 R 合并回原数组 arr\n中。\nvoid merge(int arr[], int left, int mid, int right) {\n1\nint n1 = mid - left + 1;\n2\nint n2 = right - mid;\n3\nvector<int> L(n1), R(n2);\n4\n5\nfor (int i = 0; i < n1; i++) L[i] = arr[left + i];\n6\nfor (int j = 0; j < n2; j++) R[j] = arr[mid + 1 + j];\n7\nint i = 0, j = 0, k = left;\n8\nwhile (i < n1 && j < n2) {\n9\nif (L[i] <= R[j]) arr[k++] = L[i++];\n10\nelse arr[k++] = R[j++];\n11\n}\n12\nwhile (i < n1) arr[k++] = L[i++];\n13\nwhile (j < n2) arr[k++] = R[j++];\n14\n}\n15",
+   "answer": null
+  },
+  {
+   "n": 5,
+   "stem": "分治法通常将一个规模较大的问题拆分为若干个规模较小、结构相似的子问题，分别求解后再合并子问题的\n结果。",
+   "answer": null
+  },
+  {
+   "n": 6,
+   "stem": "贪心算法只要每一步选择当前最优解，就一定能得到全局最优解。",
+   "answer": null
+  },
+  {
+   "n": 7,
+   "stem": "二分查找不仅可以应用于有序数组，也可以在不增加时间复杂度的情况下应用于有序的单链表，因为链表也\n支持\n时间内的随机访问。",
+   "answer": null
+  },
+  {
+   "n": 8,
+   "stem": "以下函数 f1 的时间复杂度比函数 f2 的更高。\nvoid f1(int n) {\n1\nfor (int i = 1; i < n; i *= 2);\n2\n}\n3\n4\nvoid f2(int n) {\n5\nif (n <= 1) return;\n6\nf2(n - 1);\n7\nf2(n - 1);\n8\n}\n9",
+   "answer": null
+  },
+  {
+   "n": 9,
+   "stem": "唯一分解定理表明，任何一个大于  的自然数都可以唯一地分解为若干个质数的乘积，如果不考虑质因数的\n顺序，这种分解方式是唯一的。",
+   "answer": null
+  },
+  {
+   "n": 10,
+   "stem": "归并排序和快速排序在平均情况下的时间复杂度均为\n。但在稳定性方面，归并排序通常是不稳定\n的，而快速排序是稳定的。\n8 / 11",
+   "answer": null
+  }
+ ],
+ "programming": [
+  {
+   "n": 1,
+   "name": "排排坐",
+   "desc": "老师正在和小朋友们分糖果。\n小朋友们先在自己的手上写一个数字，然后坐成一排。\n老师分发糖果的规则是：每个小朋友获得自己以及左侧所有小朋友的手上数字之和个糖果。\n现在小朋友们都已经在自己手上写上了数字。\n请帮小朋友们安排合适的座位顺序，使得小朋友们分到的糖果总量最大，输出这个最大值。"
+  },
+  {
+   "n": 2,
+   "name": "晚宴",
+   "desc": "小明去参加晚宴。晚宴中有  个菜肴，每个菜肴都有一个美味度，第  个菜肴的美味度为\n。\n晚宴规定小明只能恰好选取两道菜肴，并且这两道菜肴的美味度必须要互质（即最大公约数为 ）。\n请帮助小明选取两道菜肴，使得两道菜肴美味度之和最大。"
+  }
+ ]
+}

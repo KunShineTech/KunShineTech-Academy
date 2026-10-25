@@ -1,0 +1,93 @@
+---
+title: "单链表：创建、插入与删除"
+level: 5
+order: 3
+duration: 120
+unit: "链表"
+difficulty: 基础
+goals:
+  - "理解链表的节点结构与相比数组的优缺点"
+  - "掌握单链表的创建与遍历"
+  - "掌握单链表的插入与删除操作"
+---
+
+import Check from '../../../components/Check.astro';
+import Task from '../../../components/Task.astro';
+import Reveal from '../../../components/Reveal.astro';
+
+
+## 1. 数组的烦恼：插队问题
+班里排队打饭，老师说「小 A 插到第 3 个位置」。用数组模拟的话，第 3 个之后所有人都要**往后挪一格**——O(n) 的搬运量，队伍越长越慢。而现实中人们插队只是**改一下前后手的拉法**：前面的人改拉小 A，小 A 拉住原来那个人。**链表**就是程序里的这种「手拉手」队伍：每个节点只知道自己后面是谁，插入删除只需改一两根「手指」，不用搬家。
+
+代价是：想找到第 k 个人，只能从头一个个数过去（O(n)），不能像数组那样 `a[k]` 直达。**一句话总结：链表牺牲随机访问，换取插入删除的快捷。**
+
+## 2. 节点：数据和指路的指针
+每个节点分两格：一格装**数据**，一格装**指向下一个节点的指针**（相当于「拉着下一个人的手」）。
+
+```cpp
+struct Node {
+    int data;      // 数据
+    Node* next;    // 指向下一节点的指针
+};
+```
+
+创建链表的固定套路：用 `new` 申请节点、填数据、接指针。还可以设一个**头节点**（哨兵），它的 data 不用，只用来当「队伍的排头标志」，这样第一个位置的操作和中间位置就统一了，代码不容易错。
+
+```cpp
+Node* head = new Node{0, nullptr};  // 头节点，next 先指向空
+Node* p = head;                     // p 是移动指针，从头出发
+for (int i = 1; i <= n; i++) {
+    int x; cin >> x;
+    p->next = new Node{x, nullptr}; // 接到队伍末尾
+    p = p->next;                    // p 前进到新节点
+}
+```
+
+> 教学提醒：`p = p->next` 是链表遍历的灵魂语句，建议让学生在纸上画 3 个节点和箭头，亲手把 p 走一遍，理解「p 始终指向当前节点」。
+
+## 3. 遍历：从头走到尾
+遍历链表和遍历数组很像，只是「步进」方式不同：数组用 `i++`，链表用 `p = p->next`。
+
+```cpp
+for (Node* p = head->next; p != nullptr; p = p->next)
+    cout << p->data << ' ';
+```
+
+循环条件 `p != nullptr` 就是「还没走出队伍尽头」。nullptr 相当于队伍最后一个人说：「我后面没有人了。」
+
+<Check question="单链表相比数组的主要优势是？" options={['可以 O(1) 访问任意元素','插入删除不需要移动大量元素','占用内存一定更少','可以倒着访问']} answer={1} explanation="链表插入删除只需修改指针（改拉关系），是 O(1) 的；但访问第 k 个元素仍需从头遍历，是 O(n) 的，所以前两项中后一句才是优势。" />
+
+## 4. 插入与删除：改两根「手指」
+在第 3 个节点**之后**插入新节点，只需两步：
+
+```cpp
+Node* q = new Node{x, nullptr};
+q->next = p->next;   // 新节点拉住 p 原来的下一个
+p->next = q;         // p 改拉新节点
+```
+
+**口诀：先接后，再接前——新节点先记住后面是谁，前面的人才改拉它。**
+
+删除 p 后面的节点更简单：
+
+```cpp
+Node* q = p->next;   // 记住要删的人
+p->next = q->next;   // p 改拉 q 的下一个（跳过 q）
+delete q;            // 释放内存，好习惯
+```
+
+两句话千万记牢：**插入和删除的指针操作顺序不能颠倒**（先接后、再接前），且都要找到「前一个节点」才能动手——这就是为什么遍历找位置时，通常停在目标的前一个。
+
+<Check question="在 p 节点之后插入新节点 q，正确的指针操作顺序是？" options={['先 p->next = q，再 q->next = p->next','先 q->next = p->next，再 p->next = q','先 delete p，再插入','只需 p->next = q 一步']} answer={1} explanation="必须先让 q 记住 p 原来的后继（q->next = p->next），再让 p 指向 q；顺序颠倒会让 q->next 指向自己，链断裂。" />
+
+## 5. 实战：读 n 个数建成链表并输出
+<Task title="建链表并正序输出" input="第一行一个正整数 n（n≤100），第二行 n 个整数" output="把这 n 个数按读入顺序输出，空格分隔（用链表实现，不能用数组）" sampleIn="4
+1 2 3 4" sampleOut="1 2 3 4">用头节点 + 尾插法：p 从 head 出发，每读一个数就 new 一个节点接到 p 后面，然后 p 前进。最后从头节点的 next 开始遍历输出。</Task>
+<Reveal label="查看参考程序与思路"><pre><code>{`#include <iostream>\nusing namespace std;\nstruct Node {\n    int data;\n    Node* next;\n};\nint main(){\n    int n; cin>>n;\n    Node* head = new Node{0, nullptr};\n    Node* p = head;\n    for(int i=0;i<n;i++){\n        int x; cin>>x;\n        p->next = new Node{x, nullptr};\n        p = p->next;\n    }\n    bool first = true;\n    for(Node* q = head->next; q != nullptr; q = q->next){\n        if(!first) cout<<' ';\n        cout<<q->data;\n        first = false;\n    }\n    cout<<'\\n';\n}`}</code></pre>尾插法保证顺序：head 是哨兵头节点，p 始终指向当前队尾。每读入 x 就 new 一个节点挂在 p 之后、p 前进一格，队伍保持读入次序。输出用 first 标志控制空格。此题看似数组更简单，但目的是练熟 new、指针连接与遍历三件套——这是后续插入删除题的地基。</Reveal>
+
+## 6. 课后巩固
+1. 概念题：画出含 3 个节点的单链表示意图（方框分两格：data、next），标出每个 next 的指向。
+2. 概念题：为什么链表访问第 k 个元素是 O(n)，而数组是 O(1)？
+3. 编程题：读 n 个数建链表，统计其中大于 0 的节点个数并输出。
+4. 编程题：读 n 个数建链表，删除所有值为 x 的节点，输出剩余元素。
+5. 思考题：如果不设头节点（哨兵），在「第一个位置」插入节点与「中间位置」插入，代码会有什么不同？

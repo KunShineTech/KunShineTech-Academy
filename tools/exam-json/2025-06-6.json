@@ -1,0 +1,242 @@
+{
+ "session": "2025-06",
+ "level": 6,
+ "file": "GESP 2025年06月认证C++ 6级真题.pdf",
+ "legacy": false,
+ "choiceCount": 15,
+ "judgeCount": 10,
+ "progCount": 2,
+ "choiceAnswers": "DABBBBDDACADABC",
+ "judgeAnswers": "",
+ "choice": [
+  {
+   "n": 1,
+   "stem": "下列哪一项不是面向对象编程的基本特征？",
+   "options": [
+    "继承",
+    "封装",
+    "多态",
+    "链接"
+   ],
+   "answer": 3
+  },
+  {
+   "n": 2,
+   "stem": "2. 为了让 Dog 类的构造函数能正确地调用其父类 Animal 的构造方法，横线线处应填入（   ）。\nclass Animal {\n1\npublic:\n2\nstd::string name;\n3\n4\nAnimal(std::string str) : name(str) {\n5\nstd::cout << \"Animal created\\n\";\n6\n}\n7\nvirtual void speak() {\n8\ncout << \"Animal speaks\" << endl;\n9\n}\n10\n};\n11\n12\nclass Dog : public Animal {\n13\nstd::string breed;\n14\npublic:\n15\nDog(std::string name, std::string b) : _________________, breed(b) {\n16\nstd::cout << \"Dog created\\n\";\n17\n}\n18\nvoid speak() override {\n19\ncout << \"Dog barks\" << endl;\n20\n}\n21\n};\n22\n23\nint main() {\n24\nAnimal* p = new Dog(\"Rex\", \"Labrador\");\n25\np->speak();\n26\ndelete p;\n27\nreturn 0;\n28\n}\n29",
+   "options": [
+    "Animal(name)",
+    "super(name)",
+    "Animal::Animal(name)",
+    "Animal()"
+   ],
+   "answer": 0
+  },
+  {
+   "n": 3,
+   "stem": "代码同上一题，代码执行结果是（  ）。",
+   "options": [
+    "输出 Animal speaks",
+    "输出 Dog barks",
+    "编译错误",
+    "程序崩溃"
+   ],
+   "answer": 1
+  },
+  {
+   "n": 4,
+   "stem": "以下关于栈和队列的代码，执行后输出是（   ）。\nstack<int> s;\n1\nqueue<int> q;\n2\n3\nfor (int i = 1; i <= 3; ++i) {\n4\ns.push(i);\n5\nq.push(i);\n6\n}\n7\ncout << s.top() << \" \" << q.front() << endl;\n8",
+   "options": [
+    "1 3",
+    "3 1",
+    "3 3",
+    "1 1"
+   ],
+   "answer": 1
+  },
+  {
+   "n": 5,
+   "stem": "在一个循环队列中，front 是指向队头的指针， rear 指向队尾的指针，队列最大容量为 maxSize 。判断\n队列已满的条件是（  ）。",
+   "options": [
+    "rear == front",
+    "(rear + 1) % maxSize == front",
+    "(rear - 1 + maxSize) % maxSize == front",
+    "(rear - 1) == front"
+   ],
+   "answer": 1
+  },
+  {
+   "n": 6,
+   "stem": "（   ）只有最底层的节点未被填满，且最底层节点尽量靠左填充。",
+   "options": [
+    "完美二叉树",
+    "完全二叉树",
+    "完满二叉树",
+    "平衡二叉树"
+   ],
+   "answer": 1
+  },
+  {
+   "n": 7,
+   "stem": "在使用数组表示完全二叉树时，如果一个节点的索引为（从开始计数），那么其左子节点的索引通常是（\n）。",
+   "options": [
+    "",
+    "",
+    "",
+    ""
+   ],
+   "answer": 3
+  },
+  {
+   "n": 8,
+   "stem": "已知一棵二叉树的前序遍历序列为 GDAFEMHZ ，中序遍历序列为 ADFGEHMZ ，则其后序遍历序列为（   ）。",
+   "options": [
+    "ADFGEHMZ",
+    "ADFGHMEZ",
+    "AFDGEMZH",
+    "AFDHZMEG"
+   ],
+   "answer": 3
+  },
+  {
+   "n": 9,
+   "stem": "设有字符集 {a, b, c, d, e}，其出现频率分别为 {5, 8, 12, 15, 20}，得到的哈夫曼编码为（   ）。",
+   "options": [
+    "a: 010 1 b: 011 2 c: 00 3 d: 10 4 e: 11 5",
+    "a: 00 1 b: 10 2 c: 011 3 d: 100 4 e: 111 5",
+    "a: 10 1 b: 01 2 c: 011 3 d: 100 4 e: 111 5",
+    "a: 100 1 b: 01 2 c: 011 3 d: 100 4 e: 00 5"
+   ],
+   "answer": 0
+  },
+  {
+   "n": 10,
+   "stem": "3位格雷编码中，编码 101 之后的下一个编码不可能是（   ）。",
+   "options": [
+    "100",
+    "111",
+    "110",
+    "001"
+   ],
+   "answer": 2
+  },
+  {
+   "n": 11,
+   "stem": "请将下列 C++ 实现的深度优先搜索（DFS）代码补充完整，横线处应填入（   ）。\nstruct TreeNode {\n1\nint val;\n2\nTreeNode* left;\n3\nTreeNode* right;\n4\nTreeNode(int x): val(x), left(nullptr), right(nullptr) {}\n5\n};\n6\n7\nvoid dfs(TreeNode* root, vector<int>& result) {\n8\nif (root == nullptr) return;\n9\n10\n__________________________\n11\n}\n12",
+   "options": [
+    "result.push_back(root->val); 1 dfs(root->left); 2 dfs(root->right); 3",
+    "result.push_back(root->left->val); 1 dfs(root->right); 2 dfs(root->left); 3",
+    "result.push_back(root->left->val); 1 dfs(root->left); 2 dfs(root->right); 3",
+    "result.push_back(root->right->val); 1 dfs(root->right); 2 dfs(root->left); 3"
+   ],
+   "answer": 0
+  },
+  {
+   "n": 12,
+   "stem": "给定一个二叉树，返回每一层中最大的节点值，结果以数组形式返回，横线处应填入（   ）。\n#include <vector>\n1\n#include <queue>\n2\n#include <algorithm>\n3\n4\nstruct TreeNode {\n5\nint val;\n6\nTreeNode* left;\n7\nTreeNode* right;\n8\nTreeNode(int x): val(x), left(nullptr), right(nullptr) {}\n9\n};\n10\n11\nvector<int> largestValues(TreeNode* root) {\n12\nvector<int> result;\n13\nif (!root) return result;\n14\n15\nqueue<TreeNode*> q;\n16\nq.push(root);\n17\n18\nwhile (!q.empty()) {\n19\nint sz = q.size();\n20\nint maxVal = INT_MIN;\n21\nfor (int i = 0; i < sz; ++i) {\n22\nTreeNode* node;\n23\n_______________________________\n24\nmaxVal = max(maxVal, node->val);\n25\nif (node->left) q.push(node->left);\n26\nif (node->right) q.push(node->right);\n27\n}\n28\nresult.push_back(maxVal);\n29\n}\n30\n31\nreturn result;\n32\n}\n33",
+   "options": [
+    "node = q.end(); 1",
+    "node = q.front(); 1",
+    "q.pop(); 1 node = q.front(); 2",
+    "node = q.front(); 1 q.pop(); 2"
+   ],
+   "answer": 3
+  },
+  {
+   "n": 13,
+   "stem": "下面代码实现一个二叉排序树的插入函数（没有相同的数值），横线处应填入（   ）。\nstruct TreeNode {\n1\nint val;\n2\nTreeNode* left;\n3\nTreeNode* right;\n4\nTreeNode(int x): val(x), left(nullptr), right(nullptr) {}\n5\n};\n6\n7\nvoid insert(TreeNode*& root, int key) {\n8\nif (!root) {\n9\nroot = new TreeNode(key);\n10\nreturn;\n11\n}\n12\n_______________________________\n13\n}\n14",
+   "options": [
+    "if (key < root->val) 1 insert(root->left, key); 2 else if (key > root->val) 3 insert(root->right, key); 4",
+    "if (key < root->val) 1 insert(root->right, key); 2 else if (key > root->val) 3 insert(root->left, key); 4",
+    "insert(root->left, key); 1 insert(root->right, key); 2",
+    "insert(root->right, key); 1 insert(root->left, key); 2"
+   ],
+   "answer": 0
+  },
+  {
+   "n": 14,
+   "stem": "以下关于动态规划算法特性的描述，正确的是（   ）。",
+   "options": [
+    "子问题相互独立，不重叠",
+    "问题包含重叠子问题和最优子结构",
+    "只能从底至顶迭代求解",
+    "必须使用递归实现，不能使用迭代"
+   ],
+   "answer": 1
+  },
+  {
+   "n": 15,
+   "stem": "给定个物品和一个最大承重为\n的背包，每个物品有一个重量\n和价值\n，每个物品只能选择放或\n。关于下面代码，说法正确的是（\n不放。目标是选择若干个物品放入背包，使得总价值最大，且总重量不超过\n）。\nint knapsack1D(int W, vector<int>& wt, vector<int>& val, int n) {\n1\nvector<int> dp(W+1, 0);\n2\nfor (int i = 0; i < n; ++i) {\n3\nfor (int w = W; w >= wt[i]; --w) {\n4\ndp[w] = max(dp[w], dp[w - wt[i]] + val[i]);\n5\n}\n6\n}\n7\nreturn dp[W];\n8\n}\n9",
+   "options": [
+    "该算法不能处理背包容量为 0 的情况",
+    "外层循环 i 遍历背包容量，内层遍历物品",
+    "从大到小遍历 w 是为了避免重复使用同一物品",
+    "这段代码计算的是最小重量而非最大价值"
+   ],
+   "answer": 2
+  }
+ ],
+ "judge": [
+  {
+   "n": 1,
+   "stem": "构造函数可以被声明为 virtual。",
+   "answer": null
+  },
+  {
+   "n": 2,
+   "stem": "给定一组字符及其出现的频率，构造出的哈夫曼树是唯一的。",
+   "answer": null
+  },
+  {
+   "n": 3,
+   "stem": "为了实现一个队列，使其出队操作（pop ）的时间复杂度为\n并且避免数组删除首元素的\n问题，一\n种常见且有效的方法是使用环形数组，通过调整队首和队尾指针来实现。",
+   "answer": null
+  },
+  {
+   "n": 4,
+   "stem": "对一棵二叉排序树进行中序遍历，可以得到一个递增的有序序列。",
+   "answer": null
+  },
+  {
+   "n": 5,
+   "stem": "如果二叉搜索树在连续的插入和删除操作后，所有节点都偏向一侧，导致其退化为类似于链表的结构，这时\n其查找、插入、删除操作的时间复杂度会从理想情况下的\n退化到\n。",
+   "answer": null
+  },
+  {
+   "n": 6,
+   "stem": "执行下列代码，my_dog.name 的最终值是 Charlie 。\nclass Dog {\n1\npublic:\n2\nstd::string name;\n3\nDog(std::string str) : name(str) {}\n4\n};\n5\n6\nint main() {\n7\nDog my_dog(\"Buddy\");\n8\nmy_dog.name = \"Charlie\";\n9\nreturn 0;\n10\n}\n11",
+   "answer": null
+  },
+  {
+   "n": 7,
+   "stem": "下列 C++ 代码可以成功编译，并且子类 Child 的实例能通过其成员函数访问父类 Parent 的属性\nvalue 。\nclass Parent {\n1\nprivate:\n2\nint value = 100;\n3\n};\n4\nclass Child : public Parent {\n5\npublic:\n6\nint get_private_val() {\n7\nreturn value; // 尝试访问父类的私有成员\n8\n}\n9\n};\n10",
+   "answer": null
+  },
+  {
+   "n": 8,
+   "stem": "下列代码中的 tree 向量，表示的是一棵完全二叉树 ( -1 代表空节点)按照层序遍历的结果。\n#include <vector>\n1\nstd::vector<int> tree = {1, 2, 3, 4, -1, 6, 7};\n2",
+   "answer": null
+  },
+  {
+   "n": 9,
+   "stem": "在树的深度优先搜索（DFS）中，使用栈作为辅助数据结构以实现“先进后出”的访问顺序。",
+   "answer": null
+  },
+  {
+   "n": 10,
+   "stem": "下面代码采用动态规划求解零钱兑换问题：给定种硬币，第𝑖种硬币的面值为𝑐𝑜𝑖𝑛𝑠[𝑖 − 1] ，目标金额为\n𝑎𝑚𝑡，每种硬币可以重复选取，求能够凑出目标金额的最少硬币数量；如果不能凑出目标金额，返回-1 。\nint coinChangeDPComp(vector<int> &coins, int amt) {\n1\nint n = coins.size();\n2\nint MAX = amt + 1;\n3\n4\nvector<int> dp(amt + 1, MAX);\n5\ndp[0] = 0;\n6\n7\nfor (int i = 1; i <= n; i++) {\n8\nfor (int a = 1; a <= amt; a++) {\n9\nif (coins[i - 1] > a)\n10\ndp[a] = dp[a];\n11\nelse\n12\ndp[a] = min(dp[a], dp[a - coins[i - 1]] + 1);\n13\n}\n14\n}\n15\nreturn dp[amt] != MAX ? dp[amt] : -1;\n16\n}\n17",
+   "answer": null
+  }
+ ],
+ "programming": [
+  {
+   "n": 1,
+   "name": "学习小组",
+   "desc": "班主任计划将班级里的  名同学划分为若干个学习小组，每名同学都需要分入某一个学习小组中。观察发现，如果\n一个学习小组中恰好包含  名同学，则该学习小组的讨论积极度为\n。\n给定讨论积极度\n，请你计算将这  名同学划分为学习小组的所有可能方案中，讨论积极度之和的最大\n值。"
+  },
+  {
+   "n": 2,
+   "name": "最大因数",
+   "desc": "给定一棵有\n个结点的有根树，这些结点依次以\n编号，根结点的编号为 。对于编号为 （\n）的结点，其父结点的编号为  的因数中除  以外最大的因数。\n现在有  组询问，第  （\n）组询问给定\n，请你求出编号分别为\n的两个结点在这棵树上的距离。\n两个结点之间的距离是连接这两个结点的简单路径所包含的边数。"
+  }
+ ]
+}

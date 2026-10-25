@@ -1,0 +1,4 @@
+---
+const { title, level='基础', time='15分钟', input='见题目', output='见题目', sampleIn='', sampleOut='' } = Astro.props;
+---
+<section class="task"><div class="task-head"><strong>💻 {title}</strong><span>{level} · {time}</span></div><div class="task-body"><slot /><div class="io-grid"><div><small>输入</small><p>{input}</p></div><div><small>输出</small><p>{output}</p></div></div>{sampleIn!==''&&<div class="sample-grid"><div><small>样例输入</small><pre>{sampleIn}</pre></div><div><small>样例输出</small><pre>{sampleOut}</pre></div></div>}</div></section>

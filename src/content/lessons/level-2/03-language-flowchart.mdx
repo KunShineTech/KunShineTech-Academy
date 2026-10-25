@@ -1,0 +1,64 @@
+---
+title: "程序设计语言与流程图"
+level: 2
+order: 3
+duration: 120
+unit: "程序设计基础"
+difficulty: 基础
+goals:
+  - "认识机器语言、汇编语言、高级语言"
+  - "掌握开始/结束、处理、输入输出、判断符号"
+  - "用流程图描述顺序、分支、循环"
+---
+
+import Check from '../../../components/Check.astro';
+import Task from '../../../components/Task.astro';
+import Reveal from '../../../components/Reveal.astro';
+import Mermaid from '../../../components/Mermaid.astro';
+
+
+## 1. 语言从哪里来？
+- **机器语言**：CPU可执行的机器指令，用二进制形式表示。
+- **汇编语言**：用助记符表示机器指令，需要汇编器翻译。
+- **高级语言**：如 C++、Python，更接近人类表达，通常需编译器或解释器等执行环境。
+
+C++源代码经编译、链接等步骤形成可执行程序；Python常见实现通过解释器运行。两者不能简单等同于“一个快、一个慢”，具体性能受实现和任务影响。
+
+## 2. 流程图四类核心符号
+| 形状 | 用途 | 例子 |
+|---|---|---|
+| 椭圆 | 开始/结束 | Start、End |
+| 平行四边形 | 输入/输出 | 输入n、输出结果 |
+| 矩形 | 处理步骤 | `sum = sum + i` |
+| 菱形 | 条件判断 | `n % 2 == 0?` |
+
+<Mermaid title="判断偶数的流程图" code={`flowchart TD
+    A([开始]) --> B[/输入整数 n/]
+    B --> C{n % 2 == 0?}
+    C -- 是 --> D[/输出 EVEN/]
+    C -- 否 --> E[/输出 ODD/]
+    D --> F([结束])
+    E --> F`} />
+
+> 上图是 Mermaid 流程图，默认渲染为图形；点击「源代码」可查看并复制 Mermaid 源码。其余课程的流程图也都可以写成 Mermaid 源码（```mermaid 代码块或本控件）。
+
+## 3. 数学原理与算法步骤
+判断偶数：存在整数 `k` 使 `n=2k`。在程序中，`n%2==0` 可判断整数 `n` 是否为偶数。
+
+```cpp
+#include <iostream>
+using namespace std;
+int main(){
+    int n; cin>>n;
+    if(n%2==0) cout<<"EVEN\n";
+    else cout<<"ODD\n";
+}
+```
+
+<Check question="流程图中，条件判断通常使用什么形状？" options={['矩形','菱形','椭圆','圆柱']} answer={1} explanation="菱形表示条件分支，通常有“是/否”两条出口。" />
+
+<Task title="成绩是否合格" input="整数 score，0≤score≤100" output="score≥60输出PASS，否则FAIL" sampleIn="59" sampleOut="FAIL">先在纸上画流程图，再写 C++ 代码；测试 59、60、100。</Task>
+<Reveal label="参考实现"><pre><code>{`#include <iostream>\nusing namespace std;\nint main(){int s;cin>>s;cout<<(s>=60?"PASS":"FAIL")<<'\\n';}`}</code></pre></Reveal>
+
+## 4. 课堂拓展
+给“从1累加到n”画循环流程图，标出初始化、循环条件、循环体和更新步骤。

@@ -1,0 +1,4 @@
+---
+const { label = '查看解析', kind = 'answer' } = Astro.props;
+---
+<details class:list={['reveal', kind]}><summary>{label} <span aria-hidden="true">↗</span></summary><div class="reveal-body"><slot /></div></details>
