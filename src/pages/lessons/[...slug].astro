@@ -5,5 +5,5 @@ export async function getStaticPaths() {
   return all.map((x) => ({ params: { slug: x.id.split('/')[1] } }));
 }
 const { slug } = Astro.params;
-return Astro.redirect(`/gesp/level/2/lessons/${slug}`);
+return Astro.redirect(`${import.meta.env.BASE_URL}/gesp/level/2/lessons/${slug}`);
 ---

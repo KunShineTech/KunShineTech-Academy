@@ -40,4 +40,4 @@ const list = (resources as any)[info.slug] ?? [];
 
 {list.length > 0 && <><h2>精选学习资源</h2><p style="color:var(--muted);font-size:14px">本方向互联网上广受好评的免费/付费课程、经典图书与学习入口（外部链接，以各站点实际内容为准）。</p>{resourceKinds.map((k) => { const items = list.filter((r: any) => r.kind === k); return items.length > 0 && <><h3 class="res-kind">{k}</h3><ul class="res-list">{items.map((r: any) => <li><a href={r.url} target="_blank" rel="noopener">{r.name}</a><span class="res-provider">{r.provider}</span><span class="res-note">{r.note}</span></li>)}</ul></> })}</>}
 
-<p style="color:var(--muted);font-size:14px">适合人群：{info.audience}。本板块为学习路线与核心内容指南，配套课程正在筹备中；建议沿「学习路线」逐阶段推进，结合「实践项目」动手巩固。</p><p><a class="primary-btn" href="/">← 返回课程中心</a></p></div></Base>
+<p style="color:var(--muted);font-size:14px">适合人群：{info.audience}。本板块为学习路线与核心内容指南，配套课程正在筹备中；建议沿「学习路线」逐阶段推进，结合「实践项目」动手巩固。</p><p><a class="primary-btn" href={import.meta.env.BASE_URL}>← 返回课程中心</a></p></div></Base>
