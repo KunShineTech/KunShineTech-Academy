@@ -26,7 +26,12 @@
 
 4. **开启 GitHub Pages**
    - 仓库 **Settings → Pages → Source** 选择 **GitHub Actions**
+   - ⚠️ 不要选 "Deploy from a branch / main / (root)"——那会把未构建的源代码当网站发布，导致 404
    - （`.github/workflows/deploy.yml` 已随代码提交，推送后自动触发构建部署）
+
+   > 注意：`base` 必须与仓库名**完全一致（含大小写）**。项目站点地址固定为
+   > `https://<用户名>.github.io/<仓库名>/`，如 `https://kunshinetech.github.io/KunShineTech-Academy/`。
+   > 拼写或大小写不一致的地址（如全小写）会 404。
 
 5. **验证**：Actions 页面出现绿色对勾后，访问你的地址即可。
 
